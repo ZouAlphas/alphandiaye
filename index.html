@@ -2069,15 +2069,5 @@ document.getElementById('export-btn').addEventListener('click', () => {
   a.download = 'portfolio_alpha_v10.html';
   a.click();
 });
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('img[src*="drive.google.com"]').forEach(function(img) {
-    try {
-      var id = new URL(img.src).searchParams.get('id');
-      if (id) img.src = 'https://drive.google.com/thumbnail?id=' + id + '&sz=w800';
-    } catch(e) {}
-  });
-});
-</script>
 </body>
 </html>
