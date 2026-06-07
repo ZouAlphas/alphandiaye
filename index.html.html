@@ -1,0 +1,2074 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Ndiaye — Expert Transformation Digitale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===========================
+   VARIABLES & RESET
+   =========================== */
+:root {
+  --blue: #38BDF8;
+  --blue-dark: #0EA5E9;
+  --blue-glow: rgba(56,189,248,0.18);
+  --gold: #F59E0B;
+
+  /* DARK MODE (default) */
+  --bg-primary: #0A0F1E;
+  --bg-secondary: #0D1525;
+  --bg-card: #111827;
+  --bg-card-hover: #1a2540;
+  --text-primary: #F0F4FF;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --border: rgba(56,189,248,0.12);
+  --border-soft: rgba(255,255,255,0.06);
+  --nav-bg: rgba(10,15,30,0.92);
+  --shadow: 0 8px 40px rgba(0,0,0,0.5);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.35);
+}
+
+[data-theme="light"] {
+  --bg-primary: #F8FAFF;
+  --bg-secondary: #EEF3FF;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F0F6FF;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --border: rgba(56,189,248,0.2);
+  --border-soft: rgba(0,0,0,0.07);
+  --nav-bg: rgba(248,250,255,0.94);
+  --shadow: 0 8px 40px rgba(56,189,248,0.08);
+  --shadow-card: 0 4px 24px rgba(15,23,42,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Justification globale des paragraphes */
+p { text-align: justify; hyphens: auto; }
+.hero-desc, .about-text p, .exp-desc, .project-desc, .value-card p, .exp-role-item, .interest-desc { text-align: justify; }
+.section-subtitle, .hero-stat-label, .lang-level, .cert-issuer, .cert-date, .exp-client-tag, .edu-field { text-align: left; }
+.section-title, .section-subtitle { text-align: center; }
+.interest-desc { text-align: center; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  transition: background 0.3s, color 0.3s;
+  cursor: none;
+}
+
+/* ===========================
+   CUSTOM CURSOR
+   =========================== */
+#cursor-ring {
+  position: fixed;
+  width: 32px; height: 32px;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  opacity: 0.7;
+}
+#cursor-dot {
+  position: fixed;
+  width: 6px; height: 6px;
+  background: var(--blue);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+}
+body:hover #cursor-ring { opacity: 1; }
+
+/* ===========================
+   SCROLLBAR
+   =========================== */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--blue-dark); border-radius: 10px; }
+
+/* ===========================
+   NAV
+   =========================== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-soft);
+  z-index: 1000;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--blue);
+  letter-spacing: -0.5px;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-actions {
+  display: flex; align-items: center; gap: 1rem;
+}
+.theme-toggle {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  width: 48px; height: 26px;
+  cursor: none;
+  position: relative;
+  transition: background 0.3s;
+}
+.theme-toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 20px; height: 20px;
+  background: var(--blue);
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+[data-theme="light"] .theme-toggle::after { transform: translateX(22px); }
+.nav-cta {
+  background: var(--blue);
+  color: #0A0F1E;
+  border: none;
+  padding: 0.45rem 1.1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: none;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: none;
+  padding: 4px;
+}
+.hamburger span {
+  width: 22px; height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ===========================
+   HERO
+   =========================== */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 80px 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+#particles-canvas {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative; z-index: 1;
+}
+.hero-text { flex: 1; min-width: 0; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--blue-glow);
+  border: 1px solid var(--border);
+  color: var(--blue);
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+.hero-badge::before {
+  content: '';
+  width: 7px; height: 7px;
+  background: var(--blue);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+.hero-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+  letter-spacing: -1px;
+}
+.hero-title span { color: var(--blue); }
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 540px;
+  margin-bottom: 2rem;
+  line-height: 1.75;
+}
+.hero-stats {
+  display: flex; gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+.hero-stat-value {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--blue);
+  display: block;
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+.hero-buttons {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--blue);
+  color: #0A0F1E;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none; cursor: none;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(56,189,248,0.35); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent;
+  color: var(--blue);
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1.5px solid var(--blue);
+  transition: background 0.2s, transform 0.2s;
+  cursor: none;
+}
+.btn-outline:hover { background: var(--blue-glow); transform: translateY(-2px); }
+.hero-photo {
+  flex-shrink: 0;
+  width: min(340px, 42vw);
+  aspect-ratio: 3/4;
+  position: relative;
+}
+.hero-photo-ring {
+  position: absolute; inset: -10px;
+  border: 2px solid var(--blue);
+  border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%;
+  opacity: 0.35;
+  animation: morph 8s ease-in-out infinite;
+}
+@keyframes morph {
+  0%, 100% { border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%; }
+  33% { border-radius: 55% 45% 40% 60% / 60% 55% 45% 40%; }
+  66% { border-radius: 45% 55% 60% 40% / 40% 60% 55% 45%; }
+}
+.hero-photo-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 36px;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hero-photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+  border-radius: 36px;
+  border: 2px solid var(--border);
+}
+.hero-photo-placeholder svg { opacity: 0.4; }
+.scroll-indicator {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  z-index: 1;
+  animation: bounce 2.5s ease-in-out infinite;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+/* ===========================
+   SECTION COMMON
+   =========================== */
+section { padding: 6rem 2rem; }
+section:nth-child(even) { background: var(--bg-secondary); }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  color: var(--blue);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: '';
+  width: 24px; height: 2px;
+  background: var(--blue);
+  display: block;
+}
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+.section-title span { color: var(--blue); }
+.section-subtitle {
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto 3.5rem;
+  font-size: 1.05rem;
+}
+
+/* ===========================
+   REVEAL ANIMATION
+   =========================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================
+   À PROPOS
+   =========================== */
+#about .about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.about-text h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+}
+.about-text p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.about-skills {
+  display: flex; flex-wrap: wrap; gap: 0.6rem;
+  margin: 1.5rem 0;
+}
+.skill-tag {
+  background: var(--blue-glow);
+  border: 1px solid var(--border);
+  color: var(--blue);
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+.about-values {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+}
+.value-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 1.4rem;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.value-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border);
+  box-shadow: var(--shadow-card);
+}
+.value-card svg { margin-bottom: 0.8rem; color: var(--blue); }
+.value-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+.value-card p { font-size: 0.85rem; color: var(--text-secondary); text-align: left; }
+
+/* ===========================
+   EXPÉRIENCE
+   =========================== */
+#experience .exp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.exp-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.exp-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border);
+  box-shadow: var(--shadow-card);
+}
+.exp-card-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 1.2rem;
+  gap: 1rem;
+}
+.exp-company {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+.exp-period {
+  background: var(--blue-glow);
+  border: 1px solid var(--border);
+  color: var(--blue);
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.exp-role {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+.exp-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+.exp-clients {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.exp-client-tag {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-soft);
+  color: var(--text-secondary);
+  padding: 0.25rem 0.7rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+}
+.exp-roles-list {
+  border-top: 1px solid var(--border-soft);
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+.exp-role-item {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+.exp-role-dot {
+  width: 6px; height: 6px;
+  background: var(--blue);
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* ===========================
+   PROJETS / RÉALISATIONS
+   =========================== */
+#projects .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  padding: 1.8rem;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  display: flex; flex-direction: column;
+}
+.project-card:hover {
+  transform: translateY(-6px) rotateX(2deg);
+  border-color: var(--border);
+  box-shadow: 0 20px 50px rgba(56,189,248,0.12);
+}
+.project-logo {
+  width: 52px; height: 52px;
+  background: var(--blue-glow);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.2rem;
+}
+.project-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.project-company {
+  font-size: 0.8rem;
+  color: var(--blue);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+.project-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  flex: 1;
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+.project-tags {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+.project-tag {
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+}
+
+/* ===========================
+   COMPÉTENCES
+   =========================== */
+#skills .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+}
+.skill-category {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  padding: 1.8rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.skill-category:hover {
+  transform: translateY(-4px);
+  border-color: var(--border);
+}
+.skill-cat-icon {
+  width: 48px; height: 48px;
+  background: var(--blue-glow);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.1rem;
+}
+.skill-cat-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.skill-item {
+  margin-bottom: 0.9rem;
+}
+.skill-item-header {
+  display: flex; justify-content: space-between;
+  font-size: 0.83rem;
+  margin-bottom: 0.35rem;
+  color: var(--text-secondary);
+}
+.skill-bar-bg {
+  height: 5px;
+  background: var(--border-soft);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--blue-dark));
+  border-radius: 10px;
+  width: 0%;
+  transition: width 1.2s cubic-bezier(.22,1,.36,1);
+}
+
+/* ===========================
+   PARTENAIRES / LOGOS
+   =========================== */
+#partners {
+  overflow: hidden;
+}
+.partners-track-wrap {
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+.partners-track {
+  display: flex;
+  animation: scroll-logos 28s linear infinite;
+  width: max-content;
+}
+.partners-track:hover { animation-play-state: paused; }
+.partner-logo {
+  flex-shrink: 0;
+  height: 50px;
+  padding: 0 2.5rem;
+  display: flex; align-items: center; justify-content: center;
+  filter: grayscale(1) opacity(0.45);
+  transition: filter 0.3s;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.partner-logo:hover { filter: grayscale(0) opacity(1); color: var(--blue); }
+@keyframes scroll-logos {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ===========================
+   FORMATION
+   =========================== */
+#education .edu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+.edu-section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.edu-timeline {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.edu-timeline::before {
+  content: '';
+  position: absolute; top: 0; left: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--blue), transparent);
+}
+.edu-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 1.2rem;
+}
+.edu-item::before {
+  content: '';
+  position: absolute; left: -1.5rem; top: 0.4rem;
+  width: 8px; height: 8px;
+  background: var(--blue);
+  border-radius: 50%;
+  border: 2px solid var(--bg-primary);
+}
+.edu-degree {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+.edu-school {
+  color: var(--blue);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+.edu-field {
+  color: var(--text-secondary);
+  font-size: 0.83rem;
+}
+.cert-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+}
+.cert-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 1.2rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.cert-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border);
+}
+.cert-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.3rem; }
+.cert-issuer { font-size: 0.78rem; color: var(--blue); font-weight: 600; margin-bottom: 0.2rem; }
+.cert-date { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ===========================
+   PERSONNALITÉ
+   =========================== */
+#personality .interests-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.2rem;
+}
+.interest-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 1.8rem 1.2rem;
+  text-align: center;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.interest-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border);
+  box-shadow: 0 12px 35px rgba(56,189,248,0.1);
+}
+.interest-icon {
+  width: 56px; height: 56px;
+  background: var(--blue-glow);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1rem;
+}
+.interest-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.interest-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* ===========================
+   LANGUES
+   =========================== */
+#languages .lang-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.lang-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.lang-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border);
+}
+.lang-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+}
+.lang-level {
+  font-size: 0.8rem;
+  color: var(--blue);
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+.lang-bar-container {
+  height: 8px;
+  background: var(--border-soft);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.lang-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--blue-dark));
+  border-radius: 10px;
+  width: 0%;
+  transition: width 1.3s cubic-bezier(.22,1,.36,1);
+}
+
+/* ===========================
+   CONTACT
+   =========================== */
+#contact {
+  background: var(--bg-primary);
+}
+.contact-wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 24px;
+  padding: 3rem;
+  text-align: center;
+}
+.contact-wrapper h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+.contact-wrapper p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+.contact-links {
+  display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.contact-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-soft);
+  color: var(--text-primary);
+  padding: 0.7rem 1.4rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+.contact-link:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  transform: translateY(-2px);
+  background: var(--blue-glow);
+}
+.contact-link svg { flex-shrink: 0; }
+
+/* ===========================
+   FOOTER
+   =========================== */
+footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-soft);
+  padding: 2rem;
+  text-align: center;
+}
+footer p { color: var(--text-muted); font-size: 0.85rem; }
+footer a { color: var(--blue); text-decoration: none; }
+
+/* ===========================
+   ADMIN PANEL
+   =========================== */
+#admin-panel {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(12px);
+  z-index: 9000;
+  align-items: center; justify-content: center;
+}
+#admin-panel.open { display: flex; }
+.admin-modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  width: min(520px, 92vw);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+.admin-modal h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--blue);
+}
+.admin-modal p { color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1.5rem; }
+.admin-input {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+  margin-bottom: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.admin-input:focus { border-color: var(--blue); }
+.admin-btn {
+  background: var(--blue);
+  color: #0A0F1E;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  font-family: inherit;
+  transition: opacity 0.2s;
+}
+.admin-btn:hover { opacity: 0.9; }
+.admin-close {
+  float: right;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+#admin-error { color: #F87171; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 0.8rem; display: none; }
+#admin-content { display: none; }
+.admin-section { margin-bottom: 1.5rem; }
+.admin-section h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--text-primary); }
+.admin-export-btn {
+  background: var(--blue-glow);
+  border: 1px solid var(--border);
+  color: var(--blue);
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: background 0.2s;
+}
+.admin-export-btn:hover { background: rgba(56,189,248,0.25); }
+.admin-tab {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-soft);
+  color: var(--text-secondary);
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.admin-tab.active { background: var(--blue-glow); border-color: var(--border); color: var(--blue); }
+.admin-tab:hover { color: var(--blue); }
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 900px) {
+  .hero-inner { flex-direction: column; text-align: center; }
+  .hero-text { order: 2; }
+  .hero-photo { order: 1; width: min(220px, 60vw); aspect-ratio: 1; margin: 0 auto; }
+  .hero-photo-ring { border-radius: 50%; }
+  .hero-photo-img, .hero-photo-placeholder { border-radius: 50%; }
+  .hero-stats { justify-content: center; }
+  .hero-desc { margin: 0 auto 2rem; }
+  .hero-buttons { justify-content: center; }
+  #about .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  #experience .exp-grid { grid-template-columns: 1fr; }
+  #projects .projects-grid { grid-template-columns: 1fr 1fr; }
+  #skills .skills-grid { grid-template-columns: 1fr 1fr; }
+  #education .edu-grid { grid-template-columns: 1fr; }
+  #personality .interests-grid { grid-template-columns: repeat(3, 1fr); }
+  #languages .lang-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+  .nav-links.mobile-open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 64px; left: 0; right: 0;
+    background: var(--nav-bg);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border-soft);
+    padding: 1.5rem 2rem;
+    gap: 1.2rem;
+  }
+  .hamburger { display: flex; }
+}
+@media (max-width: 600px) {
+  #projects .projects-grid { grid-template-columns: 1fr; }
+  #skills .skills-grid { grid-template-columns: 1fr; }
+  .about-values { grid-template-columns: 1fr; }
+  #personality .interests-grid { grid-template-columns: repeat(2, 1fr); }
+  #languages .lang-grid { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor-ring"></div>
+<div id="cursor-dot"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Alpha<span style="color:var(--text-muted);">.</span></div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#projects">Réalisations</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#education">Formation</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="theme-toggle" title="Basculer thème" aria-label="Thème"></button>
+    <a href="#contact" class="nav-cta">Me contacter</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="particles-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="hero-text reveal">
+      <div class="hero-badge">Disponible pour de nouveaux projets</div>
+      <h1 class="hero-title">
+        Je transforme les idées<br>en <span>systèmes qui fonctionnent</span>
+      </h1>
+      <p class="hero-desc">
+        Expert en transformation digitale, cofondateur de GDA et Responsable Support chez Senedoo. Six ans d'expérience entre la création digitale et deux ans sur des projets ERP en Afrique de l'Ouest.
+      </p>
+      <div class="hero-stats">
+        <div>
+          <span class="hero-stat-value" data-count="30" data-suffix="+">0</span>
+          <div class="hero-stat-label">Projets réalisés</div>
+        </div>
+        <div>
+          <span class="hero-stat-value" data-count="3">0</span>
+          <div class="hero-stat-label">Pays accompagnés</div>
+        </div>
+        <div>
+          <span class="hero-stat-value" data-count="6">0</span>
+          <div class="hero-stat-label">Ans d'expérience</div>
+        </div>
+      </div>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+          Mes réalisations
+        </a>
+        <a href="https://drive.google.com/uc?export=download&id=1Rc_Ll7EuomI5FeMPTkga7_4Q3cMDJ4iP" target="_blank" class="btn-outline" id="cv-download">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Télécharger CV
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo reveal">
+      <div class="hero-photo-ring"></div>
+      <img src="https://drive.google.com/uc?export=view&id=14gySoqd3IcfUHH9Bw_fnOHrgfHKLicH6" alt="Alpha Ndiaye" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:36px;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="hero-photo-placeholder" style="display:none;">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span style="font-size:0.75rem;color:var(--text-muted);">Photo de profil</span>
+      </div>
+    </div>
+  </div>
+  <a href="#about" class="scroll-indicator">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 9-7 7-7-7"/></svg>
+    Découvrir
+  </a>
+</section>
+
+<!-- PARTENAIRES (carrousel) -->
+<section id="partners" style="padding:3rem 0; background:var(--bg-secondary);">
+  <div class="section-inner" style="margin-bottom:1.5rem;">
+    <div style="text-align:center;">
+      <span class="section-label" style="justify-content:center;">Ils m'ont fait confiance</span>
+    </div>
+  </div>
+  <div class="partners-track-wrap">
+    <div class="partners-track" id="partners-track">
+      <div class="partner-logo">Senedoo</div>
+      <div class="partner-logo"><img src="https://drive.google.com/uc?export=view&id=1ocVgYrnqrCMAGlTAkWo6O49rAwpIGghT" alt="Oryx" style="height:32px;object-fit:contain;mix-blend-mode:screen;filter:grayscale(1) opacity(0.5)" onerror="this.parentElement.textContent='Oryx Energies'"></div>
+      <div class="partner-logo">GLOBO</div>
+      <div class="partner-logo">Eric Favre Afrique</div>
+      <div class="partner-logo"><img src="https://drive.google.com/uc?export=view&id=1f3q10EQocswtaDZYsm53n--fMTFza1A7" alt="CFTS" style="height:32px;object-fit:contain;mix-blend-mode:screen;filter:grayscale(1) opacity(0.5)" onerror="this.parentElement.textContent='CFTS'"></div>
+      <div class="partner-logo"><img src="https://drive.google.com/uc?export=view&id=1FUDXr_WZErPK5FI1-eO0ICxJpEVt_AXW" alt="Mossane" style="height:32px;object-fit:contain;mix-blend-mode:screen;filter:grayscale(1) opacity(0.5)" onerror="this.parentElement.textContent='Mossane'"></div>
+      <div class="partner-logo"><img src="https://drive.google.com/uc?export=view&id=11lKPIZ1z_YkL6OqIE8eB0Mh_HSMsCG67" alt="Sama Chef" style="height:32px;object-fit:contain;mix-blend-mode:screen;filter:grayscale(1) opacity(0.5)" onerror="this.parentElement.textContent='Sama Chef'"></div>
+      <div class="partner-logo"><img src="https://drive.google.com/uc?export=view&id=1YE1E1AYaqiTTER3YrBEeTm4Z15lzp8_J" alt="BITIK" style="height:32px;object-fit:contain;mix-blend-mode:screen;filter:grayscale(1) opacity(0.5)" onerror="this.parentElement.textContent='BITIK'"></div>
+      <div class="partner-logo">KEA</div>
+      <div class="partner-logo"><img src="https://drive.google.com/uc?export=view&id=1ZBe7CIe8GX7bABV4NPa-VVyHHn5_ssd4" alt="DNC" style="height:32px;object-fit:contain;mix-blend-mode:screen;filter:grayscale(1) opacity(0.5)" onerror="this.parentElement.textContent='DNC'"></div>
+      <div class="partner-logo">Senedoo</div>
+      <div class="partner-logo"><img src="https://drive.google.com/uc?export=view&id=1ocVgYrnqrCMAGlTAkWo6O49rAwpIGghT" alt="Oryx" style="height:32px;object-fit:contain;mix-blend-mode:screen;filter:grayscale(1) opacity(0.5)" onerror="this.parentElement.textContent='Oryx Energies'"></div>
+      <div class="partner-logo">GLOBO</div>
+      <div class="partner-logo">Eric Favre Afrique</div>
+      <div class="partner-logo"><img src="https://drive.google.com/uc?export=view&id=1f3q10EQocswtaDZYsm53n--fMTFza1A7" alt="CFTS" style="height:32px;object-fit:contain;mix-blend-mode:screen;filter:grayscale(1) opacity(0.5)" onerror="this.parentElement.textContent='CFTS'"></div>
+      <div class="partner-logo"><img src="https://drive.google.com/uc?export=view&id=1FUDXr_WZErPK5FI1-eO0ICxJpEVt_AXW" alt="Mossane" style="height:32px;object-fit:contain;mix-blend-mode:screen;filter:grayscale(1) opacity(0.5)" onerror="this.parentElement.textContent='Mossane'"></div>
+      <div class="partner-logo"><img src="https://drive.google.com/uc?export=view&id=11lKPIZ1z_YkL6OqIE8eB0Mh_HSMsCG67" alt="Sama Chef" style="height:32px;object-fit:contain;mix-blend-mode:screen;filter:grayscale(1) opacity(0.5)" onerror="this.parentElement.textContent='Sama Chef'"></div>
+      <div class="partner-logo"><img src="https://drive.google.com/uc?export=view&id=1YE1E1AYaqiTTER3YrBEeTm4Z15lzp8_J" alt="BITIK" style="height:32px;object-fit:contain;mix-blend-mode:screen;filter:grayscale(1) opacity(0.5)" onerror="this.parentElement.textContent='BITIK'"></div>
+      <div class="partner-logo">KEA</div>
+      <div class="partner-logo"><img src="https://drive.google.com/uc?export=view&id=1ZBe7CIe8GX7bABV4NPa-VVyHHn5_ssd4" alt="DNC" style="height:32px;object-fit:contain;mix-blend-mode:screen;filter:grayscale(1) opacity(0.5)" onerror="this.parentElement.textContent='DNC'"></div>
+    </div>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="section-label">À propos</span>
+        <h2>Une expertise construite sur le terrain, <span style="color:var(--blue);">en Afrique de l'Ouest</span></h2>
+        <p>Je suis Alpha Ndiaye, expert en transformation digitale basé à Dakar. Depuis six ans, j'accompagne des entreprises dans leur transition numérique — de la création d'identité visuelle au déploiement de systèmes ERP complexes.</p>
+        <p>Cofondateur du Groupe Digital Afrique et Responsable Support chez Senedoo, j'ai développé une double compétence rare : comprendre les enjeux business <em>et</em> maîtriser les outils digitaux qui les servent. Je pilote aujourd'hui des projets nationaux et sous-régionaux qui transforment concrètement le fonctionnement d'organisations et d'entreprises.</p>
+        <p>Ce qui me distingue, c'est la capacité à faire le lien entre la vision stratégique et l'exécution opérationnelle — sans perdre de vue l'humain au centre de chaque projet.</p>
+        <div class="about-skills">
+          <span class="skill-tag">Transformation digitale</span>
+          <span class="skill-tag">Projets ERP</span>
+          <span class="skill-tag">No-code / Low-code</span>
+          <span class="skill-tag">Automatisation</span>
+          <span class="skill-tag">Design graphique</span>
+          <span class="skill-tag">Gestion de projet</span>
+          <span class="skill-tag">Support client</span>
+        </div>
+        <a href="#projects" class="btn-primary" style="display:inline-flex;margin-top:0.5rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+          Mes réalisations
+        </a>
+      </div>
+      <div class="about-values reveal">
+        <div class="value-card">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+          <h4>Expertise ERP</h4>
+          <p>Deux ans de déploiements et d'accompagnement sur des projets ERP en Afrique de l'Ouest.</p>
+        </div>
+        <div class="value-card">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+          </svg>
+          <h4>Vision long terme</h4>
+          <p>Des solutions pensées pour durer, adaptées aux réalités économiques locales.</p>
+        </div>
+        <div class="value-card">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <h4>Accompagnement humain</h4>
+          <p>La technologie au service des personnes — formation, support et transfert de compétences.</p>
+        </div>
+        <div class="value-card">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+          <h4>Impact mesurable</h4>
+          <p>Chaque projet se traduit par des résultats concrets, quantifiables, visibles sur le terrain.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPÉRIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <span class="section-label" style="display:flex;justify-content:center;">Parcours</span>
+    <h2 class="section-title">Mon <span>expérience</span></h2>
+    <p class="section-subtitle">Six ans entre la création digitale et le déploiement de solutions ERP en Afrique de l'Ouest.</p>
+    <div class="exp-grid">
+      <!-- SENEDOO -->
+      <div class="exp-card reveal">
+        <div class="exp-card-header">
+          <div>
+            <div class="exp-company">Senedoo</div>
+            <div class="exp-role">Responsable Support</div>
+          </div>
+          <span class="exp-period">Janv. 2025 — Présent</span>
+        </div>
+        <p class="exp-desc">
+          Je supervise le support client et l'accompagnement des entreprises partenaires de Senedoo dans l'adoption de leurs solutions digitales. Mon rôle couvre à la fois la dimension opérationnelle du support et la gestion des relations avec les grands comptes.
+        </p>
+        <div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--text-muted);margin-bottom:0.6rem;text-transform:uppercase;letter-spacing:1px;">Clients majeurs</div>
+          <div class="exp-clients">
+            <span class="exp-client-tag">Oryx Energies</span>
+            <span class="exp-client-tag">GLOBO</span>
+            <span class="exp-client-tag">Eric Favre Afrique</span>
+            <span class="exp-client-tag">+ 12 autres projets</span>
+          </div>
+        </div>
+        <div class="exp-roles-list">
+          <div class="exp-role-item"><div class="exp-role-dot"></div>Gestion et résolution des incidents techniques</div>
+          <div class="exp-role-item"><div class="exp-role-dot"></div>Coordination entre les équipes internes et les clients</div>
+          <div class="exp-role-item"><div class="exp-role-dot"></div>Formation et montée en compétences des utilisateurs</div>
+        </div>
+      </div>
+      <!-- GDA -->
+      <div class="exp-card reveal">
+        <div class="exp-card-header">
+          <div>
+            <div class="exp-company">Groupe Digital Afrique</div>
+            <div class="exp-role">Cofondateur</div>
+          </div>
+          <span class="exp-period">2020 — Présent</span>
+        </div>
+        <p class="exp-desc">
+          J'ai cofondé GDA en 2020 pour répondre aux besoins croissants des entreprises sénégalaises en matière de transformation digitale. Officiellement lancée en 2022, l'agence accompagne aujourd'hui des organisations publiques et privées dans toute l'Afrique de l'Ouest.
+        </p>
+        <div class="exp-roles-list">
+          <div class="exp-role-item"><div class="exp-role-dot"></div><strong>Direction Stratégique</strong> — vision produit, développement commercial et partenariats</div>
+          <div class="exp-role-item"><div class="exp-role-dot"></div><strong>Direction Créative</strong> — identité visuelle, design graphique, productions Canva</div>
+          <div class="exp-role-item"><div class="exp-role-dot"></div><strong>Chef de Projet ERP</strong> — pilotage des déploiements, coordination des équipes, formation</div>
+        </div>
+        <div style="margin-top:1rem;">
+          <div style="font-size:0.82rem;font-weight:600;color:var(--text-muted);margin-bottom:0.6rem;text-transform:uppercase;letter-spacing:1px;">Projets phares</div>
+          <div class="exp-clients">
+            <span class="exp-client-tag">DNC</span>
+            <span class="exp-client-tag">CFTS</span>
+            <span class="exp-client-tag">Mossane</span>
+            <span class="exp-client-tag">Sama Chef</span>
+            <span class="exp-client-tag">BITIK</span>
+            <span class="exp-client-tag">KEA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RÉALISATIONS -->
+<section id="projects">
+  <div class="section-inner">
+    <span class="section-label" style="display:flex;justify-content:center;">Portfolio</span>
+    <h2 class="section-title">Quelques <span>réalisations</span></h2>
+    <p class="section-subtitle">Des projets concrets, livrés, qui fonctionnent aujourd'hui.</p>
+    <div class="projects-grid">
+      <!-- Projet 1 -->
+      <div class="project-card reveal">
+        <div class="project-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="m8 21 4-4 4 4"/><path d="M12 17v4"/>
+          </svg>
+        </div>
+        <div class="project-name">Système ERP — DNC</div>
+        <div class="project-company">GDA · Direction Nationale des Coopératives</div>
+        <p class="project-desc">Déploiement d'un ERP complet pour la gestion des coopératives nationales. Formation des équipes et accompagnement post-installation.</p>
+        <div class="project-tags">
+          <span class="project-tag">ERP</span>
+          <span class="project-tag">Secteur public</span>
+          <span class="project-tag">Formation</span>
+        </div>
+      </div>
+      <!-- Projet 2 -->
+      <div class="project-card reveal">
+        <div class="project-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <div class="project-name">Digitalisation — CFTS</div>
+        <div class="project-company">GDA · Centre de Formation et de Travail Social</div>
+        <p class="project-desc">Transformation complète du système de gestion interne, mise en place d'outils de suivi des apprenants et automatisation des processus administratifs.</p>
+        <div class="project-tags">
+          <span class="project-tag">Automatisation</span>
+          <span class="project-tag">Gestion RH</span>
+          <span class="project-tag">No-code</span>
+        </div>
+      </div>
+      <!-- Projet 3 -->
+      <div class="project-card reveal">
+        <div class="project-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+        </div>
+        <div class="project-name">Identité & E-commerce — Sama Chef</div>
+        <div class="project-company">GDA · Marque alimentaire</div>
+        <p class="project-desc">Création de l'identité visuelle complète, développement de la boutique en ligne et stratégie de communication digitale pour le lancement de la marque.</p>
+        <div class="project-tags">
+          <span class="project-tag">Branding</span>
+          <span class="project-tag">E-commerce</span>
+          <span class="project-tag">Design</span>
+        </div>
+      </div>
+      <!-- Projet 4 -->
+      <div class="project-card reveal">
+        <div class="project-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <div class="project-name">Plateforme digitale — Mossane</div>
+        <div class="project-company">GDA · Plateforme culturelle</div>
+        <p class="project-desc">Conception et développement d'une plateforme de valorisation du patrimoine culturel sénégalais, incluant gestion de contenu et espace communautaire.</p>
+        <div class="project-tags">
+          <span class="project-tag">Plateforme web</span>
+          <span class="project-tag">Culturel</span>
+          <span class="project-tag">CMS</span>
+        </div>
+      </div>
+      <!-- Projet 5 -->
+      <div class="project-card reveal">
+        <div class="project-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <div class="project-name">App de gestion — BITIK</div>
+        <div class="project-company">GDA · Startup tech</div>
+        <p class="project-desc">Pilotage du déploiement d'une application de gestion commerciale, formation des équipes et suivi des performances post-lancement.</p>
+        <div class="project-tags">
+          <span class="project-tag">App mobile</span>
+          <span class="project-tag">Commerce</span>
+          <span class="project-tag">Formation</span>
+        </div>
+      </div>
+      <!-- Projet 6 -->
+      <div class="project-card reveal">
+        <div class="project-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <div class="project-name">Support grands comptes — Oryx Energies</div>
+        <div class="project-company">Senedoo · Énergie</div>
+        <p class="project-desc">Coordination du support technique et fonctionnel pour l'un des plus grands distributeurs d'énergie en Afrique de l'Ouest. Gestion de la relation client au plus haut niveau.</p>
+        <div class="project-tags">
+          <span class="project-tag">Grands comptes</span>
+          <span class="project-tag">Support ERP</span>
+          <span class="project-tag">Énergie</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPÉTENCES -->
+<section id="skills">
+  <div class="section-inner">
+    <span class="section-label" style="display:flex;justify-content:center;">Savoir-faire</span>
+    <h2 class="section-title">Mes <span>compétences</span></h2>
+    <p class="section-subtitle">Une palette de compétences au croisement du digital, du design et de la gestion de projet.</p>
+    <div class="skills-grid">
+      <div class="skill-category reveal">
+        <div class="skill-cat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="m8 21 4-4 4 4"/><path d="M12 17v4"/>
+          </svg>
+        </div>
+        <div class="skill-cat-title">Systèmes & ERP</div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Déploiement ERP</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Gestion de projet</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Support & formation</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <div class="skill-cat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="skill-cat-title">IA & Automatisation</div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>No-code / Low-code</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Automatisation des flux</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="82"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Outils IA appliqués</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="78"></div></div>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <div class="skill-cat-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
+          </svg>
+        </div>
+        <div class="skill-cat-title">Design & Création</div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Canva (certifié)</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="96"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Identité visuelle</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item-header"><span>Communication digitale</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATION & CERTIFICATIONS -->
+<section id="education">
+  <div class="section-inner">
+    <span class="section-label" style="display:flex;justify-content:center;">Formation</span>
+    <h2 class="section-title">Études & <span>certifications</span></h2>
+    <p class="section-subtitle">Un parcours académique solide, renforcé par des certifications terrain.</p>
+    <div class="edu-grid">
+      <div class="reveal">
+        <div class="edu-section-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+          Parcours académique
+        </div>
+        <div class="edu-timeline">
+          <div class="edu-item">
+            <div class="edu-degree">Master 2 — Digital Business</div>
+            <div class="edu-school">École Supérieure Polytechnique (ESP)</div>
+            <div class="edu-field">Transformation digitale, stratégie numérique, entrepreneuriat</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-degree">Master 1 — Administration et Gestion des Entreprises</div>
+            <div class="edu-school">École Supérieure Polytechnique (ESP)</div>
+            <div class="edu-field">Management, finance, ressources humaines</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-degree">Licence — Gestion et Comptabilité</div>
+            <div class="edu-school">École Supérieure Polytechnique (ESP)</div>
+            <div class="edu-field">Comptabilité, gestion financière, droit des affaires</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-degree">Formation Agri-business & Gestion</div>
+            <div class="edu-school">Agripro Africa · AGCO Academy · Tractafric Douala</div>
+            <div class="edu-field">Mécanisation agricole, gestion de flotte, distribution</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="edu-section-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+          </svg>
+          Certifications
+        </div>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <div class="cert-title">Canva Design Expert</div>
+            <div class="cert-issuer">Canva</div>
+            <div class="cert-date">Certifié</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-title">Canva for Business</div>
+            <div class="cert-issuer">Canva</div>
+            <div class="cert-date">Certifié</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-title">Gestion de projet digitale</div>
+            <div class="cert-issuer">Formation professionnelle</div>
+            <div class="cert-date">2023</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-title">No-code & Automatisation</div>
+            <div class="cert-issuer">Formation continue</div>
+            <div class="cert-date">2024</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-title">Support ERP & CRM</div>
+            <div class="cert-issuer">Senedoo</div>
+            <div class="cert-date">2025</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-title">Digital Marketing</div>
+            <div class="cert-issuer">Formation en ligne</div>
+            <div class="cert-date">2022</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONNALITÉ -->
+<section id="personality" style="background:var(--bg-secondary);">
+  <div class="section-inner">
+    <span class="section-label" style="display:flex;justify-content:center;">Qui je suis</span>
+    <h2 class="section-title">Au-delà du <span>professionnel</span></h2>
+    <p class="section-subtitle">Ce qui m'anime en dehors du travail nourrit aussi ma façon d'aborder chaque projet.</p>
+    <div class="interests-grid">
+      <div class="interest-card reveal">
+        <div class="interest-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M4.93 4.93c1.5 2.5 2.07 5.07 1.57 7.57"/>
+            <path d="M19.07 4.93c-1.5 2.5-2.07 5.07-1.57 7.57"/>
+            <path d="M4.93 19.07c1.5-2.5 2.07-5.07 1.57-7.57"/>
+            <path d="M19.07 19.07c-1.5-2.5-2.07-5.07-1.57-7.57"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+          </svg>
+        </div>
+        <div class="interest-name">Basketball</div>
+        <p class="interest-desc">La discipline du jeu collectif et la mentalité de compétition.</p>
+      </div>
+      <div class="interest-card reveal">
+        <div class="interest-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="interest-name">Nature</div>
+        <p class="interest-desc">Ressourcement et inspiration dans les grands espaces.</p>
+      </div>
+      <div class="interest-card reveal">
+        <div class="interest-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <div class="interest-name">Animaux</div>
+        <p class="interest-desc">Une sensibilité au vivant qui enrichit mon regard sur le monde.</p>
+      </div>
+      <div class="interest-card reveal">
+        <div class="interest-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/>
+          </svg>
+        </div>
+        <div class="interest-name">Psychologie</div>
+        <p class="interest-desc">Comprendre les ressorts humains pour mieux collaborer et décider.</p>
+      </div>
+      <div class="interest-card reveal">
+        <div class="interest-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="interest-name">Comportement humain</div>
+        <p class="interest-desc">L'observation des dynamiques sociales comme source permanente d'apprentissage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUES -->
+<section id="languages">
+  <div class="section-inner">
+    <span class="section-label" style="display:flex;justify-content:center;">Communication</span>
+    <h2 class="section-title">Langues <span>parlées</span></h2>
+    <p class="section-subtitle">Je travaille et communique dans trois langues au quotidien.</p>
+    <div class="lang-grid">
+      <div class="lang-card reveal">
+        <div class="lang-name">Français</div>
+        <div class="lang-level">Langue principale — Courant</div>
+        <div class="lang-bar-container">
+          <div class="lang-bar" data-width="92"></div>
+        </div>
+      </div>
+      <div class="lang-card reveal">
+        <div class="lang-name">Anglais</div>
+        <div class="lang-level">Professionnel — Courant</div>
+        <div class="lang-bar-container">
+          <div class="lang-bar" data-width="78"></div>
+        </div>
+      </div>
+      <div class="lang-card reveal">
+        <div class="lang-name">Wolof</div>
+        <div class="lang-level">Langue maternelle — Natif</div>
+        <div class="lang-bar-container">
+          <div class="lang-bar" data-width="100"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-wrapper reveal">
+      <span class="section-label" style="justify-content:center;display:flex;margin-bottom:1rem;">Contact</span>
+      <h3>Travaillons <span style="color:var(--blue);">ensemble</span></h3>
+      <p>Un projet, une idée, une collaboration ? Je suis disponible pour discuter et explorer comment je peux vous accompagner.</p>
+      <div class="contact-links">
+        <a href="mailto:alphandiayepro@gmail.com" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          alphandiayepro@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/alphandiaye" target="_blank" rel="noopener" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://groupedigitalafrique.com" target="_blank" rel="noopener" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          GDA
+        </a>
+      </div>
+      <a href="https://drive.google.com/uc?export=download&id=1Rc_Ll7EuomI5FeMPTkga7_4Q3cMDJ4iP" target="_blank" class="btn-primary" id="cv-download-2" style="display:inline-flex;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Télécharger mon CV
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Alpha Ndiaye. Tous droits réservés. · <a href="https://www.linkedin.com/in/alphandiaye" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://groupedigitalafrique.com" target="_blank" rel="noopener">GDA</a></p>
+</footer>
+
+<!-- ADMIN PANEL -->
+<div id="admin-panel">
+  <div class="admin-modal">
+    <button class="admin-close" id="admin-close-btn">&times;</button>
+    <h2>Administration</h2>
+    <p id="admin-intro">Accès réservé. Entrez le mot de passe pour continuer.</p>
+
+    <div id="admin-login">
+      <input type="password" class="admin-input" id="admin-password-input" placeholder="Mot de passe" autocomplete="off">
+      <div id="admin-error" style="color:#F87171;font-size:0.85rem;margin-top:-0.5rem;margin-bottom:0.8rem;display:none;">Mot de passe incorrect.</div>
+      <button class="admin-btn" id="admin-login-btn">Accéder</button>
+    </div>
+
+    <div id="admin-content" style="display:none;">
+
+      <!-- TABS -->
+      <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+        <button class="admin-tab active" data-tab="general">Général</button>
+        <button class="admin-tab" data-tab="cv">CV</button>
+        <button class="admin-tab" data-tab="photo">Photo</button>
+        <button class="admin-tab" data-tab="password">Mot de passe</button>
+        <button class="admin-tab" data-tab="export">Export</button>
+      </div>
+
+      <!-- TAB: GENERAL -->
+      <div class="admin-tab-content" id="tab-general">
+        <div class="admin-section">
+          <h3>Liens externes</h3>
+          <label style="font-size:0.82rem;color:var(--text-muted);">LinkedIn URL</label>
+          <input type="text" class="admin-input" id="admin-linkedin" placeholder="https://www.linkedin.com/in/..." style="margin-top:0.4rem;">
+          <label style="font-size:0.82rem;color:var(--text-muted);margin-top:0.6rem;display:block;">Site GDA URL</label>
+          <input type="text" class="admin-input" id="admin-gda" placeholder="https://groupedigitalafrique.com" style="margin-top:0.4rem;">
+          <button class="admin-export-btn" id="apply-links-btn" style="margin-top:0.8rem;">Appliquer les liens</button>
+        </div>
+        <div class="admin-section">
+          <h3>Email de contact</h3>
+          <input type="email" class="admin-input" id="admin-email" placeholder="alphandiayepro@gmail.com">
+          <button class="admin-export-btn" id="apply-email-btn" style="margin-top:0.8rem;">Appliquer</button>
+        </div>
+      </div>
+
+      <!-- TAB: CV -->
+      <div class="admin-tab-content" id="tab-cv" style="display:none;">
+        <div class="admin-section">
+          <h3>Lien du CV (Google Drive)</h3>
+          <p style="font-size:0.82rem;color:var(--text-muted);text-align:left;margin-bottom:0.8rem;">Copiez le lien de téléchargement direct de votre CV depuis Google Drive :<br><code style="font-size:0.78rem;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;">https://drive.google.com/uc?export=download&id=VOTRE_ID</code></p>
+          <input type="text" class="admin-input" id="admin-cv-url" placeholder="https://drive.google.com/uc?export=download&id=...">
+          <button class="admin-export-btn" id="apply-cv-btn" style="margin-top:0.8rem;">Mettre à jour le CV</button>
+          <div id="cv-success" style="color:#34D399;font-size:0.82rem;margin-top:0.5rem;display:none;">CV mis à jour avec succès.</div>
+        </div>
+        <div class="admin-section">
+          <h3>Tester le lien actuel</h3>
+          <a id="test-cv-link" href="https://drive.google.com/uc?export=download&id=1Rc_Ll7EuomI5FeMPTkga7_4Q3cMDJ4iP" target="_blank" class="admin-export-btn" style="display:inline-flex;text-decoration:none;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger CV actuel
+          </a>
+        </div>
+      </div>
+
+      <!-- TAB: PHOTO -->
+      <div class="admin-tab-content" id="tab-photo" style="display:none;">
+        <div class="admin-section">
+          <h3>Photo de profil (Google Drive)</h3>
+          <p style="font-size:0.82rem;color:var(--text-muted);text-align:left;margin-bottom:0.8rem;">Copiez le lien de visualisation direct de votre photo depuis Google Drive :<br><code style="font-size:0.78rem;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;">https://drive.google.com/uc?export=view&id=VOTRE_ID</code></p>
+          <input type="text" class="admin-input" id="admin-photo-url" placeholder="https://drive.google.com/uc?export=view&id=...">
+          <button class="admin-export-btn" id="apply-photo-btn" style="margin-top:0.8rem;">Changer la photo</button>
+          <div id="photo-success" style="color:#34D399;font-size:0.82rem;margin-top:0.5rem;display:none;">Photo mise à jour. Rechargez la page.</div>
+        </div>
+        <div class="admin-section">
+          <h3>Photos disponibles dans votre Drive</h3>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-top:0.5rem;">
+            <img src="https://drive.google.com/uc?export=view&id=14gySoqd3IcfUHH9Bw_fnOHrgfHKLicH6" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid var(--blue);" title="IMG_1866 (actuelle)" onclick="document.getElementById('admin-photo-url').value='https://drive.google.com/uc?export=view&id=14gySoqd3IcfUHH9Bw_fnOHrgfHKLicH6'">
+            <img src="https://drive.google.com/uc?export=view&id=1SWCYMfW_g-ZTFuF0DFN3ay1TRSl4uS9O" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;cursor:pointer;" title="IMG_4136" onclick="document.getElementById('admin-photo-url').value='https://drive.google.com/uc?export=view&id=1SWCYMfW_g-ZTFuF0DFN3ay1TRSl4uS9O'">
+            <img src="https://drive.google.com/uc?export=view&id=168iIKWq6GOS0yufgRc8a3jFHaBC2Y2bk" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;cursor:pointer;" title="IMG_4020" onclick="document.getElementById('admin-photo-url').value='https://drive.google.com/uc?export=view&id=168iIKWq6GOS0yufgRc8a3jFHaBC2Y2bk'">
+            <img src="https://drive.google.com/uc?export=view&id=14gySoqd3IcfUHH9Bw_fnOHrgfHKLicH6" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;cursor:pointer;" title="IMG_1866" onclick="document.getElementById('admin-photo-url').value='https://drive.google.com/uc?export=view&id=14gySoqd3IcfUHH9Bw_fnOHrgfHKLicH6'">
+            <img src="https://drive.google.com/uc?export=view&id=1Ew0g27NOfSJi-S69eq5xWVCCJ8KEbNe_" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;cursor:pointer;" title="IMG_2072" onclick="document.getElementById('admin-photo-url').value='https://drive.google.com/uc?export=view&id=1Ew0g27NOfSJi-S69eq5xWVCCJ8KEbNe_'">
+            <img src="https://drive.google.com/uc?export=view&id=15M8ApwV8MbqcVHvfwdmaYYLRQjTMCSXY" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;cursor:pointer;" title="IMG_3822" onclick="document.getElementById('admin-photo-url').value='https://drive.google.com/uc?export=view&id=15M8ApwV8MbqcVHvfwdmaYYLRQjTMCSXY'">
+          </div>
+          <p style="font-size:0.73rem;color:var(--text-muted);margin-top:0.5rem;text-align:left;">Cliquez sur une photo pour la sélectionner, puis appuyez sur "Changer la photo".</p>
+        </div>
+      </div>
+
+      <!-- TAB: MOT DE PASSE -->
+      <div class="admin-tab-content" id="tab-password" style="display:none;">
+        <div class="admin-section">
+          <h3>Changer le mot de passe</h3>
+          <p style="font-size:0.82rem;color:var(--text-muted);text-align:left;margin-bottom:0.8rem;">Le nouveau mot de passe sera sauvegardé dans votre navigateur.</p>
+          <input type="password" class="admin-input" id="admin-pw-current" placeholder="Mot de passe actuel">
+          <input type="password" class="admin-input" id="admin-pw-new" placeholder="Nouveau mot de passe" style="margin-top:0.6rem;">
+          <input type="password" class="admin-input" id="admin-pw-confirm" placeholder="Confirmer le nouveau mot de passe" style="margin-top:0.6rem;">
+          <button class="admin-btn" id="change-pw-btn" style="margin-top:0.8rem;">Changer le mot de passe</button>
+          <div id="pw-error" style="color:#F87171;font-size:0.82rem;margin-top:0.5rem;display:none;"></div>
+          <div id="pw-success" style="color:#34D399;font-size:0.82rem;margin-top:0.5rem;display:none;">Mot de passe mis à jour avec succès.</div>
+        </div>
+      </div>
+
+      <!-- TAB: EXPORT -->
+      <div class="admin-tab-content" id="tab-export" style="display:none;">
+        <div class="admin-section">
+          <h3>Exporter le site</h3>
+          <p style="font-size:0.82rem;color:var(--text-muted);text-align:left;margin-bottom:0.8rem;">Téléchargez une copie complète du site pour sauvegarde ou mise en ligne.</p>
+          <button class="admin-export-btn" id="export-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger portfolio_v10.html
+          </button>
+        </div>
+        <div class="admin-section">
+          <h3>Guide de mise en ligne</h3>
+          <div style="font-size:0.82rem;color:var(--text-muted);text-align:left;line-height:1.8;">
+            <p><strong style="color:var(--text-primary);">1. Nom de domaine</strong> — Achetez sur OVH, Namecheap ou Gandi (ex: alphandiaye.com)</p>
+            <p><strong style="color:var(--text-primary);">2. Hébergement</strong> — Netlify (gratuit) : glissez le fichier sur netlify.com/drop</p>
+            <p><strong style="color:var(--text-primary);">3. Domaine personnalisé</strong> — Dans Netlify → Domain settings → Add custom domain</p>
+            <p><strong style="color:var(--text-primary);">4. HTTPS</strong> — Activé automatiquement par Netlify (Let's Encrypt)</p>
+            <p><strong style="color:var(--text-primary);">5. Mise à jour</strong> — Exportez la nouvelle version via ce panneau, puis redéployez sur Netlify</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// ===========================
+// CURSOR
+// ===========================
+const ring = document.getElementById('cursor-ring');
+const dot = document.getElementById('cursor-dot');
+let mx = -100, my = -100, rx = -100, ry = -100;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animateCursor() {
+  rx += (mx - rx) * 0.15;
+  ry += (my - ry) * 0.15;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => { ring.style.width = '46px'; ring.style.height = '46px'; ring.style.opacity = '1'; });
+  el.addEventListener('mouseleave', () => { ring.style.width = '32px'; ring.style.height = '32px'; ring.style.opacity = '0.7'; });
+});
+
+// ===========================
+// THEME
+// ===========================
+const html = document.documentElement;
+const themeBtn = document.getElementById('theme-toggle');
+// Detect system preference
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+themeBtn.addEventListener('click', () => {
+  html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+
+// ===========================
+// MOBILE MENU
+// ===========================
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('mobile-open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('mobile-open')));
+
+// ===========================
+// PARTICLES
+// ===========================
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+function Particle() {
+  this.x = Math.random() * W;
+  this.y = Math.random() * H;
+  this.vx = (Math.random() - 0.5) * 0.4;
+  this.vy = (Math.random() - 0.5) * 0.4;
+  this.r = Math.random() * 1.8 + 0.5;
+}
+
+for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+function drawParticles() {
+  ctx.clearRect(0, 0, W, H);
+  const isDark = html.getAttribute('data-theme') !== 'light';
+  const pColor = isDark ? 'rgba(56,189,248,0.55)' : 'rgba(14,165,233,0.45)';
+  const lColor = isDark ? 'rgba(56,189,248,0.08)' : 'rgba(14,165,233,0.07)';
+
+  particles.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = pColor;
+    ctx.fill();
+  });
+
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = lColor;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// ===========================
+// COUNTERS
+// ===========================
+function animateCounter(el) {
+  const target = parseInt(el.dataset.count);
+  const suffix = el.dataset.suffix || '';
+  let current = 0;
+  const step = Math.ceil(target / 45);
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(timer); }
+    el.textContent = current + suffix;
+  }, 30);
+}
+const countersObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { animateCounter(e.target); countersObserver.unobserve(e.target); }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => countersObserver.observe(el));
+
+// ===========================
+// SCROLL REVEAL
+// ===========================
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ===========================
+// SKILL BARS
+// ===========================
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-bar-fill, .lang-bar').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.skill-category, .lang-card').forEach(el => barObserver.observe(el));
+
+// ===========================
+// ADMIN PANEL
+// ===========================
+const DEFAULT_PASSWORD = '1ClaudAlpha9';
+let ADMIN_PASSWORD = localStorage.getItem('admin_pw') || DEFAULT_PASSWORD;
+
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+    document.getElementById('admin-panel').classList.add('open');
+  }
+});
+
+document.getElementById('admin-close-btn').addEventListener('click', () => {
+  document.getElementById('admin-panel').classList.remove('open');
+  document.getElementById('admin-password-input').value = '';
+  document.getElementById('admin-error').style.display = 'none';
+  document.getElementById('admin-content').style.display = 'none';
+  document.getElementById('admin-login').style.display = 'block';
+});
+
+document.getElementById('admin-login-btn').addEventListener('click', () => {
+  const val = document.getElementById('admin-password-input').value;
+  if (val === ADMIN_PASSWORD) {
+    document.getElementById('admin-login').style.display = 'none';
+    document.getElementById('admin-content').style.display = 'block';
+    document.getElementById('admin-error').style.display = 'none';
+  } else {
+    document.getElementById('admin-error').style.display = 'block';
+  }
+});
+document.getElementById('admin-password-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('admin-login-btn').click();
+});
+
+// Admin tabs
+document.querySelectorAll('.admin-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.admin-tab-content').forEach(c => c.style.display = 'none');
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).style.display = 'block';
+  });
+});
+
+// Change password
+document.getElementById('change-pw-btn').addEventListener('click', () => {
+  const cur = document.getElementById('admin-pw-current').value;
+  const nw = document.getElementById('admin-pw-new').value;
+  const cf = document.getElementById('admin-pw-confirm').value;
+  const err = document.getElementById('pw-error');
+  const suc = document.getElementById('pw-success');
+  err.style.display = 'none'; suc.style.display = 'none';
+  if (cur !== ADMIN_PASSWORD) { err.textContent = 'Mot de passe actuel incorrect.'; err.style.display = 'block'; return; }
+  if (nw.length < 6) { err.textContent = 'Le nouveau mot de passe doit faire au moins 6 caractères.'; err.style.display = 'block'; return; }
+  if (nw !== cf) { err.textContent = 'Les mots de passe ne correspondent pas.'; err.style.display = 'block'; return; }
+  ADMIN_PASSWORD = nw;
+  localStorage.setItem('admin_pw', nw);
+  suc.style.display = 'block';
+  document.getElementById('admin-pw-current').value = '';
+  document.getElementById('admin-pw-new').value = '';
+  document.getElementById('admin-pw-confirm').value = '';
+});
+
+// Update CV link
+document.getElementById('apply-cv-btn').addEventListener('click', () => {
+  const url = document.getElementById('admin-cv-url').value.trim();
+  if (!url) return;
+  document.getElementById('cv-download').href = url;
+  document.getElementById('cv-download-2').href = url;
+  document.getElementById('test-cv-link').href = url;
+  document.getElementById('cv-success').style.display = 'block';
+  localStorage.setItem('cv_url', url);
+});
+
+// Update photo
+document.getElementById('apply-photo-btn').addEventListener('click', () => {
+  const url = document.getElementById('admin-photo-url').value.trim();
+  if (!url) return;
+  const heroImg = document.querySelector('.hero-photo-img') || document.querySelector('.hero-photo img');
+  if (heroImg) heroImg.src = url;
+  document.getElementById('photo-success').style.display = 'block';
+  localStorage.setItem('photo_url', url);
+});
+
+// Apply links
+document.getElementById('apply-links-btn').addEventListener('click', () => {
+  const li = document.getElementById('admin-linkedin').value.trim();
+  const gda = document.getElementById('admin-gda').value.trim();
+  if (li) document.querySelectorAll('a[href*="linkedin"]').forEach(a => a.href = li);
+  if (gda) document.querySelectorAll('a[href*="groupedigital"]').forEach(a => a.href = gda);
+});
+
+document.getElementById('apply-email-btn').addEventListener('click', () => {
+  const em = document.getElementById('admin-email').value.trim();
+  if (em) document.querySelectorAll('a[href^="mailto:"]').forEach(a => a.href = 'mailto:' + em);
+});
+
+// Restore saved settings on load
+const savedCv = localStorage.getItem('cv_url');
+if (savedCv) {
+  document.getElementById('cv-download').href = savedCv;
+  document.getElementById('cv-download-2').href = savedCv;
+}
+const savedPhoto = localStorage.getItem('photo_url');
+if (savedPhoto) {
+  const img = document.querySelector('.hero-photo img');
+  if (img) img.src = savedPhoto;
+}
+
+// Export
+document.getElementById('export-btn').addEventListener('click', () => {
+  const blob = new Blob(['<!DOCTYPE html>\n' + document.documentElement.outerHTML], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'portfolio_alpha_v10.html';
+  a.click();
+});
+</script>
+</body>
+</html>
