@@ -2069,12 +2069,14 @@ document.getElementById('export-btn').addEventListener('click', () => {
   a.download = 'portfolio_alpha_v10.html';
   a.click();
 });
-</script>
 <script>
-document.querySelectorAll('img').forEach(img => {
-  if (img.src.includes('drive.google.com/uc?export=view')) {
-    img.src = img.src.replace('https://drive.google.com/uc?export=view&id=', 'https://lh3.googleusercontent.com/d/');
-  }
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('img[src*="drive.google.com"]').forEach(function(img) {
+    try {
+      var id = new URL(img.src).searchParams.get('id');
+      if (id) img.src = 'https://drive.google.com/thumbnail?id=' + id + '&sz=w800';
+    } catch(e) {}
+  });
 });
 </script>
 </body>
