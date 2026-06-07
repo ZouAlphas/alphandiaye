@@ -2070,5 +2070,12 @@ document.getElementById('export-btn').addEventListener('click', () => {
   a.click();
 });
 </script>
+<script>
+document.querySelectorAll('img').forEach(img => {
+  if (img.src.includes('drive.google.com/uc?export=view')) {
+    img.src = img.src.replace('https://drive.google.com/uc?export=view&id=', 'https://lh3.googleusercontent.com/d/');
+  }
+});
+</script>
 </body>
 </html>
