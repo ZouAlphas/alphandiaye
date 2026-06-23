@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "badge": "Disponible pour de nouveaux projets",
+    "title": "Je transforme les idées<br>en <span>systèmes qui fonctionnent</span>",
+    "desc": "Expert en transformation digitale, cofondateur de GDA et Responsable Support chez Senedoo. Six ans d'expérience entre la création digitale et deux ans sur des projets ERP en Afrique de l'Ouest.",
+    "stats": [
+      {
+        "value": 30,
+        "suffix": "+",
+        "label": "Projets réalisés"
+      },
+      {
+        "value": 3,
+        "label": "Pays accompagnés"
+      },
+      {
+        "value": 6,
+        "label": "Ans d'expérience"
+      }
+    ]
+  },
+  "about": {
+    "paragraphs": [
+      "Je suis Alpha Ndiaye, expert en transformation digitale basé à Dakar. Depuis six ans, j'accompagne des entreprises dans leur transition numérique — de la création d'identité visuelle au déploiement de systèmes ERP complexes.",
+      "Cofondateur du Groupe Digital Afrique et Responsable Support chez Senedoo, j'ai développé une double compétence rare : comprendre les enjeux business et maîtriser les outils digitaux qui les servent. Je pilote aujourd'hui des projets nationaux et sous-régionaux qui transforment concrètement le fonctionnement d'organisations et d'entreprises.",
+      "Ce qui me distingue, c'est la capacité à faire le lien entre la vision stratégique et l'exécution opérationnelle — sans perdre de vue l'humain au centre de chaque projet."
+    ]
+  },
+  "projects": [
+    {
+      "name": "Système ERP — DNC",
+      "company": "GDA · Direction Nationale des Coopératives",
+      "desc": "Déploiement d'un ERP complet pour la gestion des coopératives nationales. Formation des équipes et accompagnement post-installation."
+    },
+    {
+      "name": "Digitalisation — CFTS",
+      "company": "GDA · Centre de Formation et de Travail Social",
+      "desc": "Transformation complète du système de gestion interne, mise en place d'outils de suivi des apprenants et automatisation des processus administratifs."
+    },
+    {
+      "name": "Identité & E-commerce — Sama Chef",
+      "company": "GDA · Marque alimentaire",
+      "desc": "Création de l'identité visuelle complète, développement de la boutique en ligne et stratégie de communication digitale pour le lancement de la marque."
+    },
+    {
+      "name": "Plateforme digitale — Mossane",
+      "company": "GDA · Plateforme culturelle",
+      "desc": "Conception et développement d'une plateforme de valorisation du patrimoine culturel sénégalais, incluant gestion de contenu et espace communautaire."
+    },
+    {
+      "name": "App de gestion — BITIK",
+      "company": "GDA · Startup tech",
+      "desc": "Pilotage du déploiement d'une application de gestion commerciale, formation des équipes et suivi des performances post-lancement."
+    },
+    {
+      "name": "Support grands comptes — Oryx Energies",
+      "company": "Senedoo · Énergie",
+      "desc": "Coordination du support technique et fonctionnel pour l'un des plus grands distributeurs d'énergie en Afrique de l'Ouest. Gestion de la relation client au plus haut niveau."
+    }
+  ],
+  "contact": {
+    "email": "alphandiayepro@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/alphandiaye",
+    "gda": "",
+    "cv": ""
+  }
+}
