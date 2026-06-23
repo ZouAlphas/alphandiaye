@@ -6,8 +6,8 @@
     "stats": [
       {
         "value": 30,
-        "suffix": "+",
-        "label": "Projets réalisés"
+        "label": "Projets réalisés",
+        "suffix": "+"
       },
       {
         "value": 3,
@@ -31,15 +31,13 @@
       "company": "Senedoo",
       "role": "Responsable Support",
       "period": "Janv. 2025 — Présent",
-      "desc": "Je supervise le support client et l'accompagnement des entreprises partenaires de Senedoo dans l'adoption de leurs solutions digitales. Mon rôle couvre à la fois la dimension opérationnelle du support et la gestion des relations avec les grands comptes.",
-      "tasks": []
+      "desc": "Je supervise le support client et l'accompagnement des entreprises partenaires de Senedoo dans l'adoption de leurs solutions digitales. Mon rôle couvre à la fois la dimension opérationnelle du support et la gestion des relations avec les grands comptes."
     },
     {
-      "company": "Groupe Digital Afrique",
+      "company": "Galsen Digital Agency",
       "role": "Cofondateur",
       "period": "2020 — Présent",
-      "desc": "J'ai cofondé GDA en 2020 pour répondre aux besoins croissants des entreprises sénégalaises en matière de transformation digitale. Officiellement lancée en 2022, l'agence accompagne aujourd'hui des organisations publiques et privées dans toute l'Afrique de l'Ouest.",
-      "tasks": []
+      "desc": "J'ai cofondé GDA en 2020 pour répondre aux besoins croissants des entreprises sénégalaises en matière de transformation digitale. Officiellement lancée en 2022, l'agence accompagne aujourd'hui des organisations publiques et privées dans toute l'Afrique de l'Ouest."
     }
   ],
   "projects": [
