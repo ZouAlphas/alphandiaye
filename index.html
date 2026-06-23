@@ -1935,7 +1935,22 @@ const revealObserver = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+// Force immediate reveal for elements already in viewport at load time
+function initReveal() {
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setTimeout(() => el.classList.add('visible'), i * 80);
+    } else {
+      revealObserver.observe(el);
+    }
+  });
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initReveal);
+} else {
+  initReveal();
+}
 
 // ===========================
 // SKILL BARS
