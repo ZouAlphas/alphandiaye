@@ -1794,6 +1794,57 @@ footer a { color: var(--blue); text-decoration: none; }
   <p>© 2026 Alpha Ndiaye. Tous droits réservés. · <a href="https://www.linkedin.com/in/alphandiaye" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://groupedigitalafrique.com" target="_blank" rel="noopener">GDA</a></p>
 </footer>
 
+<script id="data-loader">
+(function(){
+  fetch('./data.json?v='+Date.now())
+    .then(function(r){return r.json()})
+    .then(function(data){
+      window._siteData=data;
+      // Hero
+      if(data.hero){
+        var badge=document.querySelector('.hero-badge');
+        if(badge&&data.hero.badge)badge.textContent=data.hero.badge;
+        var ht=document.querySelector('.hero-title');
+        if(ht&&data.hero.title)ht.innerHTML=data.hero.title;
+        var hd=document.querySelector('.hero-desc');
+        if(hd&&data.hero.desc)hd.textContent=data.hero.desc;
+        if(data.hero.stats){
+          var sVals=document.querySelectorAll('.hero-stat-value');
+          var sLbls=document.querySelectorAll('.hero-stat-label');
+          data.hero.stats.forEach(function(s,i){
+            if(sVals[i]){sVals[i].setAttribute('data-count',s.value);}
+            if(sLbls[i]&&s.label)sLbls[i].textContent=s.label;
+          });
+        }
+      }
+      // About
+      if(data.about&&data.about.paragraphs){
+        var aPs=document.querySelectorAll('#about p');
+        data.about.paragraphs.forEach(function(txt,i){if(aPs[i])aPs[i].textContent=txt});
+      }
+      // Projects
+      if(data.projects){
+        var cards=document.querySelectorAll('.project-card');
+        data.projects.forEach(function(proj,i){
+          var card=cards[i];if(!card)return;
+          var nm=card.querySelector('.project-name'),co=card.querySelector('.project-company'),de=card.querySelector('.project-desc');
+          if(nm&&proj.name)nm.textContent=proj.name;
+          if(co&&proj.company)co.textContent=proj.company;
+          if(de&&proj.desc)de.textContent=proj.desc;
+        });
+      }
+      // Contact
+      if(data.contact){
+        if(data.contact.email){var em=document.querySelector('a[href^="mailto:"]');if(em){em.setAttribute('href','mailto:'+data.contact.email);em.textContent=data.contact.email;}}
+        if(data.contact.linkedin){var li=document.querySelector('a[href*="linkedin.com"]');if(li)li.setAttribute('href',data.contact.linkedin);}
+        if(data.contact.gda){var gd=document.querySelector('a[href*="groupedigital"],a[href*="groupe-digital"]');if(gd)gd.setAttribute('href',data.contact.gda);}
+        if(data.contact.cv){var cv=document.querySelector('a[download]');if(cv)cv.setAttribute('href',data.contact.cv);}
+      }
+    })
+    .catch(function(){});
+})();
+</script>
+
 <!-- ADMIN PANEL -->
 
 <!-- ADMIN PANEL -->
