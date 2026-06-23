@@ -1997,128 +1997,109 @@ window.setLang = function(lang){
 })();
 <!-- ADMIN PANEL -->
 <style id="admin-css">
-#admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;backdrop-filter:blur(6px);font-family:'Poppins',sans-serif}
-#admin-panel{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(96vw,980px);height:min(92vh,720px);background:#0d1526;border:1px solid rgba(56,189,248,.25);border-radius:14px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.7)}
-#admin-lock{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:40px;width:100%;box-sizing:border-box}
-#admin-lock h2{color:#38BDF8;margin:0;font-size:1.3rem;font-weight:700}
-#admin-lock p{color:#94A3B8;margin:0;font-size:.85rem;text-align:center;max-width:320px}
-#admin-pw-input{width:100%;max-width:300px;padding:11px 16px;background:rgba(255,255,255,.06);border:1px solid rgba(56,189,248,.3);border-radius:8px;color:#E2E8F0;font-size:1rem;text-align:center;letter-spacing:4px;outline:none;font-family:inherit}
-#admin-pw-input:focus{border-color:#38BDF8}
-#admin-pw-btn{padding:10px 36px;background:#38BDF8;color:#0A0F1E;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.9rem;font-family:inherit}
-#admin-pw-error{color:#F87171;font-size:.82rem;display:none}
-#admin-main{display:none;flex:1;min-height:0;flex-direction:row}
-#admin-sidebar{width:185px;min-width:185px;background:#080d1a;border-right:1px solid rgba(56,189,248,.12);display:flex;flex-direction:column}
-.a-logo{padding:16px 16px 14px;color:#38BDF8;font-weight:700;font-size:.9rem;border-bottom:1px solid rgba(56,189,248,.1);flex-shrink:0}
-.a-nav{padding:8px 0;flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(56,189,248,.2) transparent}
-.a-nb{display:block;width:100%;padding:8px 16px;text-align:left;background:none;border:none;border-left:3px solid transparent;color:#94A3B8;cursor:pointer;font-size:.82rem;font-family:inherit;white-space:nowrap}
-.a-nb:hover{color:#E2E8F0;background:rgba(56,189,248,.05)}
-.a-nb.active{color:#38BDF8;background:rgba(56,189,248,.08);border-left-color:#38BDF8}
-#a-close{padding:8px 16px;color:#475569;font-size:.78rem;cursor:pointer;background:none;border:none;font-family:inherit;text-align:left;flex-shrink:0;border-top:1px solid rgba(56,189,248,.08)}
-#a-close:hover{color:#F87171}
-#admin-body{flex:1;min-width:0;display:flex;flex-direction:column;overflow:hidden}
-#admin-content{flex:1;overflow-y:auto;padding:20px 22px;scrollbar-width:thin;scrollbar-color:rgba(56,189,248,.2) transparent}
-.a-sec{display:none}.a-sec.active{display:block}
-.a-sec h3{color:#38BDF8;font-size:.85rem;margin:0 0 16px;padding-bottom:9px;border-bottom:1px solid rgba(56,189,248,.12);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
-.a-field{margin-bottom:12px}
-.a-field label{display:block;color:#64748B;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
-.a-field input,.a-field textarea{width:100%;padding:8px 10px;background:rgba(255,255,255,.04);border:1px solid rgba(56,189,248,.18);border-radius:7px;color:#E2E8F0;font-size:.85rem;font-family:inherit;resize:vertical;outline:none;box-sizing:border-box}
-.a-field input:focus,.a-field textarea:focus{border-color:#38BDF8;background:rgba(56,189,248,.03)}
-.a-field textarea{min-height:60px}
-.a-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.a-row3{display:grid;grid-template-columns:2fr 1fr;gap:10px}
-.a-card{border:1px solid rgba(56,189,248,.12);border-radius:8px;margin-bottom:9px;overflow:hidden}
-.a-card summary{padding:10px 14px;color:#CBD5E1;font-size:.84rem;font-weight:600;cursor:pointer;list-style:none;background:rgba(56,189,248,.03)}
-.a-card summary::-webkit-details-marker{display:none}
-.a-card[open] summary{color:#38BDF8;border-bottom:1px solid rgba(56,189,248,.1)}
-.a-card-fields{padding:12px 14px;display:flex;flex-direction:column;gap:9px}
-.a-range{display:flex;align-items:center;gap:8px}
-.a-range input[type=range]{flex:1;accent-color:#38BDF8}
-.a-range span{color:#38BDF8;font-size:.8rem;min-width:28px;text-align:right}
-#admin-footer{display:flex;align-items:center;gap:10px;padding:10px 18px;border-top:1px solid rgba(56,189,248,.1);background:#080d1a;flex-shrink:0}
-#a-status{flex:1;font-size:.76rem;color:#94A3B8}
-#a-status.ok{color:#34D399}#a-status.err{color:#F87171}
-#a-preview{padding:8px 16px;background:rgba(56,189,248,.12);color:#38BDF8;border:1px solid rgba(56,189,248,.3);border-radius:8px;cursor:pointer;font-family:inherit;font-weight:600;font-size:.83rem}
-#a-publish{padding:8px 22px;background:#38BDF8;color:#0A0F1E;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-weight:700;font-size:.83rem}
-#a-publish:hover{background:#7DD3FC}#a-publish:disabled{opacity:.5;cursor:not-allowed}
-/* === LANGUAGE SWITCHER === */
-.lang-switcher{display:flex;align-items:center;gap:4px;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.15);border-radius:20px;padding:3px;}
-.lang-btn{background:none;border:none;cursor:pointer;font-size:1.15rem;width:30px;height:30px;border-radius:16px;display:flex;align-items:center;justify-content:center;opacity:.5;transition:all .2s;line-height:1;}
-.lang-btn.active{background:rgba(56,189,248,.2);opacity:1;box-shadow:0 0 0 1px rgba(56,189,248,.3);}
-.lang-btn:hover{opacity:.85;}
-
+#admin-overlay{display:none;position:fixed;inset:0;z-index:10000;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);}
+#admin-panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+#admin-lock{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.a-lock-card{background:#0d1117;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:40px 36px;width:380px;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,.6);}
+.a-lock-icon{width:52px;height:52px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.25);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:22px;}
+#admin-lock h2{font-size:20px;font-weight:600;color:#f0f6fc;margin-bottom:6px;}
+#admin-lock p{font-size:13px;color:#8b949e;margin-bottom:24px;line-height:1.5;}
+#admin-pw-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:11px 14px;color:#f0f6fc;font-size:14px;font-family:inherit;outline:none;margin-bottom:10px;transition:border-color .2s;}
+#admin-pw-input:focus{border-color:#38BDF8;background:rgba(56,189,248,.04);}
+#admin-pw-btn{width:100%;background:#38BDF8;color:#0d1117;border:none;border-radius:8px;padding:11px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .2s;letter-spacing:.3px;}
+#admin-pw-btn:hover{background:#7DD3FC;}
+#admin-pw-error{color:#f87171;font-size:12px;margin-top:8px;display:none;}
+#admin-main{display:none;position:absolute;inset:12px;background:#0d1117;border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;flex-direction:row;box-shadow:0 32px 80px rgba(0,0,0,.7);}
+#admin-sidebar{width:220px;min-width:220px;background:#161b22;border-right:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;}
+.a-logo{padding:18px 16px 14px;font-size:13px;font-weight:600;color:#f0f6fc;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:9px;}
+.a-logo-badge{background:#38BDF8;color:#0d1117;font-size:9px;font-weight:800;padding:2px 6px;border-radius:4px;letter-spacing:.5px;}
+.a-nav{flex:1;overflow-y:auto;padding:10px 0;}
+.a-nav::-webkit-scrollbar{width:3px;}.a-nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:2px;}
+.a-nav-label{font-size:10px;font-weight:600;color:#3d444d;letter-spacing:.8px;text-transform:uppercase;padding:12px 16px 4px;}
+.a-nb{display:flex;align-items:center;gap:9px;width:100%;padding:7px 16px;background:none;border:none;border-left:2px solid transparent;color:#8b949e;font-size:13px;font-family:inherit;cursor:pointer;text-align:left;transition:all .15s;white-space:nowrap;}
+.a-nb:hover{background:rgba(255,255,255,.04);color:#c9d1d9;}
+.a-nb.active{background:rgba(56,189,248,.07);border-left-color:#38BDF8;color:#38BDF8;font-weight:500;}
+.nb-ic{font-size:14px;width:18px;text-align:center;flex-shrink:0;opacity:.8;}
+#a-close{margin:10px 12px 14px;padding:8px 12px;background:transparent;border:1px solid rgba(248,113,113,.2);border-radius:8px;color:#f87171;font-size:12px;font-family:inherit;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px;}
+#a-close:hover{background:rgba(248,113,113,.1);border-color:rgba(248,113,113,.4);}
+#admin-body{flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden;}
+#admin-content{flex:1;overflow-y:auto;padding:28px 32px;background:#0d1117;}
+#admin-content::-webkit-scrollbar{width:4px;}.#admin-content::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:2px;}
+.a-sec{display:none;}
+.a-sec.active{display:block;animation:aFade .15s ease;}
+@keyframes aFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.a-sec-hd{margin-bottom:24px;}
+.a-sec-title{font-size:18px;font-weight:600;color:#f0f6fc;margin-bottom:3px;}
+.a-sec-sub{font-size:13px;color:#8b949e;}
+.a-group{background:#161b22;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:20px;margin-bottom:14px;}
+.a-group-label{font-size:10px;font-weight:600;color:#3d444d;letter-spacing:.6px;text-transform:uppercase;margin-bottom:14px;}
+.a-field{margin-bottom:12px;}
+.a-field:last-child{margin-bottom:0;}
+.a-field label{display:block;font-size:12px;font-weight:500;color:#8b949e;margin-bottom:5px;}
+.a-field input,.a-field textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:8px;padding:8px 12px;color:#f0f6fc;font-size:13px;font-family:inherit;outline:none;transition:border-color .2s,background .2s;resize:vertical;}
+.a-field input:focus,.a-field textarea:focus{border-color:#38BDF8;background:rgba(56,189,248,.04);}
+.a-field input[type=number]{max-width:110px;}
+.a-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;}
+.a-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px;margin-bottom:8px;}
+.a-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.a-card-num{font-size:10px;font-weight:700;color:#38BDF8;background:rgba(56,189,248,.1);padding:2px 8px;border-radius:4px;letter-spacing:.3px;}
+.a-del-btn{background:none;border:none;cursor:pointer;color:#3d444d;font-size:16px;line-height:1;padding:2px 6px;border-radius:4px;transition:color .15s;}
+.a-del-btn:hover{color:#f87171;}
+.a-add-btn{width:100%;padding:9px;background:transparent;border:1px dashed rgba(255,255,255,.12);border-radius:8px;color:#8b949e;font-size:12px;font-family:inherit;cursor:pointer;transition:all .15s;margin-top:2px;}
+.a-add-btn:hover{border-color:#38BDF8;color:#38BDF8;background:rgba(56,189,248,.04);}
+.skill-cat-block{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px;margin-bottom:8px;}
+.scat-name{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.1);padding:4px 0 8px;color:#38BDF8;font-size:13px;font-weight:600;font-family:inherit;outline:none;margin-bottom:10px;}
+.skill-row{display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.skill-row input[type=text]{flex:1;}
+.skill-row input[type=number]{width:62px;flex-shrink:0;text-align:center;}
+.sk-del{background:none;border:none;cursor:pointer;color:#3d444d;font-size:14px;padding:0 4px;transition:color .15s;}
+.sk-del:hover{color:#f87171;}
+.sk-add{font-size:11px;padding:5px 10px;background:none;border:1px dashed rgba(255,255,255,.1);border-radius:6px;color:#8b949e;font-family:inherit;cursor:pointer;margin-top:4px;transition:all .15s;}
+.sk-add:hover{border-color:#38BDF8;color:#38BDF8;}
+.a-hint{font-size:11px;color:#3d444d;margin-top:5px;line-height:1.4;}
+#admin-footer{padding:11px 24px;background:#161b22;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:10px;flex-shrink:0;}
+#a-status{font-size:12px;color:#8b949e;flex:1;min-width:0;}
+#a-status.ok{color:#3fb950;}#a-status.err{color:#f87171;}
+#a-preview{padding:7px 16px;background:transparent;border:1px solid rgba(255,255,255,.14);border-radius:8px;color:#c9d1d9;font-size:13px;font-family:inherit;cursor:pointer;transition:all .15s;}
+#a-preview:hover{background:rgba(255,255,255,.06);}
+#a-publish{padding:7px 18px;background:#238636;border:1px solid #2ea043;border-radius:8px;color:#fff;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:background .15s;}
+#a-publish:hover{background:#2ea043;}#a-publish:disabled{opacity:.5;cursor:not-allowed;}
 </style>
 <div id="admin-overlay">
 <div id="admin-panel">
-<div id="admin-lock">
-  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-  <h2>Admin Panel</h2>
-  <p>Entrez le mot de passe pour modifier et publier votre portfolio</p>
-  <input type="password" id="admin-pw-input" placeholder="••••••••••" autocomplete="off"/>
-  <div id="admin-pw-error">Mot de passe incorrect</div>
-  <button id="admin-pw-btn">Accéder</button>
-</div>
+<div id="admin-lock"><div class="a-lock-card"><div class="a-lock-icon">🔐</div><h2>Admin Panel</h2><p>Entrez le mot de passe pour modifier et publier votre portfolio</p><input type="password" id="admin-pw-input" placeholder="••••••••" autocomplete="off"><div id="admin-pw-error">Mot de passe incorrect</div><button id="admin-pw-btn">Accéder au panel →</button></div></div>
 <div id="admin-main">
-  <div id="admin-sidebar">
-    <div class="a-logo">⚡ Admin</div>
-    <nav class="a-nav">
-      <button class="a-nb active" data-tab="hero">🎯 Hero</button>
-      <button class="a-nb" data-tab="about">👤 À propos</button>
-      <button class="a-nb" data-tab="experience">💼 Expérience</button>
-      <button class="a-nb" data-tab="projects">🚀 Projets</button>
-      <button class="a-nb" data-tab="skills">🎯 Compétences</button>
-      <button class="a-nb" data-tab="education">📚 Études</button>
-      <button class="a-nb" data-tab="personality">🌟 Au-delà</button>
-      <button class="a-nb" data-tab="contact">📬 Contact</button>
-      <button class="a-nb" data-tab="settings">⚙️ Paramètres</button>
-    </nav>
-    <button id="a-close">✕ Fermer</button>
-  </div>
-  <div id="admin-body">
-    <div id="admin-content">
-      <div class="a-sec active" id="tab-hero">
-        <h3>Section Hero</h3>
-        <div class="a-field"><label>Badge</label><input type="text" id="f-badge"/></div>
-        <div class="a-field"><label>Titre (HTML autorisé)</label><textarea id="f-hero-title" rows="3"></textarea></div>
-        <div class="a-field"><label>Description</label><textarea id="f-hero-desc" rows="3"></textarea></div>
-        <div class="a-row"><div class="a-field"><label>Stat 1 — Valeur</label><input type="number" id="f-s1v"/></div><div class="a-field"><label>Stat 1 — Label</label><input type="text" id="f-s1l"/></div></div>
-        <div class="a-row"><div class="a-field"><label>Stat 2 — Valeur</label><input type="number" id="f-s2v"/></div><div class="a-field"><label>Stat 2 — Label</label><input type="text" id="f-s2l"/></div></div>
-        <div class="a-row"><div class="a-field"><label>Stat 3 — Valeur</label><input type="number" id="f-s3v"/></div><div class="a-field"><label>Stat 3 — Label</label><input type="text" id="f-s3l"/></div></div>
-      </div>
-      <div class="a-sec" id="tab-about">
-        <h3>À propos</h3>
-        <div class="a-field"><label>Paragraphe 1</label><textarea id="f-ap1" rows="4"></textarea></div>
-        <div class="a-field"><label>Paragraphe 2</label><textarea id="f-ap2" rows="4"></textarea></div>
-        <div class="a-field"><label>Paragraphe 3</label><textarea id="f-ap3" rows="3"></textarea></div>
-      </div>
-      <div class="a-sec" id="tab-experience"><h3>Expérience</h3><div id="a-exp-list"></div></div>
-      <div class="a-sec" id="tab-projects"><h3>Projets</h3><div id="a-proj-list"></div></div>
-      <div class="a-sec" id="tab-skills"><h3>Compétences</h3><div id="a-skills-list"></div></div>
-      <div class="a-sec" id="tab-education"><h3>Études &amp; Certifications</h3><div id="a-edu-list"></div></div>
-      <div class="a-sec" id="tab-personality">
-        <h3>Au-delà du professionnel</h3>
-        <div id="a-interests-list"></div>
-        <h3 style="margin-top:18px">Langues</h3>
-        <div id="a-langs-list"></div>
-      </div>
-      <div class="a-sec" id="tab-contact">
-        <h3>Contact &amp; Liens</h3>
-        <div class="a-field"><label>Email</label><input type="email" id="f-email"/></div>
-        <div class="a-field"><label>LinkedIn URL</label><input type="url" id="f-linkedin"/></div>
-        <div class="a-field"><label>GDA URL</label><input type="url" id="f-gda"/></div>
-        <div class="a-field"><label>CV URL</label><input type="url" id="f-cv"/></div>
-      </div>
-      <div class="a-sec" id="tab-settings">
-        <h3>Paramètres</h3>
-        <div class="a-field"><label>GitHub Token (PAT)</label><input type="password" id="f-gh-token" placeholder="Votre token GitHub PAT"/></div>
-        <div class="a-field"><label>Repo GitHub</label><input type="text" id="f-gh-repo" value="ZouAlphas/alphandiaye" readonly style="opacity:.5"/></div>
-        <div class="a-field"><label>Nouveau mot de passe admin</label><input type="password" id="f-new-pw" placeholder="Laisser vide pour garder l'actuel"/></div>
-      </div>
-    </div>
-    <div id="admin-footer"><div id="a-status"></div><button id="a-preview">👁 Aperçu</button><button id="a-publish">🚀 Publier</button></div>
-  </div>
+<div id="admin-sidebar">
+<div class="a-logo"><span class="a-logo-badge">ADMIN</span> alphandiaye.online</div>
+<div class="a-nav">
+<div class="a-nav-label">Contenu</div>
+<button class="a-nb active" data-tab="hero"><span class="nb-ic">🎯</span>Hero</button>
+<button class="a-nb" data-tab="about"><span class="nb-ic">👤</span>À propos</button>
+<button class="a-nb" data-tab="experience"><span class="nb-ic">💼</span>Expérience</button>
+<button class="a-nb" data-tab="projects"><span class="nb-ic">🚀</span>Projets</button>
+<button class="a-nb" data-tab="skills"><span class="nb-ic">⚡</span>Compétences</button>
+<button class="a-nb" data-tab="education"><span class="nb-ic">📚</span>Études</button>
+<button class="a-nb" data-tab="personality"><span class="nb-ic">🌟</span>Au-delà</button>
+<div class="a-nav-label">Publier</div>
+<button class="a-nb" data-tab="contact"><span class="nb-ic">📬</span>Contact</button>
+<button class="a-nb" data-tab="settings"><span class="nb-ic">⚙️</span>Paramètres</button>
 </div>
+<button id="a-close">✕ Fermer le panel</button>
 </div>
+<div id="admin-body">
+<div id="admin-content">
+<div class="a-sec active" id="tab-hero"><div class="a-sec-hd"><div class="a-sec-title">Hero</div><div class="a-sec-sub">La première chose que vos visiteurs voient.</div></div><div class="a-group"><div class="a-group-label">Message clé</div><div class="a-field"><label>Badge disponibilité</label><input type="text" id="f-badge"></div><div class="a-field"><label>Titre principal (HTML autorisé)</label><textarea id="f-hero-title" rows="3"></textarea></div><div class="a-field"><label>Description</label><textarea id="f-hero-desc" rows="3"></textarea></div></div><div class="a-group"><div class="a-group-label">Statistiques</div><div class="a-row"><div class="a-field"><label>Stat 1 — Valeur</label><input type="number" id="f-s1v"></div><div class="a-field"><label>Stat 1 — Label</label><input type="text" id="f-s1l"></div></div><div class="a-row"><div class="a-field"><label>Stat 2 — Valeur</label><input type="number" id="f-s2v"></div><div class="a-field"><label>Stat 2 — Label</label><input type="text" id="f-s2l"></div></div><div class="a-row"><div class="a-field"><label>Stat 3 — Valeur</label><input type="number" id="f-s3v"></div><div class="a-field"><label>Stat 3 — Label</label><input type="text" id="f-s3l"></div></div></div></div>
+<div class="a-sec" id="tab-about"><div class="a-sec-hd"><div class="a-sec-title">À propos</div><div class="a-sec-sub">Trois paragraphes qui vous décrivent.</div></div><div class="a-group"><div class="a-field"><label>Paragraphe 1</label><textarea id="f-ap1" rows="4"></textarea></div><div class="a-field"><label>Paragraphe 2</label><textarea id="f-ap2" rows="4"></textarea></div><div class="a-field"><label>Paragraphe 3</label><textarea id="f-ap3" rows="4"></textarea></div></div></div>
+<div class="a-sec" id="tab-experience"><div class="a-sec-hd"><div class="a-sec-title">Expérience</div><div class="a-sec-sub">Vos postes et missions professionnelles.</div></div><div id="a-exp-list"></div><button class="a-add-btn" id="a-exp-add">+ Ajouter une expérience</button></div>
+<div class="a-sec" id="tab-projects"><div class="a-sec-hd"><div class="a-sec-title">Projets</div><div class="a-sec-sub">Vos réalisations clés.</div></div><div id="a-proj-list"></div><button class="a-add-btn" id="a-proj-add">+ Ajouter un projet</button></div>
+<div class="a-sec" id="tab-skills"><div class="a-sec-hd"><div class="a-sec-title">Compétences</div><div class="a-sec-sub">Catégories et niveaux de maîtrise (0–100).</div></div><div id="a-skills-list"></div><button class="a-add-btn" id="a-skills-add">+ Ajouter une catégorie</button></div>
+<div class="a-sec" id="tab-education"><div class="a-sec-hd"><div class="a-sec-title">Études & Certifications</div><div class="a-sec-sub">Vos diplômes et formations.</div></div><div id="a-edu-list"></div><button class="a-add-btn" id="a-edu-add">+ Ajouter une formation</button></div>
+<div class="a-sec" id="tab-personality"><div class="a-sec-hd"><div class="a-sec-title">Au-delà du professionnel</div><div class="a-sec-sub">Centres d'intérêt et langues parlées.</div></div><div class="a-group"><div class="a-group-label">Centres d'intérêt</div><div id="a-interests-list"></div><button class="a-add-btn" id="a-interests-add">+ Ajouter un intérêt</button></div><div class="a-group"><div class="a-group-label">Langues</div><div id="a-langs-list"></div><button class="a-add-btn" id="a-langs-add">+ Ajouter une langue</button></div></div>
+<div class="a-sec" id="tab-contact"><div class="a-sec-hd"><div class="a-sec-title">Contact</div><div class="a-sec-sub">Vos coordonnées et liens professionnels.</div></div><div class="a-group"><div class="a-field"><label>Email</label><input type="email" id="f-email"></div><div class="a-field"><label>LinkedIn URL</label><input type="url" id="f-linkedin"></div><div class="a-field"><label>GDA URL</label><input type="url" id="f-gda"></div><div class="a-field"><label>CV URL</label><input type="url" id="f-cv"></div></div></div>
+<div class="a-sec" id="tab-settings"><div class="a-sec-hd"><div class="a-sec-title">Paramètres</div><div class="a-sec-sub">Configuration GitHub et sécurité.</div></div><div class="a-group"><div class="a-group-label">GitHub</div><div class="a-field"><label>Token GitHub (PAT)</label><input type="password" id="f-gh-token" placeholder="ghp_..."><div class="a-hint">Stocké uniquement dans votre navigateur. Jamais partagé.</div></div></div><div class="a-group"><div class="a-group-label">Sécurité</div><div class="a-field"><label>Nouveau mot de passe admin</label><input type="password" id="f-new-pw" placeholder="Laisser vide pour ne pas changer"></div></div></div>
 </div>
+<div id="admin-footer"><span id="a-status"></span><button id="a-preview">👁 Aperçu</button><button id="a-publish">↑ Publier</button></div>
+</div></div></div></div>
 <script>
 (function(){
 var PASS='1ClaudAlpha9';
