@@ -44,32 +44,50 @@
     {
       "name": "Système ERP — DNC",
       "company": "GDA · Direction Nationale des Coopératives",
-      "desc": "Déploiement d'un ERP complet pour la gestion des coopératives nationales. Formation des équipes et accompagnement post-installation."
+      "desc": "Déploiement d'un ERP complet pour la gestion des coopératives nationales. Formation des équipes et accompagnement post-installation.",
+      "banner": "",
+      "technologies": [],
+      "link": ""
     },
     {
       "name": "Digitalisation — CFTS",
       "company": "GDA · Centre de Formation et de Travail Social",
-      "desc": "Transformation complète du système de gestion interne, mise en place d'outils de suivi des apprenants et automatisation des processus administratifs."
+      "desc": "Transformation complète du système de gestion interne, mise en place d'outils de suivi des apprenants et automatisation des processus administratifs.",
+      "banner": "",
+      "technologies": [],
+      "link": ""
     },
     {
       "name": "Identité & E-commerce — Sama Chef",
       "company": "GDA · Marque alimentaire",
-      "desc": "Création de l'identité visuelle complète, développement de la boutique en ligne et stratégie de communication digitale pour le lancement de la marque."
+      "desc": "Création de l'identité visuelle complète, développement de la boutique en ligne et stratégie de communication digitale pour le lancement de la marque.",
+      "banner": "",
+      "technologies": [],
+      "link": ""
     },
     {
       "name": "Plateforme digitale — Mossane",
       "company": "GDA · Plateforme culturelle",
-      "desc": "Conception et développement d'une plateforme de valorisation du patrimoine culturel sénégalais, incluant gestion de contenu et espace communautaire."
+      "desc": "Conception et développement d'une plateforme de valorisation du patrimoine culturel sénégalais, incluant gestion de contenu et espace communautaire.",
+      "banner": "",
+      "technologies": [],
+      "link": ""
     },
     {
       "name": "App de gestion — BITIK",
       "company": "GDA · Startup tech",
-      "desc": "Pilotage du déploiement d'une application de gestion commerciale, formation des équipes et suivi des performances post-lancement."
+      "desc": "Pilotage du déploiement d'une application de gestion commerciale, formation des équipes et suivi des performances post-lancement.",
+      "banner": "",
+      "technologies": [],
+      "link": ""
     },
     {
       "name": "Support grands comptes — Oryx Energies",
       "company": "Senedoo · Énergie",
-      "desc": "Coordination du support technique et fonctionnel pour l'un des plus grands distributeurs d'énergie en Afrique de l'Ouest. Gestion de la relation client au plus haut niveau."
+      "desc": "Coordination du support technique et fonctionnel pour l'un des plus grands distributeurs d'énergie en Afrique de l'Ouest. Gestion de la relation client au plus haut niveau.",
+      "banner": "",
+      "technologies": [],
+      "link": ""
     }
   ],
   "skills": [
@@ -155,37 +173,45 @@
     "interests": [
       {
         "name": "Basketball",
-        "desc": "La discipline du jeu collectif et la mentalité de compétition."
+        "desc": "La discipline du jeu collectif et la mentalité de compétition.",
+        "image": ""
       },
       {
         "name": "Nature",
-        "desc": "Ressourcement et inspiration dans les grands espaces."
+        "desc": "Ressourcement et inspiration dans les grands espaces.",
+        "image": ""
       },
       {
         "name": "Animaux",
-        "desc": "Une sensibilité au vivant qui enrichit mon regard sur le monde."
+        "desc": "Une sensibilité au vivant qui enrichit mon regard sur le monde.",
+        "image": ""
       },
       {
         "name": "Psychologie",
-        "desc": "Comprendre les ressorts humains pour mieux collaborer et décider."
+        "desc": "Comprendre les ressorts humains pour mieux collaborer et décider.",
+        "image": ""
       },
       {
         "name": "Comportement humain",
-        "desc": "L'observation des dynamiques sociales comme source permanente d'apprentissage."
+        "desc": "L'observation des dynamiques sociales comme source permanente d'apprentissage.",
+        "image": ""
       }
     ],
     "languages": [
       {
         "name": "Français",
-        "level": "Langue principale — Courant"
+        "level": "Langue principale — Courant",
+        "flag": "🇫🇷"
       },
       {
         "name": "Anglais",
-        "level": "Professionnel — Courant"
+        "level": "Professionnel — Courant",
+        "flag": "🇬🇧"
       },
       {
         "name": "Wolof",
-        "level": "Langue maternelle — Natif"
+        "level": "Langue maternelle — Natif",
+        "flag": "🇸🇳"
       }
     ]
   },
