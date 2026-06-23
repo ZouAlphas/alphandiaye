@@ -26,6 +26,22 @@
       "Ce qui me distingue, c'est la capacité à faire le lien entre la vision stratégique et l'exécution opérationnelle — sans perdre de vue l'humain au centre de chaque projet."
     ]
   },
+  "experience": [
+    {
+      "company": "Senedoo",
+      "role": "Responsable Support",
+      "period": "Janv. 2025 — Présent",
+      "desc": "Je supervise le support client et l'accompagnement des entreprises partenaires de Senedoo dans l'adoption de leurs solutions digitales. Mon rôle couvre à la fois la dimension opérationnelle du support et la gestion des relations avec les grands comptes.",
+      "tasks": []
+    },
+    {
+      "company": "Groupe Digital Afrique",
+      "role": "Cofondateur",
+      "period": "2020 — Présent",
+      "desc": "J'ai cofondé GDA en 2020 pour répondre aux besoins croissants des entreprises sénégalaises en matière de transformation digitale. Officiellement lancée en 2022, l'agence accompagne aujourd'hui des organisations publiques et privées dans toute l'Afrique de l'Ouest.",
+      "tasks": []
+    }
+  ],
   "projects": [
     {
       "name": "Système ERP — DNC",
@@ -58,6 +74,123 @@
       "desc": "Coordination du support technique et fonctionnel pour l'un des plus grands distributeurs d'énergie en Afrique de l'Ouest. Gestion de la relation client au plus haut niveau."
     }
   ],
+  "skills": [
+    {
+      "category": "Systèmes & ERP",
+      "items": [
+        {
+          "name": "Déploiement ERP",
+          "level": 88
+        },
+        {
+          "name": "Gestion de projet",
+          "level": 92
+        },
+        {
+          "name": "Support & formation",
+          "level": 95
+        }
+      ]
+    },
+    {
+      "category": "IA & Automatisation",
+      "items": [
+        {
+          "name": "No-code / Low-code",
+          "level": 85
+        },
+        {
+          "name": "Automatisation des flux",
+          "level": 82
+        },
+        {
+          "name": "Outils IA appliqués",
+          "level": 78
+        }
+      ]
+    },
+    {
+      "category": "Design & Création",
+      "items": [
+        {
+          "name": "Canva (certifié)",
+          "level": 96
+        },
+        {
+          "name": "Identité visuelle",
+          "level": 88
+        },
+        {
+          "name": "Communication digitale",
+          "level": 90
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master 2 — Digital Business",
+      "school": "École Supérieure Polytechnique (ESP)",
+      "field": "Transformation digitale, stratégie numérique, entrepreneuriat",
+      "year": ""
+    },
+    {
+      "degree": "Master 1 — Administration et Gestion des Entreprises",
+      "school": "École Supérieure Polytechnique (ESP)",
+      "field": "Management, finance, ressources humaines",
+      "year": ""
+    },
+    {
+      "degree": "Licence — Gestion et Comptabilité",
+      "school": "École Supérieure Polytechnique (ESP)",
+      "field": "Comptabilité, gestion financière, droit des affaires",
+      "year": ""
+    },
+    {
+      "degree": "Formation Agri-business & Gestion",
+      "school": "Agripro Africa · AGCO Academy · Tractafric Douala",
+      "field": "Mécanisation agricole, gestion de flotte, distribution",
+      "year": ""
+    }
+  ],
+  "personality": {
+    "interests": [
+      {
+        "name": "Basketball",
+        "desc": "La discipline du jeu collectif et la mentalité de compétition."
+      },
+      {
+        "name": "Nature",
+        "desc": "Ressourcement et inspiration dans les grands espaces."
+      },
+      {
+        "name": "Animaux",
+        "desc": "Une sensibilité au vivant qui enrichit mon regard sur le monde."
+      },
+      {
+        "name": "Psychologie",
+        "desc": "Comprendre les ressorts humains pour mieux collaborer et décider."
+      },
+      {
+        "name": "Comportement humain",
+        "desc": "L'observation des dynamiques sociales comme source permanente d'apprentissage."
+      }
+    ],
+    "languages": [
+      {
+        "name": "Français",
+        "level": "Langue principale — Courant"
+      },
+      {
+        "name": "Anglais",
+        "level": "Professionnel — Courant"
+      },
+      {
+        "name": "Wolof",
+        "level": "Langue maternelle — Natif"
+      }
+    ]
+  },
   "contact": {
     "email": "alphandiayepro@gmail.com",
     "linkedin": "https://www.linkedin.com/in/alphandiaye",
