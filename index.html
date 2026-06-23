@@ -21,7 +21,44 @@
 <meta name="twitter:description" content="Expert en transformation digitale basé à Dakar. 6 ans d'expérience en projets ERP et accompagnement d'entreprises en Afrique de l'Ouest.">
 <meta name="twitter:image" content="https://alphandiaye.online/images/photo.jpeg">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Alpha Ndiaye","jobTitle":"Expert en Transformation Digitale","url":"https://alphandiaye.online","image":"https://alphandiaye.online/images/photo.jpeg","worksFor":{"@type":"Organization","name":"Senedoo"},"address":{"@type":"PostalAddress","addressLocality":"Dakar","addressCountry":"SN"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Alpha Ndiaye","jobTitle":"Expert en Transformation Digitale","url":"https://alphandiaye.online","image":"https://alphandiaye.online/images/photo.jpeg","worksFor":{"@type":"Organization","name":"Senedoo"},"address":{"@type":"PostalAddress","addressLocality":"Dakar","addressCountry":"SN"}}
+  // ── Contact Form Handler ─────────────────────
+  (function(){
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('cf-submit');
+      const txt = document.getElementById('cf-btn-text');
+      const res = document.getElementById('cf-result');
+      btn.disabled = true;
+      txt.textContent = 'Envoi en cours…';
+      res.className = '';
+      res.textContent = '';
+      try {
+        const data = new FormData(form);
+        const resp = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data
+        });
+        const json = await resp.json();
+        if (json.success) {
+          res.className = 'success';
+          res.textContent = '✓ Message envoyé ! Je vous répondrai bientôt.';
+          form.reset();
+        } else {
+          throw new Error(json.message || 'Erreur');
+        }
+      } catch(err) {
+        res.className = 'error';
+        res.textContent = '✗ Erreur : ' + err.message + '. Réessayez ou écrivez-moi directement.';
+      } finally {
+        btn.disabled = false;
+        txt.textContent = 'Envoyer le message';
+      }
+    });
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -1059,7 +1096,55 @@ footer a { color: var(--blue); text-decoration: none; }
   .cert-grid { grid-template-columns: 1fr; }
   .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
 }
-</style>
+
+    /* ── Contact Form ───────────────────────────── */
+    #contact-form {
+      margin-top: 2rem;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    #contact-form input[type="text"],
+    #contact-form input[type="email"],
+    #contact-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      box-sizing: border-box;
+    }
+    #contact-form input[type="text"]:focus,
+    #contact-form input[type="email"]:focus,
+    #contact-form textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(56,189,248,0.15);
+    }
+    #contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    #contact-form input::placeholder,
+    #contact-form textarea::placeholder {
+      color: rgba(255,255,255,0.35);
+    }
+    #cf-submit {
+      width: 100%;
+      margin-top: 0.5rem;
+      cursor: pointer;
+    }
+    #cf-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    #cf-result.success { color: #4ade80; }
+    #cf-result.error   { color: #f87171; }
+  </style>
 </head>
 <body>
 
@@ -1658,42 +1743,51 @@ footer a { color: var(--blue); text-decoration: none; }
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-inner">
-    <div class="contact-wrapper reveal">
-      <span class="section-label" style="justify-content:center;display:flex;margin-bottom:1rem;">Contact</span>
-      <h3>Travaillons <span style="color:var(--blue);">ensemble</span></h3>
-      <p>Un projet, une idée, une collaboration ? Je suis disponible pour discuter et explorer comment je peux vous accompagner.</p>
-      <div class="contact-links">
-        <a href="mailto:alphandiayepro@gmail.com" class="contact-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-          </svg>
-          alphandiayepro@gmail.com
-        </a>
-        <a href="https://www.linkedin.com/in/alphandiaye" target="_blank" rel="noopener" class="contact-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-            <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-          </svg>
-          LinkedIn
-        </a>
-        <a href="https://groupedigitalafrique.com" target="_blank" rel="noopener" class="contact-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-          GDA
-        </a>
+      <div class="section-inner">
+        <div class="contact-wrapper reveal">
+          <h3>Travaillons <span style="color:var(--blue);">ensemble</span></h3>
+          <p>Un projet, une idée, une collaboration ? Je suis disponible pour échanger.</p>
+
+          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="b981de7b-d648-444b-96bd-0d4a405d3bc3">
+            <input type="hidden" name="subject" value="Nouveau message - alphandiaye.online">
+            <input type="hidden" name="from_name" value="Portfolio Alpha Ndiaye">
+            <input type="checkbox" name="botcheck" style="display:none">
+
+            <div class="form-group">
+              <input type="text" name="name" id="cf-name" placeholder="Votre nom" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" id="cf-email" placeholder="Votre email" required>
+            </div>
+            <div class="form-group">
+              <textarea name="message" id="cf-message" rows="5" placeholder="Votre message" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" id="cf-submit">
+              <span id="cf-btn-text">Envoyer le message</span>
+            </button>
+            <div id="cf-result" style="margin-top:1rem;font-size:.9rem;"></div>
+          </form>
+
+          <div class="contact-links" style="margin-top:2rem;">
+            <a href="mailto:alphandiayepro@gmail.com" class="contact-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+              alphandiayepro@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/alphandiaye" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://groupedigitalafrique.com" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              GDA
+            </a>
+          </div>
+
+          <a href="https://drive.google.com/uc?export=download&id=1Rc_Ll7EuomI5FeMPTkga7_4Q3cMDJ4iP" class="btn-primary" id="cv-download-2" style="margin-top:1rem;display:inline-block;">Télécharger mon CV</a>
+        </div>
       </div>
-      <a href="https://drive.google.com/uc?export=download&id=1Rc_Ll7EuomI5FeMPTkga7_4Q3cMDJ4iP" target="_blank" class="btn-primary" id="cv-download-2" style="display:inline-flex;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-        </svg>
-        Télécharger mon CV
-      </a>
-    </div>
-  </div>
-</section>
+    </section>
 
 <!-- FOOTER -->
 <footer>
