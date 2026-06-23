@@ -386,22 +386,15 @@ section:nth-child(even) { background: var(--bg-secondary); }
 /* ===========================
    REVEAL ANIMATION
    =========================== */
-/* Reveal: visible par défaut, animation CSS pure au scroll */
-.reveal {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
+/* Reveal: toujours visible, animation simple au rendu */
 @keyframes revealIn {
-  from { opacity: 0; transform: translateY(28px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .reveal {
-  animation: revealIn 0.65s ease both;
-  animation-play-state: paused;
-}
-.reveal.visible {
-  animation-play-state: running;
+  opacity: 1;
+  transform: translateY(0);
+  animation: revealIn 0.6s ease forwards;
 }
 
 /* ===========================
