@@ -1794,7 +1794,156 @@ footer a { color: var(--blue); text-decoration: none; }
   <p>© 2026 Alpha Ndiaye. Tous droits réservés. · <a href="https://www.linkedin.com/in/alphandiaye" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://groupedigitalafrique.com" target="_blank" rel="noopener">GDA</a></p>
 </footer>
 
-<script id="data-loader">
+<script>
+// ===========================
+// CURSOR
+// ===========================
+const ring = document.getElementById('cursor-ring');
+const dot = document.getElementById('cursor-dot');
+let mx = -100, my = -100, rx = -100, ry = -100;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animateCursor() {
+  rx += (mx - rx) * 0.15;
+  ry += (my - ry) * 0.15;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => { ring.style.width = '46px'; ring.style.height = '46px'; ring.style.opacity = '1'; });
+  el.addEventListener('mouseleave', () => { ring.style.width = '32px'; ring.style.height = '32px'; ring.style.opacity = '0.7'; });
+});
+
+// ===========================
+// THEME
+// ===========================
+const html = document.documentElement;
+const themeBtn = document.getElementById('theme-toggle');
+// Detect system preference
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+themeBtn.addEventListener('click', () => {
+  html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+
+// ===========================
+// MOBILE MENU
+// ===========================
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('mobile-open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('mobile-open')));
+
+// ===========================
+// PARTICLES
+// ===========================
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+function Particle() {
+  this.x = Math.random() * W;
+  this.y = Math.random() * H;
+  this.vx = (Math.random() - 0.5) * 0.4;
+  this.vy = (Math.random() - 0.5) * 0.4;
+  this.r = Math.random() * 1.8 + 0.5;
+}
+
+for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+function drawParticles() {
+  ctx.clearRect(0, 0, W, H);
+  const isDark = html.getAttribute('data-theme') !== 'light';
+  const pColor = isDark ? 'rgba(56,189,248,0.55)' : 'rgba(14,165,233,0.45)';
+  const lColor = isDark ? 'rgba(56,189,248,0.08)' : 'rgba(14,165,233,0.07)';
+
+  particles.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = pColor;
+    ctx.fill();
+  });
+
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = lColor;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// ===========================
+// COUNTERS
+// ===========================
+function animateCounter(el) {
+  const target = parseInt(el.dataset.count);
+  const suffix = el.dataset.suffix || '';
+  let current = 0;
+  const step = Math.ceil(target / 45);
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(timer); }
+    el.textContent = current + suffix;
+  }, 30);
+}
+const countersObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { animateCounter(e.target); countersObserver.unobserve(e.target); }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => countersObserver.observe(el));
+
+// ===========================
+// SCROLL REVEAL
+// ===========================
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ===========================
+// SKILL BARS
+// ===========================
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-bar-fill, .lang-bar').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.skill-category, .lang-card').forEach(el => barObserver.observe(el));
+
+// ===========================<script id="data-loader">
 (function(){
   fetch('./data.json?v='+Date.now())
     .then(function(r){return r.json()})
@@ -1802,40 +1951,26 @@ footer a { color: var(--blue); text-decoration: none; }
       window._siteData=data;
       // Hero
       if(data.hero){
-        var badge=document.querySelector('.hero-badge');
-        if(badge&&data.hero.badge)badge.textContent=data.hero.badge;
-        var ht=document.querySelector('.hero-title');
-        if(ht&&data.hero.title)ht.innerHTML=data.hero.title;
-        var hd=document.querySelector('.hero-desc');
-        if(hd&&data.hero.desc)hd.textContent=data.hero.desc;
-        if(data.hero.stats){
-          var sVals=document.querySelectorAll('.hero-stat-value');
-          var sLbls=document.querySelectorAll('.hero-stat-label');
-          data.hero.stats.forEach(function(s,i){
-            if(sVals[i]){sVals[i].setAttribute('data-count',s.value);}
-            if(sLbls[i]&&s.label)sLbls[i].textContent=s.label;
-          });
-        }
+        var badge=document.querySelector('.hero-badge');if(badge&&data.hero.badge)badge.textContent=data.hero.badge;
+        var ht=document.querySelector('.hero-title');if(ht&&data.hero.title)ht.innerHTML=data.hero.title;
+        var hd=document.querySelector('.hero-desc');if(hd&&data.hero.desc)hd.textContent=data.hero.desc;
+        if(data.hero.stats){var sV=document.querySelectorAll('.hero-stat-value'),sL=document.querySelectorAll('.hero-stat-label');data.hero.stats.forEach(function(s,i){if(sV[i])sV[i].setAttribute('data-count',s.value);if(sL[i]&&s.label)sL[i].textContent=s.label;});}
       }
       // About
-      if(data.about&&data.about.paragraphs){
-        var aPs=document.querySelectorAll('#about p');
-        data.about.paragraphs.forEach(function(txt,i){if(aPs[i])aPs[i].textContent=txt});
-      }
+      if(data.about&&data.about.paragraphs){var aPs=document.querySelectorAll('#about p');data.about.paragraphs.forEach(function(t,i){if(aPs[i])aPs[i].textContent=t;});}
+      // Experience
+      if(data.experience){var expCards=document.querySelectorAll('.exp-card');data.experience.forEach(function(exp,i){var c=expCards[i];if(!c)return;var co=c.querySelector('.exp-company'),ro=c.querySelector('.exp-role'),pe=c.querySelector('.exp-period'),de=c.querySelector('.exp-desc');if(co)co.textContent=exp.company;if(ro)ro.textContent=exp.role;if(pe)pe.textContent=exp.period;if(de)de.textContent=exp.desc;});}
       // Projects
-      if(data.projects){
-        var cards=document.querySelectorAll('.project-card');
-        data.projects.forEach(function(proj,i){
-          var card=cards[i];if(!card)return;
-          var nm=card.querySelector('.project-name'),co=card.querySelector('.project-company'),de=card.querySelector('.project-desc');
-          if(nm&&proj.name)nm.textContent=proj.name;
-          if(co&&proj.company)co.textContent=proj.company;
-          if(de&&proj.desc)de.textContent=proj.desc;
-        });
-      }
-      // Contact
+      if(data.projects){var cards=document.querySelectorAll('.project-card');data.projects.forEach(function(proj,i){var c=cards[i];if(!c)return;var n=c.querySelector('.project-name'),co=c.querySelector('.project-company'),de=c.querySelector('.project-desc');if(n)n.textContent=proj.name;if(co)co.textContent=proj.company;if(de)de.textContent=proj.desc;});}
+      // Skills
+      if(data.skills){var flat=[];data.skills.forEach(function(cat){cat.items.forEach(function(s){flat.push(s);})});document.querySelectorAll('.skill-item').forEach(function(item,i){if(!flat[i])return;var sp=item.querySelector('.skill-item-header span');var fi=item.querySelector('.skill-bar-fill');if(sp)sp.textContent=flat[i].name;if(fi)fi.setAttribute('data-width',flat[i].level);});}
+      // Education
+      if(data.education){var eduItems=document.querySelectorAll('.edu-item');data.education.forEach(function(edu,i){var item=eduItems[i];if(!item)return;var de=item.querySelector('.edu-degree'),sc=item.querySelector('.edu-school'),fi=item.querySelector('.edu-field'),yr=item.querySelector('.edu-year');if(de)de.textContent=edu.degree;if(sc)sc.textContent=edu.school;if(fi)fi.textContent=edu.field;if(yr)yr.textContent=edu.year;});}
+      // Personality
+      if(data.personality&&data.personality.interests){var intCards=document.querySelectorAll('.interest-card');data.personality.interests.forEach(function(int,i){var c=intCards[i];if(!c)return;var n=c.querySelector('.interest-name'),de=c.querySelector('.interest-desc');if(n)n.textContent=int.name;if(de)de.textContent=int.desc;});}
+      // Contact — CORRIGE: href seulement, ne pas toucher au SVG
       if(data.contact){
-        if(data.contact.email){var em=document.querySelector('a[href^="mailto:"]');if(em){em.setAttribute('href','mailto:'+data.contact.email);em.textContent=data.contact.email;}}
+        if(data.contact.email){var em=document.querySelector('a[href^="mailto:"]');if(em){em.setAttribute('href','mailto:'+data.contact.email);Array.from(em.childNodes).forEach(function(n){if(n.nodeType===3&&n.textContent.trim())n.textContent=' '+data.contact.email+' ';});}}
         if(data.contact.linkedin){var li=document.querySelector('a[href*="linkedin.com"]');if(li)li.setAttribute('href',data.contact.linkedin);}
         if(data.contact.gda){var gd=document.querySelector('a[href*="groupedigital"],a[href*="groupe-digital"]');if(gd)gd.setAttribute('href',data.contact.gda);}
         if(data.contact.cv){var cv=document.querySelector('a[download]');if(cv)cv.setAttribute('href',data.contact.cv);}
@@ -1848,7 +1983,7 @@ footer a { color: var(--blue); text-decoration: none; }
 <!-- ADMIN PANEL -->
 <style id="admin-css">
 #admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;backdrop-filter:blur(6px);font-family:'Poppins',sans-serif}
-#admin-panel{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(96vw,940px);height:min(92vh,680px);background:#0d1526;border:1px solid rgba(56,189,248,.25);border-radius:14px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.7)}
+#admin-panel{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(96vw,980px);height:min(92vh,720px);background:#0d1526;border:1px solid rgba(56,189,248,.25);border-radius:14px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.7)}
 #admin-lock{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:40px;width:100%;box-sizing:border-box}
 #admin-lock h2{color:#38BDF8;margin:0;font-size:1.3rem;font-weight:700}
 #admin-lock p{color:#94A3B8;margin:0;font-size:.85rem;text-align:center;max-width:320px}
@@ -1857,93 +1992,110 @@ footer a { color: var(--blue); text-decoration: none; }
 #admin-pw-btn{padding:10px 36px;background:#38BDF8;color:#0A0F1E;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:.9rem;font-family:inherit}
 #admin-pw-error{color:#F87171;font-size:.82rem;display:none}
 #admin-main{display:none;flex:1;min-height:0;flex-direction:row}
-#admin-sidebar{width:190px;min-width:190px;background:#080d1a;border-right:1px solid rgba(56,189,248,.12);display:flex;flex-direction:column}
-.a-logo{padding:18px 18px 16px;color:#38BDF8;font-weight:700;font-size:.95rem;border-bottom:1px solid rgba(56,189,248,.1)}
-.a-nav{padding:10px 0;flex:1}
-.a-nb{display:block;width:100%;padding:9px 18px;text-align:left;background:none;border:none;border-left:3px solid transparent;color:#94A3B8;cursor:pointer;font-size:.84rem;font-family:inherit}
+#admin-sidebar{width:185px;min-width:185px;background:#080d1a;border-right:1px solid rgba(56,189,248,.12);display:flex;flex-direction:column}
+.a-logo{padding:16px 16px 14px;color:#38BDF8;font-weight:700;font-size:.9rem;border-bottom:1px solid rgba(56,189,248,.1);flex-shrink:0}
+.a-nav{padding:8px 0;flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(56,189,248,.2) transparent}
+.a-nb{display:block;width:100%;padding:8px 16px;text-align:left;background:none;border:none;border-left:3px solid transparent;color:#94A3B8;cursor:pointer;font-size:.82rem;font-family:inherit;white-space:nowrap}
 .a-nb:hover{color:#E2E8F0;background:rgba(56,189,248,.05)}
 .a-nb.active{color:#38BDF8;background:rgba(56,189,248,.08);border-left-color:#38BDF8}
-#a-close{margin:0 0 14px;padding:9px 18px;color:#475569;font-size:.8rem;cursor:pointer;background:none;border:none;font-family:inherit;text-align:left}
+#a-close{padding:8px 16px;color:#475569;font-size:.78rem;cursor:pointer;background:none;border:none;font-family:inherit;text-align:left;flex-shrink:0;border-top:1px solid rgba(56,189,248,.08)}
 #a-close:hover{color:#F87171}
 #admin-body{flex:1;min-width:0;display:flex;flex-direction:column;overflow:hidden}
-#admin-content{flex:1;overflow-y:auto;padding:22px 24px}
+#admin-content{flex:1;overflow-y:auto;padding:20px 22px;scrollbar-width:thin;scrollbar-color:rgba(56,189,248,.2) transparent}
 .a-sec{display:none}.a-sec.active{display:block}
-.a-sec h3{color:#38BDF8;font-size:.9rem;margin:0 0 18px;padding-bottom:10px;border-bottom:1px solid rgba(56,189,248,.12);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
-.a-field{margin-bottom:14px}
-.a-field label{display:block;color:#64748B;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
-.a-field input,.a-field textarea{width:100%;padding:9px 11px;background:rgba(255,255,255,.04);border:1px solid rgba(56,189,248,.18);border-radius:7px;color:#E2E8F0;font-size:.875rem;font-family:inherit;resize:vertical;outline:none;box-sizing:border-box}
-.a-field input:focus,.a-field textarea:focus{border-color:#38BDF8}
-.a-field textarea{min-height:70px}
-.a-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.a-proj{border:1px solid rgba(56,189,248,.12);border-radius:9px;margin-bottom:10px;overflow:hidden}
-.a-proj summary{padding:12px 16px;color:#CBD5E1;font-size:.875rem;font-weight:600;cursor:pointer;list-style:none;background:rgba(56,189,248,.03)}
-.a-proj summary::-webkit-details-marker{display:none}
-.a-proj[open] summary{color:#38BDF8;border-bottom:1px solid rgba(56,189,248,.1)}
-.a-proj-fields{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
-#admin-footer{display:flex;align-items:center;gap:10px;padding:12px 20px;border-top:1px solid rgba(56,189,248,.1);background:#080d1a}
-#a-status{flex:1;font-size:.78rem;color:#94A3B8}
+.a-sec h3{color:#38BDF8;font-size:.85rem;margin:0 0 16px;padding-bottom:9px;border-bottom:1px solid rgba(56,189,248,.12);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.a-field{margin-bottom:12px}
+.a-field label{display:block;color:#64748B;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.a-field input,.a-field textarea{width:100%;padding:8px 10px;background:rgba(255,255,255,.04);border:1px solid rgba(56,189,248,.18);border-radius:7px;color:#E2E8F0;font-size:.85rem;font-family:inherit;resize:vertical;outline:none;box-sizing:border-box}
+.a-field input:focus,.a-field textarea:focus{border-color:#38BDF8;background:rgba(56,189,248,.03)}
+.a-field textarea{min-height:60px}
+.a-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.a-row3{display:grid;grid-template-columns:2fr 1fr;gap:10px}
+.a-card{border:1px solid rgba(56,189,248,.12);border-radius:8px;margin-bottom:9px;overflow:hidden}
+.a-card summary{padding:10px 14px;color:#CBD5E1;font-size:.84rem;font-weight:600;cursor:pointer;list-style:none;background:rgba(56,189,248,.03)}
+.a-card summary::-webkit-details-marker{display:none}
+.a-card[open] summary{color:#38BDF8;border-bottom:1px solid rgba(56,189,248,.1)}
+.a-card-fields{padding:12px 14px;display:flex;flex-direction:column;gap:9px}
+.a-range{display:flex;align-items:center;gap:8px}
+.a-range input[type=range]{flex:1;accent-color:#38BDF8}
+.a-range span{color:#38BDF8;font-size:.8rem;min-width:28px;text-align:right}
+#admin-footer{display:flex;align-items:center;gap:10px;padding:10px 18px;border-top:1px solid rgba(56,189,248,.1);background:#080d1a;flex-shrink:0}
+#a-status{flex:1;font-size:.76rem;color:#94A3B8}
 #a-status.ok{color:#34D399}#a-status.err{color:#F87171}
-#a-preview{padding:9px 18px;background:rgba(56,189,248,.12);color:#38BDF8;border:1px solid rgba(56,189,248,.3);border-radius:8px;cursor:pointer;font-family:inherit;font-weight:600;font-size:.85rem}
-#a-publish{padding:9px 24px;background:#38BDF8;color:#0A0F1E;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-weight:700;font-size:.85rem}
+#a-preview{padding:8px 16px;background:rgba(56,189,248,.12);color:#38BDF8;border:1px solid rgba(56,189,248,.3);border-radius:8px;cursor:pointer;font-family:inherit;font-weight:600;font-size:.83rem}
+#a-publish{padding:8px 22px;background:#38BDF8;color:#0A0F1E;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-weight:700;font-size:.83rem}
 #a-publish:hover{background:#7DD3FC}#a-publish:disabled{opacity:.5;cursor:not-allowed}
 </style>
 <div id="admin-overlay">
 <div id="admin-panel">
-  <div id="admin-lock">
-    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    <h2>Admin Panel</h2>
-    <p>Entrez le mot de passe pour modifier et publier votre portfolio</p>
-    <input type="password" id="admin-pw-input" placeholder="••••••••••" autocomplete="off"/>
-    <div id="admin-pw-error">Mot de passe incorrect</div>
-    <button id="admin-pw-btn">Accéder</button>
+<div id="admin-lock">
+  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+  <h2>Admin Panel</h2>
+  <p>Entrez le mot de passe pour modifier et publier votre portfolio</p>
+  <input type="password" id="admin-pw-input" placeholder="••••••••••" autocomplete="off"/>
+  <div id="admin-pw-error">Mot de passe incorrect</div>
+  <button id="admin-pw-btn">Accéder</button>
+</div>
+<div id="admin-main">
+  <div id="admin-sidebar">
+    <div class="a-logo">⚡ Admin</div>
+    <nav class="a-nav">
+      <button class="a-nb active" data-tab="hero">🎯 Hero</button>
+      <button class="a-nb" data-tab="about">👤 À propos</button>
+      <button class="a-nb" data-tab="experience">💼 Expérience</button>
+      <button class="a-nb" data-tab="projects">🚀 Projets</button>
+      <button class="a-nb" data-tab="skills">🎯 Compétences</button>
+      <button class="a-nb" data-tab="education">📚 Études</button>
+      <button class="a-nb" data-tab="personality">🌟 Au-delà</button>
+      <button class="a-nb" data-tab="contact">📬 Contact</button>
+      <button class="a-nb" data-tab="settings">⚙️ Paramètres</button>
+    </nav>
+    <button id="a-close">✕ Fermer</button>
   </div>
-  <div id="admin-main">
-    <div id="admin-sidebar">
-      <div class="a-logo">⚡ Admin</div>
-      <nav class="a-nav">
-        <button class="a-nb active" data-tab="hero">🎯 Hero</button>
-        <button class="a-nb" data-tab="about">👤 À propos</button>
-        <button class="a-nb" data-tab="projects">🚀 Projets</button>
-        <button class="a-nb" data-tab="contact">📬 Contact</button>
-        <button class="a-nb" data-tab="settings">⚙️ Paramètres</button>
-      </nav>
-      <button id="a-close">✕ Fermer</button>
-    </div>
-    <div id="admin-body">
-      <div id="admin-content">
-        <div class="a-sec active" id="tab-hero">
-          <h3>Section Hero</h3>
-          <div class="a-field"><label>Badge</label><input type="text" id="f-badge"/></div>
-          <div class="a-field"><label>Titre (HTML autorisé)</label><textarea id="f-hero-title" rows="3"></textarea></div>
-          <div class="a-field"><label>Description</label><textarea id="f-hero-desc" rows="3"></textarea></div>
-          <div class="a-row"><div class="a-field"><label>Stat 1 — Valeur</label><input type="number" id="f-s1v"/></div><div class="a-field"><label>Stat 1 — Label</label><input type="text" id="f-s1l"/></div></div>
-          <div class="a-row"><div class="a-field"><label>Stat 2 — Valeur</label><input type="number" id="f-s2v"/></div><div class="a-field"><label>Stat 2 — Label</label><input type="text" id="f-s2l"/></div></div>
-          <div class="a-row"><div class="a-field"><label>Stat 3 — Valeur</label><input type="number" id="f-s3v"/></div><div class="a-field"><label>Stat 3 — Label</label><input type="text" id="f-s3l"/></div></div>
-        </div>
-        <div class="a-sec" id="tab-about">
-          <h3>À propos</h3>
-          <div class="a-field"><label>Paragraphe 1</label><textarea id="f-ap1" rows="4"></textarea></div>
-          <div class="a-field"><label>Paragraphe 2</label><textarea id="f-ap2" rows="4"></textarea></div>
-          <div class="a-field"><label>Paragraphe 3</label><textarea id="f-ap3" rows="3"></textarea></div>
-        </div>
-        <div class="a-sec" id="tab-projects"><h3>Projets</h3><div id="a-proj-list"></div></div>
-        <div class="a-sec" id="tab-contact">
-          <h3>Contact &amp; Liens</h3>
-          <div class="a-field"><label>Email</label><input type="email" id="f-email"/></div>
-          <div class="a-field"><label>LinkedIn URL</label><input type="url" id="f-linkedin"/></div>
-          <div class="a-field"><label>GDA URL</label><input type="url" id="f-gda"/></div>
-          <div class="a-field"><label>CV URL</label><input type="url" id="f-cv"/></div>
-        </div>
-        <div class="a-sec" id="tab-settings">
-          <h3>Paramètres</h3>
-          <div class="a-field"><label>GitHub Token (PAT)</label><input type="password" id="f-gh-token" placeholder="Votre token GitHub PAT"/></div>
-          <div class="a-field"><label>Repo GitHub</label><input type="text" id="f-gh-repo" value="ZouAlphas/alphandiaye" readonly style="opacity:.5"/></div>
-          <div class="a-field"><label>Nouveau mot de passe admin</label><input type="password" id="f-new-pw" placeholder="Laisser vide pour garder l'actuel"/></div>
-        </div>
+  <div id="admin-body">
+    <div id="admin-content">
+      <div class="a-sec active" id="tab-hero">
+        <h3>Section Hero</h3>
+        <div class="a-field"><label>Badge</label><input type="text" id="f-badge"/></div>
+        <div class="a-field"><label>Titre (HTML autorisé)</label><textarea id="f-hero-title" rows="3"></textarea></div>
+        <div class="a-field"><label>Description</label><textarea id="f-hero-desc" rows="3"></textarea></div>
+        <div class="a-row"><div class="a-field"><label>Stat 1 — Valeur</label><input type="number" id="f-s1v"/></div><div class="a-field"><label>Stat 1 — Label</label><input type="text" id="f-s1l"/></div></div>
+        <div class="a-row"><div class="a-field"><label>Stat 2 — Valeur</label><input type="number" id="f-s2v"/></div><div class="a-field"><label>Stat 2 — Label</label><input type="text" id="f-s2l"/></div></div>
+        <div class="a-row"><div class="a-field"><label>Stat 3 — Valeur</label><input type="number" id="f-s3v"/></div><div class="a-field"><label>Stat 3 — Label</label><input type="text" id="f-s3l"/></div></div>
       </div>
-      <div id="admin-footer"><div id="a-status"></div><button id="a-preview">👁 Aperçu</button><button id="a-publish">🚀 Publier</button></div>
+      <div class="a-sec" id="tab-about">
+        <h3>À propos</h3>
+        <div class="a-field"><label>Paragraphe 1</label><textarea id="f-ap1" rows="4"></textarea></div>
+        <div class="a-field"><label>Paragraphe 2</label><textarea id="f-ap2" rows="4"></textarea></div>
+        <div class="a-field"><label>Paragraphe 3</label><textarea id="f-ap3" rows="3"></textarea></div>
+      </div>
+      <div class="a-sec" id="tab-experience"><h3>Expérience</h3><div id="a-exp-list"></div></div>
+      <div class="a-sec" id="tab-projects"><h3>Projets</h3><div id="a-proj-list"></div></div>
+      <div class="a-sec" id="tab-skills"><h3>Compétences</h3><div id="a-skills-list"></div></div>
+      <div class="a-sec" id="tab-education"><h3>Études &amp; Certifications</h3><div id="a-edu-list"></div></div>
+      <div class="a-sec" id="tab-personality">
+        <h3>Au-delà du professionnel</h3>
+        <div id="a-interests-list"></div>
+        <h3 style="margin-top:18px">Langues</h3>
+        <div id="a-langs-list"></div>
+      </div>
+      <div class="a-sec" id="tab-contact">
+        <h3>Contact &amp; Liens</h3>
+        <div class="a-field"><label>Email</label><input type="email" id="f-email"/></div>
+        <div class="a-field"><label>LinkedIn URL</label><input type="url" id="f-linkedin"/></div>
+        <div class="a-field"><label>GDA URL</label><input type="url" id="f-gda"/></div>
+        <div class="a-field"><label>CV URL</label><input type="url" id="f-cv"/></div>
+      </div>
+      <div class="a-sec" id="tab-settings">
+        <h3>Paramètres</h3>
+        <div class="a-field"><label>GitHub Token (PAT)</label><input type="password" id="f-gh-token" placeholder="Votre token GitHub PAT"/></div>
+        <div class="a-field"><label>Repo GitHub</label><input type="text" id="f-gh-repo" value="ZouAlphas/alphandiaye" readonly style="opacity:.5"/></div>
+        <div class="a-field"><label>Nouveau mot de passe admin</label><input type="password" id="f-new-pw" placeholder="Laisser vide pour garder l'actuel"/></div>
+      </div>
     </div>
+    <div id="admin-footer"><div id="a-status"></div><button id="a-preview">👁 Aperçu</button><button id="a-publish">🚀 Publier</button></div>
   </div>
+</div>
 </div>
 </div>
 <script>
@@ -1953,11 +2105,9 @@ var GH_REPO='ZouAlphas/alphandiaye';
 function getToken(){return localStorage.getItem('_apat')||''}
 function b64u(b){var by=Uint8Array.from(atob(b.replace(/\\n/g,'')),function(c){return c.charCodeAt(0)});return new TextDecoder('utf-8').decode(by)}
 function ub64(s){var by=new TextEncoder().encode(s);var r='';by.forEach(function(b){r+=String.fromCharCode(b)});return btoa(r)}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function setStatus(m,c){var el=document.getElementById('a-status');if(el){el.textContent=m;el.className=c||''}}
-var overlay=document.getElementById('admin-overlay');
-var lockEl=document.getElementById('admin-lock');
-var mainEl=document.getElementById('admin-main');
-var pwIn=document.getElementById('admin-pw-input');
+var overlay=document.getElementById('admin-overlay'),lockEl=document.getElementById('admin-lock'),mainEl=document.getElementById('admin-main'),pwIn=document.getElementById('admin-pw-input');
 document.addEventListener('keydown',function(e){if(e.ctrlKey&&e.shiftKey&&e.key==='A'){e.preventDefault();openAdmin();}});
 document.getElementById('a-close').addEventListener('click',function(){overlay.style.display='none'});
 overlay.addEventListener('click',function(e){if(e.target===overlay)overlay.style.display='none'});
@@ -1970,153 +2120,197 @@ document.querySelectorAll('.a-nb').forEach(function(btn){
     document.querySelectorAll('.a-nb').forEach(function(b){b.classList.remove('active')});
     document.querySelectorAll('.a-sec').forEach(function(s){s.classList.remove('active')});
     btn.classList.add('active');
-    var t=document.getElementById('tab-'+btn.getAttribute('data-tab'));
-    if(t)t.classList.add('active');
+    var t=document.getElementById('tab-'+btn.getAttribute('data-tab'));if(t)t.classList.add('active');
   });
 });
-var _cachedData=null;
+var _data=null;
 function loadFromJson(){
   setStatus('Chargement...');
   var token=getToken();
   fetch('https://api.github.com/repos/'+GH_REPO+'/contents/data.json',{headers:{'Authorization':'token '+token,'Accept':'application/vnd.github.v3+json'}})
     .then(function(r){return r.json()})
     .then(function(d){
-      if(!d.content){setStatus('Token manquant — configurez-le dans Paramètres','err');populateFromDOM();return;}
-      _cachedData={sha:d.sha,data:JSON.parse(b64u(d.content))};
-      populateFields(_cachedData.data);
+      if(!d.content){setStatus('Token manquant — onglet Paramètres','err');populateFromDOM();return;}
+      _data={sha:d.sha,obj:JSON.parse(b64u(d.content))};
+      populateFields(_data.obj);
       setStatus('');
     })
     .catch(function(){populateFromDOM();setStatus('');});
   document.getElementById('f-gh-token').value=token;
   document.getElementById('f-gh-repo').value=GH_REPO;
 }
-function populateFields(data){
-  if(data.hero){
-    document.getElementById('f-badge').value=data.hero.badge||'';
-    document.getElementById('f-hero-title').value=data.hero.title||'';
-    document.getElementById('f-hero-desc').value=data.hero.desc||'';
-    if(data.hero.stats){[1,2,3].forEach(function(i){var s=data.hero.stats[i-1];if(s){document.getElementById('f-s'+i+'v').value=s.value||0;document.getElementById('f-s'+i+'l').value=s.label||'';}});}
-  }
-  if(data.about&&data.about.paragraphs){
-    [1,2,3].forEach(function(i){var el=document.getElementById('f-ap'+i);if(el)el.value=data.about.paragraphs[i-1]||''});
-  }
-  if(data.projects)buildProjectFields(data.projects);
-  if(data.contact){
-    document.getElementById('f-email').value=data.contact.email||'';
-    document.getElementById('f-linkedin').value=data.contact.linkedin||'';
-    document.getElementById('f-gda').value=data.contact.gda||'';
-    document.getElementById('f-cv').value=data.contact.cv||'';
-  }
-}
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function populateFields(d){
+  if(d.hero){document.getElementById('f-badge').value=d.hero.badge||'';
+    document.getElementById('f-hero-title').value=d.hero.title||'';
+    document.getElementById('f-hero-desc').value=d.hero.desc||'';
+    if(d.hero.stats)[1,2,3].forEach(function(i){var s=d.hero.stats[i-1];if(s){document.getElementById('f-s'+i+'v').value=s.value;document.getElementById('f-s'+i+'l').value=s.label||'';}});}
+  if(d.about&&d.about.paragraphs)[1,2,3].forEach(function(i){var el=document.getElementById('f-ap'+i);if(el)el.value=d.about.paragraphs[i-1]||''});
+  if(d.experience)buildList('a-exp-list',d.experience,expFields);
+  if(d.projects)buildList('a-proj-list',d.projects,projFields);
+  if(d.skills)buildSkills(d.skills);
+  if(d.education)buildList('a-edu-list',d.education,eduFields);
+  if(d.personality){if(d.personality.interests)buildList('a-interests-list',d.personality.interests,interestFields);
+    if(d.personality.languages)buildList('a-langs-list',d.personality.languages,langFields);}
+  if(d.contact){document.getElementById('f-email').value=d.contact.email||'';
+    document.getElementById('f-linkedin').value=d.contact.linkedin||'';
+    document.getElementById('f-gda').value=d.contact.gda||'';
+    document.getElementById('f-cv').value=d.contact.cv||'';}}
 function populateFromDOM(){
   var badge=document.querySelector('.hero-badge');if(badge)document.getElementById('f-badge').value=badge.textContent.trim();
   var ht=document.querySelector('.hero-title');if(ht)document.getElementById('f-hero-title').value=ht.innerHTML.trim();
   var hd=document.querySelector('.hero-desc');if(hd)document.getElementById('f-hero-desc').value=hd.textContent.trim();
   var sV=document.querySelectorAll('.hero-stat-value'),sL=document.querySelectorAll('.hero-stat-label');
   [1,2,3].forEach(function(i){if(sV[i-1])document.getElementById('f-s'+i+'v').value=sV[i-1].getAttribute('data-count')||0;if(sL[i-1])document.getElementById('f-s'+i+'l').value=sL[i-1].textContent.trim();});
-  var aPs=document.querySelectorAll('#about p');
-  [1,2,3].forEach(function(i){var el=document.getElementById('f-ap'+i);if(el&&aPs[i-1])el.value=aPs[i-1].textContent.trim();});
-  buildProjectFields(null);
+  [1,2,3].forEach(function(i){var p=document.querySelectorAll('#about p')[i-1];var el=document.getElementById('f-ap'+i);if(el&&p)el.value=p.textContent.trim();});
+  buildList('a-exp-list',[],expFields);
+  buildList('a-proj-list',[],projFields);
+  buildSkills([]);
+  buildList('a-edu-list',[],eduFields);
+  buildList('a-interests-list',[],interestFields);
+  buildList('a-langs-list',[],langFields);
   var em=document.querySelector('a[href^="mailto:"]');if(em)document.getElementById('f-email').value=em.getAttribute('href').replace('mailto:','');
   var li=document.querySelector('a[href*="linkedin.com"]');if(li)document.getElementById('f-linkedin').value=li.getAttribute('href');
 }
-function buildProjectFields(projs){
-  var cards=document.querySelectorAll('.project-card');
-  var cont=document.getElementById('a-proj-list');cont.innerHTML='';
-  var count=projs?projs.length:cards.length;
-  for(var i=0;i<count;i++){
-    var p=projs?projs[i]:{name:(cards[i]&&cards[i].querySelector('.project-name')||{}).textContent||'Projet'+(i+1),company:(cards[i]&&cards[i].querySelector('.project-company')||{}).textContent||'',('desc'):(cards[i]&&cards[i].querySelector('.project-desc')||{}).textContent||''};
-    var det=document.createElement('details');det.className='a-proj';det.dataset.idx=i;
-    det.innerHTML='<summary>'+esc(p.name||'Projet'+(i+1))+'</summary>'
-      +'<div class="a-proj-fields">'
-      +'<div class="a-field"><label>Nom</label><input class="pj-n" type="text" value="'+esc(p.name||'')+'"/></div>'
-      +'<div class="a-field"><label>Organisation</label><input class="pj-c" type="text" value="'+esc(p.company||'')+'"/></div>'
-      +'<div class="a-field"><label>Description</label><textarea class="pj-d" rows="3">'+esc(p.desc||'')+'</textarea></div>'
-      +'</div>';
-    cont.appendChild(det);
-    (function(d,nm){d.querySelector('.pj-n').addEventListener('input',function(){d.querySelector('summary').textContent=this.value||nm});})(det,'Projet'+(i+1));
+// Définitions des champs par section
+var expFields={label:function(i){return i.company||'Expérience'},inputs:[
+  {id:'company',lbl:'Entreprise',type:'text'},{id:'role',lbl:'Poste',type:'text'},
+  {id:'period',lbl:'Période',type:'text'},{id:'desc',lbl:'Description',type:'textarea'}
+]};
+var projFields={label:function(i){return i.name||'Projet'},inputs:[
+  {id:'name',lbl:'Nom',type:'text'},{id:'company',lbl:'Organisation',type:'text'},
+  {id:'desc',lbl:'Description',type:'textarea'}
+]};
+var eduFields={label:function(i){return i.degree||'Formation'},inputs:[
+  {id:'degree',lbl:'Diplôme',type:'text'},{id:'school',lbl:'École',type:'text'},
+  {id:'field',lbl:'Domaine',type:'text'},{id:'year',lbl:'Année',type:'text'}
+]};
+var interestFields={label:function(i){return i.name||'Centre d\'intérêt'},inputs:[
+  {id:'name',lbl:'Nom',type:'text'},{id:'desc',lbl:'Description',type:'textarea'}
+]};
+var langFields={label:function(i){return i.name||'Langue'},inputs:[
+  {id:'name',lbl:'Langue',type:'text'},{id:'level',lbl:'Niveau',type:'text'}
+]};
+function buildList(containerId,items,fieldDef){
+  var cont=document.getElementById(containerId);if(!cont)return;
+  cont.innerHTML='';
+  var domItems=[];
+  // Si items vide, lire depuis le DOM correspondant
+  if(!items||!items.length){
+    if(containerId==='a-exp-list'){document.querySelectorAll('.exp-card').forEach(function(c){domItems.push({company:(c.querySelector('.exp-company')||{}).textContent||''||'Expérience',role:(c.querySelector('.exp-role')||{}).textContent||''});});items=domItems;}
+    else if(containerId==='a-proj-list'){document.querySelectorAll('.project-card').forEach(function(c){domItems.push({name:(c.querySelector('.project-name')||{}).textContent||'Projet'});});items=domItems;}
+    else if(containerId==='a-edu-list'){document.querySelectorAll('.edu-item').forEach(function(c){domItems.push({degree:(c.querySelector('.edu-degree')||{}).textContent||'Formation'});});items=domItems;}
+    else if(containerId==='a-interests-list'){document.querySelectorAll('.interest-card').forEach(function(c){domItems.push({name:(c.querySelector('.interest-name')||{}).textContent||'Intérêt'});});items=domItems;}
+    else if(containerId==='a-langs-list'){document.querySelectorAll('.lang-name').forEach(function(el){domItems.push({name:el.textContent||'Langue'});});items=domItems;}
   }
+  items.forEach(function(item,i){
+    var det=document.createElement('details');det.className='a-card';det.dataset.idx=i;
+    var summary='<summary>'+esc(fieldDef.label(item))+'</summary>';
+    var fields='<div class="a-card-fields">';
+    fieldDef.inputs.forEach(function(inp){
+      fields+='<div class="a-field"><label>'+inp.lbl+'</label>';
+      if(inp.type==='textarea')fields+='<textarea class="af-'+inp.id+'" rows="2">'+esc(item[inp.id]||'')+'</textarea>';
+      else if(inp.type==='range')fields+='<div class="a-range"><input type="range" min="0" max="100" class="af-'+inp.id+'" value="'+esc(item[inp.id]||0)+'"/><span>'+esc(item[inp.id]||0)+'</span></div>';
+      else fields+='<input class="af-'+inp.id+'" type="'+inp.type+'" value="'+esc(item[inp.id]||'')+'"/>';
+      fields+='</div>';
+    });
+    fields+='</div>';
+    det.innerHTML=summary+fields;
+    cont.appendChild(det);
+    // Update summary on first input change
+    var firstInput=det.querySelector('.af-'+fieldDef.inputs[0].id);
+    if(firstInput)(function(d,fi,fd){fi.addEventListener('input',function(){d.querySelector('summary').textContent=this.value||fd.label({});});})(det,firstInput,fieldDef);
+    // Range live update
+    det.querySelectorAll('input[type=range]').forEach(function(rng){rng.addEventListener('input',function(){var sp=this.parentNode.querySelector('span');if(sp)sp.textContent=this.value;});});
+  });
+}
+function buildSkills(skillsData){
+  var cont=document.getElementById('a-skills-list');if(!cont)return;
+  cont.innerHTML='';
+  if(!skillsData||!skillsData.length)return;
+  skillsData.forEach(function(cat,ci){
+    var catEl=document.createElement('div');
+    catEl.innerHTML='<div class="a-field"><label>Catégorie '+( ci+1)+'</label><input class="scat-name" type="text" value="'+esc(cat.category||'')+'"/></div>';
+    (cat.items||[]).forEach(function(skill,si){
+      catEl.innerHTML+='<div class="a-card" style="margin:6px 0"><div class="a-card-fields"><div class="a-field"><label>Compétence '+( si+1)+'</label><input class="sk-name-'+ci+'-'+si+'" type="text" value="'+esc(skill.name||'')+'"/></div>'
+        +'<div class="a-field"><label>Niveau (%)</label><div class="a-range"><input type="range" min="0" max="100" class="sk-lvl-'+ci+'-'+si+'" value="'+esc(skill.level||0)+'"/><span>'+esc(skill.level||0)+'</span></div></div></div></div>';
+    });
+    cont.appendChild(catEl);
+    catEl.querySelectorAll('input[type=range]').forEach(function(r){r.addEventListener('input',function(){var sp=this.parentNode.querySelector('span');if(sp)sp.textContent=this.value;});});
+  });
+}
+function readList(containerId,fieldDef){
+  var items=[];document.querySelectorAll('#'+containerId+' .a-card').forEach(function(det){
+    var item={};fieldDef.inputs.forEach(function(inp){var el=det.querySelector('.af-'+inp.id);if(el)item[inp.id]=el.value;});items.push(item);
+  });return items;
+}
+function readSkills(){
+  var cats=[];document.querySelectorAll('#a-skills-list > div').forEach(function(catEl,ci){
+    var catName=(catEl.querySelector('.scat-name')||{}).value||'Catégorie';
+    var items=[];
+    var si=0;
+    while(true){var nm=catEl.querySelector('.sk-name-'+ci+'-'+si);if(!nm)break;var lv=catEl.querySelector('.sk-lvl-'+ci+'-'+si);items.push({name:nm.value,level:parseInt((lv||{}).value)||0});si++;}
+    cats.push({category:catName,items:items});
+  });return cats;
 }
 function buildDataObj(){
-  var data={hero:{},about:{paragraphs:[]},projects:[],contact:{}};
-  data.hero.badge=document.getElementById('f-badge').value;
-  data.hero.title=document.getElementById('f-hero-title').value;
-  data.hero.desc=document.getElementById('f-hero-desc').value;
-  data.hero.stats=[];
-  [1,2,3].forEach(function(i){
-    var stat={value:parseInt(document.getElementById('f-s'+i+'v').value)||0,label:document.getElementById('f-s'+i+'l').value};
-    if(i===1)stat.suffix='+';
-    data.hero.stats.push(stat);
-  });
-  [1,2,3].forEach(function(i){var el=document.getElementById('f-ap'+i);if(el)data.about.paragraphs.push(el.value.trim());});
-  document.querySelectorAll('#a-proj-list .a-proj').forEach(function(det){
-    data.projects.push({name:det.querySelector('.pj-n').value,company:det.querySelector('.pj-c').value,desc:det.querySelector('.pj-d').value});
-  });
-  data.contact.email=document.getElementById('f-email').value;
-  data.contact.linkedin=document.getElementById('f-linkedin').value;
-  data.contact.gda=document.getElementById('f-gda').value;
-  data.contact.cv=document.getElementById('f-cv').value;
-  return data;
+  var d={hero:{},about:{paragraphs:[]},experience:[],projects:[],skills:[],education:[],personality:{interests:[],languages:[]},contact:{}};
+  d.hero.badge=document.getElementById('f-badge').value;
+  d.hero.title=document.getElementById('f-hero-title').value;
+  d.hero.desc=document.getElementById('f-hero-desc').value;
+  d.hero.stats=[1,2,3].map(function(i){var st={value:parseInt(document.getElementById('f-s'+i+'v').value)||0,label:document.getElementById('f-s'+i+'l').value};if(i===1)st.suffix='+';return st;});
+  [1,2,3].forEach(function(i){var el=document.getElementById('f-ap'+i);if(el)d.about.paragraphs.push(el.value.trim());});
+  d.experience=readList('a-exp-list',expFields);
+  d.projects=readList('a-proj-list',projFields);
+  d.skills=readSkills();
+  d.education=readList('a-edu-list',eduFields);
+  d.personality.interests=readList('a-interests-list',interestFields);
+  d.personality.languages=readList('a-langs-list',langFields);
+  d.contact.email=document.getElementById('f-email').value;
+  d.contact.linkedin=document.getElementById('f-linkedin').value;
+  d.contact.gda=document.getElementById('f-gda').value;
+  d.contact.cv=document.getElementById('f-cv').value;
+  return d;
 }
-function applyToDOM(data){
-  if(data.hero){
-    var badge=document.querySelector('.hero-badge');if(badge)badge.textContent=data.hero.badge;
-    var ht=document.querySelector('.hero-title');if(ht)ht.innerHTML=data.hero.title;
-    var hd=document.querySelector('.hero-desc');if(hd)hd.textContent=data.hero.desc;
-    if(data.hero.stats){var sV=document.querySelectorAll('.hero-stat-value'),sL=document.querySelectorAll('.hero-stat-label');data.hero.stats.forEach(function(s,i){if(sV[i]){sV[i].setAttribute('data-count',s.value);sV[i].textContent=s.value+(s.suffix||'')}if(sL[i])sL[i].textContent=s.label;});}
-  }
-  if(data.about&&data.about.paragraphs){var aPs=document.querySelectorAll('#about p');data.about.paragraphs.forEach(function(t,i){if(aPs[i])aPs[i].textContent=t;});}
-  if(data.projects){var cards=document.querySelectorAll('.project-card');data.projects.forEach(function(p,i){var c=cards[i];if(!c)return;var n=c.querySelector('.project-name'),co=c.querySelector('.project-company'),de=c.querySelector('.project-desc');if(n)n.textContent=p.name;if(co)co.textContent=p.company;if(de)de.textContent=p.desc;});}
-  if(data.contact){if(data.contact.email){var em=document.querySelector('a[href^="mailto:"]');if(em){em.setAttribute('href','mailto:'+data.contact.email);em.textContent=data.contact.email;}}if(data.contact.linkedin){var li=document.querySelector('a[href*="linkedin.com"]');if(li)li.setAttribute('href',data.contact.linkedin);}}
+function applyToDOM(d){
+  if(d.hero){var badge=document.querySelector('.hero-badge');if(badge)badge.textContent=d.hero.badge;var ht=document.querySelector('.hero-title');if(ht)ht.innerHTML=d.hero.title;var hd=document.querySelector('.hero-desc');if(hd)hd.textContent=d.hero.desc;if(d.hero.stats){var sV=document.querySelectorAll('.hero-stat-value'),sL=document.querySelectorAll('.hero-stat-label');d.hero.stats.forEach(function(s,i){if(sV[i]){sV[i].setAttribute('data-count',s.value);sV[i].textContent=s.value+(s.suffix||'')}if(sL[i])sL[i].textContent=s.label;});}}
+  if(d.about&&d.about.paragraphs){var aPs=document.querySelectorAll('#about p');d.about.paragraphs.forEach(function(t,i){if(aPs[i])aPs[i].textContent=t;});}
+  if(d.experience){var expCards=document.querySelectorAll('.exp-card');d.experience.forEach(function(exp,i){var c=expCards[i];if(!c)return;var co=c.querySelector('.exp-company'),ro=c.querySelector('.exp-role'),pe=c.querySelector('.exp-period'),de=c.querySelector('.exp-desc');if(co)co.textContent=exp.company;if(ro)ro.textContent=exp.role;if(pe)pe.textContent=exp.period;if(de)de.textContent=exp.desc;});}
+  if(d.projects){var cards=document.querySelectorAll('.project-card');d.projects.forEach(function(p,i){var c=cards[i];if(!c)return;var n=c.querySelector('.project-name'),co=c.querySelector('.project-company'),de=c.querySelector('.project-desc');if(n)n.textContent=p.name;if(co)co.textContent=p.company;if(de)de.textContent=p.desc;});}
+  if(d.skills){var flat=[];d.skills.forEach(function(cat){cat.items.forEach(function(s){flat.push(s);})});document.querySelectorAll('.skill-item').forEach(function(item,i){if(!flat[i])return;var sp=item.querySelector('.skill-item-header span');var fi=item.querySelector('.skill-bar-fill');if(sp)sp.textContent=flat[i].name;if(fi){fi.setAttribute('data-width',flat[i].level);fi.style.width=flat[i].level+'%';}});}
+  if(d.education){var eduItems=document.querySelectorAll('.edu-item');d.education.forEach(function(edu,i){var item=eduItems[i];if(!item)return;var de=item.querySelector('.edu-degree'),sc=item.querySelector('.edu-school'),fi=item.querySelector('.edu-field'),yr=item.querySelector('.edu-year');if(de)de.textContent=edu.degree;if(sc)sc.textContent=edu.school;if(fi)fi.textContent=edu.field;if(yr)yr.textContent=edu.year;});}
+  if(d.personality&&d.personality.interests){var intCards=document.querySelectorAll('.interest-card');d.personality.interests.forEach(function(int,i){var c=intCards[i];if(!c)return;var n=c.querySelector('.interest-name'),de=c.querySelector('.interest-desc');if(n)n.textContent=int.name;if(de)de.textContent=int.desc;});}
+  if(d.contact){if(d.contact.email){var em=document.querySelector('a[href^="mailto:"]');if(em)em.setAttribute('href','mailto:'+d.contact.email);}if(d.contact.linkedin){var li=document.querySelector('a[href*="linkedin.com"]');if(li)li.setAttribute('href',d.contact.linkedin);}}
 }
-document.getElementById('a-preview').addEventListener('click',function(){
-  var data=buildDataObj();
-  applyToDOM(data);
-  setStatus('✓ Aperçu appliqué','ok');setTimeout(function(){setStatus('')},2500);
-});
+document.getElementById('a-preview').addEventListener('click',function(){applyToDOM(buildDataObj());setStatus('✓ Aperçu appliqué','ok');setTimeout(function(){setStatus('')},2500);});
 document.getElementById('a-publish').addEventListener('click',async function(){
-  var btn=this;btn.disabled=true;
-  setStatus('Publication en cours...');
+  var btn=this;btn.disabled=true;setStatus('Publication en cours...');
   try{
-    var token=document.getElementById('f-gh-token').value.trim();
-    if(!token){setStatus('Token GitHub manquant — onglet Paramètres','err');btn.disabled=false;return;}
+    var token=document.getElementById('f-gh-token').value.trim();if(!token){setStatus('Token manquant — onglet Paramètres','err');btn.disabled=false;return;}
     localStorage.setItem('_apat',token);
     var newPw=document.getElementById('f-new-pw').value.trim();
     var data=buildDataObj();
-    // Récupérer SHA data.json
     var rj=await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/data.json',{headers:{'Authorization':'token '+token,'Accept':'application/vnd.github.v3+json'}});
     var dj=await rj.json();
     if(!dj.sha){setStatus('Erreur auth GitHub','err');btn.disabled=false;return;}
-    // Mettre à jour data.json
-    var rw=await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/data.json',{
-      method:'PUT',
-      headers:{'Authorization':'token '+token,'Content-Type':'application/json'},
-      body:JSON.stringify({message:'Admin: mise à jour du contenu',content:ub64(JSON.stringify(data,null,2)),sha:dj.sha})
-    });
+    var rw=await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/data.json',{method:'PUT',headers:{'Authorization':'token '+token,'Content-Type':'application/json'},body:JSON.stringify({message:'Admin: mise à jour du contenu',content:ub64(JSON.stringify(data,null,2)),sha:dj.sha})});
     var rd=await rw.json();
     if(!rd.content){setStatus('Erreur: '+(rd.message||'inconnue'),'err');btn.disabled=false;return;}
-    // Si nouveau mot de passe: mettre à jour index.html aussi
     if(newPw){
       var ri=await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/index.html',{headers:{'Authorization':'token '+token,'Accept':'application/vnd.github.v3+json'}});
       var di=await ri.json();
       var rawHtml=b64u(di.content);
       rawHtml=rawHtml.replace(/(var PASS=')[^']*(')/, '$1'+newPw+'$2');
-      await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/index.html',{
-        method:'PUT',
-        headers:{'Authorization':'token '+token,'Content-Type':'application/json'},
-        body:JSON.stringify({message:'Admin: nouveau mot de passe',content:ub64(rawHtml),sha:di.sha})
-      });
-      PASS=newPw;
-      document.getElementById('f-new-pw').value='';
+      await fetch('https://api.github.com/repos/'+GH_REPO+'/contents/index.html',{method:'PUT',headers:{'Authorization':'token '+token,'Content-Type':'application/json'},body:JSON.stringify({message:'Admin: nouveau mot de passe',content:ub64(rawHtml),sha:di.sha})});
+      PASS=newPw;document.getElementById('f-new-pw').value='';
     }
-    setStatus('✓ Publié ! Site mis à jour dans 1-2 min...','ok');
+    setStatus('✓ Publié ! Mise à jour dans 1-2 min...','ok');
   }catch(e){setStatus('Erreur: '+e.message,'err');}
   btn.disabled=false;
 });
 })();
 </script>
 <!-- END ADMIN PANEL -->
+
 
 </body>
 </html>
