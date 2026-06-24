@@ -688,6 +688,7 @@ section:nth-child(even) { background: var(--bg-secondary); }
   margin-bottom: 0.35rem;
   color: var(--text-secondary);
 }
+.skill-item-header span:last-child { color: var(--blue); font-weight: 600; }
 .skill-bar-bg {
   height: 5px;
   background: var(--border-soft);
@@ -1078,12 +1079,14 @@ footer a { color: var(--blue); text-decoration: none; }
   .nav-links { display: none; }
   .nav-links.mobile-open {
     display: flex; flex-direction: column;
-    position: absolute; top: 64px; left: 0; right: 0;
+    position: fixed; top: 64px; left: 0; right: 0;
     background: var(--nav-bg);
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     border-bottom: 1px solid var(--border-soft);
     padding: 1.5rem 2rem;
     gap: 1.2rem;
+    z-index: 999;
   }
   .hamburger { display: flex; }
 }
@@ -1510,15 +1513,15 @@ footer a { color: var(--blue); text-decoration: none; }
         </div>
         <div class="skill-cat-title">Systèmes & ERP</div>
         <div class="skill-item">
-          <div class="skill-item-header"><span>Déploiement ERP</span></div>
+          <div class="skill-item-header"><span>Déploiement ERP</span><span>88%</span></div>
           <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-item-header"><span>Gestion de projet</span></div>
+          <div class="skill-item-header"><span>Gestion de projet</span><span>92%</span></div>
           <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-item-header"><span>Support & formation</span></div>
+          <div class="skill-item-header"><span>Support & formation</span><span>95%</span></div>
           <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div>
         </div>
       </div>
@@ -1530,15 +1533,15 @@ footer a { color: var(--blue); text-decoration: none; }
         </div>
         <div class="skill-cat-title">IA & Automatisation</div>
         <div class="skill-item">
-          <div class="skill-item-header"><span>No-code / Low-code</span></div>
+          <div class="skill-item-header"><span>No-code / Low-code</span><span>85%</span></div>
           <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-item-header"><span>Automatisation des flux</span></div>
+          <div class="skill-item-header"><span>Automatisation des flux</span><span>82%</span></div>
           <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="82"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-item-header"><span>Outils IA appliqués</span></div>
+          <div class="skill-item-header"><span>Outils IA appliqués</span><span>78%</span></div>
           <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="78"></div></div>
         </div>
       </div>
@@ -1550,15 +1553,15 @@ footer a { color: var(--blue); text-decoration: none; }
         </div>
         <div class="skill-cat-title">Design & Création</div>
         <div class="skill-item">
-          <div class="skill-item-header"><span>Canva (certifié)</span></div>
+          <div class="skill-item-header"><span>Canva (certifié)</span><span>96%</span></div>
           <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="96"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-item-header"><span>Identité visuelle</span></div>
+          <div class="skill-item-header"><span>Identité visuelle</span><span>88%</span></div>
           <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-item-header"><span>Communication digitale</span></div>
+          <div class="skill-item-header"><span>Communication digitale</span><span>90%</span></div>
           <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div>
         </div>
       </div>
@@ -1934,13 +1937,16 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 const barObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      e.target.querySelectorAll('.skill-bar-fill, .lang-bar').forEach(bar => {
-        bar.style.width = bar.dataset.width + '%';
-      });
-      barObserver.unobserve(e.target);
+      const target = e.target;
+      barObserver.unobserve(target);
+      setTimeout(() => {
+        target.querySelectorAll('.skill-bar-fill, .lang-bar').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+      }, 350);
     }
   });
-}, { threshold: 0.2 });
+}, { threshold: 0.15 });
 document.querySelectorAll('.skill-category, .lang-card').forEach(el => barObserver.observe(el));
 
 // ===========================<script id="data-loader">
