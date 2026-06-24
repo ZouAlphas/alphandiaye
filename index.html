@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,7 @@
 <meta name="keywords" content="transformation digitale, ERP Afrique, consultant digital Dakar, Alpha Ndiaye, Senedoo, GDA, Sénégal">
 <meta name="author" content="Alpha Ndiaye">
 <meta name="robots" content="index, follow">
+<meta name="theme-color" content="#38BDF8">
 <link rel="canonical" href="https://alphandiaye.online/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://alphandiaye.online/">
@@ -22,6 +23,8 @@
 <meta name="twitter:image" content="https://alphandiaye.online/images/photo.jpeg">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Alpha Ndiaye","jobTitle":"Expert en Transformation Digitale","url":"https://alphandiaye.online","image":"https://alphandiaye.online/images/photo.jpeg","worksFor":{"@type":"Organization","name":"Senedoo"},"address":{"@type":"PostalAddress","addressLocality":"Dakar","addressCountry":"SN"}}
+</script>
+<script>
   // ── Contact Form Handler ─────────────────────
   (function(){
     const form = document.getElementById('contact-form');
@@ -61,8 +64,29 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"></noscript>
 <style>
+/* ===========================
+   SKIP LINK
+   =========================== */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 1rem;
+  background: var(--blue);
+  color: var(--bg-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 8px 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  z-index: 10000;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
 /* ===========================
    VARIABLES & RESET
    =========================== */
@@ -70,8 +94,6 @@
   --blue: #38BDF8;
   --blue-dark: #0EA5E9;
   --blue-glow: rgba(56,189,248,0.18);
-  --gold: #F59E0B;
-
   /* DARK MODE (default) */
   --bg-primary: #0A0F1E;
   --bg-secondary: #0D1525;
@@ -119,7 +141,9 @@ body {
   color: var(--text-primary);
   line-height: 1.7;
   transition: background 0.3s, color 0.3s;
-  cursor: none;
+}
+@media (pointer: fine) {
+  body, a, button, .theme-toggle, .nav-cta, .btn-primary, .btn-outline, .hamburger { cursor: none !important; }
 }
 
 /* ===========================
@@ -193,7 +217,6 @@ nav {
 .theme-toggle {
   background: none;
   border: none;
-  cursor: none;
   font-size: 1.4rem;
   line-height: 1;
   padding: 4px;
@@ -204,13 +227,12 @@ nav {
 .theme-toggle:hover { transform: scale(1.2) rotate(15deg); opacity: 1; }
 .nav-cta {
   background: var(--blue);
-  color: #0A0F1E;
+  color: var(--bg-primary);
   border: none;
   padding: 0.45rem 1.1rem;
   border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 600;
-  cursor: none;
   text-decoration: none;
   transition: opacity 0.2s, transform 0.2s;
 }
@@ -221,7 +243,6 @@ nav {
   gap: 5px;
   background: none;
   border: none;
-  cursor: none;
   padding: 4px;
 }
 .hamburger span {
@@ -317,7 +338,7 @@ nav {
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;
   background: var(--blue);
-  color: #0A0F1E;
+  color: var(--bg-primary);
   padding: 0.8rem 1.8rem;
   border-radius: 50px;
   font-weight: 700;
@@ -338,7 +359,6 @@ nav {
   text-decoration: none;
   border: 1.5px solid var(--blue);
   transition: background 0.2s, transform 0.2s;
-  cursor: none;
 }
 .btn-outline:hover { background: var(--blue-glow); transform: translateY(-2px); }
 .hero-photo {
@@ -1016,7 +1036,7 @@ footer a { color: var(--blue); text-decoration: none; }
 .admin-input:focus { border-color: var(--blue); }
 .admin-btn {
   background: var(--blue);
-  color: #0A0F1E;
+  color: var(--bg-primary);
   border: none;
   padding: 0.8rem 2rem;
   border-radius: 10px;
@@ -1169,6 +1189,7 @@ footer a { color: var(--blue); text-decoration: none; }
 <div id="cursor-dot"></div>
 
 <!-- NAV -->
+<a href="#hero" class="skip-link">Aller au contenu principal</a>
 <nav>
   <div class="nav-logo">Alpha<span style="color:var(--text-muted);">.</span></div>
   <ul class="nav-links" id="nav-links">
@@ -1182,7 +1203,7 @@ footer a { color: var(--blue); text-decoration: none; }
   <div class="nav-actions">
     <div class="lang-switcher"><button class="lang-btn active" id="lang-fr" onclick="setLang('fr')" title="Français">🇫🇷</button><button class="lang-btn" id="lang-en" onclick="setLang('en')" title="English">🇬🇧</button></div><button class="theme-toggle" id="theme-toggle" title="Basculer thème" aria-label="Thème">☀️</button>
     <a href="#contact" class="nav-cta">Me contacter</a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -1219,7 +1240,7 @@ footer a { color: var(--blue); text-decoration: none; }
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
           Mes réalisations
         </a>
-        <a href="https://drive.google.com/uc?export=download&id=1Rc_Ll7EuomI5FeMPTkga7_4Q3cMDJ4iP" target="_blank" class="btn-outline" id="cv-download">
+        <a href="https://drive.google.com/uc?export=download&id=1Rc_Ll7EuomI5FeMPTkga7_4Q3cMDJ4iP" target="_blank" rel="noopener noreferrer" class="btn-outline" id="cv-download">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Télécharger CV
         </a>
@@ -1773,7 +1794,7 @@ footer a { color: var(--blue); text-decoration: none; }
 <section id="contact">
       <div class="section-inner">
         <div class="contact-wrapper reveal">
-          <h3>Travaillons <span style="color:var(--blue);">ensemble</span></h3>
+          <h2>Travaillons <span style="color:var(--blue);">ensemble</span></h2>
           <p>Un projet, une idée, une collaboration ? Je suis disponible pour échanger.</p>
 
           <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
@@ -1819,7 +1840,7 @@ footer a { color: var(--blue); text-decoration: none; }
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 Alpha Ndiaye. Tous droits réservés. · <a href="https://www.linkedin.com/in/alphandiaye" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://groupedigitalafrique.com" target="_blank" rel="noopener">GDA</a> · <span id="adm-btn" onclick="if(window.openAdmin)window.openAdmin();" style="color:rgba(120,170,220,.5);font-size:11px;cursor:pointer;font-weight:500;letter-spacing:.3px;" title="Ouvrir le panneau admin">Admin</span></p>
+  <p>© 2026 Alpha Ndiaye. Tous droits réservés. · <a href="https://www.linkedin.com/in/alphandiaye" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="https://groupedigitalafrique.com" target="_blank" rel="noopener noreferrer">GDA</a> · <span id="adm-btn" onclick="if(window.openAdmin)window.openAdmin();" style="color:rgba(120,170,220,.5);font-size:11px;cursor:pointer;font-weight:500;letter-spacing:.3px;" title="Ouvrir le panneau admin">Admin</span></p>
 </footer>
 
 <script>
@@ -1831,6 +1852,7 @@ const dot = document.getElementById('cursor-dot');
 let mx = -100, my = -100, rx = -100, ry = -100;
 document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 function animateCursor() {
+  if (document.hidden) { requestAnimationFrame(animateCursor); return; }
   rx += (mx - rx) * 0.15;
   ry += (my - ry) * 0.15;
   ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
@@ -1857,6 +1879,8 @@ if (savedTheme) {
 } else {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+themeBtn.setAttribute('aria-pressed', prefersDark ? 'true' : 'false');
+themeBtn.setAttribute('aria-label', prefersDark ? 'Mode sombre activé' : 'Mode clair activé');
 }
 updateThemeIcon();
 themeBtn.addEventListener('click', () => {
@@ -1871,7 +1895,10 @@ themeBtn.addEventListener('click', () => {
 // ===========================
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
-hamburger.addEventListener('click', () => navLinks.classList.toggle('mobile-open'));
+hamburger.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('mobile-open');
+  hamburger.setAttribute('aria-expanded', isOpen);
+});
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('mobile-open')));
 
 // ===========================
@@ -1899,6 +1926,7 @@ function Particle() {
 for (let i = 0; i < 80; i++) particles.push(new Particle());
 
 function drawParticles() {
+  if (document.hidden) { requestAnimationFrame(drawParticles); return; }
   ctx.clearRect(0, 0, W, H);
   const isDark = html.getAttribute('data-theme') !== 'light';
   const pColor = isDark ? 'rgba(56,189,248,0.55)' : 'rgba(14,165,233,0.45)';
@@ -2252,7 +2280,7 @@ var _hb=document.getElementById('hamburger');var _nl=document.getElementById('na
 
 </style>
 <div id="admin-overlay">
-<div id="admin-panel">
+<div id="admin-panel" role="dialog" aria-modal="true" aria-labelledby="admin-modal-title">
 <div id="admin-lock"><div class="a-lock-card"><div class="a-lock-icon">🔐</div><h2>Admin Panel</h2><p>Entrez le mot de passe pour modifier et publier votre portfolio</p><input type="password" id="admin-pw-input" placeholder="••••••••" autocomplete="off"><div id="admin-pw-error">Mot de passe incorrect</div><button id="admin-pw-btn">Accéder au panel →</button></div></div>
 <div id="admin-main">
 <div id="admin-sidebar">
