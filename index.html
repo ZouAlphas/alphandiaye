@@ -191,24 +191,17 @@ nav {
   display: flex; align-items: center; gap: 1rem;
 }
 .theme-toggle {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 50px;
-  width: 48px; height: 26px;
+  background: none;
+  border: none;
   cursor: none;
-  position: relative;
-  transition: background 0.3s;
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 4px;
+  transition: transform 0.25s, opacity 0.25s;
+  opacity: 0.85;
+  display: flex; align-items: center; justify-content: center;
 }
-.theme-toggle::after {
-  content: '';
-  position: absolute;
-  top: 3px; left: 3px;
-  width: 20px; height: 20px;
-  background: var(--blue);
-  border-radius: 50%;
-  transition: transform 0.3s;
-}
-[data-theme="light"] .theme-toggle::after { transform: translateX(22px); }
+.theme-toggle:hover { transform: scale(1.2) rotate(15deg); opacity: 1; }
 .nav-cta {
   background: var(--blue);
   color: #0A0F1E;
@@ -1187,7 +1180,7 @@ footer a { color: var(--blue); text-decoration: none; }
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-actions">
-    <div class="lang-switcher"><button class="lang-btn active" id="lang-fr" onclick="setLang('fr')" title="Français">🇫🇷</button><button class="lang-btn" id="lang-en" onclick="setLang('en')" title="English">🇬🇧</button></div><button class="theme-toggle" id="theme-toggle" title="Basculer thème" aria-label="Thème"></button>
+    <div class="lang-switcher"><button class="lang-btn active" id="lang-fr" onclick="setLang('fr')" title="Français">🇫🇷</button><button class="lang-btn" id="lang-en" onclick="setLang('en')" title="English">🇬🇧</button></div><button class="theme-toggle" id="theme-toggle" title="Basculer thème" aria-label="Thème">☀️</button>
     <a href="#contact" class="nav-cta">Me contacter</a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1855,11 +1848,22 @@ document.querySelectorAll('a, button').forEach(el => {
 // ===========================
 const html = document.documentElement;
 const themeBtn = document.getElementById('theme-toggle');
-// Detect system preference
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+function updateThemeIcon() {
+  themeBtn.textContent = html.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+}
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  html.setAttribute('data-theme', savedTheme);
+} else {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+}
+updateThemeIcon();
 themeBtn.addEventListener('click', () => {
-  html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeIcon();
 });
 
 // ===========================
@@ -1984,17 +1988,84 @@ document.querySelectorAll('.skill-category, .lang-card').forEach(el => barObserv
 // LANGUAGE TRANSLATIONS
 // ===========================
 var TRANS={
-fr:{nt:['À propos','Expérience','Réalisations','Compétences','Formation','Contact'],nca:'Me contacter',
-ht1:'Je transforme les idées',ht2:'en ',ht3:'systèmes qui fonctionnent',
-hd:'Expert en transformation digitale, cofondateur de GDA et Responsable Support chez Senedoo. Six ans d’expérience entre la création digitale et deux ans d’implémentation terrain.',
-hb1:'Mes réalisations',hb2:'Télécharger CV',
-st:['Mon expérience','Quelques réalisations','Mes compétences','Études & certifications','Au-delà du professionnel','Langues parlées'],
-sct:'Travaillons ensemble',cfn:'Votre nom',cfe:'Votre email',cfm:'Votre message',cfs:'Envoyer le message'},
+fr:{nt:['À propos','Expérience','Réalisations','Compétences','Formation','Contact'],
+nca:'Me contacter',
+ht1:'Je transforme les idées',
+ht2:'en ',
+ht3:'systèmes qui fonctionnent',
+hd:'Expert en transformation digitale, cofondateur de GDA et Responsable Support chez Senedoo. Six ans d\'expérience entre la création digitale et deux ans d\'implémentation terrain.',
+hb1:'Mes réalisations',
+hb2:'Télécharger CV',
+badge:'Disponible pour de nouveaux projets',
+scroll:'Découvrir',
+sl:['Projets réalisés','Pays accompagnés','Ans d\'expérience'],
+partners:'Ils m\'ont fait confiance',
+aboutLbl:'À propos',
+aboutH2:'Une expertise construite sur le terrain, <span style="color:var(--blue);">en Afrique de l\'Ouest</span>',
+aboutP1:'Je suis Alpha Ndiaye, expert en transformation digitale basé à Dakar. Depuis six ans, j\'accompagne des entreprises dans leur transition numérique — de la création d\'identité visuelle au déploiement de systèmes ERP complexes.',
+aboutP2:'Cofondateur du Groupe Digital Afrique et Responsable Support chez Senedoo, j\'ai développé une double compétence rare : comprendre les enjeux business et maîtriser les outils digitaux qui les servent. Je pilote aujourd\'hui des projets nationaux et sous-régionaux qui transforment concrètement le fonctionnement d\'organisations et d\'entreprises.',
+aboutP3:'Ce qui me distingue, c\'est la capacité à faire le lien entre la vision stratégique et l\'exécution opérationnelle — sans perdre de vue l\'humain au centre de chaque projet.',
+aboutBtn:'Mes réalisations',
+v1h:'Expertise ERP',
+v1p:'Deux ans de déploiements et d\'accompagnement sur des projets ERP en Afrique de l\'Ouest.',
+v2h:'Vision long terme',
+v2p:'Des solutions pensées pour durer, adaptées aux réalités économiques locales.',
+v3h:'Accompagnement humain',
+v3p:'La technologie au service des personnes — formation, support et transfert de compétences.',
+v4h:'Impact mesurable',
+v4p:'Chaque projet se traduit par des résultats concrets, quantifiables, visibles sur le terrain.',
+expLbl:'Parcours',
+expSub:'Six ans entre la création digitale et le déploiement de solutions ERP en Afrique de l\'Ouest.',
+projLbl:'Portfolio',
+projSub:'Des projets concrets, livrés, qui fonctionnent aujourd\'hui.',
+skillLbl:'Savoir-faire',
+skillSub:'Une palette de compétences au croisement du digital, du design et de la gestion de projet.',
+eduLbl:'Formation',
+eduSub:'Un parcours académique solide, renforcé par des certifications terrain.',
+eduAcad:'Parcours académique',
+eduCert:'Certifications',
+perLbl:'Qui je suis',
+perSub:'Ce qui m\'anime en dehors du travail nourrit aussi ma façon d\'aborder chaque projet.',
+langLbl:'Communication',
+langSub:'Je travaille et communique dans trois langues au quotidien.',
+langLv:['Langue principale — Courant','Professionnel — Courant','Langue maternelle — Natif'],
+ctLbl:'Contact',
+ctP:'Un projet, une idée, une collaboration ? Je suis disponible pour discuter et explorer comment je peux vous accompagner.',
+ctCV:'Télécharger mon CV',
+st:['Mon <span>expérience</span>','Quelques <span>réalisations</span>','Mes <span>compétences</span>','Études & <span>certifications</span>','Au-delà du <span>professionnel</span>','Langues <span>parlées</span>'],
+sct:'Travaillons ensemble',
+cfn:'Votre nom',
+cfe:'Votre email',
+cfm:'Votre message',
+cfs:'Envoyer le message'},
 en:{nt:['About','Experience','Projects','Skills','Education','Contact'],nca:'Contact me',
 ht1:'I turn ideas',ht2:'into ',ht3:'systems that work',
 hd:'Digital transformation expert, co-founder of GDA and Support Manager at Senedoo. Six years bridging digital creation and hands-on implementation across Africa.',
 hb1:'My projects',hb2:'Download CV',
-st:['My experience','Selected projects','My skills','Studies & certifications','Beyond work','Languages'],
+badge:'Available for new projects',scroll:'Discover',
+sl:['Projects completed','Countries','Years of experience'],
+partners:'They trusted me',
+aboutLbl:'About',
+aboutH2:'Expertise built in the field, <span style="color:var(--blue);">across West Africa</span>',
+aboutP1:'I am Alpha Ndiaye, a digital transformation expert based in Dakar. For six years, I have been supporting companies through their digital transition — from visual identity creation to deploying complex ERP systems.',
+aboutP2:'Co-founder of Groupe Digital Afrique and Support Manager at Senedoo, I have developed a rare dual expertise: understanding business challenges and mastering the digital tools that serve them. I now lead national and sub-regional projects that concretely transform how organizations and companies operate.',
+aboutP3:'What sets me apart is the ability to bridge the gap between strategic vision and operational execution — without losing sight of the human element at the center of each project.',
+aboutBtn:'My projects',
+v1h:'ERP Expertise',v1p:'Two years of deployments and support on ERP projects across West Africa.',
+v2h:'Long-term vision',v2p:'Solutions built to last, adapted to local economic realities.',
+v3h:'Human-centered support',v3p:'Technology in service of people — training, support and skills transfer.',
+v4h:'Measurable impact',v4p:'Every project translates into concrete, quantifiable, visible results on the ground.',
+expLbl:'Career',expSub:'Six years bridging digital creation and ERP solution deployment across West Africa.',
+projLbl:'Portfolio',projSub:'Concrete projects, delivered, working today.',
+skillLbl:'Expertise',skillSub:'A skill set at the crossroads of digital, design and project management.',
+eduLbl:'Education',eduSub:'A solid academic background, reinforced by hands-on certifications.',
+eduAcad:'Academic background',eduCert:'Certifications',
+perLbl:'Who I am',perSub:'What drives me outside of work also shapes the way I approach every project.',
+langLbl:'Communication',langSub:'I work and communicate in three languages daily.',
+langLv:['Main language — Fluent','Professional — Fluent','Mother tongue — Native'],
+ctLbl:'Contact',ctP:'A project, an idea, a collaboration? I am available to discuss and explore how I can support you.',
+ctCV:'Download my CV',
+st:['My <span>experience</span>','Selected <span>projects</span>','My <span>skills</span>','Studies & <span>certifications</span>','Beyond <span>work</span>','<span>Languages</span>'],
 sct:"Let's work together",cfn:'Your name',cfe:'Your email',cfm:'Your message',cfs:'Send message'}
 };
 function setLang(l){
@@ -2009,11 +2080,59 @@ var nca=document.querySelector('.nav-cta');if(nca)nca.textContent=t.nca;
 var h1=document.querySelector('.hero-title');
 if(h1){var cn=h1.childNodes;if(cn[0])cn[0].textContent=t.ht1;if(cn[2])cn[2].textContent=t.ht2;var sp=h1.querySelector('span');if(sp)sp.textContent=t.ht3;}
 var hd=document.querySelector('.hero-desc');if(hd)hd.textContent=t.hd;
-var hb1=document.querySelector('.btn-primary');if(hb1)hb1.textContent=t.hb1;
-var hb2=document.getElementById('cv-download');if(hb2)hb2.textContent=t.hb2;
+var hb1el=document.querySelector('#hero .btn-primary');
+if(hb1el){hb1el.childNodes.forEach(function(n){if(n.nodeType===3&&n.textContent.trim())n.textContent='
+          '+t.hb1+'
+        ';});}
+var hb2el=document.getElementById('cv-download');
+if(hb2el){hb2el.childNodes.forEach(function(n){if(n.nodeType===3&&n.textContent.trim())n.textContent='
+          '+t.hb2+'
+        ';});}
+var badge=document.querySelector('.hero-badge');if(badge)badge.textContent=t.badge;
+var sl=document.querySelectorAll('.hero-stat-label');sl.forEach(function(el,i){if(t.sl[i])el.textContent=t.sl[i];});
+var sc=document.querySelector('.scroll-indicator');
+if(sc){sc.childNodes.forEach(function(n){if(n.nodeType===3&&n.textContent.trim())n.textContent='
+    '+t.scroll+'
+  ';});}
+var pl=document.querySelector('#partners .section-label');if(pl)pl.textContent=t.partners;
+var al=document.querySelector('#about .section-label');if(al)al.textContent=t.aboutLbl;
+var ah2=document.querySelector('#about .about-text h2');if(ah2)ah2.innerHTML=t.aboutH2;
+var aps=document.querySelectorAll('#about .about-text p');
+if(aps[0])aps[0].textContent=t.aboutP1;if(aps[1])aps[1].textContent=t.aboutP2;if(aps[2])aps[2].textContent=t.aboutP3;
+var abn=document.querySelector('#about .btn-primary');
+if(abn){abn.childNodes.forEach(function(n){if(n.nodeType===3&&n.textContent.trim())n.textContent='
+          '+t.aboutBtn+'
+        ';});}
+var vhs=document.querySelectorAll('.value-card h4'),vps=document.querySelectorAll('.value-card p');
+if(vhs[0])vhs[0].textContent=t.v1h;if(vps[0])vps[0].textContent=t.v1p;
+if(vhs[1])vhs[1].textContent=t.v2h;if(vps[1])vps[1].textContent=t.v2p;
+if(vhs[2])vhs[2].textContent=t.v3h;if(vps[2])vps[2].textContent=t.v3p;
+if(vhs[3])vhs[3].textContent=t.v4h;if(vps[3])vps[3].textContent=t.v4p;
+var exl=document.querySelector('#experience .section-label');if(exl)exl.textContent=t.expLbl;
+var exsub=document.querySelector('#experience .section-subtitle');if(exsub)exsub.textContent=t.expSub;
+var pjl=document.querySelector('#projects .section-label');if(pjl)pjl.textContent=t.projLbl;
+var pjsub=document.querySelector('#projects .section-subtitle');if(pjsub)pjsub.textContent=t.projSub;
+var skl=document.querySelector('#skills .section-label');if(skl)skl.textContent=t.skillLbl;
+var sksub=document.querySelector('#skills .section-subtitle');if(sksub)sksub.textContent=t.skillSub;
+var edl=document.querySelector('#education .section-label');if(edl)edl.textContent=t.eduLbl;
+var edsub=document.querySelector('#education .section-subtitle');if(edsub)edsub.textContent=t.eduSub;
+var edas=document.querySelectorAll('#education .edu-section-title');
+if(edas[0]){var sv0=edas[0].querySelector('svg');edas[0].textContent='';if(sv0)edas[0].appendChild(sv0);edas[0].appendChild(document.createTextNode(' '+t.eduAcad));}
+if(edas[1]){var sv1=edas[1].querySelector('svg');edas[1].textContent='';if(sv1)edas[1].appendChild(sv1);edas[1].appendChild(document.createTextNode(' '+t.eduCert));}
+var perl=document.querySelector('#personality .section-label');if(perl)perl.textContent=t.perLbl;
+var persub=document.querySelector('#personality .section-subtitle');if(persub)persub.textContent=t.perSub;
+var langl=document.querySelector('#languages .section-label');if(langl)langl.textContent=t.langLbl;
+var langsub=document.querySelector('#languages .section-subtitle');if(langsub)langsub.textContent=t.langSub;
+var lvs=document.querySelectorAll('.lang-level');lvs.forEach(function(el,i){if(t.langLv[i])el.textContent=t.langLv[i];});
+var ctl=document.querySelector('#contact .section-label');if(ctl)ctl.textContent=t.ctLbl;
+var ctp=document.querySelector('.contact-wrapper p');if(ctp)ctp.textContent=t.ctP;
+var ctcv=document.getElementById('cv-download-2');
+if(ctcv){ctcv.childNodes.forEach(function(n){if(n.nodeType===3&&n.textContent.trim())n.textContent='
+        '+t.ctCV+'
+      ';});}
 var sts=document.querySelectorAll('.section-title');
-sts.forEach(function(el,i){if(t.st[i])el.textContent=t.st[i];});
-var sct=document.querySelector('#contact h2');if(sct)sct.textContent=t.sct;
+sts.forEach(function(el,i){if(t.st[i])el.innerHTML=t.st[i];});
+var sct=document.querySelector('#contact h2');if(sct)sct.innerHTML=t.sct;
 var cfn=document.getElementById('cf-name');if(cfn)cfn.placeholder=t.cfn;
 var cfe=document.getElementById('cf-email');if(cfe)cfe.placeholder=t.cfe;
 var cfm=document.getElementById('cf-message');if(cfm)cfm.placeholder=t.cfm;
@@ -2180,7 +2299,7 @@ function ub64(s){var by=new TextEncoder().encode(s);var r='';by.forEach(function
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function setStatus(m,c){var el=document.getElementById('a-status');if(el){el.textContent=m;el.className=c||''}}
 var overlay=document.getElementById('admin-overlay'),lockEl=document.getElementById('admin-lock'),mainEl=document.getElementById('admin-main'),pwIn=document.getElementById('admin-pw-input');
-window.openAdmin=openAdmin;if(location.hash==='#admin'){setTimeout(openAdmin,300);var ab=document.getElementById('adm-btn');if(ab)ab.style.display='none';}window.addEventListener('hashchange',function(){if(location.hash==='#admin'){openAdmin();var ab=document.getElementById('adm-btn');if(ab)ab.style.display='none';}});document.addEventListener('keydown',function(e){if(e.ctrlKey&&e.shiftKey&&(e.key==='A'||e.key==='a'||e.code==='KeyA')){e.preventDefault();openAdmin();}});
+window.openAdmin=openAdmin;if(location.hash==='#admin'||location.pathname==='/admin'){setTimeout(openAdmin,300);var ab=document.getElementById('adm-btn');if(ab)ab.style.display='none';}window.addEventListener('hashchange',function(){if(location.hash==='#admin'){openAdmin();var ab=document.getElementById('adm-btn');if(ab)ab.style.display='none';}});document.addEventListener('keydown',function(e){if(e.ctrlKey&&e.shiftKey&&(e.key==='A'||e.key==='a'||e.code==='KeyA')){e.preventDefault();openAdmin();}});
 document.getElementById('a-close').addEventListener('click',function(){overlay.style.display='none'});
 overlay.addEventListener('click',function(e){if(e.target===overlay)overlay.style.display='none'});
 function openAdmin(){overlay.style.display='flex';lockEl.style.display='flex';mainEl.style.display='none';pwIn.value='';document.getElementById('admin-pw-error').style.display='none';setTimeout(function(){pwIn.focus()},50);}
