@@ -60,7 +60,36 @@
         txt.textContent = 'Envoyer le message';
       }
     });
-  })();
+  function adminUploadImg(btn){
+  var wrap=btn.closest('.img-upload-wrap');
+  var urlInp=wrap.querySelector('input[type="text"]');
+  var fi=document.createElement('input');fi.type='file';fi.accept='image/*';
+  fi.onchange=function(e){
+    var f=e.target.files[0];if(!f)return;
+    var tok=getToken();
+    if(!tok){alert('Token GitHub requis dans Paramètres pour uploader des images.');return;}
+    btn.textContent='⏳ Upload...';btn.classList.add('loading');btn.disabled=true;
+    var reader=new FileReader();
+    reader.onload=function(ev){
+      var b64=ev.target.result.split(',')[1];
+      var fname='images/'+Date.now()+'_'+f.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+      fetch('https://api.github.com/repos/'+GH_REPO+'/contents/'+fname,{
+        method:'PUT',
+        headers:{'Authorization':'token '+tok,'Content-Type':'application/json'},
+        body:JSON.stringify({message:'Upload image: '+f.name,content:b64})
+      }).then(function(r){return r.json();}).then(function(d){
+        if(d.content&&d.content.download_url){
+          var url='https://alphandiaye.online/'+fname;
+          urlInp.value=url;urlInp.dispatchEvent(new Event('input',{bubbles:true}));
+          var prev=wrap.querySelector('.img-preview');
+          if(prev){prev.src=url;}else{var img=document.createElement('img');img.className='img-preview';img.src=url;wrap.appendChild(img);}
+          btn.textContent='✅ Uploadé!';setTimeout(function(){btn.textContent='📁 Upload';btn.classList.remove('loading');btn.disabled=false;},2000);
+        }else{alert('Erreur upload: '+(d.message||JSON.stringify(d)));btn.textContent='📁 Upload';btn.classList.remove('loading');btn.disabled=false;}
+      }).catch(function(err){alert('Erreur: '+err);btn.textContent='📁 Upload';btn.classList.remove('loading');btn.disabled=false;});
+    };reader.readAsDataURL(f);
+  };fi.click();
+}
+})();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2227,6 +2256,13 @@ var _hb=document.getElementById('hamburger');var _nl=document.getElementById('na
 .a-group-label{font-size:10px;font-weight:600;color:#3d444d;letter-spacing:.6px;text-transform:uppercase;margin-bottom:14px;}
 .a-field{margin-bottom:12px;}
 .a-field:last-child{margin-bottom:0;}
+.img-upload-wrap{display:flex;flex-direction:column;gap:6px;}
+.img-upload-row{display:flex;gap:6px;align-items:center;}
+.img-upload-row input{flex:1;}
+.img-upload-btn{background:#38BDF8;color:#0d1117;border:none;border-radius:7px;padding:7px 12px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .2s;}
+.img-upload-btn:hover{background:#7DD3FC;}
+.img-upload-btn.loading{background:#555;cursor:wait;}
+.img-preview{max-width:100%;max-height:90px;border-radius:8px;object-fit:cover;border:1px solid rgba(255,255,255,.1);}
 .a-field label{display:block;font-size:12px;font-weight:500;color:#8b949e;margin-bottom:5px;}
 .a-field input,.a-field textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:8px;padding:8px 12px;color:#f0f6fc;font-size:13px;font-family:inherit;outline:none;transition:border-color .2s,background .2s;resize:vertical;}
 .a-field input:focus,.a-field textarea:focus{border-color:#38BDF8;background:rgba(56,189,248,.04);}
@@ -2391,12 +2427,12 @@ var expFields={label:function(i){return i.company||'Expérience'},inputs:[
   {id:'company',lbl:'Entreprise',type:'text'},{id:'role',lbl:'Poste',type:'text'},
   {id:'period',lbl:'Période',type:'text'},{id:'desc',lbl:'Description',type:'textarea'}
 ]};
-var projFields={label:function(i){return i.name||'Projet'},inputs:[{id:'name',lbl:'Nom du projet',type:'text'},{id:'company',lbl:'Organisation',type:'text'},{id:'desc',lbl:'Description',type:'textarea'},{id:'technologies',lbl:'Technologies (virgule-séparées)',type:'text'},{id:'link',lbl:'Lien du projet (URL)',type:'text'},{id:'banner',lbl:'URL bannière (ou uploader ci-dessous)',type:'text'}]};
+var projFields={label:function(i){return i.name||'Projet'},inputs:[{id:'name',lbl:'Nom du projet',type:'text'},{id:'company',lbl:'Organisation',type:'text'},{id:'desc',lbl:'Description',type:'textarea'},{id:'technologies',lbl:'Technologies (virgule-séparées)',type:'text'},{id:'link',lbl:'Lien du projet (URL)',type:'text'},{id:'banner',lbl:'Bannière du projet',type:'image-upload'}]};
 var eduFields={label:function(i){return i.degree||'Formation'},inputs:[
   {id:'degree',lbl:'Diplôme',type:'text'},{id:'school',lbl:'École',type:'text'},
   {id:'field',lbl:'Domaine',type:'text'},{id:'year',lbl:'Année',type:'text'}
 ]};
-var interestFields={label:function(i){return i.name||'Centre d\'intérêt'},inputs:[{id:'name',lbl:'Nom',type:'text'},{id:'desc',lbl:'Description',type:'textarea'},{id:'image',lbl:'URL image (120x120 ou 4:3)',type:'text'}]};
+var interestFields={label:function(i){return i.name||'Centre d\'intérêt'},inputs:[{id:'name',lbl:'Nom',type:'text'},{id:'desc',lbl:'Description',type:'textarea'},{id:'image',lbl:'Image (carré conseillé)',type:'image-upload'}]};
 var langFields={label:function(i){return i.name||'Langue'},inputs:[{id:'name',lbl:'Langue',type:'text'},{id:'level',lbl:'Niveau (ex: Courant, Natif)',type:'text'},{id:'flag',lbl:'Drapeau emoji (ex: 🇫🇷)',type:'text'}]};
 function buildList(containerId,items,fieldDef){
   var cont=document.getElementById(containerId);if(!cont)return;
@@ -2418,6 +2454,7 @@ function buildList(containerId,items,fieldDef){
       fields+='<div class="a-field"><label>'+inp.lbl+'</label>';
       if(inp.type==='textarea')fields+='<textarea class="af-'+inp.id+'" rows="2">'+esc(Array.isArray(item[inp.id])?item[inp.id].join(', '):(item[inp.id]||''))+'</textarea>';
       else if(inp.type==='range')fields+='<div class="a-range"><input type="range" min="0" max="100" class="af-'+inp.id+'" value="'+esc(item[inp.id]||0)+'"/><span>'+esc(item[inp.id]||0)+'</span></div>';
+      else if(inp.type==='image-upload'){var cv=esc(Array.isArray(item[inp.id])?item[inp.id].join(', '):(item[inp.id]||''));fields+='<div class="img-upload-wrap"><div class="img-upload-row"><input class="af-'+inp.id+' img-url-input" type="text" value="'+cv+'" placeholder="https://..."/><button type="button" class="img-upload-btn" onclick="adminUploadImg(this)">📁 Upload</button></div>'+(cv?'<img class="img-preview" src="'+cv+'"/>':'')+'</div>';}
       else fields+='<input class="af-'+inp.id+'" type="'+inp.type+'" value="'+esc(Array.isArray(item[inp.id])?item[inp.id].join(', '):(item[inp.id]||''))+'"/>';
       fields+='</div>';
     });
