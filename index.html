@@ -2455,7 +2455,7 @@ function buildList(containerId,items,fieldDef){
       fields+='<div class="a-field"><label>'+inp.lbl+'</label>';
       if(inp.type==='textarea')fields+='<textarea class="af-'+inp.id+'" rows="2">'+esc(Array.isArray(item[inp.id])?item[inp.id].join(', '):(item[inp.id]||''))+'</textarea>';
       else if(inp.type==='range')fields+='<div class="a-range"><input type="range" min="0" max="100" class="af-'+inp.id+'" value="'+esc(item[inp.id]||0)+'"/><span>'+esc(item[inp.id]||0)+'</span></div>';
-      else if(inp.type==='image-upload'){var cv=esc(Array.isArray(item[inp.id])?item[inp.id].join(', '):(item[inp.id]||''));fields+='<div class="img-upload-wrap"><div class="img-upload-row"><input class="af-'+inp.id+' img-url-input" type="text" value="'+cv+'" placeholder="https://..."/><button type="button" class="img-upload-btn" onclick="if(window.adminUploadImg)window.adminUploadImg(this);else alert('Fonction non chargée, rechargez la page.')">📁 Upload</button></div>'+(cv?'<img class="img-preview" src="'+cv+'"/>':'')+'</div>';}
+      else if(inp.type==='image-upload'){var cv=esc(Array.isArray(item[inp.id])?item[inp.id].join(', '):(item[inp.id]||''));fields+='<div class="img-upload-wrap"><div class="img-upload-row"><input class="af-'+inp.id+' img-url-input" type="text" value="'+cv+'" placeholder="https://..."/><button type="button" class="img-upload-btn" onclick="window.adminUploadImg&&window.adminUploadImg(this)">📁 Upload</button></div>'+(cv?'<img class="img-preview" src="'+cv+'"/>':'')+'</div>';}
       else fields+='<input class="af-'+inp.id+'" type="'+inp.type+'" value="'+esc(Array.isArray(item[inp.id])?item[inp.id].join(', '):(item[inp.id]||''))+'"/>';
       fields+='</div>';
     });
