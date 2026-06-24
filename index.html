@@ -689,6 +689,22 @@ section:nth-child(even) { background: var(--bg-secondary); }
   color: var(--text-secondary);
 }
 .skill-item-header span:last-child { color: var(--blue); font-weight: 600; }
+.project-banner,.exp-banner,.value-banner{width:100%;overflow:hidden;border-radius:8px;margin-bottom:1rem;}
+.project-banner{height:160px;}
+.exp-banner{height:120px;margin:-1.4rem -1.4rem 1.2rem;border-radius:8px 8px 0 0;}
+.value-banner{height:110px;}
+.project-banner img,.exp-banner img,.value-banner img{width:100%;height:100%;object-fit:cover;display:block;}
+.img-admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;}
+.img-slot{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:0.8rem;}
+.img-slot-label{font-size:0.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:0.5rem;}
+.img-preview{width:100%;height:90px;object-fit:cover;border-radius:6px;margin-bottom:0.5rem;display:none;}
+.img-ph{width:100%;height:90px;border:1.5px dashed rgba(255,255,255,.12);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:var(--text-muted);margin-bottom:0.5rem;}
+.img-btns{display:flex;gap:0.4rem;}
+.img-up-btn{flex:1;padding:5px 0;background:rgba(56,189,248,.12);color:var(--blue);border:1px solid rgba(56,189,248,.25);border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;}
+.img-del-btn{padding:5px 8px;background:rgba(248,113,113,.08);color:#f87171;border:1px solid rgba(248,113,113,.2);border-radius:6px;font-size:0.72rem;cursor:pointer;font-family:inherit;}
+.img-url-row{display:flex;gap:0.4rem;margin-bottom:0.4rem;}
+.img-url-input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:5px 8px;color:#f0f6fc;font-size:0.72rem;font-family:inherit;min-width:0;}
+.img-apply-btn{padding:5px 8px;background:rgba(52,211,153,.08);color:#34D399;border:1px solid rgba(52,211,153,.2);border-radius:6px;font-size:0.72rem;cursor:pointer;font-family:inherit;}
 .skill-bar-bg {
   height: 5px;
   background: var(--border-soft);
@@ -1289,6 +1305,7 @@ footer a { color: var(--blue); text-decoration: none; }
       </div>
       <div class="about-values reveal">
         <div class="value-card">
+          <div class="value-banner" data-banner-key="value-1" style="display:none;"><img class="banner-img" alt=""></div>
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
             <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
           </svg>
@@ -1296,6 +1313,7 @@ footer a { color: var(--blue); text-decoration: none; }
           <p>Deux ans de déploiements et d'accompagnement sur des projets ERP en Afrique de l'Ouest.</p>
         </div>
         <div class="value-card">
+          <div class="value-banner" data-banner-key="value-2" style="display:none;"><img class="banner-img" alt=""></div>
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
             <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
           </svg>
@@ -1303,6 +1321,7 @@ footer a { color: var(--blue); text-decoration: none; }
           <p>Des solutions pensées pour durer, adaptées aux réalités économiques locales.</p>
         </div>
         <div class="value-card">
+          <div class="value-banner" data-banner-key="value-3" style="display:none;"><img class="banner-img" alt=""></div>
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
             <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
@@ -1311,6 +1330,7 @@ footer a { color: var(--blue); text-decoration: none; }
           <p>La technologie au service des personnes — formation, support et transfert de compétences.</p>
         </div>
         <div class="value-card">
+          <div class="value-banner" data-banner-key="value-4" style="display:none;"><img class="banner-img" alt=""></div>
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
           </svg>
@@ -1331,6 +1351,7 @@ footer a { color: var(--blue); text-decoration: none; }
     <div class="exp-grid">
       <!-- SENEDOO -->
       <div class="exp-card reveal">
+        <div class="exp-banner" data-banner-key="exp-1" style="display:none;"><img class="banner-img" alt=""></div>
         <div class="exp-card-header">
           <div>
             <div class="exp-company">Senedoo</div>
@@ -1358,6 +1379,7 @@ footer a { color: var(--blue); text-decoration: none; }
       </div>
       <!-- GDA -->
       <div class="exp-card reveal">
+        <div class="exp-banner" data-banner-key="exp-2" style="display:none;"><img class="banner-img" alt=""></div>
         <div class="exp-card-header">
           <div>
             <div class="exp-company">Groupe Digital Afrique</div>
@@ -1398,7 +1420,8 @@ footer a { color: var(--blue); text-decoration: none; }
     <div class="projects-grid">
       <!-- Projet 1 -->
       <div class="project-card reveal">
-        <div class="project-logo">
+        <div class="project-banner" data-banner-key="project-1" style="display:none;"><img class="banner-img" alt=""></div>
+        <div class="project-logo" data-logo-for="project-1">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
             <rect x="2" y="3" width="20" height="14" rx="2"/><path d="m8 21 4-4 4 4"/><path d="M12 17v4"/>
           </svg>
@@ -1414,7 +1437,8 @@ footer a { color: var(--blue); text-decoration: none; }
       </div>
       <!-- Projet 2 -->
       <div class="project-card reveal">
-        <div class="project-logo">
+        <div class="project-banner" data-banner-key="project-2" style="display:none;"><img class="banner-img" alt=""></div>
+        <div class="project-logo" data-logo-for="project-2">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
             <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
           </svg>
@@ -1430,7 +1454,8 @@ footer a { color: var(--blue); text-decoration: none; }
       </div>
       <!-- Projet 3 -->
       <div class="project-card reveal">
-        <div class="project-logo">
+        <div class="project-banner" data-banner-key="project-3" style="display:none;"><img class="banner-img" alt=""></div>
+        <div class="project-logo" data-logo-for="project-3">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
             <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
             <path d="M16 10a4 4 0 0 1-8 0"/>
@@ -1447,7 +1472,8 @@ footer a { color: var(--blue); text-decoration: none; }
       </div>
       <!-- Projet 4 -->
       <div class="project-card reveal">
-        <div class="project-logo">
+        <div class="project-banner" data-banner-key="project-4" style="display:none;"><img class="banner-img" alt=""></div>
+        <div class="project-logo" data-logo-for="project-4">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
             <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
@@ -1464,7 +1490,8 @@ footer a { color: var(--blue); text-decoration: none; }
       </div>
       <!-- Projet 5 -->
       <div class="project-card reveal">
-        <div class="project-logo">
+        <div class="project-banner" data-banner-key="project-5" style="display:none;"><img class="banner-img" alt=""></div>
+        <div class="project-logo" data-logo-for="project-5">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
             <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
           </svg>
@@ -1480,7 +1507,8 @@ footer a { color: var(--blue); text-decoration: none; }
       </div>
       <!-- Projet 6 -->
       <div class="project-card reveal">
-        <div class="project-logo">
+        <div class="project-banner" data-banner-key="project-6" style="display:none;"><img class="banner-img" alt=""></div>
+        <div class="project-logo" data-logo-for="project-6">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
@@ -1948,6 +1976,15 @@ const barObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 document.querySelectorAll('.skill-category, .lang-card').forEach(el => barObserver.observe(el));
+// ===========================
+// BANNER IMAGES
+// ===========================
+function applyBanners(){document.querySelectorAll('[data-banner-key]').forEach(function(el){var k=el.dataset.bannerKey,src=localStorage.getItem('banner_'+k),img=el.querySelector('.banner-img'),logo=el.parentElement?el.parentElement.querySelector('[data-logo-for="'+k+'"]'):null;if(src){if(img)img.src=src;el.style.display='';if(logo)logo.style.display='none';}else{el.style.display='none';if(logo)logo.style.display='';}var p=document.getElementById('prev-'+k),ph=document.getElementById('ph-'+k);if(p){if(src){p.src=src;p.style.display='block';if(ph)ph.style.display='none';}else{p.style.display='none';if(ph)ph.style.display='flex';}}});}
+function setBanner(k,src){localStorage.setItem('banner_'+k,src);applyBanners();}
+function deleteBanner(k){localStorage.removeItem('banner_'+k);applyBanners();}
+function triggerUpload(k){var i=document.createElement('input');i.type='file';i.accept='image/*';i.onchange=function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(ev){setBanner(k,ev.target.result);};r.readAsDataURL(f);};i.click();}
+function applyBannerUrl(k){var u=document.getElementById('url-'+k);if(u&&u.value.trim())setBanner(k,u.value.trim());}
+applyBanners();
 
 // ===========================
 </script>
@@ -2069,6 +2106,8 @@ var _hb=document.getElementById('hamburger');var _nl=document.getElementById('na
 <div class="a-nav-label">Publier</div>
 <button class="a-nb" data-tab="contact"><span class="nb-ic">📬</span>Contact</button>
 <button class="a-nb" data-tab="settings"><span class="nb-ic">⚙️</span>Paramètres</button>
+<div class="a-nav-label">Visuels</div>
+<button class="a-nb" data-tab="images"><span class="nb-ic">🖼️</span>Images</button>
 </div>
 <button id="a-close">✕ Fermer le panel</button>
 </div>
@@ -2083,6 +2122,7 @@ var _hb=document.getElementById('hamburger');var _nl=document.getElementById('na
 <div class="a-sec" id="tab-personality"><div class="a-sec-hd"><div class="a-sec-title">Au-delà du professionnel</div><div class="a-sec-sub">Centres d'intérêt et langues parlées.</div></div><div class="a-group"><div class="a-group-label">Centres d'intérêt</div><div id="a-interests-list"></div><button class="a-add-btn" id="a-interests-add">+ Ajouter un intérêt</button></div><div class="a-group"><div class="a-group-label">Langues</div><div id="a-langs-list"></div><button class="a-add-btn" id="a-langs-add">+ Ajouter une langue</button></div></div>
 <div class="a-sec" id="tab-contact"><div class="a-sec-hd"><div class="a-sec-title">Contact</div><div class="a-sec-sub">Vos coordonnées et liens professionnels.</div></div><div class="a-group"><div class="a-field"><label>Email</label><input type="email" id="f-email"></div><div class="a-field"><label>LinkedIn URL</label><input type="url" id="f-linkedin"></div><div class="a-field"><label>GDA URL</label><input type="url" id="f-gda"></div><div class="a-field"><label>CV URL</label><input type="url" id="f-cv"></div></div></div>
 <div class="a-sec" id="tab-settings"><div class="a-sec-hd"><div class="a-sec-title">Paramètres</div><div class="a-sec-sub">Configuration GitHub et sécurité.</div></div><div class="a-group"><div class="a-group-label">GitHub</div><div class="a-field"><label>Token GitHub (PAT)</label><input type="password" id="f-gh-token" placeholder="ghp_..."><div class="a-hint">Stocké uniquement dans votre navigateur. Jamais partagé.</div></div></div><div class="a-group"><div class="a-group-label">Sécurité</div><div class="a-field"><label>Nouveau mot de passe admin</label><input type="password" id="f-new-pw" placeholder="Laisser vide pour ne pas changer"></div></div></div>
+<div class="a-sec" id="tab-images"><div class="a-sec-hd"><div class="a-sec-title">Images</div><div class="a-sec-sub">Personnalisez les visuels de chaque section.</div></div><div class="a-group"><div class="a-group-label">Projets</div><div class="img-admin-grid"><div class="img-slot"><div class="img-slot-label">ERP·DNC</div><div class="img-ph" id="ph-project-1">+ Aucune image</div><img class="img-preview" id="prev-project-1" alt=""><div class="img-url-row"><input class="img-url-input" id="url-project-1" placeholder="URL d'image..."><button class="img-apply-btn" onclick="applyBannerUrl('project-1')">OK</button></div><div class="img-btns"><button class="img-up-btn" onclick="triggerUpload('project-1')">Charger</button><button class="img-del-btn" onclick="deleteBanner('project-1')">✕</button></div></div><div class="img-slot"><div class="img-slot-label">Digital·CFTS</div><div class="img-ph" id="ph-project-2">+ Aucune image</div><img class="img-preview" id="prev-project-2" alt=""><div class="img-url-row"><input class="img-url-input" id="url-project-2" placeholder="URL d'image..."><button class="img-apply-btn" onclick="applyBannerUrl('project-2')">OK</button></div><div class="img-btns"><button class="img-up-btn" onclick="triggerUpload('project-2')">Charger</button><button class="img-del-btn" onclick="deleteBanner('project-2')">✕</button></div></div><div class="img-slot"><div class="img-slot-label">Sama Chef</div><div class="img-ph" id="ph-project-3">+ Aucune image</div><img class="img-preview" id="prev-project-3" alt=""><div class="img-url-row"><input class="img-url-input" id="url-project-3" placeholder="URL d'image..."><button class="img-apply-btn" onclick="applyBannerUrl('project-3')">OK</button></div><div class="img-btns"><button class="img-up-btn" onclick="triggerUpload('project-3')">Charger</button><button class="img-del-btn" onclick="deleteBanner('project-3')">✕</button></div></div><div class="img-slot"><div class="img-slot-label">Mossane</div><div class="img-ph" id="ph-project-4">+ Aucune image</div><img class="img-preview" id="prev-project-4" alt=""><div class="img-url-row"><input class="img-url-input" id="url-project-4" placeholder="URL d'image..."><button class="img-apply-btn" onclick="applyBannerUrl('project-4')">OK</button></div><div class="img-btns"><button class="img-up-btn" onclick="triggerUpload('project-4')">Charger</button><button class="img-del-btn" onclick="deleteBanner('project-4')">✕</button></div></div><div class="img-slot"><div class="img-slot-label">BITIK</div><div class="img-ph" id="ph-project-5">+ Aucune image</div><img class="img-preview" id="prev-project-5" alt=""><div class="img-url-row"><input class="img-url-input" id="url-project-5" placeholder="URL d'image..."><button class="img-apply-btn" onclick="applyBannerUrl('project-5')">OK</button></div><div class="img-btns"><button class="img-up-btn" onclick="triggerUpload('project-5')">Charger</button><button class="img-del-btn" onclick="deleteBanner('project-5')">✕</button></div></div><div class="img-slot"><div class="img-slot-label">Oryx</div><div class="img-ph" id="ph-project-6">+ Aucune image</div><img class="img-preview" id="prev-project-6" alt=""><div class="img-url-row"><input class="img-url-input" id="url-project-6" placeholder="URL d'image..."><button class="img-apply-btn" onclick="applyBannerUrl('project-6')">OK</button></div><div class="img-btns"><button class="img-up-btn" onclick="triggerUpload('project-6')">Charger</button><button class="img-del-btn" onclick="deleteBanner('project-6')">✕</button></div></div></div></div><div class="a-group"><div class="a-group-label">À propos</div><div class="img-admin-grid"><div class="img-slot"><div class="img-slot-label">Expertise ERP</div><div class="img-ph" id="ph-value-1">+ Aucune image</div><img class="img-preview" id="prev-value-1" alt=""><div class="img-url-row"><input class="img-url-input" id="url-value-1" placeholder="URL d'image..."><button class="img-apply-btn" onclick="applyBannerUrl('value-1')">OK</button></div><div class="img-btns"><button class="img-up-btn" onclick="triggerUpload('value-1')">Charger</button><button class="img-del-btn" onclick="deleteBanner('value-1')">✕</button></div></div><div class="img-slot"><div class="img-slot-label">Vision</div><div class="img-ph" id="ph-value-2">+ Aucune image</div><img class="img-preview" id="prev-value-2" alt=""><div class="img-url-row"><input class="img-url-input" id="url-value-2" placeholder="URL d'image..."><button class="img-apply-btn" onclick="applyBannerUrl('value-2')">OK</button></div><div class="img-btns"><button class="img-up-btn" onclick="triggerUpload('value-2')">Charger</button><button class="img-del-btn" onclick="deleteBanner('value-2')">✕</button></div></div><div class="img-slot"><div class="img-slot-label">Accompagnement</div><div class="img-ph" id="ph-value-3">+ Aucune image</div><img class="img-preview" id="prev-value-3" alt=""><div class="img-url-row"><input class="img-url-input" id="url-value-3" placeholder="URL d'image..."><button class="img-apply-btn" onclick="applyBannerUrl('value-3')">OK</button></div><div class="img-btns"><button class="img-up-btn" onclick="triggerUpload('value-3')">Charger</button><button class="img-del-btn" onclick="deleteBanner('value-3')">✕</button></div></div><div class="img-slot"><div class="img-slot-label">Impact</div><div class="img-ph" id="ph-value-4">+ Aucune image</div><img class="img-preview" id="prev-value-4" alt=""><div class="img-url-row"><input class="img-url-input" id="url-value-4" placeholder="URL d'image..."><button class="img-apply-btn" onclick="applyBannerUrl('value-4')">OK</button></div><div class="img-btns"><button class="img-up-btn" onclick="triggerUpload('value-4')">Charger</button><button class="img-del-btn" onclick="deleteBanner('value-4')">✕</button></div></div></div></div><div class="a-group"><div class="a-group-label">Expérience</div><div class="img-admin-grid"><div class="img-slot"><div class="img-slot-label">Senedoo</div><div class="img-ph" id="ph-exp-1">+ Aucune image</div><img class="img-preview" id="prev-exp-1" alt=""><div class="img-url-row"><input class="img-url-input" id="url-exp-1" placeholder="URL d'image..."><button class="img-apply-btn" onclick="applyBannerUrl('exp-1')">OK</button></div><div class="img-btns"><button class="img-up-btn" onclick="triggerUpload('exp-1')">Charger</button><button class="img-del-btn" onclick="deleteBanner('exp-1')">✕</button></div></div><div class="img-slot"><div class="img-slot-label">GDA</div><div class="img-ph" id="ph-exp-2">+ Aucune image</div><img class="img-preview" id="prev-exp-2" alt=""><div class="img-url-row"><input class="img-url-input" id="url-exp-2" placeholder="URL d'image..."><button class="img-apply-btn" onclick="applyBannerUrl('exp-2')">OK</button></div><div class="img-btns"><button class="img-up-btn" onclick="triggerUpload('exp-2')">Charger</button><button class="img-del-btn" onclick="deleteBanner('exp-2')">✕</button></div></div></div></div></div>
 </div>
 <div id="admin-footer"><span id="a-status"></span><button id="a-preview">👁 Aperçu</button><button id="a-publish">↑ Publier</button></div>
 </div></div></div></div>
