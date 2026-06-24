@@ -1959,49 +1959,23 @@ document.querySelectorAll('.skill-category, .lang-card').forEach(el => barObserv
       // About
       if(data.about&&data.about.paragraphs){var aPs=document.querySelectorAll('#about p');data.about.paragraphs.forEach(function(t,i){if(aPs[i])aPs[i].textContent=t;});}
       // Experience
-      if(data.experience){var expCards=document.querySelectorAll('.exp-card');data.experience.forEach(function(exp,i){var c=expCards[i];if(!c)return;var co=c.querySelector('.exp-company'),ro=c.querySelector('.exp-role'),pe=c.querySelector('.exp-period'),de=c.querySelector('.exp-desc');if(co)co.textContent=exp.company;if(ro)ro.textContent=exp.role;if(pe)pe.textContent=exp.period;if(de)de.textContent=exp.desc;});}
-      // Projects
-      if(data.projects){var cards=document.querySelectorAll('.project-card');data.projects.forEach(function(proj,i){var c=cards[i];if(!c)return;var n=c.querySelector('.project-name'),co=c.querySelector('.project-company'),de=c.querySelector('.project-desc');if(n)n.textContent=proj.name;if(co)co.textContent=proj.company;if(de)de.textContent=proj.desc;});}
-      // Skills
-      if(data.skills){var flat=[];data.skills.forEach(function(cat){cat.items.forEach(function(s){flat.push(s);})});document.querySelectorAll('.skill-item').forEach(function(item,i){if(!flat[i])return;var sp=item.querySelector('.skill-item-header span');var fi=item.querySelector('.skill-bar-fill');if(sp)sp.textContent=flat[i].name;if(fi)fi.setAttribute('data-width',flat[i].level);});}
-      // Education
-      if(data.education){var eduItems=document.querySelectorAll('.edu-item');data.education.forEach(function(edu,i){var item=eduItems[i];if(!item)return;var de=item.querySelector('.edu-degree'),sc=item.querySelector('.edu-school'),fi=item.querySelector('.edu-field'),yr=item.querySelector('.edu-year');if(de)de.textContent=edu.degree;if(sc)sc.textContent=edu.school;if(fi)fi.textContent=edu.field;if(yr)yr.textContent=edu.year;});}
-      // Personality
-      if(data.personality&&data.personality.interests){var intCards=document.querySelectorAll('.interest-card');data.personality.interests.forEach(function(int,i){var c=intCards[i];if(!c)return;var n=c.querySelector('.interest-name'),de=c.querySelector('.interest-desc');if(n)n.textContent=int.name;if(de)de.textContent=int.desc;});}
-      // Contact — CORRIGE: href seulement, ne pas toucher au SVG
-      if(data.contact){
-        if(data.contact.email){var em=document.querySelector('a[href^="mailto:"]');if(em){em.setAttribute('href','mailto:'+data.contact.email);Array.from(em.childNodes).forEach(function(n){if(n.nodeType===3&&n.textContent.trim())n.textContent=' '+data.contact.email+' ';});}}
-        if(data.contact.linkedin){var li=document.querySelector('a[href*="linkedin.com"]');if(li)li.setAttribute('href',data.contact.linkedin);}
-        if(data.contact.gda){var gd=document.querySelector('a[href*="groupedigital"],a[href*="groupe-digital"]');if(gd)gd.setAttribute('href',data.contact.gda);}
-        if(data.contact.cv){var cv=document.querySelector('a[download]');if(cv)cv.setAttribute('href',data.contact.cv);}
-      }
-    })
-    .catch(function(){});
-})();
-</script>
-
-
-// === LANGUAGE SWITCHER JS ===
-window.setLang = function(lang){
-  document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.remove('active');});
-  var btn = document.getElementById('lang-'+lang);
-  if(btn) btn.classList.add('active');
-  document.documentElement.setAttribute('lang',lang);
-  localStorage.setItem('preferred-lang',lang);
-  // Future: apply translations
-};
-// Restore language on load
+      if(data.experience){var expCards=document.querySelectorAll('.exp-card');data.experience.forEach(function(exp,i){var c=expCards[i];if(!c)return;var co=c.querySelector('.exp-company'),ro=c.querySelector('.exp-role'),pe=c.querySelector('.exp-period'),de=c.querySelector('<script id="data-loader">
 (function(){
-  var saved = localStorage.getItem('preferred-lang');
-  if(saved) setTimeout(function(){window.setLang(saved);},100);
+fetch('./data.json?v='+Date.now())
+.then(function(r){return r.json();})
+.then(function(data){
+if(data.hero){var badge=document.querySelector('.hero-badge');if(badge)badge.textContent=data.hero.badge;var ht=document.querySelector('.hero-title');if(ht)ht.innerHTML=data.hero.title;var hd=document.querySelector('.hero-desc');if(hd)hd.textContent=data.hero.desc;if(data.hero.stats){var sV=document.querySelectorAll('.hero-stat-value'),sL=document.querySelectorAll('.hero-stat-label');data.hero.stats.forEach(function(s,i){if(sV[i]){sV[i].setAttribute('data-count',s.value);sV[i].textContent=s.value+(s.suffix||'');}if(sL[i])sL[i].textContent=s.label;});}}
+if(data.about&&data.about.paragraphs){var aPs=document.querySelectorAll('#about p');data.about.paragraphs.forEach(function(t,i){if(aPs[i])aPs[i].textContent=t;});}
+if(data.experience){var eC=document.querySelectorAll('.exp-card');data.experience.forEach(function(e,i){var c=eC[i];if(!c)return;var co=c.querySelector('.exp-company'),ro=c.querySelector('.exp-role'),pe=c.querySelector('.exp-period'),de=c.querySelector('.exp-desc');if(co)co.textContent=e.company;if(ro)ro.textContent=e.role;if(pe)pe.textContent=e.period;if(de)de.textContent=e.desc;});}
+if(data.projects){var pC=document.querySelectorAll('.project-card');data.projects.forEach(function(p,i){var c=pC[i];if(!c)return;var nm=c.querySelector('.project-name'),co=c.querySelector('.project-company'),de=c.querySelector('.project-desc');if(nm)nm.textContent=p.name;if(co)co.textContent=p.company;if(de)de.textContent=p.desc;if(p.banner){var bDiv=c.querySelector('.project-banner-img');if(bDiv){bDiv.src=p.banner;bDiv.style.display='block';}else{var img=document.createElement('img');img.src=p.banner;img.className='project-banner-img';img.alt=p.name||'Projet';img.loading='lazy';c.insertBefore(img,c.firstChild);}}var techEl=c.querySelector('.project-tech');if(techEl&&p.technologies&&p.technologies.length){techEl.innerHTML=p.technologies.map(function(t){return'<span class="tech-tag">'+t+'</span>';}).join('');}var linkEl=c.querySelector('.project-link');if(linkEl){if(p.link){linkEl.href=p.link;linkEl.style.display='';}else{linkEl.style.display='none';}}});}
+if(data.skills){var flat=[];data.skills.forEach(function(cat){cat.items.forEach(function(s){flat.push(s);});});var items=document.querySelectorAll('.skill-item');items.forEach(function(item,i){if(!flat[i])return;var sp=item.querySelector('.skill-item-header span');if(sp)sp.textContent=flat[i].name;var fi=item.querySelector('.skill-bar-fill')||item.querySelector('[data-width]');if(fi){fi.setAttribute('data-width',flat[i].level);fi.classList.add('skill-bar-fill');fi.style.width='0';}});setTimeout(function(){document.querySelectorAll('.skill-bar-fill[data-width]').forEach(function(b){var w=b.getAttribute('data-width');if(w)b.style.width=w+'%';});},300);}
+if(data.education){var edu=document.querySelectorAll('.edu-item');data.education.forEach(function(e,i){var it=edu[i];if(!it)return;var de=it.querySelector('.edu-degree'),sc=it.querySelector('.edu-school'),fi=it.querySelector('.edu-field'),yr=it.querySelector('.edu-year');if(de)de.textContent=e.degree;if(sc)sc.textContent=e.school;if(fi)fi.textContent=e.field;if(yr)yr.textContent=e.year;});}
+if(data.personality){if(data.personality.interests){var iC=document.querySelectorAll('.interest-card');data.personality.interests.forEach(function(int,i){var c=iC[i];if(!c)return;var nm=c.querySelector('.interest-name'),de=c.querySelector('.interest-desc');if(nm)nm.textContent=int.name;if(de)de.textContent=int.desc;if(int.image){var imgEl=c.querySelector('.interest-img');if(imgEl){imgEl.src=int.image;imgEl.style.display='block';}else{var ni=document.createElement('img');ni.src=int.image;ni.className='interest-img';ni.alt=int.name;ni.loading='lazy';c.insertBefore(ni,c.firstChild);}}});}if(data.personality.languages){var lC=document.querySelectorAll('.lang-card');data.personality.languages.forEach(function(lang,i){var c=lC[i];if(!c)return;var nm=c.querySelector('.lang-name'),lv=c.querySelector('.lang-level'),fl=c.querySelector('.lang-flag');if(nm)nm.textContent=lang.name;if(lv)lv.textContent=lang.level;if(fl){if(lang.flag)fl.textContent=lang.flag;}else if(lang.flag){var fg=document.createElement('div');fg.className='lang-flag';fg.textContent=lang.flag;fg.style.cssText='font-size:2rem;margin-bottom:8px;';c.insertBefore(fg,c.firstChild);}});}}
+if(data.contact){if(data.contact.email){var em=document.querySelector('a[href^="mailto:"]');if(em){em.setAttribute('href','mailto:'+data.contact.email);Array.from(em.childNodes).forEach(function(n){if(n.nodeType===3&&n.textContent.trim())n.textContent=' '+data.contact.email+' ';});}}if(data.contact.linkedin){var li=document.querySelector('a[href*="linkedin.com"]');if(li)li.setAttribute('href',data.contact.linkedin);}if(data.contact.cv){document.querySelectorAll('a[href*="cv"],a[href*="CV"],a.cv-link').forEach(function(a){a.href=data.contact.cv;a.rel='noopener noreferrer';});}if(data.contact.gda){document.querySelectorAll('a[href*="gda"],a.gda-link').forEach(function(a){a.href=data.contact.gda;});}}
+}).catch(function(e){console.warn('data.json load error:',e);});
+var _hb=document.getElementById('hamburger');var _nl=document.getElementById('nav-links');if(_hb&&_nl){  _hb.addEventListener('click',function(e){e.stopPropagation();    var open=_nl.classList.toggle('nav-open');    _hb.classList.toggle('active',open);    _hb.setAttribute('aria-expanded',String(open));  });  document.addEventListener('click',function(e){    if(!_nl.contains(e.target)&&!_hb.contains(e.target)){      _nl.classList.remove('nav-open');      _hb.classList.remove('active');      _hb.setAttribute('aria-expanded','false');    }  });}
 })();
-<!-- ADMIN PANEL -->
-<style id="admin-css">
-#admin-overlay{display:none;position:fixed;inset:0;z-index:10000;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);}
-#admin-panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
-#admin-lock{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
-.a-lock-card{background:#0d1117;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:40px 36px;width:380px;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,.6);}
-.a-lock-icon{width:52px;height:52px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.25);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:22px;}
+</script>x;align-items:center;justify-content:center;margin:0 auto 20px;font-size:22px;}
 #admin-lock h2{font-size:20px;font-weight:600;color:#f0f6fc;margin-bottom:6px;}
 #admin-lock p{font-size:13px;color:#8b949e;margin-bottom:24px;line-height:1.5;}
 #admin-pw-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:11px 14px;color:#f0f6fc;font-size:14px;font-family:inherit;outline:none;margin-bottom:10px;transition:border-color .2s;}
@@ -2064,6 +2038,24 @@ window.setLang = function(lang){
 #a-preview:hover{background:rgba(255,255,255,.06);}
 #a-publish{padding:7px 18px;background:#238636;border:1px solid #2ea043;border-radius:8px;color:#fff;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:background .15s;}
 #a-publish:hover{background:#2ea043;}#a-publish:disabled{opacity:.5;cursor:not-allowed;}
+/* === PROJECT BANNERS === */
+.project-banner-img{width:100%;height:180px;object-fit:cover;border-radius:12px 12px 0 0;display:block;margin-bottom:0;}
+.project-card{overflow:hidden;}
+.project-card .card-body{padding:1.25rem;}
+.project-tech{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.tech-tag{font-size:11px;padding:2px 8px;background:rgba(56,189,248,.1);color:#38BDF8;border-radius:4px;border:1px solid rgba(56,189,248,.2);}
+.project-link{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:12px;color:#38BDF8;text-decoration:none;opacity:.8;transition:opacity .2s;}
+.project-link:hover{opacity:1;}
+/* === INTEREST IMAGES === */
+.interest-img{width:100%;height:120px;object-fit:cover;border-radius:10px 10px 0 0;display:block;}
+.interest-card{overflow:hidden;}
+/* === LANGUAGE FLAGS === */
+.lang-flag{font-size:2.2rem;margin-bottom:10px;line-height:1;display:block;}
+/* === HAMBURGER NAV OPEN === */
+@media(max-width:768px){#nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--bg-card,#0d1f3c);padding:1rem;border-top:1px solid rgba(255,255,255,.1);z-index:200;}#nav-links.nav-open{display:flex;}}
+/* === SKILL BAR TRANSITION === */
+.skill-bar-fill{transition:width .8s cubic-bezier(.25,.46,.45,.94);}
+
 </style>
 <div id="admin-overlay">
 <div id="admin-panel">
@@ -2091,7 +2083,7 @@ window.setLang = function(lang){
 <div class="a-sec active" id="tab-hero"><div class="a-sec-hd"><div class="a-sec-title">Hero</div><div class="a-sec-sub">La première chose que vos visiteurs voient.</div></div><div class="a-group"><div class="a-group-label">Message clé</div><div class="a-field"><label>Badge disponibilité</label><input type="text" id="f-badge"></div><div class="a-field"><label>Titre principal (HTML autorisé)</label><textarea id="f-hero-title" rows="3"></textarea></div><div class="a-field"><label>Description</label><textarea id="f-hero-desc" rows="3"></textarea></div></div><div class="a-group"><div class="a-group-label">Statistiques</div><div class="a-row"><div class="a-field"><label>Stat 1 — Valeur</label><input type="number" id="f-s1v"></div><div class="a-field"><label>Stat 1 — Label</label><input type="text" id="f-s1l"></div></div><div class="a-row"><div class="a-field"><label>Stat 2 — Valeur</label><input type="number" id="f-s2v"></div><div class="a-field"><label>Stat 2 — Label</label><input type="text" id="f-s2l"></div></div><div class="a-row"><div class="a-field"><label>Stat 3 — Valeur</label><input type="number" id="f-s3v"></div><div class="a-field"><label>Stat 3 — Label</label><input type="text" id="f-s3l"></div></div></div></div>
 <div class="a-sec" id="tab-about"><div class="a-sec-hd"><div class="a-sec-title">À propos</div><div class="a-sec-sub">Trois paragraphes qui vous décrivent.</div></div><div class="a-group"><div class="a-field"><label>Paragraphe 1</label><textarea id="f-ap1" rows="4"></textarea></div><div class="a-field"><label>Paragraphe 2</label><textarea id="f-ap2" rows="4"></textarea></div><div class="a-field"><label>Paragraphe 3</label><textarea id="f-ap3" rows="4"></textarea></div></div></div>
 <div class="a-sec" id="tab-experience"><div class="a-sec-hd"><div class="a-sec-title">Expérience</div><div class="a-sec-sub">Vos postes et missions professionnelles.</div></div><div id="a-exp-list"></div><button class="a-add-btn" id="a-exp-add">+ Ajouter une expérience</button></div>
-<div class="a-sec" id="tab-projects"><div class="a-sec-hd"><div class="a-sec-title">Projets</div><div class="a-sec-sub">Vos réalisations clés.</div></div><div id="a-proj-list"></div><button class="a-add-btn" id="a-proj-add">+ Ajouter un projet</button></div>
+<div class="a-sec" id="tab-projects"><div class="a-sec-hd"><div class="a-sec-title">Projets</div><div class="a-sec-sub">Vos réalisations clés — avec bannière, technos et lien.</div></div><div id="a-proj-list"></div><button class="a-add-btn" id="a-proj-add">+ Ajouter un projet</button></div>
 <div class="a-sec" id="tab-skills"><div class="a-sec-hd"><div class="a-sec-title">Compétences</div><div class="a-sec-sub">Catégories et niveaux de maîtrise (0–100).</div></div><div id="a-skills-list"></div><button class="a-add-btn" id="a-skills-add">+ Ajouter une catégorie</button></div>
 <div class="a-sec" id="tab-education"><div class="a-sec-hd"><div class="a-sec-title">Études & Certifications</div><div class="a-sec-sub">Vos diplômes et formations.</div></div><div id="a-edu-list"></div><button class="a-add-btn" id="a-edu-add">+ Ajouter une formation</button></div>
 <div class="a-sec" id="tab-personality"><div class="a-sec-hd"><div class="a-sec-title">Au-delà du professionnel</div><div class="a-sec-sub">Centres d'intérêt et langues parlées.</div></div><div class="a-group"><div class="a-group-label">Centres d'intérêt</div><div id="a-interests-list"></div><button class="a-add-btn" id="a-interests-add">+ Ajouter un intérêt</button></div><div class="a-group"><div class="a-group-label">Langues</div><div id="a-langs-list"></div><button class="a-add-btn" id="a-langs-add">+ Ajouter une langue</button></div></div>
@@ -2178,20 +2170,13 @@ var expFields={label:function(i){return i.company||'Expérience'},inputs:[
   {id:'company',lbl:'Entreprise',type:'text'},{id:'role',lbl:'Poste',type:'text'},
   {id:'period',lbl:'Période',type:'text'},{id:'desc',lbl:'Description',type:'textarea'}
 ]};
-var projFields={label:function(i){return i.name||'Projet'},inputs:[
-  {id:'name',lbl:'Nom',type:'text'},{id:'company',lbl:'Organisation',type:'text'},
-  {id:'desc',lbl:'Description',type:'textarea'}
-]};
+var projFields={label:function(i){return i.name||'Projet'},inputs:[{id:'name',lbl:'Nom du projet',type:'text'},{id:'company',lbl:'Organisation',type:'text'},{id:'desc',lbl:'Description',type:'textarea'},{id:'technologies',lbl:'Technologies (virgule-séparées)',type:'text'},{id:'link',lbl:'Lien du projet (URL)',type:'text'},{id:'banner',lbl:'URL bannière (ou uploader ci-dessous)',type:'text'}]};
 var eduFields={label:function(i){return i.degree||'Formation'},inputs:[
   {id:'degree',lbl:'Diplôme',type:'text'},{id:'school',lbl:'École',type:'text'},
   {id:'field',lbl:'Domaine',type:'text'},{id:'year',lbl:'Année',type:'text'}
 ]};
-var interestFields={label:function(i){return i.name||'Centre d\'intérêt'},inputs:[
-  {id:'name',lbl:'Nom',type:'text'},{id:'desc',lbl:'Description',type:'textarea'}
-]};
-var langFields={label:function(i){return i.name||'Langue'},inputs:[
-  {id:'name',lbl:'Langue',type:'text'},{id:'level',lbl:'Niveau',type:'text'}
-]};
+var interestFields={label:function(i){return i.name||'Centre d\'intérêt'},inputs:[{id:'name',lbl:'Nom',type:'text'},{id:'desc',lbl:'Description',type:'textarea'},{id:'image',lbl:'URL image (120x120 ou 4:3)',type:'text'}]};
+var langFields={label:function(i){return i.name||'Langue'},inputs:[{id:'name',lbl:'Langue',type:'text'},{id:'level',lbl:'Niveau (ex: Courant, Natif)',type:'text'},{id:'flag',lbl:'Drapeau emoji (ex: 🇫🇷)',type:'text'}]};
 function buildList(containerId,items,fieldDef){
   var cont=document.getElementById(containerId);if(!cont)return;
   cont.innerHTML='';
@@ -2210,9 +2195,9 @@ function buildList(containerId,items,fieldDef){
     var fields='<div class="a-card-fields">';
     fieldDef.inputs.forEach(function(inp){
       fields+='<div class="a-field"><label>'+inp.lbl+'</label>';
-      if(inp.type==='textarea')fields+='<textarea class="af-'+inp.id+'" rows="2">'+esc(item[inp.id]||'')+'</textarea>';
+      if(inp.type==='textarea')fields+='<textarea class="af-'+inp.id+'" rows="2">'+esc(Array.isArray(item[inp.id])?item[inp.id].join(', '):(item[inp.id]||''))+'</textarea>';
       else if(inp.type==='range')fields+='<div class="a-range"><input type="range" min="0" max="100" class="af-'+inp.id+'" value="'+esc(item[inp.id]||0)+'"/><span>'+esc(item[inp.id]||0)+'</span></div>';
-      else fields+='<input class="af-'+inp.id+'" type="'+inp.type+'" value="'+esc(item[inp.id]||'')+'"/>';
+      else fields+='<input class="af-'+inp.id+'" type="'+inp.type+'" value="'+esc(Array.isArray(item[inp.id])?item[inp.id].join(', '):(item[inp.id]||''))+'"/>';
       fields+='</div>';
     });
     fields+='</div>';
@@ -2262,7 +2247,7 @@ function buildDataObj(){
   d.hero.stats=[1,2,3].map(function(i){var st={value:parseInt(document.getElementById('f-s'+i+'v').value)||0,label:document.getElementById('f-s'+i+'l').value};if(i===1)st.suffix='+';return st;});
   [1,2,3].forEach(function(i){var el=document.getElementById('f-ap'+i);if(el)d.about.paragraphs.push(el.value.trim());});
   d.experience=readList('a-exp-list',expFields);
-  d.projects=readList('a-proj-list',projFields);
+  d.projects=readList('a-proj-list',projFields).map(function(p){if(p.technologies&&typeof p.technologies==='string'){p.technologies=p.technologies.split(',').map(function(t){return t.trim();}).filter(Boolean);}return p;});
   d.skills=readSkills();
   d.education=readList('a-edu-list',eduFields);
   d.personality.interests=readList('a-interests-list',interestFields);
