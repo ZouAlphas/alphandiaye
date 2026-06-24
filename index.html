@@ -705,6 +705,15 @@ section:nth-child(even) { background: var(--bg-secondary); }
 .img-url-row{display:flex;gap:0.4rem;margin-bottom:0.4rem;}
 .img-url-input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:5px 8px;color:#f0f6fc;font-size:0.72rem;font-family:inherit;min-width:0;}
 .img-apply-btn{padding:5px 8px;background:rgba(52,211,153,.08);color:#34D399;border:1px solid rgba(52,211,153,.2);border-radius:6px;font-size:0.72rem;cursor:pointer;font-family:inherit;}
+/* LANG FLAGS */
+.lang-btn{background:transparent!important;border:none!important;box-shadow:none!important;cursor:pointer;font-size:1.3rem;padding:2px 4px;border-radius:4px;opacity:.55;transition:opacity .2s,transform .2s;}
+.lang-btn:hover{opacity:.85;}
+.lang-btn.active{opacity:1;transform:scale(1.15);}
+/* THEME TOGGLE ICONS */
+.i-moon,.i-sun{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transition:opacity .25s,transform .25s;font-size:15px;pointer-events:none;}
+.i-sun{opacity:0;transform:translate(-50%,-50%) rotate(90deg);}
+[data-theme="light"] .i-moon{opacity:0;transform:translate(-50%,-50%) rotate(-90deg);}
+[data-theme="light"] .i-sun{opacity:1;transform:translate(-50%,-50%) rotate(0);}
 .skill-bar-bg {
   height: 5px;
   background: var(--border-soft);
@@ -1183,7 +1192,7 @@ footer a { color: var(--blue); text-decoration: none; }
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-actions">
-    <div class="lang-switcher"><button class="lang-btn active" id="lang-fr" onclick="setLang('fr')" title="Français">🇫🇷</button><button class="lang-btn" id="lang-en" onclick="setLang('en')" title="English">🇬🇧</button></div><button class="theme-toggle" id="theme-toggle" title="Basculer thème" aria-label="Thème"></button>
+    <div class="lang-switcher"><button class="lang-btn active" id="lang-fr" onclick="setLang('fr')" title="Français">🇫🇷</button><button class="lang-btn" id="lang-en" onclick="setLang('en')" title="English">🇬🇧</button></div><button class="theme-toggle" id="theme-toggle" title="Basculer thème" aria-label="Thème"><span class="i-moon">🌙</span><span class="i-sun">☀️</span></button>
     <a href="#contact" class="nav-cta">Me contacter</a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1977,6 +1986,46 @@ const barObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 document.querySelectorAll('.skill-category, .lang-card').forEach(el => barObserver.observe(el));
 // ===========================
+// LANGUAGE TRANSLATIONS
+// ===========================
+var TRANS={
+fr:{nt:['À propos','Expérience','Réalisations','Compétences','Formation','Contact'],nca:'Me contacter',
+ht1:'Je transforme les idées',ht2:'en ',ht3:'systèmes qui fonctionnent',
+hd:'Expert en transformation digitale, cofondateur de GDA et Responsable Support chez Senedoo. Six ans d’expérience entre la création digitale et deux ans d’implémentation terrain.',
+hb1:'Mes réalisations',hb2:'Télécharger CV',
+st:['Mon expérience','Quelques réalisations','Mes compétences','Études & certifications','Au-delà du professionnel','Langues parlées'],
+sct:'Travaillons ensemble',cfn:'Votre nom',cfe:'Votre email',cfm:'Votre message',cfs:'Envoyer le message'},
+en:{nt:['About','Experience','Projects','Skills','Education','Contact'],nca:'Contact me',
+ht1:'I turn ideas',ht2:'into ',ht3:'systems that work',
+hd:'Digital transformation expert, co-founder of GDA and Support Manager at Senedoo. Six years bridging digital creation and hands-on implementation across Africa.',
+hb1:'My projects',hb2:'Download CV',
+st:['My experience','Selected projects','My skills','Studies & certifications','Beyond work','Languages'],
+sct:"Let's work together",cfn:'Your name',cfe:'Your email',cfm:'Your message',cfs:'Send message'}
+};
+function setLang(l){
+var t=TRANS[l]||TRANS.fr;
+localStorage.setItem('lang',l);
+document.documentElement.lang=l;
+document.querySelectorAll('[id^="lang-"]').forEach(function(b){b.classList.remove('active');});
+var lb=document.getElementById('lang-'+l);if(lb)lb.classList.add('active');
+var nl=document.querySelectorAll('.nav-links a');
+nl.forEach(function(a,i){if(t.nt[i])a.textContent=t.nt[i];});
+var nca=document.querySelector('.nav-cta');if(nca)nca.textContent=t.nca;
+var h1=document.querySelector('.hero-title');
+if(h1){var cn=h1.childNodes;if(cn[0])cn[0].textContent=t.ht1;if(cn[2])cn[2].textContent=t.ht2;var sp=h1.querySelector('span');if(sp)sp.textContent=t.ht3;}
+var hd=document.querySelector('.hero-desc');if(hd)hd.textContent=t.hd;
+var hb1=document.querySelector('.btn-primary');if(hb1)hb1.textContent=t.hb1;
+var hb2=document.getElementById('cv-download');if(hb2)hb2.textContent=t.hb2;
+var sts=document.querySelectorAll('.section-title');
+sts.forEach(function(el,i){if(t.st[i])el.textContent=t.st[i];});
+var sct=document.querySelector('#contact h2');if(sct)sct.textContent=t.sct;
+var cfn=document.getElementById('cf-name');if(cfn)cfn.placeholder=t.cfn;
+var cfe=document.getElementById('cf-email');if(cfe)cfe.placeholder=t.cfe;
+var cfm=document.getElementById('cf-message');if(cfm)cfm.placeholder=t.cfm;
+var cfs=document.getElementById('cf-submit');if(cfs)cfs.textContent=t.cfs;
+}
+(function(){setLang(localStorage.getItem('lang')||'fr');})();
+// ===========================
 // BANNER IMAGES
 // ===========================
 function applyBanners(){document.querySelectorAll('[data-banner-key]').forEach(function(el){var k=el.dataset.bannerKey,src=localStorage.getItem('banner_'+k),img=el.querySelector('.banner-img'),logo=el.parentElement?el.parentElement.querySelector('[data-logo-for="'+k+'"]'):null;if(src){if(img)img.src=src;el.style.display='';if(logo)logo.style.display='none';}else{el.style.display='none';if(logo)logo.style.display='';}var p=document.getElementById('prev-'+k),ph=document.getElementById('ph-'+k);if(p){if(src){p.src=src;p.style.display='block';if(ph)ph.style.display='none';}else{p.style.display='none';if(ph)ph.style.display='flex';}}});}
@@ -2136,7 +2185,7 @@ function ub64(s){var by=new TextEncoder().encode(s);var r='';by.forEach(function
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function setStatus(m,c){var el=document.getElementById('a-status');if(el){el.textContent=m;el.className=c||''}}
 var overlay=document.getElementById('admin-overlay'),lockEl=document.getElementById('admin-lock'),mainEl=document.getElementById('admin-main'),pwIn=document.getElementById('admin-pw-input');
-window.openAdmin=openAdmin;if(location.hash==='#admin')setTimeout(openAdmin,300);window.addEventListener('hashchange',function(){if(location.hash==='#admin')openAdmin();});document.addEventListener('keydown',function(e){if(e.ctrlKey&&e.shiftKey&&(e.key==='A'||e.key==='a'||e.code==='KeyA')){e.preventDefault();openAdmin();}});
+window.openAdmin=openAdmin;if(location.hash==='#admin'){setTimeout(openAdmin,300);var ab=document.getElementById('adm-btn');if(ab)ab.style.display='none';}window.addEventListener('hashchange',function(){if(location.hash==='#admin'){openAdmin();var ab=document.getElementById('adm-btn');if(ab)ab.style.display='none';}});document.addEventListener('keydown',function(e){if(e.ctrlKey&&e.shiftKey&&(e.key==='A'||e.key==='a'||e.code==='KeyA')){e.preventDefault();openAdmin();}});
 document.getElementById('a-close').addEventListener('click',function(){overlay.style.display='none'});
 overlay.addEventListener('click',function(e){if(e.target===overlay)overlay.style.display='none'});
 function openAdmin(){overlay.style.display='flex';lockEl.style.display='flex';mainEl.style.display='none';pwIn.value='';document.getElementById('admin-pw-error').style.display='none';setTimeout(function(){pwIn.focus()},50);}
