@@ -107,6 +107,9 @@
   --nav-bg: rgba(10,15,30,0.92);
   --shadow: 0 8px 40px rgba(0,0,0,0.5);
   --shadow-card: 0 4px 24px rgba(0,0,0,0.35);
+  --input-bg: rgba(255,255,255,0.05);
+  --input-border: rgba(255,255,255,0.12);
+  --input-placeholder: rgba(255,255,255,0.35);
 }
 
 [data-theme="light"] {
@@ -122,6 +125,9 @@
   --nav-bg: rgba(248,250,255,0.94);
   --shadow: 0 8px 40px rgba(56,189,248,0.08);
   --shadow-card: 0 4px 24px rgba(15,23,42,0.08);
+  --input-bg: rgba(15,23,42,0.05);
+  --input-border: rgba(15,23,42,0.18);
+  --input-placeholder: rgba(15,23,42,0.35);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1144,11 +1150,11 @@ footer a { color: var(--blue); text-decoration: none; }
     #contact-form input[type="email"],
     #contact-form textarea {
       width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
       border-radius: 8px;
       padding: 0.85rem 1rem;
-      color: var(--text);
+      color: var(--text-primary);
       font-family: inherit;
       font-size: 0.95rem;
       transition: border-color 0.2s, box-shadow 0.2s;
@@ -1167,7 +1173,7 @@ footer a { color: var(--blue); text-decoration: none; }
     }
     #contact-form input::placeholder,
     #contact-form textarea::placeholder {
-      color: rgba(255,255,255,0.35);
+      color: var(--input-placeholder);
     }
     #cf-submit {
       width: 100%;
