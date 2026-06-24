@@ -2324,9 +2324,9 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').repl
 function setStatus(m,c){var el=document.getElementById('a-status');if(el){el.textContent=m;el.className=c||''}}
 var overlay=document.getElementById('admin-overlay'),lockEl=document.getElementById('admin-lock'),mainEl=document.getElementById('admin-main'),pwIn=document.getElementById('admin-pw-input');
 window.openAdmin=openAdmin;if(location.hash==='#admin'||location.pathname==='/admin'){setTimeout(openAdmin,300);var ab=document.getElementById('adm-btn');if(ab)ab.style.display='none';}window.addEventListener('hashchange',function(){if(location.hash==='#admin'){openAdmin();var ab=document.getElementById('adm-btn');if(ab)ab.style.display='none';}});document.addEventListener('keydown',function(e){if(e.ctrlKey&&e.shiftKey&&(e.key==='A'||e.key==='a'||e.code==='KeyA')){e.preventDefault();openAdmin();}});
-document.getElementById('a-close').addEventListener('click',function(){overlay.style.display='none'});
-overlay.addEventListener('click',function(e){if(e.target===overlay)overlay.style.display='none'});
-function openAdmin(){overlay.style.display='flex';lockEl.style.display='flex';mainEl.style.display='none';pwIn.value='';document.getElementById('admin-pw-error').style.display='none';setTimeout(function(){pwIn.focus()},50);}
+document.getElementById('a-close').addEventListener('click',function(){overlay.style.display='none';document.getElementById('admin-panel').classList.remove('open');});
+overlay.addEventListener('click',function(e){if(e.target===overlay){overlay.style.display='none';document.getElementById('admin-panel').classList.remove('open');}});
+function openAdmin(){var ap=document.getElementById('admin-panel');overlay.style.display='flex';ap.classList.add('open');lockEl.style.display='flex';mainEl.style.display='none';pwIn.value='';document.getElementById('admin-pw-error').style.display='none';setTimeout(function(){pwIn.focus()},50);}
 function unlock(){if(pwIn.value===PASS){lockEl.style.display='none';mainEl.style.display='flex';document.getElementById('admin-content').style.display='flex';loadFromJson();}else{document.getElementById('admin-pw-error').style.display='block';pwIn.value='';pwIn.focus();}}
 document.getElementById('admin-pw-btn').addEventListener('click',unlock);
 pwIn.addEventListener('keydown',function(e){if(e.key==='Enter')unlock();});
