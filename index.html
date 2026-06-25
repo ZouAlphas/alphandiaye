@@ -871,7 +871,7 @@ footer p{color:var(--sub);font-size:.8rem;}
 <script src="chrome-extension://hmdmhilocobgohohpdpolmibjklfgkbi/pageScript.js"></script></head>
 <body data-berrycast-extension="0.8.14" class="cur-hover" style="">
 
-<div id="cur" style="left: 1389px; top: 881px;"></div><div id="cur-r" style="left: 1388.81px; top: 881.61px;"></div>
+<div id="cur" style="left: 1390px; top: 867px;"></div><div id="cur-r" style="left: 1380.44px; top: 866.755px;"></div>
 
 <!-- ═══ NAV ═══ -->
 <nav id="nav">
@@ -1389,19 +1389,19 @@ Odoo ERPSupport FonctionnelIncident Management</div>
     <div class="lang-card">
       <span class="lang-flag">🇫🇷</span>
       <div class="lang-name">Français</div>
-      <div class="lang-bar-track"><div class="lang-bar-fill" data-w="94"></div></div>
+      <div class="lang-bar-track"><div class="lang-bar-fill" data-w="93" style="width: 93%;"></div></div>
       <div class="lang-level">Langue principale — Courant professionnel</div>
     </div>
     <div class="lang-card">
       <span class="lang-flag">🇬🇧</span>
       <div class="lang-name">Anglais</div>
-      <div class="lang-bar-track"><div class="lang-bar-fill" data-w="78"></div></div>
+      <div class="lang-bar-track"><div class="lang-bar-fill" data-w="78" style="width: 78%;"></div></div>
       <div class="lang-level">Professionnel — Courant</div>
     </div>
     <div class="lang-card">
       <span class="lang-flag">🇸🇳</span>
       <div class="lang-name">Wolof</div>
-      <div class="lang-bar-track"><div class="lang-bar-fill" data-w="92"></div></div>
+      <div class="lang-bar-track"><div class="lang-bar-fill" data-w="92" style="width: 92%;"></div></div>
       <div class="lang-level">Langue maternelle — Natif</div>
     </div>
   </div>
@@ -1473,7 +1473,7 @@ Odoo ERPSupport FonctionnelIncident Management</div>
 </footer>
 
 <!-- ═══ ADMIN v13 ═══ -->
-<div id="admin-toast" style="opacity: 1;">✓ Contact mis à jour</div>
+<div id="admin-toast" style="opacity: 1;">✓ Langues mises à jour</div>
 <button id="admin-btn" onclick="openAdmin()">Admin</button>
 
 <div id="admin-overlay" class="">
@@ -1502,11 +1502,11 @@ Odoo ERPSupport FonctionnelIncident Management</div>
         <button class="admin-nav-item" onclick="adminNav('skills',this)"><span class="nav-ico">⚡</span>Compétences</button>
         <button class="admin-nav-item" onclick="adminNav('edu',this)"><span class="nav-ico">🎓</span>Études</button>
         <button class="admin-nav-item" onclick="adminNav('beyond',this)"><span class="nav-ico">✨</span>Au-delà</button>
-        <button class="admin-nav-item" onclick="adminNav('languages',this)"><span class="nav-ico">🌐</span>Langues</button>
+        <button class="admin-nav-item on" onclick="adminNav('languages',this)"><span class="nav-ico">🌐</span>Langues</button>
       </div>
       <div class="admin-nav-group">
         <div class="admin-nav-label">PUBLIER</div>
-        <button class="admin-nav-item on" onclick="adminNav('contact',this)"><span class="nav-ico">📧</span>Contact</button>
+        <button class="admin-nav-item" onclick="adminNav('contact',this)"><span class="nav-ico">📧</span>Contact</button>
         <button class="admin-nav-item" onclick="adminNav('params',this)"><span class="nav-ico">⚙️</span>Paramètres</button>
       </div>
       <div class="admin-nav-group">
@@ -1869,7 +1869,7 @@ Odoo ERPSupport FonctionnelIncident Management</textarea></div>
       </div>
 
       <!-- LANGUES -->
-      <div id="ap-languages" class="admin-section-panel">
+      <div id="ap-languages" class="admin-section-panel on">
         <div class="admin-section-title">Langues</div>
         <div class="admin-section-desc">Langues parlées et niveaux.</div>
         <div id="lang-ed-list"><div class="admin-item-row"><div class="admin-item-header"><span class="admin-item-title">🇫🇷 Français</span></div>
@@ -1885,7 +1885,7 @@ Odoo ERPSupport FonctionnelIncident Management</textarea></div>
       </div>
 
       <!-- CONTACT -->
-      <div id="ap-contact" class="admin-section-panel on">
+      <div id="ap-contact" class="admin-section-panel">
         <div class="admin-section-title">Contact</div>
         <div class="admin-section-desc">Coordonnées et lien CV.</div>
         <div class="admin-field"><label>Email</label><input type="email" id="c-email" value="alphandiayepro@gmail.com"></div>
