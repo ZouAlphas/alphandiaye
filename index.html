@@ -2476,7 +2476,7 @@ async function publishToGitHub(){
     const apiBase=`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${filePath}`;
     const headers={'Authorization':'token '+cfg.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};
     setBarStatus('loading','Récupération SHA…');
-    let sha=null;try{const g=await fetch(`${apiBase}?ref=${branch}&_=${Date.now()}`,{headers:{...headers,'Cache-Control':'no-cache'}});if(g.ok){const d=await g.json();sha=d.sha;}}catch{}
+    let sha=null;try{const g=await fetch(`${apiBase}?ref=${branch}&nocache=${Date.now()}`,{headers});if(g.ok){const d=await g.json();sha=d.sha;}else if(g.status!==404){setBarStatus('err',`SHA: ${g.status}`);btn.disabled=false;return;}}catch(e){setBarStatus('err','Erreur réseau: '+e.message);btn.disabled=false;return;}
     setBarStatus('loading','Publication…');
     const body={message:cfg.msg||'Admin: mise à jour',content:b64,branch};if(sha)body.sha=sha;
     const r=await fetch(apiBase,{method:'PUT',headers,body:JSON.stringify(body)});
