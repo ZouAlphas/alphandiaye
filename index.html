@@ -717,7 +717,7 @@ footer p{color:var(--sub);font-size:.8rem;}
 .footer-link:hover{border-color:var(--blue);color:var(--blue);}
 .footer-link svg{width:14px;height:14px;fill:currentColor;}
 
-/* ═══ ADMIN v12 ═══ */
+/* ═══ ADMIN v13 ═══ */
 #admin-btn{display:none!important;}
 #admin-overlay{position:fixed;inset:0;z-index:5000;display:none;flex-direction:column;font-family:'Inter',sans-serif;}
 #admin-overlay.open{display:flex;}
@@ -782,13 +782,22 @@ footer p{color:var(--sub);font-size:.8rem;}
 .atag{background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);color:#38BDF8;padding:.2rem .6rem;border-radius:50px;font-size:.77rem;display:inline-flex;align-items:center;gap:.3rem;}
 .atag button{background:none;border:none;color:rgba(56,189,248,.55);cursor:pointer;font-size:.88rem;padding:0;line-height:1;}
 .atag-input{background:none;border:none;color:#e2ebf8;outline:none;font-size:.83rem;min-width:80px;flex:1;}
-.admin-img-box{border:2px dashed rgba(255,255,255,.1);border-radius:12px;padding:1.2rem;text-align:center;cursor:pointer;transition:all .22s;position:relative;overflow:hidden;}
+.admin-img-box{border:2px dashed rgba(255,255,255,.1);border-radius:12px;padding:1rem;text-align:center;cursor:pointer;transition:all .22s;position:relative;overflow:hidden;}
 .admin-img-box:hover{border-color:rgba(56,189,248,.3);background:rgba(56,189,248,.03);}
 .admin-img-box input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
-.admin-img-box img{width:100%;max-height:140px;object-fit:cover;border-radius:7px;margin-bottom:.65rem;display:none;}
+.admin-img-box img{width:100%;max-height:120px;object-fit:cover;border-radius:7px;margin-bottom:.5rem;display:none;}
 .admin-img-box img.loaded{display:block;}
-.admin-img-box .up-text{font-size:.77rem;color:rgba(255,255,255,.3);}
-.admin-img-box .up-title{color:#38BDF8;font-size:.82rem;font-weight:700;display:block;margin-bottom:.15rem;}
+.admin-img-box .up-text{font-size:.72rem;color:rgba(255,255,255,.3);}
+.admin-img-box .up-title{color:#38BDF8;font-size:.78rem;font-weight:700;display:block;margin-bottom:.1rem;}
+.admin-img-box-sm{border:2px dashed rgba(255,255,255,.1);border-radius:10px;padding:.6rem;text-align:center;cursor:pointer;position:relative;overflow:hidden;min-height:64px;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:all .22s;}
+.admin-img-box-sm:hover{border-color:rgba(56,189,248,.3);}
+.admin-img-box-sm input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:2;}
+.admin-img-box-sm img{max-width:80px;max-height:56px;object-fit:contain;border-radius:6px;display:none;}
+.admin-img-box-sm img.loaded{display:block;}
+.admin-img-box-sm .up-text{font-size:.67rem;color:rgba(255,255,255,.28);}
+.admin-img-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.75rem;margin-bottom:1rem;}
+.admin-img-item{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.65rem;text-align:center;}
+.admin-img-item label{font-size:.7rem;color:rgba(255,255,255,.35);display:block;margin-bottom:.4rem;}
 .admin-info-box{background:rgba(56,189,248,.05);border:1px solid rgba(56,189,248,.12);border-radius:10px;padding:.85rem 1rem;font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.65;margin-top:1rem;}
 .admin-info-box strong{color:rgba(255,255,255,.72);}
 #admin-bottom-bar{height:52px;background:#080D18;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;padding:0 1.4rem;flex-shrink:0;}
@@ -809,6 +818,9 @@ footer p{color:var(--sub);font-size:.8rem;}
 .pub-repo-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);flex-shrink:0;}
 .pub-repo-dot.ok{background:var(--green);}
 .pub-repo-dot.err{background:#f87171;}
+.ticker-item-row{display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:.55rem .75rem;margin-bottom:.45rem;}
+.ticker-item-preview{width:36px;height:36px;border-radius:6px;object-fit:contain;background:rgba(255,255,255,.06);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.45);}
+.ticker-item-preview img{width:36px;height:36px;object-fit:contain;border-radius:5px;}
 
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:1100px){
@@ -1016,22 +1028,22 @@ footer p{color:var(--sub);font-size:.8rem;}
     <div class="about-right reveal" style="transition-delay:.12s;">
       <div class="about-cards">
         <div class="about-card">
-          <div class="about-card-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+          <div class="about-card-icon"><img class="acard-img" style="display:none;width:40px;height:40px;object-fit:cover;border-radius:8px;" alt=""><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
           <h3>Expertise ERP</h3>
           <p>Deux ans de déploiements et d'accompagnement sur des projets ERP en Afrique de l'Ouest.</p>
         </div>
         <div class="about-card">
-          <div class="about-card-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+          <div class="about-card-icon"><img class="acard-img" style="display:none;width:40px;height:40px;object-fit:cover;border-radius:8px;" alt=""><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
           <h3>Vision long terme</h3>
           <p>Des solutions pensées pour durer, adaptées aux réalités économiques locales.</p>
         </div>
         <div class="about-card">
-          <div class="about-card-icon"><svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+          <div class="about-card-icon"><img class="acard-img" style="display:none;width:40px;height:40px;object-fit:cover;border-radius:8px;" alt=""><svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
           <h3>Accompagnement humain</h3>
           <p>La technologie au service des personnes — formation, support et transfert de compétences.</p>
         </div>
         <div class="about-card">
-          <div class="about-card-icon"><svg viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+          <div class="about-card-icon"><img class="acard-img" style="display:none;width:40px;height:40px;object-fit:cover;border-radius:8px;" alt=""><svg viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
           <h3>Impact mesurable</h3>
           <p>Chaque projet se traduit par des résultats concrets, quantifiables, visibles sur le terrain.</p>
         </div>
@@ -1053,7 +1065,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       <div class="timeline-date">Janv. 2025 — Présent</div>
       <div class="timeline-card">
         <div class="timeline-header">
-          <div class="timeline-avatar" style="background:rgba(56,189,248,.1);color:var(--blue);">SN</div>
+          <div class="timeline-avatar" style="background:rgba(56,189,248,.1);color:var(--blue);overflow:hidden;"><img class="exp-logo-img" id="exp-logo-0" style="display:none;width:100%;height:100%;object-fit:cover;" alt=""><span class="exp-initials">SN</span></div>
           <div>
             <div class="timeline-company">Senedoo</div>
             <div class="timeline-role">Responsable Support</div>
@@ -1079,7 +1091,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       <div class="timeline-date">2020 (activités) · 2022 (création) — Présent</div>
       <div class="timeline-card">
         <div class="timeline-header">
-          <div class="timeline-avatar" style="background:rgba(129,140,248,.1);color:var(--blue2);">GDA</div>
+          <div class="timeline-avatar" style="background:rgba(129,140,248,.1);color:var(--blue2);overflow:hidden;"><img class="exp-logo-img" id="exp-logo-1" style="display:none;width:100%;height:100%;object-fit:cover;" alt=""><span class="exp-initials">GDA</span></div>
           <div>
             <div class="timeline-company">Groupe Digital Afrique</div>
             <div class="timeline-role" style="color:var(--blue2);">Cofondateur</div>
@@ -1356,27 +1368,27 @@ footer p{color:var(--sub);font-size:.8rem;}
   </div>
   <div class="interests-grid reveal" style="transition-delay:.08s;">
     <div class="interest-card">
-      <div class="interest-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93l4.24 4.24m5.66 5.66l4.24 4.24M4.93 19.07l4.24-4.24m5.66-5.66l4.24-4.24"/></svg></div>
+      <div class="interest-icon"><img class="int-img" style="display:none;width:52px;height:52px;object-fit:cover;border-radius:12px;" alt=""><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93l4.24 4.24m5.66 5.66l4.24 4.24M4.93 19.07l4.24-4.24m5.66-5.66l4.24-4.24"/></svg></div>
       <h3>Basketball</h3>
       <p>La discipline du jeu collectif et la mentalité de compétition.</p>
     </div>
     <div class="interest-card">
-      <div class="interest-icon"><svg viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+      <div class="interest-icon"><img class="int-img" style="display:none;width:52px;height:52px;object-fit:cover;border-radius:12px;" alt=""><svg viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
       <h3>Nature</h3>
       <p>Ressourcement et inspiration dans les grands espaces.</p>
     </div>
     <div class="interest-card">
-      <div class="interest-icon"><svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+      <div class="interest-icon"><img class="int-img" style="display:none;width:52px;height:52px;object-fit:cover;border-radius:12px;" alt=""><svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
       <h3>Animaux</h3>
       <p>Une sensibilité au vivant qui enrichit mon regard sur le monde.</p>
     </div>
     <div class="interest-card">
-      <div class="interest-icon"><svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
+      <div class="interest-icon"><img class="int-img" style="display:none;width:52px;height:52px;object-fit:cover;border-radius:12px;" alt=""><svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
       <h3>Psychologie</h3>
       <p>Comprendre les ressorts humains pour mieux collaborer et décider.</p>
     </div>
     <div class="interest-card">
-      <div class="interest-icon"><svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+      <div class="interest-icon"><img class="int-img" style="display:none;width:52px;height:52px;object-fit:cover;border-radius:12px;" alt=""><svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
       <h3>Comportement humain</h3>
       <p>L'observation des dynamiques sociales comme source permanente d'apprentissage.</p>
     </div>
@@ -1477,14 +1489,11 @@ footer p{color:var(--sub);font-size:.8rem;}
   </div>
 </footer>
 
-<!-- ═══ ADMIN v12 ═══ -->
+<!-- ═══ ADMIN v13 ═══ -->
 <div id="admin-toast"></div>
-<button id="admin-btn" title="Admin (Ctrl+Shift+A)" onclick="openAdmin()">
-  <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-</button>
+<button id="admin-btn" onclick="openAdmin()">Admin</button>
 
 <div id="admin-overlay">
-  <!-- ── Login ── -->
   <div id="admin-login-screen">
     <div class="admin-login-box">
       <h3>🔐 Administration</h3>
@@ -1495,9 +1504,7 @@ footer p{color:var(--sub);font-size:.8rem;}
     </div>
   </div>
 
-  <!-- ── Main layout ── -->
   <div id="admin-main-layout">
-    <!-- Sidebar -->
     <div id="admin-sidebar">
       <div class="admin-brand">
         <span class="admin-badge-pill">ADMIN</span>
@@ -1522,13 +1529,13 @@ footer p{color:var(--sub);font-size:.8rem;}
       <div class="admin-nav-group">
         <div class="admin-nav-label">VISUELS</div>
         <button class="admin-nav-item" onclick="adminNav('images',this)"><span class="nav-ico">🖼️</span>Images</button>
+        <button class="admin-nav-item" onclick="adminNav('ticker',this)"><span class="nav-ico">🏷️</span>Logos défilants</button>
       </div>
       <div class="admin-sidebar-footer">
         <button id="admin-close-btn" onclick="closeAdmin()">✕ Fermer le panel</button>
       </div>
     </div>
 
-    <!-- Content -->
     <div id="admin-content-area">
 
       <!-- HERO -->
@@ -1536,27 +1543,27 @@ footer p{color:var(--sub);font-size:.8rem;}
         <div class="admin-section-title">Hero</div>
         <div class="admin-section-desc">Première section — titre, description, statistiques.</div>
         <div class="admin-row">
-          <div class="admin-field"><label>Titre ligne 1</label><input type="text" id="h-title1" placeholder="Je transforme les idées"></div>
-          <div class="admin-field"><label>Titre ligne 2</label><input type="text" id="h-title2" placeholder="en systèmes qui fonctionnent"></div>
+          <div class="admin-field"><label>Titre ligne 1</label><input type="text" id="h-title1"></div>
+          <div class="admin-field"><label>Titre ligne 2</label><input type="text" id="h-title2"></div>
         </div>
         <div class="admin-field"><label>Description</label><textarea id="h-desc" rows="3"></textarea></div>
-        <div class="admin-field"><label>Badge disponibilité</label><input type="text" id="h-badge" placeholder="Disponible pour de nouveaux projets"></div>
+        <div class="admin-field"><label>Badge disponibilité</label><input type="text" id="h-badge"></div>
         <div class="admin-sep"></div>
         <div class="admin-sub-label">Statistiques</div>
         <div class="admin-row3">
-          <div class="admin-field"><label>Stat 1 — Valeur</label><input type="number" id="h-s1v" placeholder="30"></div>
-          <div class="admin-field"><label>Stat 1 — Suffixe</label><input type="text" id="h-s1s" placeholder="+"></div>
-          <div class="admin-field"><label>Stat 1 — Label</label><input type="text" id="h-s1l" placeholder="Projets réalisés"></div>
+          <div class="admin-field"><label>Stat 1 — Valeur</label><input type="number" id="h-s1v"></div>
+          <div class="admin-field"><label>Suffixe</label><input type="text" id="h-s1s"></div>
+          <div class="admin-field"><label>Label</label><input type="text" id="h-s1l"></div>
         </div>
         <div class="admin-row3">
-          <div class="admin-field"><label>Stat 2 — Valeur</label><input type="number" id="h-s2v" placeholder="3"></div>
-          <div class="admin-field"><label>Stat 2 — Suffixe</label><input type="text" id="h-s2s" placeholder=""></div>
-          <div class="admin-field"><label>Stat 2 — Label</label><input type="text" id="h-s2l" placeholder="Pays accompagnés"></div>
+          <div class="admin-field"><label>Stat 2 — Valeur</label><input type="number" id="h-s2v"></div>
+          <div class="admin-field"><label>Suffixe</label><input type="text" id="h-s2s"></div>
+          <div class="admin-field"><label>Label</label><input type="text" id="h-s2l"></div>
         </div>
         <div class="admin-row3">
-          <div class="admin-field"><label>Stat 3 — Valeur</label><input type="number" id="h-s3v" placeholder="6"></div>
-          <div class="admin-field"><label>Stat 3 — Suffixe</label><input type="text" id="h-s3s" placeholder=""></div>
-          <div class="admin-field"><label>Stat 3 — Label</label><input type="text" id="h-s3l" placeholder="Ans d'expérience"></div>
+          <div class="admin-field"><label>Stat 3 — Valeur</label><input type="number" id="h-s3v"></div>
+          <div class="admin-field"><label>Suffixe</label><input type="text" id="h-s3s"></div>
+          <div class="admin-field"><label>Label</label><input type="text" id="h-s3l"></div>
         </div>
         <div class="admin-btn-row">
           <button class="admin-btn admin-btn-primary" onclick="applyHero()">✓ Appliquer</button>
@@ -1573,7 +1580,6 @@ footer p{color:var(--sub);font-size:.8rem;}
         <div class="admin-sep"></div>
         <div class="admin-sub-label">Tags</div>
         <div class="admin-field">
-          <label>Appuyer Entrée pour ajouter un tag</label>
           <div class="admin-tags-wrap" id="ab-tags-container" onclick="document.getElementById('ab-tags-input').focus()">
             <input type="text" id="ab-tags-input" class="atag-input" placeholder="Ajouter un tag..." onkeydown="handleTagInput(event,'ab-tags')">
           </div>
@@ -1589,36 +1595,54 @@ footer p{color:var(--sub);font-size:.8rem;}
       <!-- EXPÉRIENCE -->
       <div id="ap-exp" class="admin-section-panel">
         <div class="admin-section-title">Expérience</div>
-        <div class="admin-section-desc">Les deux cartes d'expérience professionnelle.</div>
+        <div class="admin-section-desc">Les deux expériences professionnelles — contenu et logo.</div>
         <div class="admin-card open" id="exp-card-0">
           <div class="admin-card-hd" onclick="toggleAdminCard('exp-card-0')">
-            <span class="admin-card-hd-title">🏢 Expérience 1</span>
+            <span class="admin-card-hd-title">🏢 Expérience 1 — Senedoo</span>
             <span class="admin-card-arrow">▼</span>
           </div>
           <div class="admin-card-body">
             <div class="admin-row">
-              <div class="admin-field"><label>Entreprise</label><input type="text" id="exp-0-co" placeholder="Senedoo"></div>
-              <div class="admin-field"><label>Période</label><input type="text" id="exp-0-date" placeholder="Janv. 2025 — Présent"></div>
+              <div class="admin-field"><label>Logo entreprise</label>
+                <div class="admin-img-box-sm" id="box-exp-logo-0">
+                  <img id="prev-exp-0-logo" alt=""><input type="file" accept="image/*" onchange="previewExpLogo(this,0)">
+                  <div class="up-text">📷 Logo</div>
+                  <button onclick="clearExpLogo(0)" style="position:absolute;top:4px;right:4px;background:rgba(239,68,68,.2);border:none;color:#f87171;border-radius:4px;font-size:.7rem;cursor:pointer;padding:2px 5px;z-index:3;">✕</button>
+                </div>
+              </div>
+              <div>
+                <div class="admin-field"><label>Entreprise</label><input type="text" id="exp-0-co" placeholder="Senedoo"></div>
+                <div class="admin-field"><label>Période</label><input type="text" id="exp-0-date" placeholder="Janv. 2025 — Présent"></div>
+              </div>
             </div>
-            <div class="admin-field"><label>Rôle / Poste</label><input type="text" id="exp-0-role" placeholder="Responsable Support"></div>
+            <div class="admin-field"><label>Rôle / Poste</label><input type="text" id="exp-0-role"></div>
             <div class="admin-field"><label>Description</label><textarea id="exp-0-desc" rows="4"></textarea></div>
-            <div class="admin-field"><label>Clients (un par ligne)</label><textarea id="exp-0-clients" rows="3" placeholder="Oryx Energies&#10;GLOBO&#10;Eric Favre Afrique"></textarea></div>
+            <div class="admin-field"><label>Clients (un par ligne)</label><textarea id="exp-0-clients" rows="3"></textarea></div>
             <div class="admin-field"><label>Points clés (un par ligne)</label><textarea id="exp-0-bullets" rows="4"></textarea></div>
           </div>
         </div>
-        <div class="admin-card" id="exp-card-1">
+        <div class="admin-card open" id="exp-card-1">
           <div class="admin-card-hd" onclick="toggleAdminCard('exp-card-1')">
-            <span class="admin-card-hd-title">🚀 Expérience 2</span>
+            <span class="admin-card-hd-title">🚀 Expérience 2 — Groupe Digital Afrique</span>
             <span class="admin-card-arrow">▼</span>
           </div>
           <div class="admin-card-body">
             <div class="admin-row">
-              <div class="admin-field"><label>Entreprise</label><input type="text" id="exp-1-co" placeholder="Galsen Digital Agency"></div>
-              <div class="admin-field"><label>Période</label><input type="text" id="exp-1-date" placeholder="2020 — Présent"></div>
+              <div class="admin-field"><label>Logo entreprise</label>
+                <div class="admin-img-box-sm" id="box-exp-logo-1">
+                  <img id="prev-exp-1-logo" alt=""><input type="file" accept="image/*" onchange="previewExpLogo(this,1)">
+                  <div class="up-text">📷 Logo</div>
+                  <button onclick="clearExpLogo(1)" style="position:absolute;top:4px;right:4px;background:rgba(239,68,68,.2);border:none;color:#f87171;border-radius:4px;font-size:.7rem;cursor:pointer;padding:2px 5px;z-index:3;">✕</button>
+                </div>
+              </div>
+              <div>
+                <div class="admin-field"><label>Entreprise</label><input type="text" id="exp-1-co" placeholder="Groupe Digital Afrique"></div>
+                <div class="admin-field"><label>Période</label><input type="text" id="exp-1-date" placeholder="2020 — Présent"></div>
+              </div>
             </div>
-            <div class="admin-field"><label>Rôle / Poste</label><input type="text" id="exp-1-role" placeholder="Cofondateur"></div>
+            <div class="admin-field"><label>Rôle / Poste</label><input type="text" id="exp-1-role"></div>
             <div class="admin-field"><label>Description</label><textarea id="exp-1-desc" rows="4"></textarea></div>
-            <div class="admin-field"><label>Projets phares (un par ligne)</label><textarea id="exp-1-projects" rows="3" placeholder="DNC&#10;CFTS&#10;Mossane"></textarea></div>
+            <div class="admin-field"><label>Projets phares (un par ligne)</label><textarea id="exp-1-projects" rows="3"></textarea></div>
             <div class="admin-field"><label>Points clés (un par ligne)</label><textarea id="exp-1-bullets" rows="4"></textarea></div>
           </div>
         </div>
@@ -1630,10 +1654,10 @@ footer p{color:var(--sub);font-size:.8rem;}
       <!-- PROJETS -->
       <div id="ap-projects" class="admin-section-panel">
         <div class="admin-section-title">Projets</div>
-        <div class="admin-section-desc">Vos réalisations clés — avec bannière, technologies et lien.</div>
+        <div class="admin-section-desc">Réalisations — nom, organisation, description, technologies, lien, bannière.</div>
         <div id="proj-admin-list"></div>
         <div class="admin-btn-row">
-          <button class="admin-btn admin-btn-ghost" onclick="addProjectAdmin()">+ Ajouter un projet</button>
+          <button class="admin-btn admin-btn-ghost" onclick="addProjectAdmin()">+ Ajouter</button>
           <button class="admin-btn admin-btn-primary" onclick="applyProjects()">✓ Appliquer</button>
         </div>
       </div>
@@ -1644,7 +1668,7 @@ footer p{color:var(--sub);font-size:.8rem;}
         <div class="admin-section-desc">Catégories et barres de progression.</div>
         <div id="skills-ed-list"></div>
         <div class="admin-btn-row">
-          <button class="admin-btn admin-btn-ghost" onclick="addSkillCat()">+ Ajouter une catégorie</button>
+          <button class="admin-btn admin-btn-ghost" onclick="addSkillCat()">+ Catégorie</button>
           <button class="admin-btn admin-btn-primary" onclick="applySkills()">✓ Appliquer</button>
         </div>
       </div>
@@ -1653,7 +1677,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       <div id="ap-edu" class="admin-section-panel">
         <div class="admin-section-title">Études</div>
         <div class="admin-section-desc">Parcours académique et certifications.</div>
-        <div class="admin-sub-label">Parcours académique</div>
+        <div class="admin-sub-label">Parcours</div>
         <div id="edu-timeline-list"></div>
         <button class="admin-btn admin-btn-ghost admin-btn-sm" onclick="addEduItem()" style="margin-bottom:1.5rem;">+ Ajouter</button>
         <div class="admin-sep"></div>
@@ -1668,10 +1692,10 @@ footer p{color:var(--sub);font-size:.8rem;}
       <!-- AU-DELÀ -->
       <div id="ap-beyond" class="admin-section-panel">
         <div class="admin-section-title">Au-delà du professionnel</div>
-        <div class="admin-section-desc">Centres d'intérêt et passions.</div>
+        <div class="admin-section-desc">Centres d'intérêt — titre, description, image personnalisée.</div>
         <div id="personality-ed-list"></div>
         <div class="admin-btn-row">
-          <button class="admin-btn admin-btn-ghost" onclick="addInterestCard()">+ Ajouter une carte</button>
+          <button class="admin-btn admin-btn-ghost" onclick="addInterestCard()">+ Ajouter</button>
           <button class="admin-btn admin-btn-primary" onclick="applyPersonality()">✓ Appliquer</button>
         </div>
       </div>
@@ -1679,7 +1703,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       <!-- LANGUES -->
       <div id="ap-languages" class="admin-section-panel">
         <div class="admin-section-title">Langues</div>
-        <div class="admin-section-desc">Les langues parlées et leur niveau.</div>
+        <div class="admin-section-desc">Langues parlées et niveaux.</div>
         <div id="lang-ed-list"></div>
         <div class="admin-btn-row">
           <button class="admin-btn admin-btn-primary" onclick="applyLanguages()">✓ Appliquer</button>
@@ -1693,7 +1717,7 @@ footer p{color:var(--sub);font-size:.8rem;}
         <div class="admin-field"><label>Email</label><input type="email" id="c-email" value="alphandiayepro@gmail.com"></div>
         <div class="admin-field"><label>LinkedIn URL</label><input type="url" id="c-linkedin" value="https://www.linkedin.com/in/alphandiaye"></div>
         <div class="admin-field"><label>Site GDA URL</label><input type="url" id="c-gda" value="https://groupedigitalafrique.com"></div>
-        <div class="admin-field"><label>Lien CV (Google Drive)</label><input type="url" id="c-cv" value="https://drive.google.com/uc?export=download&id=1Rc_Ll7EuomI5FeMPTkga7_4Q3cMDJ4iP"></div>
+        <div class="admin-field"><label>Lien CV</label><input type="url" id="c-cv" value="https://drive.google.com/uc?export=download&id=1Rc_Ll7EuomI5FeMPTkga7_4Q3cMDJ4iP"></div>
         <div class="admin-btn-row">
           <button class="admin-btn admin-btn-primary" onclick="applyContact()">✓ Appliquer</button>
         </div>
@@ -1703,10 +1727,10 @@ footer p{color:var(--sub);font-size:.8rem;}
       <div id="ap-params" class="admin-section-panel">
         <div class="admin-section-title">Paramètres</div>
         <div class="admin-section-desc">Configuration GitHub pour publier le site.</div>
-        <div class="admin-field"><label>Token GitHub PAT (stocké localement)</label><input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" oninput="ghSaveToken(this.value)"></div>
+        <div class="admin-field"><label>Token GitHub PAT</label><input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" oninput="ghSaveToken(this.value)"></div>
         <div class="admin-row">
-          <div class="admin-field"><label>Propriétaire (username)</label><input type="text" id="gh-owner" placeholder="ZouAlphas" oninput="ghSave()"></div>
-          <div class="admin-field"><label>Nom du repo</label><input type="text" id="gh-repo" placeholder="alphandiaye" oninput="ghSave()"></div>
+          <div class="admin-field"><label>Propriétaire</label><input type="text" id="gh-owner" placeholder="ZouAlphas" oninput="ghSave()"></div>
+          <div class="admin-field"><label>Repo</label><input type="text" id="gh-repo" placeholder="alphandiaye" oninput="ghSave()"></div>
         </div>
         <div class="admin-row">
           <div class="admin-field"><label>Branche</label><input type="text" id="gh-branch" value="main" oninput="ghSave()"></div>
@@ -1715,77 +1739,48 @@ footer p{color:var(--sub);font-size:.8rem;}
         <div class="admin-field"><label>Message de commit</label><input type="text" id="gh-msg" value="Admin: mise à jour du contenu" oninput="ghSave()"></div>
         <div class="admin-btn-row">
           <button class="admin-btn admin-btn-ghost" onclick="ghVerify()">🔍 Vérifier</button>
-          <button class="admin-btn admin-btn-ghost" onclick="exportSite()">⬇ Exporter HTML</button>
+          <button class="admin-btn admin-btn-ghost" onclick="exportSite()">⬇ Exporter</button>
         </div>
         <div class="pub-repo-status" id="repo-status" style="display:none;">
           <div class="pub-repo-dot" id="repo-dot"></div>
           <span id="repo-status-txt" style="font-size:.79rem;color:rgba(255,255,255,.45);"></span>
         </div>
-        <div class="admin-info-box" style="margin-top:1rem;"><strong>Token GitHub :</strong> Settings → Developer settings → Personal access tokens (classic) → Generate → cocher <code style="color:#38BDF8">repo</code></div>
+        <div class="admin-info-box">Settings → Developer settings → Personal access tokens (classic) → cocher <code style="color:#38BDF8">repo</code></div>
       </div>
 
       <!-- IMAGES -->
       <div id="ap-images" class="admin-section-panel">
         <div class="admin-section-title">Images</div>
-        <div class="admin-section-desc">Photo de profil et bannières des projets.</div>
-        <div class="admin-row">
-          <div class="admin-field">
-            <label>Photo de profil</label>
-            <div class="admin-img-box">
-              <img id="prev-photo" alt=""><input type="file" accept="image/*" onchange="previewImg(this,'prev-photo','photo')">
-              <div class="up-text"><span class="up-title">📷 Cliquer pour changer</span>Recommandé : 800×1000px</div>
-            </div>
-          </div>
-          <div class="admin-field">
-            <label>Bannière DNC</label>
-            <div class="admin-img-box">
-              <img id="prev-dnc" alt=""><input type="file" accept="image/*" onchange="previewImg(this,'prev-dnc','dnc')">
-              <div class="up-text"><span class="up-title">📷 Cliquer</span>800×500px</div>
-            </div>
-          </div>
-          <div class="admin-field">
-            <label>Bannière CFTS</label>
-            <div class="admin-img-box">
-              <img id="prev-cfts" alt=""><input type="file" accept="image/*" onchange="previewImg(this,'prev-cfts','cfts')">
-              <div class="up-text"><span class="up-title">📷 Cliquer</span>800×500px</div>
-            </div>
-          </div>
-          <div class="admin-field">
-            <label>Bannière Sama Chef</label>
-            <div class="admin-img-box">
-              <img id="prev-samachef" alt=""><input type="file" accept="image/*" onchange="previewImg(this,'prev-samachef','samachef')">
-              <div class="up-text"><span class="up-title">📷 Cliquer</span></div>
-            </div>
-          </div>
-          <div class="admin-field">
-            <label>Bannière Mossane</label>
-            <div class="admin-img-box">
-              <img id="prev-mossane" alt=""><input type="file" accept="image/*" onchange="previewImg(this,'prev-mossane','mossane')">
-              <div class="up-text"><span class="up-title">📷 Cliquer</span></div>
-            </div>
-          </div>
-          <div class="admin-field">
-            <label>Bannière BITIK</label>
-            <div class="admin-img-box">
-              <img id="prev-bitik" alt=""><input type="file" accept="image/*" onchange="previewImg(this,'prev-bitik','bitik')">
-              <div class="up-text"><span class="up-title">📷 Cliquer</span></div>
-            </div>
-          </div>
-          <div class="admin-field">
-            <label>Bannière Oryx</label>
-            <div class="admin-img-box">
-              <img id="prev-oryx" alt=""><input type="file" accept="image/*" onchange="previewImg(this,'prev-oryx','oryx')">
-              <div class="up-text"><span class="up-title">📷 Cliquer</span></div>
-            </div>
+        <div class="admin-section-desc">Photo de profil, cartes À propos, cartes Au-delà et bannières projets.</div>
+        <div class="admin-sub-label">Photo de profil</div>
+        <div class="admin-field">
+          <div class="admin-img-box" style="max-width:200px;">
+            <img id="prev-photo" alt=""><input type="file" accept="image/*" onchange="previewImg(this,'prev-photo','photo')">
+            <div class="up-text"><span class="up-title">📷 Changer</span>Recommandé : 800×1000px</div>
           </div>
         </div>
-        <div class="admin-info-box">Les images sont encodées en base64 et intégrées dans le HTML. <strong>Publiez</strong> après chaque modification pour mettre en ligne.</div>
+        <div class="admin-sep"></div>
+        <div class="admin-sub-label">Cartes À propos (remplace l'icône)</div>
+        <div id="about-cards-img-list"></div>
+        <div class="admin-sep"></div>
+        <div class="admin-sub-label">Bannières projets</div>
+        <div class="admin-img-row" id="proj-banners-list"></div>
+      </div>
+
+      <!-- LOGOS DÉFILANTS -->
+      <div id="ap-ticker" class="admin-section-panel">
+        <div class="admin-section-title">Logos défilants</div>
+        <div class="admin-section-desc">Gérez les logos/noms qui défilent dans la section clients.</div>
+        <div id="ticker-list"></div>
+        <div class="admin-btn-row">
+          <button class="admin-btn admin-btn-ghost" onclick="addTickerItem()">+ Ajouter un logo</button>
+          <button class="admin-btn admin-btn-primary" onclick="applyTicker()">✓ Appliquer</button>
+        </div>
       </div>
 
     </div><!-- /admin-content-area -->
   </div><!-- /admin-main-layout -->
 
-  <!-- Bottom bar -->
   <div id="admin-bottom-bar">
     <div id="admin-bar-status">Aucune modification en attente</div>
     <div class="admin-bar-actions">
@@ -1928,41 +1923,32 @@ function handleForm(e){
   },3500);
 }
 
-/* ═══ ADMIN v12 ═══ */
+/* ═══ ADMIN v13 ═══ */
 const PWD_ADMIN='1ClaudAlpha9';
 const GH_STORE='gh_config_v11';
 let _adminAuth=false;
 
 document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key==='A')openAdmin();});
-// Accès secret par URL : alphandiaye.online/?admin ou #admin
-window.addEventListener('load',()=>{
-  if(location.search.includes('admin')||location.hash==='#admin'){
-    setTimeout(openAdmin,400);
-  }
-});
+window.addEventListener('load',()=>{if(location.search.includes('admin')||location.hash==='#admin')setTimeout(openAdmin,400);});
 
 function openAdmin(){
   document.getElementById('admin-overlay').classList.add('open');
   document.body.style.overflow='hidden';
-  if(_adminAuth) setTimeout(()=>initAllAdminSections(),150);
+  if(_adminAuth)setTimeout(()=>{initAllAdminSections();ghRestoreFields();},150);
 }
 function closeAdmin(){
   document.getElementById('admin-overlay').classList.remove('open');
   document.body.style.overflow='';
 }
-
 function checkPwd(){
   if(document.getElementById('admin-pwd').value===PWD_ADMIN){
     _adminAuth=true;
     document.getElementById('admin-login-screen').style.display='none';
     document.getElementById('admin-main-layout').style.display='flex';
-    setTimeout(()=>{initAllAdminSections();ghRestoreFields();},50);
-  }else{
-    document.getElementById('admin-err').style.display='block';
-  }
+    setTimeout(()=>{initAllAdminSections();ghRestoreFields();},150);
+  }else{document.getElementById('admin-err').style.display='block';}
 }
-
-function adminNav(section, btn){
+function adminNav(section,btn){
   document.querySelectorAll('.admin-nav-item').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   document.querySelectorAll('.admin-section-panel').forEach(p=>p.classList.remove('on'));
@@ -1975,55 +1961,51 @@ function adminNav(section, btn){
   if(section==='languages')buildLangEditor();
   if(section==='about'){initAbout();}
   if(section==='exp'){initExp();}
+  if(section==='images'){buildImagesPanel();}
+  if(section==='ticker'){buildTickerEditor();}
 }
-
-function toggleAdminCard(id){
-  document.getElementById(id).classList.toggle('open');
-}
-
+function toggleAdminCard(id){document.getElementById(id).classList.toggle('open');}
 function initAllAdminSections(){
   initHero();initAbout();initExp();buildProjectsEditor();
-  buildSkillsEditor();buildEduEditor();buildPersonalityEditor();buildLangEditor();
-  initContact();
+  buildSkillsEditor();buildEduEditor();buildPersonalityEditor();buildLangEditor();initContact();
+}
+
+/* ─── IMAGE COMPRESSION ─── */
+function compressImg(file,cb,maxW=800,quality=0.82){
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const img=new Image();
+    img.onload=()=>{
+      const scale=Math.min(1,maxW/img.width);
+      const canvas=document.createElement('canvas');
+      canvas.width=Math.round(img.width*scale);
+      canvas.height=Math.round(img.height*scale);
+      canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+      cb(canvas.toDataURL('image/jpeg',quality));
+    };
+    img.src=e.target.result;
+  };
+  reader.readAsDataURL(file);
 }
 
 /* ─── HERO ─── */
 function initHero(){
   const stats=document.querySelectorAll('.stat-num');
-  if(stats[0]){
-    document.getElementById('h-s1v').value=stats[0].dataset.to||'30';
-    document.getElementById('h-s1s').value=stats[0].dataset.suffix||'+';
-  }
-  if(stats[1]){
-    document.getElementById('h-s2v').value=stats[1].dataset.to||'3';
-    document.getElementById('h-s2s').value=stats[1].dataset.suffix||'';
-  }
-  if(stats[2]){
-    document.getElementById('h-s3v').value=stats[2].dataset.to||'6';
-    document.getElementById('h-s3s').value=stats[2].dataset.suffix||'';
-  }
+  if(stats[0]){document.getElementById('h-s1v').value=stats[0].dataset.to||'30';document.getElementById('h-s1s').value=stats[0].dataset.suffix||'+';}
+  if(stats[1]){document.getElementById('h-s2v').value=stats[1].dataset.to||'3';document.getElementById('h-s2s').value=stats[1].dataset.suffix||'';}
+  if(stats[2]){document.getElementById('h-s3v').value=stats[2].dataset.to||'6';document.getElementById('h-s3s').value=stats[2].dataset.suffix||'';}
   const labels=document.querySelectorAll('.stat-label');
-  if(labels[0])document.getElementById('h-s1l').value=labels[0].textContent||'Projets réalisés';
-  if(labels[1])document.getElementById('h-s2l').value=labels[1].textContent||'Pays accompagnés';
-  if(labels[2])document.getElementById('h-s3l').value=labels[2].textContent||"Ans d'expérience";
+  if(labels[0])document.getElementById('h-s1l').value=labels[0].textContent||'';
+  if(labels[1])document.getElementById('h-s2l').value=labels[1].textContent||'';
+  if(labels[2])document.getElementById('h-s3l').value=labels[2].textContent||'';
   const h1=document.querySelector('h1.hero-title');
-  if(h1){
-    const lines=h1.innerHTML.split('<br>');
-    document.getElementById('h-title1').value=lines[0]?lines[0].replace(/<[^>]+>/g,'').trim():'';
-    document.getElementById('h-title2').value=lines[1]?lines[1].replace(/<[^>]+>/g,'').trim():'';
-  }
-  const desc=document.querySelector('.hero-desc');
-  if(desc)document.getElementById('h-desc').value=desc.textContent.trim();
-  const badge=document.querySelector('.hero-location');
-  if(badge){const t=badge.textContent.trim();document.getElementById('h-badge').value=t;}
+  if(h1){const lines=h1.innerHTML.split('<br>');document.getElementById('h-title1').value=lines[0]?lines[0].replace(/<[^>]+>/g,'').trim():'';document.getElementById('h-title2').value=lines[1]?lines[1].replace(/<[^>]+>/g,'').trim():'';}
+  const desc=document.querySelector('.hero-desc');if(desc)document.getElementById('h-desc').value=desc.textContent.trim();
 }
 function applyHero(){
-  const s1v=parseInt(document.getElementById('h-s1v').value)||30;
-  const s1s=document.getElementById('h-s1s').value||'+';
-  const s2v=parseInt(document.getElementById('h-s2v').value)||3;
-  const s2s=document.getElementById('h-s2s').value||'';
-  const s3v=parseInt(document.getElementById('h-s3v').value)||6;
-  const s3s=document.getElementById('h-s3s').value||'';
+  const s1v=parseInt(document.getElementById('h-s1v').value)||30,s1s=document.getElementById('h-s1s').value||'+';
+  const s2v=parseInt(document.getElementById('h-s2v').value)||3,s2s=document.getElementById('h-s2s').value||'';
+  const s3v=parseInt(document.getElementById('h-s3v').value)||6,s3s=document.getElementById('h-s3s').value||'';
   const stats=document.querySelectorAll('.stat-num');
   if(stats[0]){stats[0].dataset.to=s1v;stats[0].dataset.suffix=s1s;stats[0].textContent=s1v+s1s;}
   if(stats[1]){stats[1].dataset.to=s2v;stats[1].dataset.suffix=s2s;stats[1].textContent=s2v+s2s;}
@@ -2032,12 +2014,9 @@ function applyHero(){
   if(labels[0])labels[0].textContent=document.getElementById('h-s1l').value;
   if(labels[1])labels[1].textContent=document.getElementById('h-s2l').value;
   if(labels[2])labels[2].textContent=document.getElementById('h-s3l').value;
-  const t1=document.getElementById('h-title1').value;
-  const t2=document.getElementById('h-title2').value;
   const h1=document.querySelector('h1.hero-title');
-  if(h1)h1.innerHTML=`${t1}<br><span class="title-gradient">${t2}</span>`;
-  const desc=document.querySelector('.hero-desc');
-  if(desc&&document.getElementById('h-desc').value)desc.textContent=document.getElementById('h-desc').value;
+  if(h1)h1.innerHTML=`${document.getElementById('h-title1').value}<br><span class="title-gradient">${document.getElementById('h-title2').value}</span>`;
+  const desc=document.querySelector('.hero-desc');if(desc&&document.getElementById('h-desc').value)desc.textContent=document.getElementById('h-desc').value;
   markModified();showToast('✓ Hero mis à jour');
 }
 
@@ -2048,121 +2027,84 @@ function initAbout(){
   if(paras[0])document.getElementById('ab-p1').value=txt(paras[0]);
   if(paras[1])document.getElementById('ab-p2').value=txt(paras[1]);
   if(paras[2])document.getElementById('ab-p3').value=txt(paras[2]);
-  // Tags
   const container=document.getElementById('ab-tags-container');
   container.querySelectorAll('.atag').forEach(t=>t.remove());
-  document.querySelectorAll('.about-tag').forEach(tag=>{
-    const txt=tag.textContent.trim();
-    addTagEl('ab-tags',txt);
-  });
-  // Cards
+  document.querySelectorAll('.about-tag').forEach(tag=>addTagEl('ab-tags',tag.textContent.trim()));
   buildAboutCards();
 }
 function buildAboutCards(){
-  const list=document.getElementById('ab-cards-list');
-  list.innerHTML='';
+  const list=document.getElementById('ab-cards-list');list.innerHTML='';
   document.querySelectorAll('.about-card').forEach((card,i)=>{
     const title=card.querySelector('h3')?.textContent||'';
     const desc=card.querySelector('p')?.textContent||'';
-    const div=document.createElement('div');
-    div.className='admin-item-row';
+    const hasImg=card.querySelector('.acard-img')?.src&&card.querySelector('.acard-img')?.style.display!=='none';
+    const div=document.createElement('div');div.className='admin-item-row';
     div.innerHTML=`<div class="admin-item-header"><span class="admin-item-title">Carte ${i+1}</span></div>
-      <div class="admin-field"><label>Titre</label><input type="text" value="${title.replace(/"/g,'&quot;')}" data-ac-t="${i}"></div>
-      <div class="admin-field"><label>Description</label><textarea rows="2" data-ac-d="${i}">${desc}</textarea></div>`;
+      <div class="admin-row">
+        <div>
+          <div class="admin-field"><label>Titre</label><input type="text" value="${title.replace(/"/g,'&quot;')}" data-ac-t="${i}"></div>
+          <div class="admin-field"><label>Description</label><textarea rows="2" data-ac-d="${i}">${desc}</textarea></div>
+        </div>
+        <div class="admin-field"><label>Image (remplace l'icône)</label>
+          <div class="admin-img-box-sm">
+            <img id="prev-acard-${i}" alt="" ${hasImg?'class="loaded" src="'+card.querySelector('.acard-img').src+'"':''}><input type="file" accept="image/*" onchange="previewCardImg(this,'acard',${i})">
+            <div class="up-text">📷</div>
+          </div>
+          <button onclick="clearCardImg('acard',${i})" style="margin-top:.3rem;font-size:.72rem;background:none;border:none;color:rgba(248,113,113,.7);cursor:pointer;">✕ Supprimer image</button>
+        </div>
+      </div>`;
     list.appendChild(div);
   });
 }
 function applyAbout(){
   const paras=document.querySelectorAll('.about-text p');
-  const v1=document.getElementById('ab-p1').value;
-  const v2=document.getElementById('ab-p2').value;
-  const v3=document.getElementById('ab-p3').value;
-  if(paras[0]&&v1)paras[0].textContent=v1;
-  if(paras[1]&&v2)paras[1].textContent=v2;
-  if(paras[2]&&v3)paras[2].textContent=v3;
-  // Tags
-  const tagEls=document.querySelectorAll('.about-tags .about-tag');
+  const v1=document.getElementById('ab-p1').value,v2=document.getElementById('ab-p2').value,v3=document.getElementById('ab-p3').value;
+  if(paras[0]&&v1)paras[0].textContent=v1;if(paras[1]&&v2)paras[1].textContent=v2;if(paras[2]&&v3)paras[2].textContent=v3;
   const newTags=document.querySelectorAll('#ab-tags-container .atag');
-  if(newTags.length>0){
-    const tagsContainer=document.querySelector('.about-tags');
-    if(tagsContainer){
-      tagsContainer.querySelectorAll('.about-tag').forEach(t=>t.remove());
-      newTags.forEach(nt=>{
-        const newTag=document.createElement('span');
-        newTag.className='about-tag';
-        newTag.textContent=nt.dataset.tagval||nt.textContent.replace('×','').trim();
-        tagsContainer.appendChild(newTag);
-      });
-    }
-  }
-  // About cards
-  document.querySelectorAll('[data-ac-t]').forEach(inp=>{
-    const i=parseInt(inp.dataset.acT);
-    const card=document.querySelectorAll('.about-card')[i];
-    if(card){const h=card.querySelector('h3');if(h)h.textContent=inp.value;}
-  });
-  document.querySelectorAll('[data-ac-d]').forEach(ta=>{
-    const i=parseInt(ta.dataset.acD);
-    const card=document.querySelectorAll('.about-card')[i];
-    if(card){const p=card.querySelector('p');if(p)p.textContent=ta.value;}
-  });
+  if(newTags.length>0){const tc=document.querySelector('.about-tags');if(tc){tc.querySelectorAll('.about-tag').forEach(t=>t.remove());newTags.forEach(nt=>{const s=document.createElement('span');s.className='about-tag';s.textContent=nt.dataset.tagval||nt.textContent.replace('×','').trim();tc.appendChild(s);});}}
+  document.querySelectorAll('[data-ac-t]').forEach(inp=>{const i=parseInt(inp.dataset.acT);const card=document.querySelectorAll('.about-card')[i];if(card){const h=card.querySelector('h3');if(h)h.textContent=inp.value;}});
+  document.querySelectorAll('[data-ac-d]').forEach(ta=>{const i=parseInt(ta.dataset.acD);const card=document.querySelectorAll('.about-card')[i];if(card){const p=card.querySelector('p');if(p)p.textContent=ta.value;}});
   markModified();showToast('✓ À propos mis à jour');
 }
-
-/* ─── TAGS ─── */
-function handleTagInput(e,ns){
-  if(e.key==='Enter'||e.key===','){
-    e.preventDefault();
-    const inp=e.target;
-    const val=inp.value.trim().replace(',','');
-    if(val){addTagEl(ns,val);inp.value='';}
-  }
-}
-function addTagEl(ns,val){
-  const container=document.getElementById(ns+'-container');
-  const inp=document.getElementById(ns+'-input');
-  const tag=document.createElement('span');
-  tag.className='atag';
-  tag.dataset.tagval=val;
-  tag.innerHTML=`${val}<button type="button" onclick="this.parentElement.remove()">×</button>`;
-  container.insertBefore(tag,inp);
-}
+function handleTagInput(e,ns){if(e.key==='Enter'||e.key===','){e.preventDefault();const inp=e.target;const val=inp.value.trim().replace(',','');if(val){addTagEl(ns,val);inp.value='';}}}
+function addTagEl(ns,val){const container=document.getElementById(ns+'-container');const inp=document.getElementById(ns+'-input');const tag=document.createElement('span');tag.className='atag';tag.dataset.tagval=val;tag.innerHTML=`${val}<button type="button" onclick="this.parentElement.remove()">×</button>`;container.insertBefore(tag,inp);}
 
 /* ─── EXPÉRIENCE ─── */
 function initExp(){
   const cards=document.querySelectorAll('.timeline-card');
+  const get=(el,sel)=>(el.querySelector(sel)?.innerText||el.querySelector(sel)?.textContent||'').trim();
   if(cards[0]){
-    document.getElementById('exp-0-co').value=cards[0].querySelector('.timeline-company')?.textContent.trim()||'';
-    document.getElementById('exp-0-date').value=cards[0].querySelector('.timeline-date')?.textContent.trim()||'';
-    document.getElementById('exp-0-role').value=cards[0].querySelector('.timeline-role')?.textContent.trim()||'';
-    document.getElementById('exp-0-desc').value=cards[0].querySelector('.timeline-desc')?.textContent.trim()||'';
-    const clients=Array.from(cards[0].querySelectorAll('.tclient')).map(c=>c.textContent.trim());
-    document.getElementById('exp-0-clients').value=clients.join('\n');
-    const bullets=Array.from(cards[0].querySelectorAll('.timeline-list li')).map(l=>l.textContent.trim());
-    document.getElementById('exp-0-bullets').value=bullets.join('\n');
+    document.getElementById('exp-0-co').value=get(cards[0],'.timeline-company');
+    document.getElementById('exp-0-date').value=(cards[0].closest('.timeline-item')?.querySelector('.timeline-date')?.innerText||'').trim();
+    document.getElementById('exp-0-role').value=get(cards[0],'.timeline-role');
+    document.getElementById('exp-0-desc').value=get(cards[0],'.timeline-desc');
+    document.getElementById('exp-0-clients').value=Array.from(cards[0].querySelectorAll('.tclient')).map(c=>c.innerText.trim()).join('\n');
+    document.getElementById('exp-0-bullets').value=Array.from(cards[0].querySelectorAll('.timeline-list li')).map(l=>l.innerText.trim()).join('\n');
+    const logo0=document.getElementById('exp-logo-0');
+    if(logo0&&logo0.style.display!=='none'&&logo0.src){const prev=document.getElementById('prev-exp-0-logo');if(prev){prev.src=logo0.src;prev.classList.add('loaded');}}
   }
   if(cards[1]){
-    document.getElementById('exp-1-co').value=cards[1].querySelector('.timeline-company')?.textContent.trim()||'';
-    document.getElementById('exp-1-date').value=cards[1].querySelector('.timeline-date')?.textContent.trim()||'';
-    document.getElementById('exp-1-role').value=cards[1].querySelector('.timeline-role')?.textContent.trim()||'';
-    document.getElementById('exp-1-desc').value=cards[1].querySelector('.timeline-desc')?.textContent.trim()||'';
-    const projs=Array.from(cards[1].querySelectorAll('.chip')).map(c=>c.textContent.trim());
-    document.getElementById('exp-1-projects').value=projs.join('\n');
-    const bullets=Array.from(cards[1].querySelectorAll('.timeline-list li')).map(l=>l.textContent.trim());
-    document.getElementById('exp-1-bullets').value=bullets.join('\n');
+    document.getElementById('exp-1-co').value=get(cards[1],'.timeline-company');
+    document.getElementById('exp-1-date').value=(cards[1].closest('.timeline-item')?.querySelector('.timeline-date')?.innerText||'').trim();
+    document.getElementById('exp-1-role').value=get(cards[1],'.timeline-role');
+    document.getElementById('exp-1-desc').value=get(cards[1],'.timeline-desc');
+    document.getElementById('exp-1-projects').value=Array.from(cards[1].querySelectorAll('.chip')).map(c=>c.innerText.trim()).join('\n');
+    document.getElementById('exp-1-bullets').value=Array.from(cards[1].querySelectorAll('.timeline-list li')).map(l=>l.innerText.trim()).join('\n');
+    const logo1=document.getElementById('exp-logo-1');
+    if(logo1&&logo1.style.display!=='none'&&logo1.src){const prev=document.getElementById('prev-exp-1-logo');if(prev){prev.src=logo1.src;prev.classList.add('loaded');}}
   }
 }
 function applyExp(){
   const cards=document.querySelectorAll('.timeline-card');
   [0,1].forEach(i=>{
-    const card=cards[i];
-    if(!card)return;
+    const card=cards[i];if(!card)return;
     const co=document.getElementById(`exp-${i}-co`).value;
-    const date=document.getElementById(`exp-${i}-date`).value;
     const role=document.getElementById(`exp-${i}-role`).value;
     const desc=document.getElementById(`exp-${i}-desc`).value;
+    const dateEl=card.closest('.timeline-item')?.querySelector('.timeline-date');
+    const date=document.getElementById(`exp-${i}-date`).value;
     if(co){const el=card.querySelector('.timeline-company');if(el)el.textContent=co;}
-    if(date){const el=card.querySelector('.timeline-date');if(el)el.textContent=date;}
+    if(dateEl&&date)dateEl.textContent=date;
     if(role){const el=card.querySelector('.timeline-role');if(el)el.textContent=role;}
     if(desc){const el=card.querySelector('.timeline-desc');if(el)el.textContent=desc;}
     if(i===0){
@@ -2181,471 +2123,379 @@ function applyExp(){
   });
   markModified();showToast('✓ Expérience mise à jour');
 }
+function previewExpLogo(input,i){
+  const file=input.files[0];if(!file)return;
+  compressImg(file,src=>{
+    const prev=document.getElementById(`prev-exp-${i}-logo`);
+    if(prev){prev.src=src;prev.classList.add('loaded');}
+    const logoImg=document.getElementById(`exp-logo-${i}`);
+    const initials=logoImg?.nextElementSibling;
+    if(logoImg){logoImg.src=src;logoImg.style.display='block';}
+    if(initials&&initials.classList.contains('exp-initials'))initials.style.display='none';
+    markModified();
+  },120,0.9);
+}
+function clearExpLogo(i){
+  const logoImg=document.getElementById(`exp-logo-${i}`);
+  const initials=logoImg?.nextElementSibling;
+  if(logoImg){logoImg.src='';logoImg.style.display='none';}
+  if(initials)initials.style.display='';
+  const prev=document.getElementById(`prev-exp-${i}-logo`);
+  if(prev){prev.src='';prev.classList.remove('loaded');}
+  markModified();
+}
 
-/* ─── PROJETS CRUD ─── */
+/* ─── IMAGES (profile + about cards + project banners) ─── */
+const imgMap={'photo':['#hero .hero-photo img']};
+function previewImg(input,previewId,key){
+  const file=input.files[0];if(!file)return;
+  compressImg(file,src=>{
+    const prev=document.getElementById(previewId);
+    if(prev){prev.src=src;prev.classList.add('loaded');}
+    if(imgMap[key]){imgMap[key].forEach(sel=>{document.querySelectorAll(sel).forEach(el=>{el.src=src;el.style.display='block';});});}
+    markModified();
+  });
+}
+function buildImagesPanel(){
+  // About card images
+  const acList=document.getElementById('about-cards-img-list');acList.innerHTML='';
+  document.querySelectorAll('.about-card').forEach((card,i)=>{
+    const title=card.querySelector('h3')?.textContent||`Carte ${i+1}`;
+    const img=card.querySelector('.acard-img');
+    const hasImg=img&&img.style.display!=='none'&&img.src;
+    const div=document.createElement('div');div.className='admin-item-row';div.style.cssText='display:flex;align-items:center;gap:.85rem;';
+    div.innerHTML=`<div class="admin-img-box-sm" style="width:80px;flex-shrink:0;">
+      <img id="img-acard-${i}" ${hasImg?`class="loaded" src="${img.src}"`:''}  alt=""><input type="file" accept="image/*" onchange="previewCardImg(this,'acard',${i})">
+      <div class="up-text">📷</div></div>
+      <div style="flex:1"><div style="font-size:.83rem;font-weight:600;color:#e2ebf8;margin-bottom:.3rem;">${title}</div>
+      <button onclick="clearCardImg('acard',${i})" style="font-size:.72rem;background:none;border:none;color:rgba(248,113,113,.6);cursor:pointer;">✕ Supprimer</button></div>`;
+    acList.appendChild(div);
+  });
+  // Project banners
+  const pbList=document.getElementById('proj-banners-list');pbList.innerHTML='';
+  document.querySelectorAll('.proj-card').forEach((card,i)=>{
+    const name=card.querySelector('.proj-name')?.textContent||`Projet ${i+1}`;
+    const img=card.querySelector('.proj-top img');
+    const div=document.createElement('div');div.className='admin-img-item';
+    div.innerHTML=`<label>${name.substring(0,18)}</label>
+      <div class="admin-img-box-sm">
+        <img id="prev-proj-${i}" ${img&&img.src?`class="loaded" src="${img.src}"`:''}  alt=""><input type="file" accept="image/*" onchange="previewProjBanner(this,${i})">
+        <div class="up-text">📷</div></div>`;
+    pbList.appendChild(div);
+  });
+}
+function previewCardImg(input,type,i){
+  const file=input.files[0];if(!file)return;
+  compressImg(file,src=>{
+    const prevId=type==='acard'?`prev-acard-${i}`:`img-icard-${i}`;
+    const prev=document.getElementById(prevId)||document.getElementById(`img-${type}-${i}`);
+    if(prev){prev.src=src;prev.classList.add('loaded');}
+    if(type==='acard'){
+      const card=document.querySelectorAll('.about-card')[i];
+      if(card){const img=card.querySelector('.acard-img');const svg=card.querySelector('.about-card-icon svg');if(img){img.src=src;img.style.display='block';}if(svg)svg.style.display='none';}
+    }else if(type==='icard'){
+      const card=document.querySelectorAll('.interest-card')[i];
+      if(card){const img=card.querySelector('.int-img');const svg=card.querySelector('.interest-icon svg');if(img){img.src=src;img.style.display='block';}if(svg)svg.style.display='none';}
+    }
+    markModified();
+  },400,0.85);
+}
+function clearCardImg(type,i){
+  if(type==='acard'){
+    const card=document.querySelectorAll('.about-card')[i];
+    if(card){const img=card.querySelector('.acard-img');const svg=card.querySelector('.about-card-icon svg');if(img){img.src='';img.style.display='none';}if(svg)svg.style.display='';}
+  }else if(type==='icard'){
+    const card=document.querySelectorAll('.interest-card')[i];
+    if(card){const img=card.querySelector('.int-img');const svg=card.querySelector('.interest-icon svg');if(img){img.src='';img.style.display='none';}if(svg)svg.style.display='';}
+  }
+  markModified();
+}
+function previewProjBanner(input,i){
+  const file=input.files[0];if(!file)return;
+  compressImg(file,src=>{
+    const prev=document.getElementById(`prev-proj-${i}`);if(prev){prev.src=src;prev.classList.add('loaded');}
+    const card=document.querySelectorAll('.proj-card')[i];
+    if(card){let img=card.querySelector('.proj-top img');if(!img){const top=card.querySelector('.proj-top');if(top){img=document.createElement('img');top.innerHTML='';top.appendChild(img);}}if(img){img.src=src;img.style.display='block';}}
+    markModified();
+  });
+}
+
+/* ─── LOGOS DÉFILANTS (TICKER) ─── */
+function buildTickerEditor(){
+  const list=document.getElementById('ticker-list');list.innerHTML='';
+  const track=document.querySelector('.clients-track');if(!track)return;
+  const unique=[];
+  const half=Math.ceil(track.querySelectorAll('.client-logo').length/2);
+  track.querySelectorAll('.client-logo').forEach((item,i)=>{if(i<half)unique.push(item);});
+  unique.forEach((item,i)=>{
+    const img=item.querySelector('img');
+    const text=item.querySelector('.client-text')?.textContent||'';
+    const src=img?img.src:'';
+    const div=document.createElement('div');div.className='ticker-item-row';
+    div.innerHTML=`<div class="ticker-item-preview" id="tick-prev-${i}">${src?`<img src="${src}" alt="">`:`<span>${text.substring(0,3)}</span>`}</div>
+      <div style="flex:1">
+        <input type="text" value="${text}" data-tick-name="${i}" placeholder="Nom du client" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#e2ebf8;padding:.38rem .65rem;border-radius:7px;font-size:.82rem;outline:none;">
+      </div>
+      <div style="position:relative;flex-shrink:0;">
+        <div class="admin-img-box-sm" style="width:52px;height:44px;">
+          <img id="tick-img-${i}" ${src?`src="${src}" class="loaded"`:''}  alt=""><input type="file" accept="image/*" onchange="previewTickerImg(this,${i})">
+          <div class="up-text" style="font-size:.62rem;">📷</div>
+        </div>
+      </div>
+      <button onclick="removeTickerItem(${i})" style="background:rgba(239,68,68,.1);color:#f87171;border:1px solid rgba(239,68,68,.15);border-radius:6px;padding:.28rem .55rem;cursor:pointer;font-size:.8rem;flex-shrink:0;">✕</button>`;
+    list.appendChild(div);
+  });
+}
+function previewTickerImg(input,i){
+  const file=input.files[0];if(!file)return;
+  compressImg(file,src=>{
+    const prev=document.getElementById(`tick-prev-${i}`);
+    const imgEl=document.getElementById(`tick-img-${i}`);
+    if(prev)prev.innerHTML=`<img src="${src}" alt="">`;
+    if(imgEl){imgEl.src=src;imgEl.classList.add('loaded');}
+    markModified();
+  },200,0.85);
+}
+function addTickerItem(){
+  const track=document.querySelector('.clients-track');if(!track)return;
+  const el=document.createElement('a');el.href='#';el.className='client-logo';el.setAttribute('onclick','return false;');
+  el.innerHTML='<span class="client-text">Nouveau client</span>';
+  // Add before the duplicate set
+  const items=track.querySelectorAll('.client-logo');
+  const half=Math.ceil(items.length/2);
+  if(items[half])track.insertBefore(el,items[half]);else track.appendChild(el);
+  // Also add duplicate
+  const el2=el.cloneNode(true);track.appendChild(el2);
+  buildTickerEditor();
+}
+function removeTickerItem(i){
+  const track=document.querySelector('.clients-track');if(!track)return;
+  const items=Array.from(track.querySelectorAll('.client-logo'));
+  const half=Math.ceil(items.length/2);
+  [items[i],items[i+half]].forEach(el=>{if(el)el.remove();});
+  buildTickerEditor();markModified();
+}
+function applyTicker(){
+  const track=document.querySelector('.clients-track');if(!track)return;
+  const items=Array.from(track.querySelectorAll('.client-logo'));
+  const half=Math.ceil(items.length/2);
+  document.querySelectorAll('[data-tick-name]').forEach(inp=>{
+    const i=parseInt(inp.dataset.tickName);
+    const name=inp.value.trim();
+    const src=document.getElementById(`tick-img-${i}`)?.src||'';
+    const hasSrc=src&&!src.endsWith('#')&&!src.includes('undefined');
+    [items[i],items[i+half]].forEach(item=>{
+      if(!item)return;
+      if(hasSrc){item.className='client-logo has-color';item.innerHTML=`<img src="${src}" alt="${name}">`;}
+      else{item.className='client-logo';item.innerHTML=`<span class="client-text">${name}</span>`;}
+    });
+  });
+  markModified();showToast('✓ Logos défilants mis à jour');
+}
+
+/* ─── PROJETS ─── */
 function buildProjectsEditor(){
-  const list=document.getElementById('proj-admin-list');
-  list.innerHTML='';
+  const list=document.getElementById('proj-admin-list');list.innerHTML='';
   document.querySelectorAll('.proj-card').forEach((card,i)=>{
     const name=card.querySelector('.proj-name')?.textContent.trim()||'';
     const cat=card.querySelector('.proj-cat')?.textContent.trim()||'';
     const desc=card.querySelector('.proj-desc')?.textContent.trim()||'';
     const tags=Array.from(card.querySelectorAll('.ptag')).map(t=>t.textContent.trim()).join(', ');
     const imgSrc=card.querySelector('.proj-top img')?.src||'';
-    const div=document.createElement('div');
-    div.className='admin-card';
-    div.id=`proj-admin-${i}`;
-    div.innerHTML=`
-      <div class="admin-card-hd" onclick="toggleAdminCard('proj-admin-${i}')">
-        <span class="admin-card-hd-title">▶ ${name||'Projet '+(i+1)}</span>
-        <div style="display:flex;gap:.5rem;align-items:center;">
-          <button class="admin-btn admin-btn-danger admin-btn-sm" onclick="event.stopPropagation();removeProjectAdmin(${i})">✕</button>
-          <span class="admin-card-arrow">▼</span>
-        </div>
-      </div>
+    const div=document.createElement('div');div.className='admin-card';div.id=`proj-admin-${i}`;
+    div.innerHTML=`<div class="admin-card-hd" onclick="toggleAdminCard('proj-admin-${i}')"><span class="admin-card-hd-title">▶ ${name||'Projet '+(i+1)}</span><div style="display:flex;gap:.5rem;align-items:center;"><button class="admin-btn admin-btn-danger admin-btn-sm" onclick="event.stopPropagation();removeProjectAdmin(${i})">✕</button><span class="admin-card-arrow">▼</span></div></div>
       <div class="admin-card-body">
-        <div class="admin-row">
-          <div class="admin-field"><label>Nom du projet</label><input type="text" value="${name.replace(/"/g,'&quot;')}" data-pf="name" data-pi="${i}" placeholder="Nom du projet"></div>
-          <div class="admin-field"><label>Organisation</label><input type="text" value="${cat.replace(/"/g,'&quot;')}" data-pf="cat" data-pi="${i}" placeholder="Organisation / Catégorie"></div>
-        </div>
+        <div class="admin-row"><div class="admin-field"><label>Nom</label><input type="text" value="${name.replace(/"/g,'&quot;')}" data-pf="name" data-pi="${i}"></div><div class="admin-field"><label>Organisation</label><input type="text" value="${cat.replace(/"/g,'&quot;')}" data-pf="cat" data-pi="${i}"></div></div>
         <div class="admin-field"><label>Description</label><textarea rows="3" data-pf="desc" data-pi="${i}">${desc}</textarea></div>
-        <div class="admin-field"><label>Technologies (virgule-séparées)</label><input type="text" value="${tags.replace(/"/g,'&quot;')}" data-pf="tags" data-pi="${i}" placeholder="ERP, No-code, Design..."></div>
-        <div class="admin-field"><label>Lien du projet (URL)</label><input type="url" data-pf="url" data-pi="${i}" placeholder="https://..."></div>
-        <div class="admin-field">
-          <label>Bannière du projet</label>
-          <div style="display:flex;gap:.75rem;align-items:flex-start;">
-            <div class="admin-img-box" style="flex:1">
-              <img id="prev-proj-${i}" ${imgSrc.startsWith('data:')||imgSrc.startsWith('http')?`src="${imgSrc}" class="loaded"`:''} alt="">
-              <input type="file" accept="image/*" onchange="previewImg(this,'prev-proj-${i}','proj-${i}')">
-              <div class="up-text"><span class="up-title">📷 Upload</span></div>
-            </div>
-            <input type="url" data-pf="banner" data-pi="${i}" placeholder="https://..." style="flex:1;margin-top:.35rem;" value="${!imgSrc.startsWith('data:')&&imgSrc.startsWith('http')?imgSrc:''}">
-          </div>
-        </div>
+        <div class="admin-field"><label>Technologies (virgule-séparées)</label><input type="text" value="${tags.replace(/"/g,'&quot;')}" data-pf="tags" data-pi="${i}"></div>
+        <div class="admin-field"><label>Lien URL</label><input type="url" data-pf="url" data-pi="${i}"></div>
+        <div class="admin-field"><label>Bannière</label><div class="admin-img-box" style="max-height:100px;"><img id="prev-proj-${i}" ${imgSrc?`src="${imgSrc}" class="loaded"`:''}  alt=""><input type="file" accept="image/*" onchange="previewProjBanner(this,${i})"><div class="up-text"><span class="up-title">📷</span></div></div></div>
       </div>`;
     list.appendChild(div);
-    // Register img key
-    imgMap[`proj-${i}`]=[`#projects .proj-card:nth-child(${i+1}) .proj-top img`];
   });
 }
-function addProjectAdmin(){
-  const grid=document.querySelector('.proj-grid');
-  if(!grid)return;
-  const n=document.createElement('div');
-  n.className='proj-card reveal';
-  n.innerHTML=`<div class="proj-top"><div class="proj-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="proj-body"><div class="proj-name">Nouveau projet</div><div class="proj-cat c-blue">Organisation</div><div class="proj-desc">Description du projet...</div><div class="proj-tags"></div></div>`;
-  grid.appendChild(n);
-  buildProjectsEditor();
-  document.getElementById('ap-projects').scrollTop=999999;
-}
-function removeProjectAdmin(i){
-  const cards=document.querySelectorAll('.proj-card');
-  if(cards[i]){cards[i].remove();buildProjectsEditor();}
-}
+function addProjectAdmin(){const grid=document.querySelector('.proj-grid');if(!grid)return;const n=document.createElement('div');n.className='proj-card reveal';n.innerHTML=`<div class="proj-top"><div class="proj-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="proj-body"><div class="proj-name">Nouveau projet</div><div class="proj-cat c-blue">Organisation</div><div class="proj-desc">Description...</div><div class="proj-tags"></div></div>`;grid.appendChild(n);buildProjectsEditor();}
+function removeProjectAdmin(i){const cards=document.querySelectorAll('.proj-card');if(cards[i])cards[i].remove();buildProjectsEditor();}
 function applyProjects(){
   document.querySelectorAll('[data-pf]').forEach(el=>{
-    const i=parseInt(el.dataset.pi);
-    const field=el.dataset.pf;
-    const card=document.querySelectorAll('.proj-card')[i];
-    if(!card)return;
+    const i=parseInt(el.dataset.pi),field=el.dataset.pf;
+    const card=document.querySelectorAll('.proj-card')[i];if(!card)return;
     if(field==='name'){const e=card.querySelector('.proj-name');if(e)e.textContent=el.value;}
     if(field==='cat'){const e=card.querySelector('.proj-cat');if(e)e.textContent=el.value;}
     if(field==='desc'){const e=card.querySelector('.proj-desc');if(e)e.textContent=el.value;}
-    if(field==='tags'){
-      const tagsEl=card.querySelector('.proj-tags');
-      if(tagsEl){tagsEl.innerHTML='';el.value.split(',').filter(t=>t.trim()).forEach(t=>{const s=document.createElement('span');s.className='ptag';s.textContent=t.trim();tagsEl.appendChild(s);});}
-    }
-    if(field==='banner'&&el.value){
-      let img=card.querySelector('.proj-top img');
-      if(!img){
-        const top=card.querySelector('.proj-top');
-        if(top){img=document.createElement('img');top.innerHTML='';top.appendChild(img);}
-      }
-      if(img){img.src=el.value;img.style.display='block';}
-    }
+    if(field==='tags'){const t=card.querySelector('.proj-tags');if(t){t.innerHTML='';el.value.split(',').filter(v=>v.trim()).forEach(v=>{const s=document.createElement('span');s.className='ptag';s.textContent=v.trim();t.appendChild(s);});}}
   });
   markModified();showToast('✓ Projets mis à jour');
 }
 
 /* ─── COMPÉTENCES ─── */
 function buildSkillsEditor(){
-  const container=document.getElementById('skills-ed-list');
-  container.innerHTML='';
+  const container=document.getElementById('skills-ed-list');container.innerHTML='';
   document.querySelectorAll('.skill-cat').forEach((cat,ci)=>{
     const title=cat.querySelector('.skill-cat-title')?.childNodes[cat.querySelector('.skill-cat-title').childNodes.length-1]?.textContent?.trim()||'Catégorie';
-    const div=document.createElement('div');
-    div.style.cssText='background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:1rem;margin-bottom:.85rem;';
-    let html=`<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem;">
-      <input type="text" value="${title}" data-type="cat-name" data-ci="${ci}" style="flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#e2ebf8;border-radius:7px;padding:.4rem .7rem;font-size:.84rem;font-weight:700;outline:none;">
-      <button onclick="removeSkillCat(${ci})" style="background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.18);border-radius:7px;padding:.38rem .7rem;cursor:pointer;font-size:.8rem;">✕</button>
-    </div>`;
+    const div=document.createElement('div');div.style.cssText='background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:1rem;margin-bottom:.85rem;';
+    let html=`<div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem;"><input type="text" value="${title}" data-type="cat-name" data-ci="${ci}" style="flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#e2ebf8;border-radius:7px;padding:.4rem .7rem;font-size:.84rem;font-weight:700;outline:none;"><button onclick="removeSkillCat(${ci})" style="background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.18);border-radius:7px;padding:.38rem .7rem;cursor:pointer;font-size:.8rem;">✕</button></div>`;
     cat.querySelectorAll('.skill-item').forEach((item,si)=>{
-      const label=item.querySelector('.skill-name')?.textContent||item.querySelector('.skill-label span:first-child')?.textContent||'';
-      const pct=item.querySelector('.skill-fill')?.dataset?.w||'80';
-      html+=`<div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.45rem;">
-        <input type="text" value="${label}" data-type="skill-name" data-ci="${ci}" data-si="${si}" style="flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#e2ebf8;border-radius:7px;padding:.35rem .65rem;font-size:.82rem;outline:none;">
-        <input type="number" value="${pct}" min="0" max="100" data-type="skill-pct" data-ci="${ci}" data-si="${si}" style="width:65px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#38BDF8;border-radius:7px;padding:.35rem .5rem;font-size:.82rem;font-weight:700;text-align:center;outline:none;">
-        <span style="color:rgba(255,255,255,.3);font-size:.8rem;">%</span>
-        <button onclick="removeSkill(${ci},${si})" style="background:none;color:rgba(255,255,255,.3);border:none;cursor:pointer;font-size:1rem;">✕</button>
-      </div>`;
+      const label=item.querySelector('.skill-name')?.textContent||'';const pct=item.querySelector('.skill-fill')?.dataset?.w||'80';
+      html+=`<div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.45rem;"><input type="text" value="${label}" data-type="skill-name" data-ci="${ci}" data-si="${si}" style="flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#e2ebf8;border-radius:7px;padding:.35rem .65rem;font-size:.82rem;outline:none;"><input type="number" value="${pct}" min="0" max="100" data-type="skill-pct" data-ci="${ci}" data-si="${si}" style="width:65px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#38BDF8;border-radius:7px;padding:.35rem .5rem;font-size:.82rem;font-weight:700;text-align:center;outline:none;"><span style="color:rgba(255,255,255,.3);font-size:.8rem;">%</span><button onclick="removeSkill(${ci},${si})" style="background:none;color:rgba(255,255,255,.3);border:none;cursor:pointer;font-size:1rem;">✕</button></div>`;
     });
     html+=`<button onclick="addSkill(${ci})" style="font-size:.77rem;color:#38BDF8;background:none;border:1px dashed rgba(56,189,248,.25);border-radius:6px;padding:.28rem .7rem;cursor:pointer;margin-top:.2rem;">+ Ajouter</button>`;
     div.innerHTML=html;container.appendChild(div);
   });
 }
-function addSkill(ci){
-  const cat=document.querySelectorAll('.skill-cat')[ci];
-  const items=cat?.querySelector('.skill-items');
-  if(!items)return;
-  const el=document.createElement('div');el.className='skill-item';
-  el.innerHTML=`<div class="skill-row"><span class="skill-name">Nouvelle compétence</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-w="80" style="width:80%"></div></div>`;
-  items.appendChild(el);buildSkillsEditor();
-}
-function removeSkill(ci,si){
-  const items=document.querySelectorAll('.skill-cat')[ci]?.querySelectorAll('.skill-item');
-  if(items&&items[si])items[si].remove();buildSkillsEditor();
-}
-function addSkillCat(){
-  const grid=document.querySelector('.skills-grid');if(!grid)return;
-  const el=document.createElement('div');el.className='skill-cat';
-  el.innerHTML=`<div class="skill-cat-title"><div class="skill-cat-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>Nouvelle catégorie</div><div class="skill-items"><div class="skill-item"><div class="skill-row"><span class="skill-name">Compétence</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-w="80" style="width:80%"></div></div></div></div>`;
-  grid.appendChild(el);buildSkillsEditor();
-}
+function addSkill(ci){const cat=document.querySelectorAll('.skill-cat')[ci];const items=cat?.querySelector('.skill-items');if(!items)return;const el=document.createElement('div');el.className='skill-item';el.innerHTML=`<div class="skill-row"><span class="skill-name">Nouvelle compétence</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-w="80" style="width:80%"></div></div>`;items.appendChild(el);buildSkillsEditor();}
+function removeSkill(ci,si){const items=document.querySelectorAll('.skill-cat')[ci]?.querySelectorAll('.skill-item');if(items&&items[si])items[si].remove();buildSkillsEditor();}
+function addSkillCat(){const grid=document.querySelector('.skills-grid');if(!grid)return;const el=document.createElement('div');el.className='skill-cat';el.innerHTML=`<div class="skill-cat-title"><div class="skill-cat-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>Nouvelle catégorie</div><div class="skill-items"><div class="skill-item"><div class="skill-row"><span class="skill-name">Compétence</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-w="80" style="width:80%"></div></div></div></div>`;grid.appendChild(el);buildSkillsEditor();}
 function removeSkillCat(ci){const cats=document.querySelectorAll('.skill-cat');if(cats[ci])cats[ci].remove();buildSkillsEditor();}
 function applySkills(){
-  document.querySelectorAll('[data-type="cat-name"]').forEach(inp=>{
-    const ci=parseInt(inp.dataset.ci);const cat=document.querySelectorAll('.skill-cat')[ci];
-    if(!cat)return;
-    const titleEl=cat.querySelector('.skill-cat-title');const icon=titleEl.querySelector('.skill-cat-icon');
-    titleEl.innerHTML='';if(icon)titleEl.appendChild(icon);
-    titleEl.appendChild(document.createTextNode(inp.value));
-  });
-  document.querySelectorAll('[data-type="skill-name"]').forEach(inp=>{
-    const ci=parseInt(inp.dataset.ci),si=parseInt(inp.dataset.si);
-    const item=document.querySelectorAll('.skill-cat')[ci]?.querySelectorAll('.skill-item')[si];
-    if(item){const s=item.querySelector('.skill-name,.skill-label span:first-child');if(s)s.textContent=inp.value;}
-  });
-  document.querySelectorAll('[data-type="skill-pct"]').forEach(inp=>{
-    const ci=parseInt(inp.dataset.ci),si=parseInt(inp.dataset.si);
-    const item=document.querySelectorAll('.skill-cat')[ci]?.querySelectorAll('.skill-item')[si];
-    if(item){
-      const pct=Math.min(100,Math.max(0,parseInt(inp.value)||0));
-      const pctEl=item.querySelector('.skill-pct');const fill=item.querySelector('.skill-fill');
-      if(pctEl)pctEl.textContent=pct+'%';
-      if(fill){fill.dataset.w=pct;fill.style.width=pct+'%';}
-    }
-  });
+  document.querySelectorAll('[data-type="cat-name"]').forEach(inp=>{const ci=parseInt(inp.dataset.ci);const cat=document.querySelectorAll('.skill-cat')[ci];if(!cat)return;const titleEl=cat.querySelector('.skill-cat-title');const icon=titleEl.querySelector('.skill-cat-icon');titleEl.innerHTML='';if(icon)titleEl.appendChild(icon);titleEl.appendChild(document.createTextNode(inp.value));});
+  document.querySelectorAll('[data-type="skill-name"]').forEach(inp=>{const ci=parseInt(inp.dataset.ci),si=parseInt(inp.dataset.si);const item=document.querySelectorAll('.skill-cat')[ci]?.querySelectorAll('.skill-item')[si];if(item){const s=item.querySelector('.skill-name,.skill-label span:first-child');if(s)s.textContent=inp.value;}});
+  document.querySelectorAll('[data-type="skill-pct"]').forEach(inp=>{const ci=parseInt(inp.dataset.ci),si=parseInt(inp.dataset.si);const item=document.querySelectorAll('.skill-cat')[ci]?.querySelectorAll('.skill-item')[si];if(item){const pct=Math.min(100,Math.max(0,parseInt(inp.value)||0));const pctEl=item.querySelector('.skill-pct');const fill=item.querySelector('.skill-fill');if(pctEl)pctEl.textContent=pct+'%';if(fill){fill.dataset.w=pct;fill.style.width=pct+'%';}}});
   markModified();showToast('✓ Compétences mises à jour');
 }
 
 /* ─── ÉTUDES ─── */
 function buildEduEditor(){
-  // Timeline
   const tlist=document.getElementById('edu-timeline-list');tlist.innerHTML='';
   document.querySelectorAll('.edu-timeline-item').forEach((item,i)=>{
-    const title=item.querySelector('h3')?.textContent.trim()||'';
-    const school=item.querySelector('.edu-school')?.textContent.trim()||'';
-    const badge=item.querySelector('.edu-tl-badge')?.textContent.trim()||'';
-    const desc=item.querySelector('p')?.textContent.trim()||'';
+    const title=(item.querySelector('h3')?.innerText||'').trim();const school=(item.querySelector('.edu-school')?.innerText||'').trim();const badge=(item.querySelector('.edu-tl-badge')?.innerText||'').trim();const desc=(item.querySelector('p')?.innerText||'').trim();
     const div=document.createElement('div');div.className='admin-item-row';
     div.innerHTML=`<div class="admin-item-header"><span class="admin-item-title">${title||'Formation '+(i+1)}</span><button class="admin-btn admin-btn-danger admin-btn-sm" onclick="removeEduItem(${i})">✕</button></div>
-      <div class="admin-row">
-        <div class="admin-field"><label>Titre / Diplôme</label><input type="text" value="${title.replace(/"/g,'&quot;')}" data-edu-t="${i}"></div>
-        <div class="admin-field"><label>Badge (ex: 2020–2022)</label><input type="text" value="${badge.replace(/"/g,'&quot;')}" data-edu-b="${i}"></div>
-      </div>
-      <div class="admin-field"><label>École / Institution</label><input type="text" value="${school.replace(/"/g,'&quot;')}" data-edu-s="${i}"></div>
+      <div class="admin-row"><div class="admin-field"><label>Titre</label><input type="text" value="${title.replace(/"/g,'&quot;')}" data-edu-t="${i}"></div><div class="admin-field"><label>Badge</label><input type="text" value="${badge.replace(/"/g,'&quot;')}" data-edu-b="${i}"></div></div>
+      <div class="admin-field"><label>École</label><input type="text" value="${school.replace(/"/g,'&quot;')}" data-edu-s="${i}"></div>
       <div class="admin-field"><label>Description</label><textarea rows="2" data-edu-d="${i}">${desc}</textarea></div>`;
     tlist.appendChild(div);
   });
-  // Certs
   const clist=document.getElementById('edu-cert-list');clist.innerHTML='';
   document.querySelectorAll('.cert-card').forEach((card,i)=>{
-    const title=card.querySelector('h3')?.textContent.trim()||'';
-    const org=card.querySelector('.cert-org')?.textContent.trim()||'';
-    const badge=card.querySelector('.cert-badge')?.textContent.trim()||'Certifié';
-    const year=card.querySelector('.cert-year')?.textContent.trim()||'';
+    const title=(card.querySelector('h3')?.innerText||'').trim();const org=(card.querySelector('.cert-org')?.innerText||'').trim();const badge=(card.querySelector('.cert-badge')?.innerText||'Certifié').trim();const year=(card.querySelector('.cert-year')?.innerText||'').trim();
     const div=document.createElement('div');div.className='admin-item-row';
     div.innerHTML=`<div class="admin-item-header"><span class="admin-item-title">${title||'Cert '+(i+1)}</span><button class="admin-btn admin-btn-danger admin-btn-sm" onclick="removeCertItem(${i})">✕</button></div>
-      <div class="admin-row">
-        <div class="admin-field"><label>Nom de la certification</label><input type="text" value="${title.replace(/"/g,'&quot;')}" data-cert-t="${i}"></div>
-        <div class="admin-field"><label>Organisme</label><input type="text" value="${org.replace(/"/g,'&quot;')}" data-cert-o="${i}"></div>
-      </div>
-      <div class="admin-row">
-        <div class="admin-field"><label>Statut / Badge</label><input type="text" value="${badge.replace(/"/g,'&quot;')}" data-cert-b="${i}" placeholder="Certifié"></div>
-        <div class="admin-field"><label>Année</label><input type="text" value="${year.replace(/"/g,'&quot;')}" data-cert-y="${i}" placeholder="2024"></div>
-      </div>`;
+      <div class="admin-row"><div class="admin-field"><label>Nom</label><input type="text" value="${title.replace(/"/g,'&quot;')}" data-cert-t="${i}"></div><div class="admin-field"><label>Organisme</label><input type="text" value="${org.replace(/"/g,'&quot;')}" data-cert-o="${i}"></div></div>
+      <div class="admin-row"><div class="admin-field"><label>Statut</label><input type="text" value="${badge.replace(/"/g,'&quot;')}" data-cert-b="${i}"></div><div class="admin-field"><label>Année</label><input type="text" value="${year.replace(/"/g,'&quot;')}" data-cert-y="${i}"></div></div>`;
     clist.appendChild(div);
   });
 }
-function addEduItem(){
-  const tl=document.querySelector('.edu-timeline');if(!tl)return;
-  const el=document.createElement('div');el.className='edu-timeline-item';
-  el.innerHTML=`<div class="edu-tl-badge">Nouvelle</div><h3>Nouvelle formation</h3><div class="edu-school">Institution</div><p>Description...</p>`;
-  tl.appendChild(el);buildEduEditor();
-}
+function addEduItem(){const tl=document.querySelector('.edu-timeline');if(!tl)return;const el=document.createElement('div');el.className='edu-timeline-item';el.innerHTML=`<div class="edu-tl-badge">Nouvelle</div><h3>Nouvelle formation</h3><div class="edu-school">Institution</div><p>Description...</p>`;tl.appendChild(el);buildEduEditor();}
 function removeEduItem(i){const items=document.querySelectorAll('.edu-timeline-item');if(items[i])items[i].remove();buildEduEditor();}
-function addCertItem(){
-  const grid=document.querySelector('.cert-grid');if(!grid)return;
-  const el=document.createElement('div');el.className='cert-card';
-  el.innerHTML=`<div class="cert-badge">Certifié</div><h3>Nouvelle certification</h3><div class="cert-org">Organisme</div><div class="cert-year"></div>`;
-  grid.appendChild(el);buildEduEditor();
-}
+function addCertItem(){const grid=document.querySelector('.cert-grid');if(!grid)return;const el=document.createElement('div');el.className='cert-card';el.innerHTML=`<div class="cert-badge">Certifié</div><h3>Nouvelle certification</h3><div class="cert-org">Organisme</div><div class="cert-year"></div>`;grid.appendChild(el);buildEduEditor();}
 function removeCertItem(i){const items=document.querySelectorAll('.cert-card');if(items[i])items[i].remove();buildEduEditor();}
 function applyEdu(){
-  document.querySelectorAll('[data-edu-t]').forEach(inp=>{
-    const i=parseInt(inp.dataset.eduT);const item=document.querySelectorAll('.edu-timeline-item')[i];
-    if(item){const h=item.querySelector('h3');if(h)h.textContent=inp.value;}
-  });
-  document.querySelectorAll('[data-edu-s]').forEach(inp=>{
-    const i=parseInt(inp.dataset.eduS);const item=document.querySelectorAll('.edu-timeline-item')[i];
-    if(item){const s=item.querySelector('.edu-school');if(s)s.textContent=inp.value;}
-  });
-  document.querySelectorAll('[data-edu-b]').forEach(inp=>{
-    const i=parseInt(inp.dataset.eduB);const item=document.querySelectorAll('.edu-timeline-item')[i];
-    if(item){const b=item.querySelector('.edu-tl-badge');if(b)b.textContent=inp.value;}
-  });
-  document.querySelectorAll('[data-edu-d]').forEach(ta=>{
-    const i=parseInt(ta.dataset.eduD);const item=document.querySelectorAll('.edu-timeline-item')[i];
-    if(item){const p=item.querySelector('p');if(p)p.textContent=ta.value;}
-  });
-  document.querySelectorAll('[data-cert-t]').forEach(inp=>{
-    const i=parseInt(inp.dataset.certT);const card=document.querySelectorAll('.cert-card')[i];
-    if(card){const h=card.querySelector('h3');if(h)h.textContent=inp.value;}
-  });
-  document.querySelectorAll('[data-cert-o]').forEach(inp=>{
-    const i=parseInt(inp.dataset.certO);const card=document.querySelectorAll('.cert-card')[i];
-    if(card){const o=card.querySelector('.cert-org');if(o)o.textContent=inp.value;}
-  });
-  document.querySelectorAll('[data-cert-b]').forEach(inp=>{
-    const i=parseInt(inp.dataset.certB);const card=document.querySelectorAll('.cert-card')[i];
-    if(card){const b=card.querySelector('.cert-badge');if(b)b.textContent=inp.value;}
-  });
-  document.querySelectorAll('[data-cert-y]').forEach(inp=>{
-    const i=parseInt(inp.dataset.certY);const card=document.querySelectorAll('.cert-card')[i];
-    if(card){const y=card.querySelector('.cert-year');if(y)y.textContent=inp.value;}
-  });
+  document.querySelectorAll('[data-edu-t]').forEach(inp=>{const i=parseInt(inp.dataset.eduT);const item=document.querySelectorAll('.edu-timeline-item')[i];if(item){const h=item.querySelector('h3');if(h)h.textContent=inp.value;}});
+  document.querySelectorAll('[data-edu-s]').forEach(inp=>{const i=parseInt(inp.dataset.eduS);const item=document.querySelectorAll('.edu-timeline-item')[i];if(item){const s=item.querySelector('.edu-school');if(s)s.textContent=inp.value;}});
+  document.querySelectorAll('[data-edu-b]').forEach(inp=>{const i=parseInt(inp.dataset.eduB);const item=document.querySelectorAll('.edu-timeline-item')[i];if(item){const b=item.querySelector('.edu-tl-badge');if(b)b.textContent=inp.value;}});
+  document.querySelectorAll('[data-edu-d]').forEach(ta=>{const i=parseInt(ta.dataset.eduD);const item=document.querySelectorAll('.edu-timeline-item')[i];if(item){const p=item.querySelector('p');if(p)p.textContent=ta.value;}});
+  document.querySelectorAll('[data-cert-t]').forEach(inp=>{const i=parseInt(inp.dataset.certT);const card=document.querySelectorAll('.cert-card')[i];if(card){const h=card.querySelector('h3');if(h)h.textContent=inp.value;}});
+  document.querySelectorAll('[data-cert-o]').forEach(inp=>{const i=parseInt(inp.dataset.certO);const card=document.querySelectorAll('.cert-card')[i];if(card){const o=card.querySelector('.cert-org');if(o)o.textContent=inp.value;}});
+  document.querySelectorAll('[data-cert-b]').forEach(inp=>{const i=parseInt(inp.dataset.certB);const card=document.querySelectorAll('.cert-card')[i];if(card){const b=card.querySelector('.cert-badge');if(b)b.textContent=inp.value;}});
+  document.querySelectorAll('[data-cert-y]').forEach(inp=>{const i=parseInt(inp.dataset.certY);const card=document.querySelectorAll('.cert-card')[i];if(card){const y=card.querySelector('.cert-year');if(y)y.textContent=inp.value;}});
   markModified();showToast('✓ Études mises à jour');
 }
 
-/* ─── PERSONNALITÉ ─── */
+/* ─── AU-DELÀ ─── */
 function buildPersonalityEditor(){
   const container=document.getElementById('personality-ed-list');container.innerHTML='';
   document.querySelectorAll('.interest-card').forEach((card,i)=>{
-    const title=card.querySelector('h3')?.textContent||'';
-    const desc=card.querySelector('p')?.textContent||'';
-    const div=document.createElement('div');
-    div.className='admin-item-row';
+    const title=(card.querySelector('h3')?.innerText||'').trim();const desc=(card.querySelector('p')?.innerText||'').trim();
+    const img=card.querySelector('.int-img');const hasImg=img&&img.style.display!=='none'&&img.src;
+    const div=document.createElement('div');div.className='admin-item-row';
     div.innerHTML=`<div class="admin-item-header"><span class="admin-item-title">${title||'Intérêt '+(i+1)}</span><button class="admin-btn admin-btn-danger admin-btn-sm" onclick="removeInterestCard(${i})">✕</button></div>
-      <div class="admin-field"><label>Titre</label><input type="text" value="${title.replace(/"/g,'&quot;')}" data-type="int-title" data-idx="${i}"></div>
-      <div class="admin-field"><label>Description</label><textarea rows="2" data-type="int-desc" data-idx="${i}">${desc}</textarea></div>`;
+      <div class="admin-row">
+        <div>
+          <div class="admin-field"><label>Titre</label><input type="text" value="${title.replace(/"/g,'&quot;')}" data-type="int-title" data-idx="${i}"></div>
+          <div class="admin-field"><label>Description</label><textarea rows="2" data-type="int-desc" data-idx="${i}">${desc}</textarea></div>
+        </div>
+        <div class="admin-field"><label>Image personnalisée</label>
+          <div class="admin-img-box-sm">
+            <img id="img-icard-${i}" ${hasImg?`class="loaded" src="${img.src}"`:''}  alt=""><input type="file" accept="image/*" onchange="previewCardImg(this,'icard',${i})">
+            <div class="up-text">📷</div>
+          </div>
+          <button onclick="clearCardImg('icard',${i})" style="margin-top:.3rem;font-size:.72rem;background:none;border:none;color:rgba(248,113,113,.6);cursor:pointer;">✕ Supprimer</button>
+        </div>
+      </div>`;
     container.appendChild(div);
   });
 }
 function removeInterestCard(idx){const cards=document.querySelectorAll('.interest-card');if(cards[idx])cards[idx].remove();buildPersonalityEditor();}
-function addInterestCard(){
-  const grid=document.querySelector('.interests-grid');if(!grid)return;
-  const el=document.createElement('div');el.className='interest-card';
-  el.innerHTML=`<div class="interest-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><h3>Nouvelle passion</h3><p>Décrivez ce qui vous anime.</p>`;
-  grid.appendChild(el);buildPersonalityEditor();
-}
+function addInterestCard(){const grid=document.querySelector('.interests-grid');if(!grid)return;const el=document.createElement('div');el.className='interest-card';el.innerHTML=`<div class="interest-icon"><img class="int-img" style="display:none;width:52px;height:52px;object-fit:cover;border-radius:12px;" alt=""><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><h3>Nouvelle passion</h3><p>Décrivez ce qui vous anime.</p>`;grid.appendChild(el);buildPersonalityEditor();}
 function applyPersonality(){
-  document.querySelectorAll('[data-type="int-title"]').forEach(inp=>{
-    const i=parseInt(inp.dataset.idx);const card=document.querySelectorAll('.interest-card')[i];
-    if(card){const h=card.querySelector('h3');if(h)h.textContent=inp.value;}
-  });
-  document.querySelectorAll('[data-type="int-desc"]').forEach(ta=>{
-    const i=parseInt(ta.dataset.idx);const card=document.querySelectorAll('.interest-card')[i];
-    if(card){const p=card.querySelector('p');if(p)p.textContent=ta.value;}
-  });
-  markModified();showToast('✓ Section au-delà mise à jour');
+  document.querySelectorAll('[data-type="int-title"]').forEach(inp=>{const i=parseInt(inp.dataset.idx);const card=document.querySelectorAll('.interest-card')[i];if(card){const h=card.querySelector('h3');if(h)h.textContent=inp.value;}});
+  document.querySelectorAll('[data-type="int-desc"]').forEach(ta=>{const i=parseInt(ta.dataset.idx);const card=document.querySelectorAll('.interest-card')[i];if(card){const p=card.querySelector('p');if(p)p.textContent=ta.value;}});
+  markModified();showToast('✓ Au-delà mis à jour');
 }
 
 /* ─── LANGUES ─── */
 function buildLangEditor(){
   const list=document.getElementById('lang-ed-list');list.innerHTML='';
   document.querySelectorAll('.lang-card').forEach((card,i)=>{
-    const flag=card.querySelector('.lang-flag')?.textContent||'';
-    const name=card.querySelector('.lang-name')?.textContent||'';
-    const level=card.querySelector('.lang-level')?.textContent||'';
-    const w=card.querySelector('.lang-bar-fill')?.dataset.w||'80';
+    const flag=(card.querySelector('.lang-flag')?.innerText||'').trim();const name=(card.querySelector('.lang-name')?.innerText||'').trim();const level=(card.querySelector('.lang-level')?.innerText||'').trim();const w=card.querySelector('.lang-bar-fill')?.dataset.w||'80';
     const div=document.createElement('div');div.className='admin-item-row';
     div.innerHTML=`<div class="admin-item-header"><span class="admin-item-title">${flag} ${name}</span></div>
-      <div class="admin-row">
-        <div class="admin-field"><label>Emoji drapeau</label><input type="text" value="${flag}" data-lng-f="${i}" placeholder="🇫🇷"></div>
-        <div class="admin-field"><label>Langue</label><input type="text" value="${name.replace(/"/g,'&quot;')}" data-lng-n="${i}"></div>
-      </div>
-      <div class="admin-row">
-        <div class="admin-field"><label>Niveau (0–100)</label><input type="number" value="${w}" min="0" max="100" data-lng-w="${i}"></div>
-        <div class="admin-field"><label>Description niveau</label><input type="text" value="${level.replace(/"/g,'&quot;')}" data-lng-l="${i}"></div>
-      </div>`;
+      <div class="admin-row"><div class="admin-field"><label>Emoji drapeau</label><input type="text" value="${flag}" data-lng-f="${i}"></div><div class="admin-field"><label>Langue</label><input type="text" value="${name.replace(/"/g,'&quot;')}" data-lng-n="${i}"></div></div>
+      <div class="admin-row"><div class="admin-field"><label>Niveau (0–100)</label><input type="number" value="${w}" min="0" max="100" data-lng-w="${i}"></div><div class="admin-field"><label>Description</label><input type="text" value="${level.replace(/"/g,'&quot;')}" data-lng-l="${i}"></div></div>`;
     list.appendChild(div);
   });
 }
 function applyLanguages(){
-  document.querySelectorAll('[data-lng-f]').forEach(inp=>{
-    const i=parseInt(inp.dataset.lngF);const card=document.querySelectorAll('.lang-card')[i];
-    if(card){const f=card.querySelector('.lang-flag');if(f)f.textContent=inp.value;}
-  });
-  document.querySelectorAll('[data-lng-n]').forEach(inp=>{
-    const i=parseInt(inp.dataset.lngN);const card=document.querySelectorAll('.lang-card')[i];
-    if(card){const n=card.querySelector('.lang-name');if(n)n.textContent=inp.value;}
-  });
-  document.querySelectorAll('[data-lng-w]').forEach(inp=>{
-    const i=parseInt(inp.dataset.lngW);const card=document.querySelectorAll('.lang-card')[i];
-    if(card){
-      const pct=Math.min(100,Math.max(0,parseInt(inp.value)||80));
-      const fill=card.querySelector('.lang-bar-fill');
-      if(fill){fill.dataset.w=pct;fill.style.width=pct+'%';}
-    }
-  });
-  document.querySelectorAll('[data-lng-l]').forEach(inp=>{
-    const i=parseInt(inp.dataset.lngL);const card=document.querySelectorAll('.lang-card')[i];
-    if(card){const l=card.querySelector('.lang-level');if(l)l.textContent=inp.value;}
-  });
+  document.querySelectorAll('[data-lng-f]').forEach(inp=>{const i=parseInt(inp.dataset.lngF);const card=document.querySelectorAll('.lang-card')[i];if(card){const f=card.querySelector('.lang-flag');if(f)f.textContent=inp.value;}});
+  document.querySelectorAll('[data-lng-n]').forEach(inp=>{const i=parseInt(inp.dataset.lngN);const card=document.querySelectorAll('.lang-card')[i];if(card){const n=card.querySelector('.lang-name');if(n)n.textContent=inp.value;}});
+  document.querySelectorAll('[data-lng-w]').forEach(inp=>{const i=parseInt(inp.dataset.lngW);const card=document.querySelectorAll('.lang-card')[i];if(card){const pct=Math.min(100,Math.max(0,parseInt(inp.value)||80));const fill=card.querySelector('.lang-bar-fill');if(fill){fill.dataset.w=pct;fill.style.width=pct+'%';}}});
+  document.querySelectorAll('[data-lng-l]').forEach(inp=>{const i=parseInt(inp.dataset.lngL);const card=document.querySelectorAll('.lang-card')[i];if(card){const l=card.querySelector('.lang-level');if(l)l.textContent=inp.value;}});
   markModified();showToast('✓ Langues mises à jour');
 }
 
 /* ─── CONTACT ─── */
 function initContact(){
-  const emailLinks=document.querySelectorAll('a[href^="mailto:"]');
-  if(emailLinks[0])document.getElementById('c-email').value=emailLinks[0].href.replace('mailto:','');
-  const cvLinks=document.querySelectorAll('a[href*="drive.google.com"]');
-  if(cvLinks[0])document.getElementById('c-cv').value=cvLinks[0].href;
+  const emailLinks=document.querySelectorAll('a[href^="mailto:"]');if(emailLinks[0])document.getElementById('c-email').value=emailLinks[0].href.replace('mailto:','');
+  const cvLinks=document.querySelectorAll('a[href*="drive.google.com"]');if(cvLinks[0])document.getElementById('c-cv').value=cvLinks[0].href;
 }
 function applyContact(){
-  const email=document.getElementById('c-email').value;
-  const linkedin=document.getElementById('c-linkedin').value;
-  const gda=document.getElementById('c-gda').value;
-  const cv=document.getElementById('c-cv').value;
-  if(email){document.querySelectorAll('a[href^="mailto:"]').forEach(a=>a.href='mailto:'+email);}
-  if(linkedin){document.querySelectorAll('a[href*="linkedin.com"]').forEach(a=>a.href=linkedin);}
-  if(gda){document.querySelectorAll('a[href*="groupedigitalafrique"]').forEach(a=>a.href=gda);}
-  if(cv){document.querySelectorAll('a[href*="drive.google.com"]').forEach(a=>a.href=cv);}
+  const email=document.getElementById('c-email').value;const linkedin=document.getElementById('c-linkedin').value;const gda=document.getElementById('c-gda').value;const cv=document.getElementById('c-cv').value;
+  if(email)document.querySelectorAll('a[href^="mailto:"]').forEach(a=>a.href='mailto:'+email);
+  if(linkedin)document.querySelectorAll('a[href*="linkedin.com"]').forEach(a=>a.href=linkedin);
+  if(gda)document.querySelectorAll('a[href*="groupedigitalafrique"]').forEach(a=>a.href=gda);
+  if(cv)document.querySelectorAll('a[href*="drive.google.com"]').forEach(a=>a.href=cv);
   markModified();showToast('✓ Contact mis à jour');
-}
-
-/* ─── IMAGES ─── */
-const imgMap={
-  'photo':['#hero .hero-photo img'],
-  'dnc':['#projects .proj-card:nth-child(1) .proj-top img'],
-  'cfts':['#projects .proj-card:nth-child(2) .proj-top img'],
-  'samachef':['#projects .proj-card:nth-child(3) .proj-top img'],
-  'mossane':['#projects .proj-card:nth-child(4) .proj-top img'],
-  'bitik':['#projects .proj-card:nth-child(5) .proj-top img'],
-  'oryx':['#projects .proj-card:nth-child(6) .proj-top img'],
-};
-function previewImg(input,previewId,key){
-  const file=input.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=function(e){
-    const src=e.target.result;
-    const prev=document.getElementById(previewId);
-    if(prev){prev.src=src;prev.classList.add('loaded');}
-    if(imgMap[key]){imgMap[key].forEach(sel=>{const els=document.querySelectorAll(sel);els.forEach(el=>{el.src=src;el.style.display='block';});});}
-    markModified();
-  };
-  reader.readAsDataURL(file);
 }
 
 /* ─── GITHUB ─── */
 function ghLoad(){try{return JSON.parse(localStorage.getItem(GH_STORE)||'{}');}catch{return {};}}
-function ghSave(){
-  const cfg={owner:document.getElementById('gh-owner').value.trim(),repo:document.getElementById('gh-repo').value.trim(),branch:document.getElementById('gh-branch').value.trim()||'main',file:document.getElementById('gh-file').value.trim()||'index.html',msg:document.getElementById('gh-msg').value.trim()||'Admin: mise à jour du contenu'};
-  const saved=ghLoad();localStorage.setItem(GH_STORE,JSON.stringify({...saved,...cfg}));
-}
-function ghSaveToken(val){
-  const saved=ghLoad();saved.token=val;localStorage.setItem(GH_STORE,JSON.stringify(saved));
-  document.getElementById('pub-btn').disabled=!val.trim();
-}
-function ghRestoreFields(){
-  const cfg=ghLoad();
-  if(cfg.token)document.getElementById('gh-token').value=cfg.token;
-  if(cfg.owner)document.getElementById('gh-owner').value=cfg.owner;
-  if(cfg.repo)document.getElementById('gh-repo').value=cfg.repo;
-  if(cfg.branch)document.getElementById('gh-branch').value=cfg.branch||'main';
-  if(cfg.file)document.getElementById('gh-file').value=cfg.file||'index.html';
-  if(cfg.msg)document.getElementById('gh-msg').value=cfg.msg||'Admin: mise à jour du contenu';
-  if(cfg.token)document.getElementById('pub-btn').disabled=false;
-}
-async function ghVerify(){
-  const cfg=ghLoad();const dot=document.getElementById('repo-dot');const txt=document.getElementById('repo-status-txt');const box=document.getElementById('repo-status');
-  box.style.display='flex';dot.className='pub-repo-dot';txt.textContent='Vérification…';
-  if(!cfg.token||!cfg.owner||!cfg.repo){dot.className='pub-repo-dot err';txt.textContent='Token, owner et repo requis.';return;}
-  try{
-    const r=await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}`,{headers:{'Authorization':'token '+cfg.token,'Accept':'application/vnd.github.v3+json'}});
-    if(r.ok){const d=await r.json();dot.className='pub-repo-dot ok';txt.textContent=`✓ ${d.full_name} (${d.visibility||'repo'})`;}
-    else{dot.className='pub-repo-dot err';txt.textContent=`Erreur ${r.status}`;}
-  }catch(e){dot.className='pub-repo-dot err';txt.textContent='Erreur réseau.';}
-}
+function ghSave(){const cfg={owner:document.getElementById('gh-owner').value.trim(),repo:document.getElementById('gh-repo').value.trim(),branch:document.getElementById('gh-branch').value.trim()||'main',file:document.getElementById('gh-file').value.trim()||'index.html',msg:document.getElementById('gh-msg').value.trim()||'Admin: mise à jour du contenu'};const saved=ghLoad();localStorage.setItem(GH_STORE,JSON.stringify({...saved,...cfg}));}
+function ghSaveToken(val){const saved=ghLoad();saved.token=val;localStorage.setItem(GH_STORE,JSON.stringify(saved));document.getElementById('pub-btn').disabled=!val.trim();}
+function ghRestoreFields(){const cfg=ghLoad();if(cfg.token)document.getElementById('gh-token').value=cfg.token;if(cfg.owner)document.getElementById('gh-owner').value=cfg.owner;if(cfg.repo)document.getElementById('gh-repo').value=cfg.repo;if(cfg.branch)document.getElementById('gh-branch').value=cfg.branch||'main';if(cfg.file)document.getElementById('gh-file').value=cfg.file||'index.html';if(cfg.msg)document.getElementById('gh-msg').value=cfg.msg||'Admin: mise à jour du contenu';if(cfg.token)document.getElementById('pub-btn').disabled=false;}
+async function ghVerify(){const cfg=ghLoad();const dot=document.getElementById('repo-dot');const txt=document.getElementById('repo-status-txt');const box=document.getElementById('repo-status');box.style.display='flex';dot.className='pub-repo-dot';txt.textContent='Vérification…';if(!cfg.token||!cfg.owner||!cfg.repo){dot.className='pub-repo-dot err';txt.textContent='Token, owner et repo requis.';return;}try{const r=await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}`,{headers:{'Authorization':'token '+cfg.token,'Accept':'application/vnd.github.v3+json'}});if(r.ok){const d=await r.json();dot.className='pub-repo-dot ok';txt.textContent=`✓ ${d.full_name}`;}else{dot.className='pub-repo-dot err';txt.textContent=`Erreur ${r.status}`;}}catch(e){dot.className='pub-repo-dot err';txt.textContent='Erreur réseau.';}}
 async function publishToGitHub(){
-  const cfg=ghLoad();
-  if(!cfg.token||!cfg.owner||!cfg.repo){setBarStatus('err','Configurez le token et le repo dans Paramètres.');return;}
-  const btn=document.getElementById('pub-btn');btn.disabled=true;
-  setBarStatus('loading','Préparation…');
+  const cfg=ghLoad();if(!cfg.token||!cfg.owner||!cfg.repo){setBarStatus('err','Configurez le token et le repo dans Paramètres.');return;}
+  const btn=document.getElementById('pub-btn');btn.disabled=true;setBarStatus('loading','Préparation…');
   try{
-    // Fermer le panel avant capture pour ne pas le publier en état ouvert
-    const overlay=document.getElementById('admin-overlay');
-    overlay.classList.remove('open');
-    document.body.style.overflow='';
+    const overlay=document.getElementById('admin-overlay');overlay.classList.remove('open');document.body.style.overflow='';
     const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
-    overlay.classList.add('open');
-    document.body.style.overflow='hidden';
+    overlay.classList.add('open');document.body.style.overflow='hidden';
     const b64=btoa(unescape(encodeURIComponent(html)));
     const branch=cfg.branch||'main';const filePath=cfg.file||'index.html';
     const apiBase=`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${filePath}`;
     const headers={'Authorization':'token '+cfg.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};
     setBarStatus('loading','Récupération SHA…');
     let sha=null;try{const g=await fetch(`${apiBase}?ref=${branch}&_=${Date.now()}`,{headers:{...headers,'Cache-Control':'no-cache'}});if(g.ok){const d=await g.json();sha=d.sha;}}catch{}
-    setBarStatus('loading','Publication sur GitHub…');
-    const body={message:cfg.msg||'Admin: mise à jour',content:b64,branch};
-    if(sha)body.sha=sha;
+    setBarStatus('loading','Publication…');
+    const body={message:cfg.msg||'Admin: mise à jour',content:b64,branch};if(sha)body.sha=sha;
     const r=await fetch(apiBase,{method:'PUT',headers,body:JSON.stringify(body)});
     if(r.ok){setBarStatus('ok','✓ Publié ! Mise à jour dans 1-2 min...');showToast('✓ Site publié avec succès !');}
     else{const err=await r.json();setBarStatus('err','Erreur : '+(err.message||r.status));}
   }catch(e){setBarStatus('err','Erreur réseau : '+e.message);}
   btn.disabled=false;
 }
-
-/* ─── EXPORT ─── */
 function exportSite(){
-  const overlay=document.getElementById('admin-overlay');
-  overlay.classList.remove('open');
-  document.body.style.overflow='';
+  const overlay=document.getElementById('admin-overlay');overlay.classList.remove('open');document.body.style.overflow='';
   const snap='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
-  overlay.classList.add('open');
-  document.body.style.overflow='hidden';
-  const b=new Blob([snap],{type:'text/html'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='index.html';a.click();
-  URL.revokeObjectURL(a.href);showToast('✓ index.html téléchargé');
+  overlay.classList.add('open');document.body.style.overflow='hidden';
+  const b=new Blob([snap],{type:'text/html'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='index.html';a.click();URL.revokeObjectURL(a.href);showToast('✓ Exporté');
 }
 
 /* ─── UTILS ─── */
-function markModified(){
-  document.getElementById('pub-btn').disabled=false;
-  const st=document.getElementById('admin-bar-status');
-  if(!st.classList.contains('ok')){st.className='';st.textContent='Modifications non publiées';}
-}
-function setBarStatus(type,msg){
-  const st=document.getElementById('admin-bar-status');
-  st.className=type;
-  const spinner=st.querySelector('.bar-spinner');
-  if(type==='loading'){
-    if(!spinner){const s=document.createElement('div');s.className='bar-spinner';st.insertBefore(s,st.firstChild);}
-  }else{if(spinner)spinner.remove();}
-  st.childNodes[st.childNodes.length-1].textContent=' '+msg;
-  if(type!=='loading')st.lastChild.textContent=msg;
-}
-function showToast(msg){
-  const t=document.getElementById('admin-toast');
-  t.textContent=msg;t.style.opacity='1';
-  clearTimeout(t._t);t._t=setTimeout(()=>t.style.opacity='0',2800);
-}
-// Restore GitHub fields on admin open
-window.openAdmin=function(){
-  document.getElementById('admin-overlay').classList.add('open');
-  document.body.style.overflow='hidden';
-  if(_adminAuth){setTimeout(()=>{initAllAdminSections();ghRestoreFields();},50);}
-};
+function markModified(){document.getElementById('pub-btn').disabled=false;const st=document.getElementById('admin-bar-status');if(!st.classList.contains('ok')){st.className='';st.textContent='Modifications non publiées';}}
+function setBarStatus(type,msg){const st=document.getElementById('admin-bar-status');st.className=type;const spinner=st.querySelector('.bar-spinner');if(type==='loading'){if(!spinner){const s=document.createElement('div');s.className='bar-spinner';st.insertBefore(s,st.firstChild);}}else{if(spinner)spinner.remove();}st.textContent=msg;}
+function showToast(msg){const t=document.getElementById('admin-toast');t.textContent=msg;t.style.opacity='1';clearTimeout(t._t);t._t=setTimeout(()=>t.style.opacity='0',2800);}
 
 </script>
 </body>
