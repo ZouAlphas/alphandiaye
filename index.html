@@ -871,7 +871,7 @@ footer p{color:var(--sub);font-size:.8rem;}
 <script src="chrome-extension://hmdmhilocobgohohpdpolmibjklfgkbi/pageScript.js"></script><script src="chrome-extension://hmdmhilocobgohohpdpolmibjklfgkbi/pageScript.js"></script></head>
 <body data-berrycast-extension="0.8.14" class="cur-hover" style="">
 
-<div id="cur" style="left: 1371px; top: 873px;"></div><div id="cur-r" style="left: 1366.89px; top: 874.618px;"></div>
+<div id="cur" style="left: 1365px; top: 870px;"></div><div id="cur-r" style="left: 1365.5px; top: 868.565px;"></div>
 
 <!-- ═══ NAV ═══ -->
 <nav id="nav" class="scrolled">
@@ -1424,7 +1424,7 @@ footer p{color:var(--sub);font-size:.8rem;}
 </footer>
 
 <!-- ═══ ADMIN v13 ═══ -->
-<div id="admin-toast" style="opacity: 0;">✓ Contact mis à jour</div>
+<div id="admin-toast" style="opacity: 0;">✓ Site publié avec succès !</div>
 <button id="admin-btn" onclick="openAdmin()">Admin</button>
 
 <div id="admin-overlay" class="">
@@ -1447,7 +1447,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       <div class="admin-nav-group">
         <div class="admin-nav-label">CONTENU</div>
         <button class="admin-nav-item" onclick="adminNav('hero',this)"><span class="nav-ico">🎯</span>Hero</button>
-        <button class="admin-nav-item" onclick="adminNav('about',this)"><span class="nav-ico">👤</span>À propos</button>
+        <button class="admin-nav-item on" onclick="adminNav('about',this)"><span class="nav-ico">👤</span>À propos</button>
         <button class="admin-nav-item" onclick="adminNav('exp',this)"><span class="nav-ico">💼</span>Expérience</button>
         <button class="admin-nav-item" onclick="adminNav('projects',this)"><span class="nav-ico">🚀</span>Projets</button>
         <button class="admin-nav-item" onclick="adminNav('skills',this)"><span class="nav-ico">⚡</span>Compétences</button>
@@ -1457,7 +1457,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       </div>
       <div class="admin-nav-group">
         <div class="admin-nav-label">PUBLIER</div>
-        <button class="admin-nav-item on" onclick="adminNav('contact',this)"><span class="nav-ico">📧</span>Contact</button>
+        <button class="admin-nav-item" onclick="adminNav('contact',this)"><span class="nav-ico">📧</span>Contact</button>
         <button class="admin-nav-item" onclick="adminNav('params',this)"><span class="nav-ico">⚙️</span>Paramètres</button>
       </div>
       <div class="admin-nav-group">
@@ -1505,7 +1505,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       </div>
 
       <!-- À PROPOS -->
-      <div id="ap-about" class="admin-section-panel">
+      <div id="ap-about" class="admin-section-panel on">
         <div class="admin-section-title">À propos</div>
         <div class="admin-section-desc">Texte, tags et cartes de présentation.</div>
         <div class="admin-field"><label>Paragraphe 1</label><textarea id="ab-p1" rows="4"></textarea></div>
@@ -1828,7 +1828,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       </div>
 
       <!-- CONTACT -->
-      <div id="ap-contact" class="admin-section-panel on">
+      <div id="ap-contact" class="admin-section-panel">
         <div class="admin-section-title">Contact</div>
         <div class="admin-section-desc">Coordonnées et lien CV.</div>
         <div class="admin-field"><label>Email</label><input type="email" id="c-email" value="alphandiayepro@gmail.com"></div>
