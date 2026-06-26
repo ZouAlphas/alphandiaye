@@ -2721,7 +2721,11 @@ async function publishToGitHub(){
   try{
     const overlay=document.getElementById('admin-overlay');overlay.classList.remove('open');document.body.style.overflow='';
     const toast=document.getElementById('admin-toast');const toastOp=toast.style.opacity;toast.style.opacity='0';
+const _aImgs=[...document.querySelectorAll('#admin-overlay img')];
+const _aSrcs=_aImgs.map(i=>i.getAttribute('src')||'');
+_aImgs.forEach(i=>i.setAttribute('src',''));
     const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+_aImgs.forEach((i,j)=>i.setAttribute('src',_aSrcs[j]));
     overlay.classList.add('open');document.body.style.overflow='hidden';toast.style.opacity=toastOp;
     const b64=btoa(unescape(encodeURIComponent(html)));
     const branch=cfg.branch||'main';const filePath=cfg.file||'index.html';
