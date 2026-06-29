@@ -373,6 +373,9 @@ h1.hero-title{
   transition:opacity .3s,filter .3s;
 }
 .client-logo:hover img{opacity:1;}.client-logo:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(56,189,248,0.12);}
+/* Light mode: grayscale treatment to unify logo appearance */
+[data-theme=light] .client-logo img,[data-theme=light] .client-logo.has-color img{filter:grayscale(1) brightness(1.5);opacity:.65;mix-blend-mode:normal;}
+[data-theme=light] .client-logo:hover img,[data-theme=light] .client-logo.has-color:hover img{filter:grayscale(0) brightness(1);opacity:1;}
 .client-logo.has-color img{filter:var(--logo-color-filter);opacity:1;}
 .client-text{
   font-family:'Space Grotesk',sans-serif;
