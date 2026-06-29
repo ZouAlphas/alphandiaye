@@ -358,7 +358,7 @@ h1.hero-title{
 .clients-track:hover{animation-play-state:paused;}
 @keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 .client-logo{
-  flex-shrink:0;height:47px;
+  flex-shrink:0;height:55px;
   display:flex;align-items:center;
   text-decoration:none;transition:opacity .3s,transform .3s,box-shadow .3s;
   padding:5px 10px;
@@ -367,14 +367,14 @@ h1.hero-title{
   border-radius:10px;
 }
 .client-logo img{
-  height:100%;max-width:120px;
+  height:100%;max-width:140px;
   object-fit:contain;
   filter:var(--logo-filter);
   opacity:.85;
   transition:opacity .3s,filter .3s;
 }
 .client-logo:hover img{opacity:1;}.client-logo:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(56,189,248,0.12);}
-.client-logo.has-color img{filter:var(--logo-color-filter);opacity:.85;}
+.client-logo.has-color img{filter:var(--logo-color-filter);opacity:.9;mix-blend-mode:screen;}
 .client-text{
   font-family:'Space Grotesk',sans-serif;
   font-size:.95rem;font-weight:700;
@@ -895,7 +895,7 @@ footer p{color:var(--sub);font-size:.8rem;}
   .timeline-avatar { width:44px !important; height:44px !important; }
 }
 /* Light mode: natural colors stay visible */
-[data-theme=light] .client-logo.has-color img { opacity:.88; }
+[data-theme=light] .client-logo.has-color{background:rgba(15,23,42,.88);border-color:rgba(71,85,105,.4);}[data-theme=light] .client-logo.has-color img { opacity:.9;mix-blend-mode:screen; }
 [data-theme=light] .client-logo img { opacity:.88; }
 /* Timeline avatar img */
 .timeline-avatar img { width:100%; height:100%; object-fit:contain; }
@@ -2262,8 +2262,8 @@ function compressImg(file,cb,maxW=800,quality=0.82){
       const canvas=document.createElement('canvas');
       canvas.width=Math.round(img.width*scale);
       canvas.height=Math.round(img.height*scale);
-      canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
-      cb(canvas.toDataURL('image/jpeg',quality));
+      const _ctx=canvas.getContext('2d');if(file.type==='image/png'){_ctx.clearRect(0,0,canvas.width,canvas.height);}else{_ctx.fillStyle='#fff';_ctx.fillRect(0,0,canvas.width,canvas.height);}_ctx.drawImage(img,0,0,canvas.width,canvas.height);
+      cb(canvas.toDataURL(file.type==='image/png'?'image/png':'image/jpeg',file.type==='image/png'?1:quality));
     };
     img.src=e.target.result;
   };
