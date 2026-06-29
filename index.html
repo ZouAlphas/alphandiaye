@@ -358,23 +358,27 @@ h1.hero-title{
 .clients-track:hover{animation-play-state:paused;}
 @keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 .client-logo{
-  flex-shrink:0;height:64px;
+  flex-shrink:0;height:72px;
   display:flex;align-items:center;
-  text-decoration:none;transition:opacity .3s,transform .3s,box-shadow .3s;
-  padding:8px 14px;
-  background:rgba(11,18,32,.93);
-  border:none;
-  border-radius:10px;
+  text-decoration:none;
+  transition:opacity .25s,transform .25s,box-shadow .25s,background .25s,border-color .25s;
+  padding:10px 20px;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:12px;
 }
 .client-logo img{
-  height:100%;max-width:155px;
+  height:100%;max-width:165px;
   object-fit:contain;
   filter:var(--logo-filter);
-  opacity:.9;
-  transition:opacity .4s,filter .4s;
+  opacity:.85;
+  transition:opacity .3s,filter .3s;
 }
+.client-logo:hover img{opacity:1;}
 .client-logo:hover img{opacity:1;}.client-logo:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(56,189,248,0.12);}
-[data-theme=light] .client-logo{background:rgba(11,18,32,.93)!important;}
+[data-theme=light] .client-logo{background:#fff!important;border:1px solid rgba(0,0,0,0.08)!important;box-shadow:0 1px 5px rgba(0,0,0,0.07)!important;}
+[data-theme=light] .client-logo:hover{box-shadow:0 4px 18px rgba(0,0,0,0.11)!important;transform:translateY(-2px)!important;border-color:rgba(0,0,0,0.13)!important;}
+[data-theme=light] .client-logo img{filter:none!important;opacity:.95!important;}
 .client-logo.has-color img{filter:var(--logo-color-filter);opacity:1;}
 .client-text{
   font-family:'Space Grotesk',sans-serif;
