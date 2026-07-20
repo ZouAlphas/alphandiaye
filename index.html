@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light"><head>
+<html lang="fr" data-theme="dark"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alpha Ndiaye — Consultant Transformation Digitale | Dakar</title>
@@ -903,10 +903,10 @@ footer p{color:var(--sub);font-size:.8rem;}
 [data-theme=light] .client-logo img { opacity:.88; }
 /* Timeline avatar img */
 .timeline-avatar img { width:100%; height:100%; object-fit:contain; }
-</style><script src="chrome-extension://hmdmhilocobgohohpdpolmibjklfgkbi/pageScript.js"></script><script src="chrome-extension://hmdmhilocobgohohpdpolmibjklfgkbi/pageScript.js"></script></head>
+</style><script src="chrome-extension://hmdmhilocobgohohpdpolmibjklfgkbi/pageScript.js"></script><script src="chrome-extension://hmdmhilocobgohohpdpolmibjklfgkbi/pageScript.js"></script><script src="chrome-extension://hmdmhilocobgohohpdpolmibjklfgkbi/pageScript.js"></script></head>
 <body data-berrycast-extension="0.8.14" class="cur-hover" style="">
 
-<div id="cur" style="left: 1384px; top: 878px;"></div><div id="cur-r" style="left: 1384.79px; top: 877.688px;"></div>
+<div id="cur" style="left: 1382px; top: 874px;"></div><div id="cur-r" style="left: 1373.45px; top: 873.355px;"></div>
 
 <!-- ═══ NAV ═══ -->
 <nav id="nav" class="scrolled">
@@ -925,8 +925,8 @@ footer p{color:var(--sub);font-size:.8rem;}
       <button class="lang-btn" id="btn-en" onclick="setLang('en')">🇬🇧 EN</button>
     </div>
     <button class="theme-btn" onclick="toggleTheme()" title="Changer le thème">
-      <svg id="icon-sun" style="display: block;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-      <svg id="icon-moon" viewBox="0 0 24 24" style="display: none;"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+      <svg id="icon-sun" style="display: none;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      <svg id="icon-moon" viewBox="0 0 24 24" style="display: block;"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
     </button>
     <a href="#contact" class="nav-cta" data-i18n="nav.cta">Me contacter</a>
     <button class="nav-toggle" onclick="toggleMobile()">
@@ -969,7 +969,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       </div>
       <div class="stat">
         <span class="stat-num" data-to="5" data-done="1" data-suffix="+">5+</span>
-        <span class="stat-label" data-i18n="stat.countries">Pays couverts</span>
+        <span class="stat-label" data-i18n="stat.countries">Pays accompagnés</span>
       </div>
       <div class="stat">
         <span class="stat-num" data-to="6" data-suffix="+" data-done="1">6+</span>
@@ -1450,7 +1450,7 @@ footer p{color:var(--sub);font-size:.8rem;}
 </footer>
 
 <!-- ═══ ADMIN v13 ═══ -->
-<div id="admin-toast" style="opacity: 0;">✓ Site publié avec succès !</div>
+<div id="admin-toast" style="opacity: 0;">✓ Hero mis à jour</div>
 <button id="admin-btn" onclick="openAdmin()">Admin</button>
 
 <div id="admin-overlay" class="">
@@ -1459,7 +1459,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       <h3>🔐 Administration</h3>
       <input type="password" id="admin-pwd" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')checkPwd()">
       <button class="login-btn" onclick="checkPwd()">Connexion</button>
-      <div class="admin-err" id="admin-err">Mot de passe incorrect.</div>
+      <div class="admin-err" id="admin-err" style="">Mot de passe incorrect.</div>
       <div style="font-size:.73rem;color:rgba(255,255,255,.22);margin-top:.85rem;">Raccourci : Ctrl+Shift+A</div>
     </div>
   </div>
@@ -1739,7 +1739,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       <div class="admin-row"><div class="admin-field"><label>Titre</label><input type="text" value="Administration et Gestion des Entreprises" data-edu-t="1"></div><div class="admin-field"><label>Badge</label><input type="text" value="MASTER 1 - 2024" data-edu-b="1"></div></div>
       <div class="admin-field"><label>École</label><input type="text" value="BEM — Bordeaux École de Management" data-edu-s="1"></div>
       <div class="admin-field"><label>Description</label><textarea rows="2" data-edu-d="1">Management, finance, ressources humaines</textarea></div></div><div class="admin-item-row"><div class="admin-item-header"><span class="admin-item-title">Gestion et Comptabilité</span><button class="admin-btn admin-btn-danger admin-btn-sm" onclick="removeEduItem(2)">✕</button></div>
-      <div class="admin-row"><div class="admin-field"><label>Titre</label><input type="text" value="Gestion et Comptabilité" data-edu-t="2"></div><div class="admin-field"><label>Badge</label><input type="text" value="LICENCE" data-edu-b="2"></div></div>
+      <div class="admin-row"><div class="admin-field"><label>Titre</label><input type="text" value="Gestion et Comptabilité" data-edu-t="2"></div><div class="admin-field"><label>Badge</label><input type="text" value="LICENCE - 2024" data-edu-b="2"></div></div>
       <div class="admin-field"><label>École</label><input type="text" value="École Supérieure Polytechnique (ESP)" data-edu-s="2"></div>
       <div class="admin-field"><label>Description</label><textarea rows="2" data-edu-d="2">Comptabilité, gestion financière, droit des affaires</textarea></div></div><div class="admin-item-row"><div class="admin-item-header"><span class="admin-item-title">Force de vente du Futur</span><button class="admin-btn admin-btn-danger admin-btn-sm" onclick="removeEduItem(3)">✕</button></div>
       <div class="admin-row"><div class="admin-field"><label>Titre</label><input type="text" value="Force de vente du Futur" data-edu-t="3"></div><div class="admin-field"><label>Badge</label><input type="text" value="INTERNATIONAL" data-edu-b="3"></div></div>
