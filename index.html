@@ -2,12 +2,12 @@
 <html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alpha Ndiaye — Expert Transformation Digitale | Dakar</title>
-<meta name="description" content="Expert en transformation digitale basé à Dakar. Cofondateur de GDA, Responsable Support chez Senedoo. 6 ans d'expérience en projets ERP et accompagnement d'entreprises en Afrique de l'Ouest.">
+<title>Alpha Ndiaye — Consultant Transformation Digitale | Dakar</title>
+<meta name="description" content="Consultant en transformation digitale basé à Dakar. Cofondateur de GDA, Responsable Support chez Senedoo. 6 ans d'expérience en projets ERP et accompagnement d'entreprises en Afrique de l'Ouest.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Alpha Ndiaye">
-<meta property="og:title" content="Alpha Ndiaye — Expert Transformation Digitale">
-<meta property="og:description" content="Expert en transformation digitale basé à Dakar. 6 ans d'expérience en projets ERP et accompagnement d'entreprises en Afrique de l'Ouest.">
+<meta property="og:title" content="Alpha Ndiaye — Consultant Transformation Digitale">
+<meta property="og:description" content="Consultant en transformation digitale basé à Dakar. 6 ans d'expérience en projets ERP et accompagnement d'entreprises en Afrique de l'Ouest.">
 <meta property="og:image" content="https://alphandiaye.online/images/photo.jpeg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -985,7 +985,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       </div>
       <div class="hero-badge">
         <div class="hero-badge-name">Alpha Ndiaye</div>
-        <div class="hero-badge-role">Expert Transformation Digitale</div>
+        <div class="hero-badge-role">Consultant Transformation Digitale</div>
       </div>
     </div>
   </div>
@@ -1013,7 +1013,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       <div class="section-label">À propos</div>
       <h2 class="section-title">Une expertise construite sur le terrain, <span style="color:var(--blue)">en Afrique de l'Ouest</span></h2>
       <div class="about-text">
-        <p>Je suis Alpha Ndiaye, expert en transformation digitale basé à Dakar. Depuis six ans, j'accompagne des entreprises dans leur transition numérique; de la création d'identité visuelle au déploiement de systèmes ERP complexes.-</p>
+        <p>Je suis Alpha Ndiaye, consultant en transformation digitale basé à Dakar. Depuis six ans, j'accompagne des entreprises dans leur transition numérique; de la création d'identité visuelle au déploiement de systèmes ERP complexes.-</p>
         <p>Cofondateur de la Galsen Digital Agency et Responsable Support chez Senedoo, j'ai développé une double compétence : comprendre les enjeux business et maîtriser les outils digitaux qui les servent.</p>
         <p>Ce qui me distingue, c'est la capacité à faire le lien entre la vision stratégique et l'exécution opérationnelle; sans perdre de vue l'humain au centre de chaque projet.</p>
       </div>
@@ -2201,7 +2201,7 @@ function handleForm(e){
 }
 
 /* ═══ ADMIN v13 ═══ */
-const PWD_ADMIN='1ClaudAlpha9';
+const PWD_ADMIN='ZjAKNDCNpMGke1';
 const GH_STORE='gh_config_v11';
 let _adminAuth=false;
 
@@ -2211,6 +2211,8 @@ window.addEventListener('load',()=>{if(location.search.includes('admin')||locati
 function openAdmin(){
   document.getElementById('admin-overlay').classList.add('open');
   document.body.style.overflow='hidden';
+  document.getElementById('admin-login-screen').style.display=_adminAuth?'none':'flex';
+  document.getElementById('admin-main-layout').style.display=_adminAuth?'flex':'none';
   if(_adminAuth)setTimeout(()=>{initAllAdminSections();ghRestoreFields();},150);
 }
 function closeAdmin(){
@@ -2231,6 +2233,7 @@ function adminNav(section,btn){
   document.querySelectorAll('.admin-section-panel').forEach(p=>p.classList.remove('on'));
   const panel=document.getElementById('ap-'+section);
   if(panel)panel.classList.add('on');
+  if(section==='hero'){initHero();}
   if(section==='skills')buildSkillsEditor();
   if(section==='beyond')buildPersonalityEditor();
   if(section==='projects')buildProjectsEditor();
@@ -2750,8 +2753,25 @@ async function publishToGitHub(){
 const _aImgs=[...document.querySelectorAll('#admin-overlay img')];
 const _aSrcs=_aImgs.map(i=>i.getAttribute('src')||'');
 _aImgs.forEach(i=>i.setAttribute('src',''));
+const _loginScr=document.getElementById('admin-login-screen');
+const _mainLay=document.getElementById('admin-main-layout');
+const _pwdEl=document.getElementById('admin-pwd');
+const _errEl=document.getElementById('admin-err');
+const _snapLoginDisp=_loginScr.style.display,_snapMainDisp=_mainLay.style.display,_snapPwdVal=_pwdEl.value,_snapErrDisp=_errEl.style.display;
+const _navBtns=[...document.querySelectorAll('.admin-nav-item')];
+const _panels=[...document.querySelectorAll('.admin-section-panel')];
+const _snapNavOn=_navBtns.map(b=>b.classList.contains('on'));
+const _snapPanelOn=_panels.map(p=>p.classList.contains('on'));
+_loginScr.style.display='';_mainLay.style.display='';_pwdEl.value='';_errEl.style.display='';
+_navBtns.forEach(b=>b.classList.remove('on'));_panels.forEach(p=>p.classList.remove('on'));
+const _heroBtn=_navBtns.find(b=>(b.getAttribute('onclick')||'').includes("'hero'"));
+if(_heroBtn)_heroBtn.classList.add('on');
+const _heroPanel=document.getElementById('ap-hero');if(_heroPanel)_heroPanel.classList.add('on');
     const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
 _aImgs.forEach((i,j)=>i.setAttribute('src',_aSrcs[j]));
+_loginScr.style.display=_snapLoginDisp;_mainLay.style.display=_snapMainDisp;_pwdEl.value=_snapPwdVal;_errEl.style.display=_snapErrDisp;
+_navBtns.forEach((b,i)=>b.classList.toggle('on',_snapNavOn[i]));
+_panels.forEach((p,i)=>p.classList.toggle('on',_snapPanelOn[i]));
     overlay.classList.add('open');document.body.style.overflow='hidden';toast.style.opacity=toastOp;
     const b64=btoa(unescape(encodeURIComponent(html)));
     const branch=cfg.branch||'main';const filePath=cfg.file||'index.html';
