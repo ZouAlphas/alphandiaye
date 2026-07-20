@@ -906,7 +906,7 @@ footer p{color:var(--sub);font-size:.8rem;}
 </style><script src="chrome-extension://hmdmhilocobgohohpdpolmibjklfgkbi/pageScript.js"></script></head>
 <body data-berrycast-extension="0.8.14" class="cur-hover" style="">
 
-<div id="cur" style="left: 1379px; top: 879px;"></div><div id="cur-r" style="left: 1381.53px; top: 879.832px;"></div>
+<div id="cur" style="left: 1376px; top: 877px;"></div><div id="cur-r" style="left: 1373.02px; top: 877.264px;"></div>
 
 <!-- ═══ NAV ═══ -->
 <nav id="nav" class="scrolled">
@@ -957,7 +957,7 @@ footer p{color:var(--sub);font-size:.8rem;}
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5-5 5M6 12h12"></path></svg>
         <span data-i18n="hero.btn1">Mes réalisations</span>
       </a>
-      <a href="https://drive.google.com/uc?export=download&amp;id=1Rc_Ll7EuomI5FeMPTkga7_4Q3cMDJ4iP" class="btn-outline" target="_blank" onclick="track('hero_cv')">
+      <a href="https://drive.google.com/file/d/1wpzvU5Fold58OguNdtFklxy_-E3twDQT/view?usp=drive_link" class="btn-outline" target="_blank" onclick="track('hero_cv')">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
         <span data-i18n="hero.btn2">Télécharger CV</span>
       </a>
@@ -1405,7 +1405,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       <h3>Télécharger mon CV</h3>
       <p>Retrouvez l'ensemble de mon parcours et mes compétences en détail.</p>
     </div>
-    <a href="https://drive.google.com/uc?export=download&amp;id=1Rc_Ll7EuomI5FeMPTkga7_4Q3cMDJ4iP" class="btn-primary" target="_blank" onclick="track('cv_download')">
+    <a href="https://drive.google.com/file/d/1wpzvU5Fold58OguNdtFklxy_-E3twDQT/view?usp=drive_link" class="btn-primary" target="_blank" onclick="track('cv_download')">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
       Télécharger le CV
     </a>
@@ -1459,7 +1459,7 @@ footer p{color:var(--sub);font-size:.8rem;}
 </footer>
 
 <!-- ═══ ADMIN v13 ═══ -->
-<div id="admin-toast" style="opacity: 0;">✓ À propos mis à jour</div>
+<div id="admin-toast" style="opacity: 0;">✓ Contact mis à jour</div>
 <button id="admin-btn" onclick="openAdmin()">Admin</button>
 
 <div id="admin-overlay" class="">
@@ -1492,8 +1492,8 @@ footer p{color:var(--sub);font-size:.8rem;}
       </div>
       <div class="admin-nav-group">
         <div class="admin-nav-label">PUBLIER</div>
-        <button class="admin-nav-item" onclick="adminNav('contact',this)"><span class="nav-ico">📧</span>Contact</button>
-        <button class="admin-nav-item on" onclick="adminNav('params',this)"><span class="nav-ico">⚙️</span>Paramètres</button>
+        <button class="admin-nav-item on" onclick="adminNav('contact',this)"><span class="nav-ico">📧</span>Contact</button>
+        <button class="admin-nav-item" onclick="adminNav('params',this)"><span class="nav-ico">⚙️</span>Paramètres</button>
       </div>
       <div class="admin-nav-group">
         <div class="admin-nav-label">VISUELS</div>
@@ -1863,7 +1863,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       </div>
 
       <!-- CONTACT -->
-      <div id="ap-contact" class="admin-section-panel">
+      <div id="ap-contact" class="admin-section-panel on">
         <div class="admin-section-title">Contact</div>
         <div class="admin-section-desc">Coordonnées et lien CV.</div>
         <div class="admin-field"><label>Email</label><input type="email" id="c-email" value="alphandiayepro@gmail.com"></div>
@@ -1876,7 +1876,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       </div>
 
       <!-- PARAMÈTRES -->
-      <div id="ap-params" class="admin-section-panel on">
+      <div id="ap-params" class="admin-section-panel">
         <div class="admin-section-title">Paramètres</div>
         <div class="admin-section-desc">Configuration GitHub pour publier le site.</div>
         <div class="admin-field"><label>Token GitHub PAT</label><input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" oninput="ghSaveToken(this.value)"></div>
