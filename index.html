@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark"><head>
+<html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alpha Ndiaye — Expert Transformation Digitale | Dakar</title>
@@ -903,10 +903,10 @@ footer p{color:var(--sub);font-size:.8rem;}
 [data-theme=light] .client-logo img { opacity:.88; }
 /* Timeline avatar img */
 .timeline-avatar img { width:100%; height:100%; object-fit:contain; }
-</style></head>
+</style><script src="chrome-extension://hmdmhilocobgohohpdpolmibjklfgkbi/pageScript.js"></script></head>
 <body data-berrycast-extension="0.8.14" class="cur-hover" style="">
 
-<div id="cur" style="left: 1393px; top: 873px;"></div><div id="cur-r" style="left: 0px; top: 0px;"></div>
+<div id="cur" style="left: 1379px; top: 879px;"></div><div id="cur-r" style="left: 1381.53px; top: 879.832px;"></div>
 
 <!-- ═══ NAV ═══ -->
 <nav id="nav" class="scrolled">
@@ -925,8 +925,8 @@ footer p{color:var(--sub);font-size:.8rem;}
       <button class="lang-btn" id="btn-en" onclick="setLang('en')">🇬🇧 EN</button>
     </div>
     <button class="theme-btn" onclick="toggleTheme()" title="Changer le thème">
-      <svg id="icon-sun" style="display: none;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-      <svg id="icon-moon" viewBox="0 0 24 24" style="display: block;"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+      <svg id="icon-sun" style="display: block;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      <svg id="icon-moon" viewBox="0 0 24 24" style="display: none;"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
     </button>
     <a href="#contact" class="nav-cta" data-i18n="nav.cta">Me contacter</a>
     <button class="nav-toggle" onclick="toggleMobile()">
@@ -1482,7 +1482,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       <div class="admin-nav-group">
         <div class="admin-nav-label">CONTENU</div>
         <button class="admin-nav-item" onclick="adminNav('hero',this)"><span class="nav-ico">🎯</span>Hero</button>
-        <button class="admin-nav-item on" onclick="adminNav('about',this)"><span class="nav-ico">👤</span>À propos</button>
+        <button class="admin-nav-item" onclick="adminNav('about',this)"><span class="nav-ico">👤</span>À propos</button>
         <button class="admin-nav-item" onclick="adminNav('exp',this)"><span class="nav-ico">💼</span>Expérience</button>
         <button class="admin-nav-item" onclick="adminNav('projects',this)"><span class="nav-ico">🚀</span>Projets</button>
         <button class="admin-nav-item" onclick="adminNav('skills',this)"><span class="nav-ico">⚡</span>Compétences</button>
@@ -1493,7 +1493,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       <div class="admin-nav-group">
         <div class="admin-nav-label">PUBLIER</div>
         <button class="admin-nav-item" onclick="adminNav('contact',this)"><span class="nav-ico">📧</span>Contact</button>
-        <button class="admin-nav-item" onclick="adminNav('params',this)"><span class="nav-ico">⚙️</span>Paramètres</button>
+        <button class="admin-nav-item on" onclick="adminNav('params',this)"><span class="nav-ico">⚙️</span>Paramètres</button>
       </div>
       <div class="admin-nav-group">
         <div class="admin-nav-label">VISUELS</div>
@@ -1540,7 +1540,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       </div>
 
       <!-- À PROPOS -->
-      <div id="ap-about" class="admin-section-panel on">
+      <div id="ap-about" class="admin-section-panel">
         <div class="admin-section-title">À propos</div>
         <div class="admin-section-desc">Texte, tags et cartes de présentation.</div>
         <div class="admin-field"><label>Paragraphe 1</label><textarea id="ab-p1" rows="4"></textarea></div>
@@ -1876,7 +1876,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       </div>
 
       <!-- PARAMÈTRES -->
-      <div id="ap-params" class="admin-section-panel">
+      <div id="ap-params" class="admin-section-panel on">
         <div class="admin-section-title">Paramètres</div>
         <div class="admin-section-desc">Configuration GitHub pour publier le site.</div>
         <div class="admin-field"><label>Token GitHub PAT</label><input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" oninput="ghSaveToken(this.value)"></div>
@@ -1893,9 +1893,9 @@ footer p{color:var(--sub);font-size:.8rem;}
           <button class="admin-btn admin-btn-ghost" onclick="ghVerify()">🔍 Vérifier</button>
           <button class="admin-btn admin-btn-ghost" onclick="exportSite()">⬇ Exporter</button>
         </div>
-        <div class="pub-repo-status" id="repo-status" style="display:none;">
-          <div class="pub-repo-dot" id="repo-dot"></div>
-          <span id="repo-status-txt" style="font-size:.79rem;color:rgba(255,255,255,.45);"></span>
+        <div class="pub-repo-status" id="repo-status" style="display: flex;">
+          <div class="pub-repo-dot ok" id="repo-dot"></div>
+          <span id="repo-status-txt" style="font-size:.79rem;color:rgba(255,255,255,.45);">✓ ZouAlphas/alphandiaye</span>
         </div>
         <div class="admin-info-box">Settings → Developer settings → Personal access tokens (classic) → cocher <code style="color:#38BDF8">repo</code></div>
       </div>
