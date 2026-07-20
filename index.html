@@ -906,7 +906,7 @@ footer p{color:var(--sub);font-size:.8rem;}
 </style><script src="chrome-extension://hmdmhilocobgohohpdpolmibjklfgkbi/pageScript.js"></script></head>
 <body data-berrycast-extension="0.8.14" class="cur-hover" style="">
 
-<div id="cur" style="left: 1348px; top: 870px;"></div><div id="cur-r" style="left: 1342.72px; top: 869.235px;"></div>
+<div id="cur" style="left: 1340px; top: 872px;"></div><div id="cur-r" style="left: 1331.23px; top: 870.805px;"></div>
 
 <!-- ═══ NAV ═══ -->
 <nav id="nav" class="scrolled">
@@ -1319,7 +1319,7 @@ footer p{color:var(--sub);font-size:.8rem;}
           <span class="cert-badge">CERTIFIÉ</span>
           <h3>Support ERP &amp; CRM</h3>
           <div class="cert-org">Senedoo</div>
-          <div class="cert-year">2025</div>
+          <div class="cert-year">2026</div>
         </div>
         
       </div>
@@ -1459,7 +1459,7 @@ footer p{color:var(--sub);font-size:.8rem;}
 </footer>
 
 <!-- ═══ ADMIN v13 ═══ -->
-<div id="admin-toast" style="opacity: 0;">✓ Contact mis à jour</div>
+<div id="admin-toast" style="opacity: 0;">✓ Études mises à jour</div>
 <button id="admin-btn" onclick="openAdmin()">Admin</button>
 
 <div id="admin-overlay" class="">
@@ -1486,13 +1486,13 @@ footer p{color:var(--sub);font-size:.8rem;}
         <button class="admin-nav-item" onclick="adminNav('exp',this)"><span class="nav-ico">💼</span>Expérience</button>
         <button class="admin-nav-item" onclick="adminNav('projects',this)"><span class="nav-ico">🚀</span>Projets</button>
         <button class="admin-nav-item" onclick="adminNav('skills',this)"><span class="nav-ico">⚡</span>Compétences</button>
-        <button class="admin-nav-item" onclick="adminNav('edu',this)"><span class="nav-ico">🎓</span>Études</button>
+        <button class="admin-nav-item on" onclick="adminNav('edu',this)"><span class="nav-ico">🎓</span>Études</button>
         <button class="admin-nav-item" onclick="adminNav('beyond',this)"><span class="nav-ico">✨</span>Au-delà</button>
         <button class="admin-nav-item" onclick="adminNav('languages',this)"><span class="nav-ico">🌐</span>Langues</button>
       </div>
       <div class="admin-nav-group">
         <div class="admin-nav-label">PUBLIER</div>
-        <button class="admin-nav-item on" onclick="adminNav('contact',this)"><span class="nav-ico">📧</span>Contact</button>
+        <button class="admin-nav-item" onclick="adminNav('contact',this)"><span class="nav-ico">📧</span>Contact</button>
         <button class="admin-nav-item" onclick="adminNav('params',this)"><span class="nav-ico">⚙️</span>Paramètres</button>
       </div>
       <div class="admin-nav-group">
@@ -1737,7 +1737,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       </div>
 
       <!-- ÉTUDES -->
-      <div id="ap-edu" class="admin-section-panel">
+      <div id="ap-edu" class="admin-section-panel on">
         <div class="admin-section-title">Études</div>
         <div class="admin-section-desc">Parcours académique et certifications.</div>
         <div class="admin-sub-label">Parcours</div>
@@ -1782,7 +1782,7 @@ footer p{color:var(--sub);font-size:.8rem;}
         </div>
         <div class="admin-field"><label>Image personnalisée</label>
           <div class="admin-img-box-sm">
-            <img id="img-icard-0" alt="" src="" class="loaded"><input type="file" accept="image/*" onchange="previewCardImg(this,'icard',0)">
+            <img id="img-icard-0" class="loaded" src="" alt=""><input type="file" accept="image/*" onchange="previewCardImg(this,'icard',0)">
             <div class="up-text">📷</div>
           </div>
           <button onclick="clearCardImg('icard',0)" style="margin-top:.3rem;font-size:.72rem;background:none;border:none;color:rgba(248,113,113,.6);cursor:pointer;">✕ Supprimer</button>
@@ -1795,7 +1795,7 @@ footer p{color:var(--sub);font-size:.8rem;}
         </div>
         <div class="admin-field"><label>Image personnalisée</label>
           <div class="admin-img-box-sm">
-            <img id="img-icard-1" alt="" src="" class="loaded"><input type="file" accept="image/*" onchange="previewCardImg(this,'icard',1)">
+            <img id="img-icard-1" class="loaded" src="" alt=""><input type="file" accept="image/*" onchange="previewCardImg(this,'icard',1)">
             <div class="up-text">📷</div>
           </div>
           <button onclick="clearCardImg('icard',1)" style="margin-top:.3rem;font-size:.72rem;background:none;border:none;color:rgba(248,113,113,.6);cursor:pointer;">✕ Supprimer</button>
@@ -1808,7 +1808,7 @@ footer p{color:var(--sub);font-size:.8rem;}
         </div>
         <div class="admin-field"><label>Image personnalisée</label>
           <div class="admin-img-box-sm">
-            <img id="img-icard-2" alt="" src="" class="loaded"><input type="file" accept="image/*" onchange="previewCardImg(this,'icard',2)">
+            <img id="img-icard-2" class="loaded" src="" alt=""><input type="file" accept="image/*" onchange="previewCardImg(this,'icard',2)">
             <div class="up-text">📷</div>
           </div>
           <button onclick="clearCardImg('icard',2)" style="margin-top:.3rem;font-size:.72rem;background:none;border:none;color:rgba(248,113,113,.6);cursor:pointer;">✕ Supprimer</button>
@@ -1817,11 +1817,11 @@ footer p{color:var(--sub);font-size:.8rem;}
       <div class="admin-row">
         <div>
           <div class="admin-field"><label>Titre</label><input type="text" value="Psychologie" data-type="int-title" data-idx="3"></div>
-          <div class="admin-field"><label>Description</label><textarea rows="2" data-type="int-desc" data-idx="3">Comprendre les ressorts humains pour mieux collaborer et décider.</textarea></div>
+          <div class="admin-field"><label>Description</label><textarea rows="2" data-type="int-desc" data-idx="3">Comprendre les ressorts humains et la santé mentale pour mieux collaborer et décider.</textarea></div>
         </div>
         <div class="admin-field"><label>Image personnalisée</label>
           <div class="admin-img-box-sm">
-            <img id="img-icard-3" alt="" src="" class="loaded"><input type="file" accept="image/*" onchange="previewCardImg(this,'icard',3)">
+            <img id="img-icard-3" class="loaded" src="" alt=""><input type="file" accept="image/*" onchange="previewCardImg(this,'icard',3)">
             <div class="up-text">📷</div>
           </div>
           <button onclick="clearCardImg('icard',3)" style="margin-top:.3rem;font-size:.72rem;background:none;border:none;color:rgba(248,113,113,.6);cursor:pointer;">✕ Supprimer</button>
@@ -1834,7 +1834,7 @@ footer p{color:var(--sub);font-size:.8rem;}
         </div>
         <div class="admin-field"><label>Image personnalisée</label>
           <div class="admin-img-box-sm">
-            <img id="img-icard-4" alt="" src="" class="loaded"><input type="file" accept="image/*" onchange="previewCardImg(this,'icard',4)">
+            <img id="img-icard-4" class="loaded" src="" alt=""><input type="file" accept="image/*" onchange="previewCardImg(this,'icard',4)">
             <div class="up-text">📷</div>
           </div>
           <button onclick="clearCardImg('icard',4)" style="margin-top:.3rem;font-size:.72rem;background:none;border:none;color:rgba(248,113,113,.6);cursor:pointer;">✕ Supprimer</button>
@@ -1863,7 +1863,7 @@ footer p{color:var(--sub);font-size:.8rem;}
       </div>
 
       <!-- CONTACT -->
-      <div id="ap-contact" class="admin-section-panel on">
+      <div id="ap-contact" class="admin-section-panel">
         <div class="admin-section-title">Contact</div>
         <div class="admin-section-desc">Coordonnées et lien CV.</div>
         <div class="admin-field"><label>Email</label><input type="email" id="c-email" value="alphandiayepro@gmail.com"></div>
