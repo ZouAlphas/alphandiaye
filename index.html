@@ -498,6 +498,14 @@ h1.hero-title{
 .timeline-clients-tags{display:flex;flex-wrap:wrap;gap:.3rem;}
 .tclients-more{margin-top:.3rem;}
 .tgroup-gap{height:.85rem;}
+a.tl-link{text-decoration:none;color:inherit;}
+a.timeline-avatar.tl-link{transition:transform .2s,box-shadow .2s,border-color .2s;}
+a.timeline-avatar.tl-link:hover,a.timeline-avatar.tl-link:focus-visible{transform:translateY(-2px);box-shadow:0 6px 18px rgba(56,189,248,.18);border-color:rgba(56,189,248,.5)!important;outline:none;}
+a.timeline-company.tl-link{display:inline-flex;align-items:center;gap:.35rem;color:var(--text);transition:color .2s;}
+a.timeline-company.tl-link:hover,a.timeline-company.tl-link:focus-visible{color:var(--blue);outline:none;text-decoration:underline;text-underline-offset:3px;}
+.tl-ext{width:.85em;height:.85em;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.55;flex-shrink:0;transition:opacity .2s;}
+a.timeline-company.tl-link:hover .tl-ext{opacity:1;}
+
 .timeline-wide{grid-column:1/-1;}
 @media(max-width:640px){.tclients-more>summary{padding:.3rem .65rem;font-size:.78rem;}}
 .tclients-more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;font-weight:600;padding:.16rem .55rem;border-radius:5px;color:var(--blue);background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.18);user-select:none;transition:background .2s,border-color .2s;}
@@ -1096,9 +1104,9 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
       <div class="timeline-date">JANV. 2025 — PRÉSENT</div>
       <div class="timeline-card">
         <div class="timeline-header">
-          <div class="timeline-avatar"><img loading="lazy" decoding="async" class="exp-logo-img" id="exp-logo-0" alt="" src="images/site/logo-senedoo.webp"><span class="exp-initials" style="display: none;">SN</span></div>
+          <a class="timeline-avatar tl-link" href="https://www.senedoo.com/" target="_blank" rel="noopener" aria-label="Site web de Senedoo (nouvel onglet)"><img loading="lazy" decoding="async" class="exp-logo-img" id="exp-logo-0" alt="" src="images/site/logo-senedoo.webp"><span class="exp-initials" style="display: none;">SN</span></a>
           <div>
-            <div class="timeline-company">SENEDOO</div>
+            <a class="timeline-company tl-link" href="https://www.senedoo.com/" target="_blank" rel="noopener">SENEDOO<svg class="tl-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
             <div class="timeline-role">Responsable Support <span style="opacity:.7;font-weight:500;">· depuis avril 2025</span></div>
           </div>
         </div>
@@ -1125,9 +1133,9 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
       <div class="timeline-date">2020 (ACTIVITÉS) · 2022 (CRÉATION) — 2025</div>
       <div class="timeline-card">
         <div class="timeline-header">
-          <div class="timeline-avatar"><img loading="lazy" decoding="async" class="exp-logo-img" id="exp-logo-1" alt="" src="images/site/logo-gda.webp"><span class="exp-initials" style="display: none;">GDA</span></div>
+          <a class="timeline-avatar tl-link" href="https://gda.webikoo.pro/" target="_blank" rel="noopener" aria-label="Site web de Galsen Digital Agency (nouvel onglet)"><img loading="lazy" decoding="async" class="exp-logo-img" id="exp-logo-1" alt="" src="images/site/logo-gda.webp"><span class="exp-initials" style="display: none;">GDA</span></a>
           <div>
-            <div class="timeline-company">GALSEN DIGITAL AGENCY</div>
+            <a class="timeline-company tl-link" href="https://gda.webikoo.pro/" target="_blank" rel="noopener">GALSEN DIGITAL AGENCY<svg class="tl-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
             <div class="timeline-role" style="color:var(--blue2);">Cofondateur · Directeur général &amp; Responsable multimédia</div>
           </div>
         </div>
@@ -1142,9 +1150,9 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
       <div class="timeline-date">ENGAGEMENT ASSOCIATIF · JUSQU'À OCT. 2026</div>
       <div class="timeline-card">
         <div class="timeline-header">
-          <div class="timeline-avatar"><img loading="lazy" decoding="async" class="exp-logo-img" alt="" src="images/site/client-wassor-4392.webp"></div>
+          <a class="timeline-avatar tl-link" href="https://wassor.org/" target="_blank" rel="noopener" aria-label="Site web de WASSOR (nouvel onglet)"><img loading="lazy" decoding="async" class="exp-logo-img" alt="" src="images/site/client-wassor-4392.webp"></a>
           <div>
-            <div class="timeline-company">WASSOR</div>
+            <a class="timeline-company tl-link" href="https://wassor.org/" target="_blank" rel="noopener">WASSOR<svg class="tl-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
             <div class="timeline-role">Community Engagement &amp; Project Manager</div>
           </div>
         </div>
