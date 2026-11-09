@@ -158,7 +158,7 @@ const ITEMS=[
   ['.lang-card','Langue'],['.contact-link','Moyen de contact'],['.stat','Chiffre clé'],['.footer-link','Lien du pied de page']
 ];
 /* Taille maximale des images envoyées, selon l'endroit */
-const IMG_MAX=[['.client-logo',400],['.hero-photo-wrap',1080],['.proj-top',1200],['.timeline-avatar',240],['.about-card-icon',200],['.interest-icon',200]];
+const IMG_MAX=[['.client-logo',400],['.hero-photo-wrap',1080],['.proj-top',1200],['.timeline-avatar',240],['.about-card-icon',200],['.interest-icon',1000]];
 const SECTION_NAMES={hero:'Accueil',clients:'Logos clients',about:'À propos',experience:'Expérience',projects:'Réalisations',skills:'Compétences',education:'Études & certifications',personality:'Au-delà du professionnel',languages:'Langues',contact:'Contact'};
 
 /* ═════════════ ÉTAT ═════════════ */
@@ -259,6 +259,7 @@ async function start(){
 }
 
 const EDIT_CSS=`
+.exp-more{display:block!important}.exp-toggle-wrap{display:none!important}
 .reveal{opacity:1!important;transform:none!important}
 .clients-track{animation:none!important;flex-wrap:wrap;width:auto!important;justify-content:center}
 .clients-overflow{mask-image:none!important;-webkit-mask-image:none!important}
