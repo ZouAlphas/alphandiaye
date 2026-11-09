@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src https://api.github.com; frame-src 'self' about:; base-uri 'self'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://api.github.com; frame-src 'self' about:; base-uri 'self'; form-action 'none'">
 <title>Admin — alphandiaye.online</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
@@ -237,6 +237,8 @@ async function start(){
   d.querySelectorAll('script').forEach(s=>{const t=s.getAttribute('type');if(t&&!/javascript|module/i.test(t))return;s.setAttribute('data-adm-type',t===null?'':t);s.setAttribute('type','text/adm-inert');});
   // Neutralise les gestionnaires inline (onclick…)
   d.querySelectorAll('*').forEach(el=>{[...el.attributes].forEach(a=>{if(/^on/i.test(a.name)){el.setAttribute('data-adm-'+a.name,a.value);el.removeAttribute(a.name);}});});
+  // Listes dépliables : ouvertes pendant l'édition (refermées à l'enregistrement)
+  d.querySelectorAll('details:not([open])').forEach(x=>{x.setAttribute('open','');x.setAttribute('data-adm-open','');});
   // Carrousel : on n'édite que la première moitié
   const track=d.querySelector('.clients-track');
   if(track){const it=[...track.children];const h=it.length/2;
@@ -496,6 +498,7 @@ function serialize(){
   root.querySelectorAll('script[data-adm-type]').forEach(s=>{const t=s.getAttribute('data-adm-type');s.removeAttribute('data-adm-type');t?s.setAttribute('type',t):s.removeAttribute('type');});
   root.querySelectorAll('*').forEach(el=>[...el.attributes].forEach(a=>{if(a.name.startsWith('data-adm-on')){el.setAttribute(a.name.slice(9),a.value);el.removeAttribute(a.name);}}));
   root.querySelectorAll('img').forEach(i=>{const s=i.getAttribute('src');if(s&&newImages.has(s))i.setAttribute('src',newImages.get(s).path);});
+  root.querySelectorAll('[data-adm-open]').forEach(x=>{x.removeAttribute('open');x.removeAttribute('data-adm-open');});
   origThemeAttr===null?root.removeAttribute('data-theme'):root.setAttribute('data-theme',origThemeAttr);
   if(carouselDup){const tr=root.querySelector('.clients-track');if(tr)[...tr.children].forEach(c=>tr.append(c.cloneNode(true)));}
   return '<!DOCTYPE html>\n'+root.outerHTML+'\n';

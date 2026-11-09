@@ -456,7 +456,8 @@ h1.hero-title{
   width:2px;
   background:linear-gradient(to bottom,var(--blue),rgba(56,189,248,.06));
 }
-.timeline-item{position:relative;padding:0;}
+.timeline-item{position:relative;padding:0;display:flex;flex-direction:column;align-items:flex-start;}
+.timeline-item>.timeline-card{width:100%;flex:1;}
 .timeline-dot{display:none;}
 .timeline-date{
   display:inline-block;
@@ -468,7 +469,7 @@ h1.hero-title{
 .timeline-card{
   background:var(--card);border:1px solid var(--border);
   border-radius:var(--r);padding:1.6rem;
-  transition:border-color .3s;height:100%;
+  transition:border-color .3s;
 }
 .timeline-card:hover{border-color:rgba(56,189,248,.22);}
 .timeline-header{display:flex;align-items:center;gap:.85rem;margin-bottom:.85rem;}
@@ -495,6 +496,18 @@ h1.hero-title{
 .timeline-list li{font-size:.88rem;color:var(--sub);line-height:1.65;}
 .timeline-clients-label{font-size:.8rem;font-weight:600;color:var(--sub);margin-bottom:.4rem;}
 .timeline-clients-tags{display:flex;flex-wrap:wrap;gap:.3rem;}
+.tclients-more{margin-top:.3rem;}
+.tgroup-gap{height:.85rem;}
+.timeline-wide{grid-column:1/-1;}
+@media(max-width:640px){.tclients-more>summary{padding:.3rem .65rem;font-size:.78rem;}}
+.tclients-more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;font-weight:600;padding:.16rem .55rem;border-radius:5px;color:var(--blue);background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.18);user-select:none;transition:background .2s,border-color .2s;}
+.tclients-more>summary::-webkit-details-marker{display:none;}
+.tclients-more>summary::after{content:'';width:.42rem;height:.42rem;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s;}
+.tclients-more[open]>summary::after{transform:translateY(1px) rotate(-135deg);}
+.tclients-more>summary:hover,.tclients-more>summary:focus-visible{background:rgba(56,189,248,.14);border-color:rgba(56,189,248,.4);outline:none;}
+.tclients-more>.timeline-clients-tags{margin-top:.45rem;animation:tcl-in .25s ease;}
+@keyframes tcl-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.tclients-more>.timeline-clients-tags{animation:none}}
 .tclient{
   font-size:.75rem;font-weight:600;
   padding:.16rem .5rem;border-radius:5px;
@@ -1009,10 +1022,10 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 <!-- ═══ CLIENTS ═══ -->
 <section id="clients" style="padding:4rem 0;">
   <div class="clients-head reveal">
-    <div class="section-label center">Ils m'ont fait confiance</div>
+    <div class="section-label center" data-i18n="clients.title">Entreprises &amp; organisations accompagnées</div>
   </div>
   <div class="clients-overflow">
-    <div class="clients-track"><a class="client-logo has-color" style=""><img loading="lazy" decoding="async" alt="Logo Oryx Energies" src="images/site/client-oryx-energies-409f.webp"></a><a class="client-logo has-color" style=""><img loading="lazy" decoding="async" alt="Logo Sama Chef" src="images/site/client-sama-chef-2392.webp"></a><a class="client-logo has-color" style=""><img loading="lazy" decoding="async" alt="Logo Diamant Noir Collection" src="images/site/client-diamant-noir-collection-38e3.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo Transport Afrique Logistique" src="images/site/client-transport-afrique-logistique-0e24.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo Mali Ménage" src="images/site/client-mali-menage-104e.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo client" src="images/site/client-client-180b.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo Bitik" src="images/site/client-bitik-cbef.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo KGD Équipement" src="images/site/client-kgd-equipement-a738.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo WASSOR" src="images/site/client-wassor-4392.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo GeoFleet IN" src="images/site/client-geofleet-in-3b1c.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo Rubis Energy Kenya" src="images/site/client-rubis-energy-kenya-fd70.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo KEA Olivero Group" src="images/site/client-kea-olivero-group-37b0.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo client" src="images/site/client-client-ddd0.webp"></a><a class="client-logo has-color" style=""><img loading="lazy" decoding="async" alt="Logo Oryx Energies" src="images/site/client-oryx-energies-409f.webp"></a><a class="client-logo has-color" style=""><img loading="lazy" decoding="async" alt="Logo Sama Chef" src="images/site/client-sama-chef-2392.webp"></a><a class="client-logo has-color" style=""><img loading="lazy" decoding="async" alt="Logo Diamant Noir Collection" src="images/site/client-diamant-noir-collection-38e3.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo Transport Afrique Logistique" src="images/site/client-transport-afrique-logistique-0e24.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo Mali Ménage" src="images/site/client-mali-menage-104e.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo client" src="images/site/client-client-180b.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo Bitik" src="images/site/client-bitik-cbef.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo KGD Équipement" src="images/site/client-kgd-equipement-a738.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo WASSOR" src="images/site/client-wassor-4392.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo GeoFleet IN" src="images/site/client-geofleet-in-3b1c.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo Rubis Energy Kenya" src="images/site/client-rubis-energy-kenya-fd70.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo KEA Olivero Group" src="images/site/client-kea-olivero-group-37b0.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo client" src="images/site/client-client-ddd0.webp"></a></div>
+    <div class="clients-track"><a class="client-logo has-color" style=""><img loading="lazy" decoding="async" alt="Logo Oryx Energies" src="images/site/client-oryx-energies-409f.webp"></a><a class="client-logo has-color" style=""><img loading="lazy" decoding="async" alt="Logo Sama Chef" src="images/site/client-sama-chef-2392.webp"></a><a class="client-logo has-color" style=""><img loading="lazy" decoding="async" alt="Logo Diamant Noir Collection" src="images/site/client-diamant-noir-collection-38e3.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo Transport Afrique Logistique" src="images/site/client-transport-afrique-logistique-0e24.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo Mali Ménage" src="images/site/client-mali-menage-104e.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo client" src="images/site/client-client-180b.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo Bitik" src="images/site/client-bitik-cbef.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo KGD Équipement" src="images/site/client-kgd-equipement-a738.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo WASSOR" src="images/site/client-wassor-4392.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo GeoFleet IN" src="images/site/client-geofleet-in-3b1c.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo Rubis Energy Kenya" src="images/site/client-rubis-energy-kenya-fd70.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo KEA Olivero Group" src="images/site/client-kea-olivero-group-37b0.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo client" src="images/site/client-client-ddd0.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo Afrikalarm" src="images/site/client-afrikalarm.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo CSTTAO" src="images/site/client-csttao.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo La Ripaille" src="images/site/client-la-ripaille.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo Maison de Fragrance" src="images/site/client-maison-de-fragrance.webp"></a><a class="client-logo has-color" style=""><img loading="lazy" decoding="async" alt="Logo Oryx Energies" src="images/site/client-oryx-energies-409f.webp"></a><a class="client-logo has-color" style=""><img loading="lazy" decoding="async" alt="Logo Sama Chef" src="images/site/client-sama-chef-2392.webp"></a><a class="client-logo has-color" style=""><img loading="lazy" decoding="async" alt="Logo Diamant Noir Collection" src="images/site/client-diamant-noir-collection-38e3.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo Transport Afrique Logistique" src="images/site/client-transport-afrique-logistique-0e24.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo Mali Ménage" src="images/site/client-mali-menage-104e.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo client" src="images/site/client-client-180b.webp"></a><a href="#" class="client-logo has-color" onclick="return false;" style=""><img loading="lazy" decoding="async" alt="Logo Bitik" src="images/site/client-bitik-cbef.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo KGD Équipement" src="images/site/client-kgd-equipement-a738.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo WASSOR" src="images/site/client-wassor-4392.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo GeoFleet IN" src="images/site/client-geofleet-in-3b1c.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo Rubis Energy Kenya" src="images/site/client-rubis-energy-kenya-fd70.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo KEA Olivero Group" src="images/site/client-kea-olivero-group-37b0.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo client" src="images/site/client-client-ddd0.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo Afrikalarm" src="images/site/client-afrikalarm.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo CSTTAO" src="images/site/client-csttao.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo La Ripaille" src="images/site/client-la-ripaille.webp"></a><a href="#" class="client-logo has-color" onclick="return false;"><img loading="lazy" decoding="async" alt="Logo Maison de Fragrance" src="images/site/client-maison-de-fragrance.webp"></a></div>
   </div>
 </section>
 
@@ -1090,8 +1103,20 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
           </div>
         </div>
         <p class="timeline-desc">Je supervise le support client et l'accompagnement des entreprises partenaires de Senedoo dans l'adoption de leurs solutions digitales. Mon rôle couvre la dimension opérationnelle du support et la gestion des relations avec les grands comptes.</p>
-        <div class="timeline-clients-label">Clients majeurs</div>
-        <div class="timeline-clients-tags"><span class="tclient">Oryx Energies</span><span class="tclient">Eric Favre Afrique</span><span class="tclient">GLOBO</span><span class="tclient">+ 12 autres</span></div>
+        <div class="timeline-chips"><span class="chip">Responsable support client</span><span class="chip">Chef de projet</span><span class="chip">Consultant certifié Odoo 19</span></div>
+        <div class="timeline-clients-label">Projets pilotés</div>
+        <div class="timeline-clients-tags"><span class="tclient">GeoFleet IN</span><span class="tclient">KGD Équipement</span><span class="tclient">Mali Ménage</span><span class="tclient">Wallace</span></div>
+        <details class="tclients-more">
+          <summary class="tclient-more">+ 6 autres</summary>
+          <div class="timeline-clients-tags"><span class="tclient">Barham Fish</span><span class="tclient">Distripro</span><span class="tclient">Lysa &amp; Co</span><span class="tclient">Référence Transit</span><span class="tclient">Diparco</span><span class="tclient">Blomar</span></div>
+        </details>
+        <div class="tgroup-gap"></div>
+        <div class="timeline-clients-label">Projets accompagnés au sein de l’équipe</div>
+        <div class="timeline-clients-tags"><span class="tclient">Oryx Energies</span><span class="tclient">Eric Favre</span><span class="tclient">Globo</span><span class="tclient">Rubis Energy Kenya</span></div>
+        <details class="tclients-more">
+          <summary class="tclient-more">+ 13 autres</summary>
+          <div class="timeline-clients-tags"><span class="tclient">Afric Azote</span><span class="tclient">Delta SA</span><span class="tclient">Agronat</span><span class="tclient">CSTTAO</span><span class="tclient">Transport Afrique Logistique</span><span class="tclient">La Ripaille</span><span class="tclient">Logifroid</span><span class="tclient">Maison de Fragrance</span><span class="tclient">Mbolyama</span><span class="tclient">FB Avocat</span><span class="tclient">Afrikalarm</span><span class="tclient">Sit N Deep</span><span class="tclient">Multilog CI</span></div>
+        </details>
         <ul class="timeline-list" style="margin-top:.85rem;"><li>Responsable Support depuis avril 2025 (CDI)</li><li>Consultant junior ERP de janvier à avril 2025</li><li>Certifié Odoo 19 (Odoo S.A.)</li><li>Pilotage de projets de déploiement et formation des utilisateurs</li></ul>
       </div>
     </div>
@@ -1109,11 +1134,22 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
         <p class="timeline-desc">J'ai co-fondé la GDA pour répondre aux besoins croissants des entreprises sénégalaises en matière de transformation digitale. L'agence a accompagné des organisations publiques et privées, dans la création de leur identité numérique, en Afrique de l'Ouest. J'y ai assuré la direction générale, la gestion administrative et la production multimédia.</p>
         <div class="timeline-chips"><span class="chip">Direction générale</span><span class="chip">Direction créative</span><span class="chip">Gestion administrative</span></div>
         <div class="timeline-clients-label">Projets phares</div>
-        <div class="timeline-clients-tags">
-          <span class="tclient">DNC</span><span class="tclient">CFTS</span>
-          <span class="tclient">Mossane</span><span class="tclient">Sama Chef</span>
-          <span class="tclient">BITIK</span><span class="tclient">KEA</span>
+        <div class="timeline-clients-tags"><span class="tclient">Diamant Noir Collection</span><span class="tclient">CFTS</span><span class="tclient">Mossane</span><span class="tclient">Sama Chef</span><span class="tclient">Bitik</span><span class="tclient">KEA Olivero Group</span></div>
+      </div>
+    </div>
+    <div class="timeline-item timeline-wide reveal" style="transition-delay:.2s;">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">ENGAGEMENT ASSOCIATIF · JUSQU'À OCT. 2026</div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <div class="timeline-avatar"><img loading="lazy" decoding="async" class="exp-logo-img" alt="" src="images/site/client-wassor-4392.webp"></div>
+          <div>
+            <div class="timeline-company">WASSOR</div>
+            <div class="timeline-role">Community Engagement &amp; Project Manager</div>
+          </div>
         </div>
+        <p class="timeline-desc">Organisation panafricaine dédiée à la résilience communautaire et à la gouvernance inclusive. Au sein de l'équipe communication, j'ai coordonné l'engagement communautaire et piloté des projets de l'organisation.</p>
+        <div class="timeline-chips"><span class="chip">Engagement communautaire</span><span class="chip">Gestion de projet</span><span class="chip">Communication</span></div>
       </div>
     </div>
   </div>
@@ -1456,6 +1492,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 
 <script type="application/json" id="i18n-en">
 {
+ "clients.title": "Companies & organisations I have worked with",
  "nav.about": "About",
  "nav.exp": "Experience",
  "nav.projects": "Projects",
@@ -1680,4 +1717,12 @@ async function handleForm(e){
 
 </script>
 
+<script>
+document.querySelectorAll('details.tclients-more').forEach(function(d){
+  var sm=d.querySelector('summary'),n=d.querySelectorAll('.tclient').length;
+  var lab=function(){var en=document.documentElement.lang==='en';sm.textContent=d.open?(en?'Show less':'Voir moins'):('+ '+n+(en?' more':' autres'));};
+  lab();d.addEventListener('toggle',lab);
+  new MutationObserver(lab).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+});
+</script>
 </body></html>
