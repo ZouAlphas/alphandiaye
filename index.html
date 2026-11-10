@@ -1046,7 +1046,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5-5 5M6 12h12"></path></svg>
         <span data-i18n="hero.btn1">Mes réalisations</span>
       </a>
-      <a href="https://drive.google.com/file/d/1wpzvU5Fold58OguNdtFklxy_-E3twDQT/view?usp=drive_link" class="btn-outline" target="_blank" rel="noopener" onclick="track('hero_cv')">
+      <a href="cv/CV_Alpha_Ndiaye_FR.pdf" data-cv class="btn-outline" target="_blank" rel="noopener" onclick="track('hero_cv')">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
         <span data-i18n="hero.btn2">Télécharger CV</span>
       </a>
@@ -1495,7 +1495,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
       <h3 data-i18n="contact.226">Télécharger mon CV</h3>
       <p data-i18n="contact.227">Retrouvez l'ensemble de mon parcours et mes compétences en détail.</p>
     </div>
-    <a href="https://drive.google.com/file/d/1wpzvU5Fold58OguNdtFklxy_-E3twDQT/view?usp=drive_link" class="btn-primary" target="_blank" rel="noopener" onclick="track('cv_download')">
+    <a href="cv/CV_Alpha_Ndiaye_FR.pdf" data-cv class="btn-primary" target="_blank" rel="noopener" onclick="track('cv_download')">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
       <span data-i18n="contact.228">Télécharger le CV</span>
     </a>
@@ -1746,6 +1746,7 @@ function setLang(lang){
   const d=lang==='en'?I18N_EN:I18N_FR;
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(d[k])el.innerHTML=d[k];});
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.dataset.i18nPh;if(d[k])el.placeholder=d[k];});
+  document.querySelectorAll('a[data-cv]').forEach(a=>a.href='cv/CV_Alpha_Ndiaye_'+(lang==='en'?'EN':'FR')+'.pdf');
   if(d['meta.title'])document.title=d['meta.title'];{const m=document.querySelector('meta[name=description]');if(m&&d['meta.desc'])m.content=d['meta.desc'];}
 }
 (function(){let l='fr';try{l=localStorage.getItem('lang')||'fr';}catch(e){}setLang(l);})();
