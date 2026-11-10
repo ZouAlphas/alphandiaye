@@ -992,6 +992,10 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
   .hero-photo-wrap::before{animation:none;}
   .js .reveal,.js .reveal.stagger>*,.js .skill-fill,.js .lang-bar-fill{opacity:1!important;transform:none!important;}
 }
+.exp-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem;margin:.2rem 0 .85rem;}
+.exp-kpis>div{background:var(--faint);border-radius:10px;padding:.55rem .6rem;display:flex;flex-direction:column;gap:.1rem;}
+.exp-kpis b{font-size:1rem;color:var(--blue);font-weight:800;line-height:1.2;}
+.exp-kpis span{font-size:.7rem;color:var(--sub);line-height:1.3;}
 </style></head>
 <body>
 
@@ -1037,7 +1041,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
   <div class="hero-left reveal">
     <div class="hero-location" data-i18n="hero.11">
       <span class="dot-live"></span>
-      Dakar, Sénégal · Disponible
+      Dakar, Sénégal · Disponible début 2027 · Remote &amp; international
     </div>
     <h1 class="hero-title"><span class="ht-line" data-i18n="hero.12">Je transforme les idées</span> <span class="ht-line title-gradient" data-i18n="hero.13">en systèmes qui fonctionnent</span></h1>
     <p class="hero-desc" data-i18n="hero.14">Consultant certifié Odoo 19 et Responsable Support chez Senedoo. Six ans d’expérience entre l’entrepreneuriat digital, comme cofondateur de la Galsen Digital Agency, et des projets ERP menés en Afrique de l’Ouest et au-delà.</p>
@@ -1168,6 +1172,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 </div>
 </div>
         <p class="timeline-desc" data-i18n="experience.45">Je supervise le support client et l'accompagnement des entreprises partenaires de Senedoo dans l'adoption de leurs solutions digitales. Mon rôle couvre la dimension opérationnelle du support et la gestion des relations avec les grands comptes.</p>
+        <div class="exp-kpis"><div><b>~40</b><span data-i18n="experience.kpi1">utilisateurs formés</span></div><div><b>3</b><span data-i18n="experience.kpi2">pays d’intervention</span></div><div><b>Odoo 19</b><span data-i18n="experience.kpi3">certification officielle</span></div></div>
         <div class="timeline-chips"><span class="chip" data-i18n="experience.46">Responsable support client</span><span class="chip" data-i18n="experience.47">Chef de projet</span><span class="chip" data-i18n="experience.48">Consultant certifié Odoo 19</span></div>
         <div class="exp-more"><div class="timeline-clients-label" data-i18n="experience.49">Projets pilotés</div><div class="timeline-clients-tags"><a class="tclient tclient-link" href="https://www.geofleetin.com/" rel="noopener" target="_blank">GeoFleet IN</a><span class="tclient">KGD Équipement</span><a class="tclient tclient-link" href="http://www.malimenage.com/" rel="noopener" target="_blank">Mali Ménage</a><a class="tclient tclient-link" href="https://www.team-wallace.com/" rel="noopener" target="_blank">Wallace</a></div><details class="tclients-more">
 <summary class="tclient-more" data-i18n="experience.54">+ 6 autres</summary>
@@ -1565,7 +1570,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
  "stat.countries": "Countries",
  "stat.years": "Years of experience",
  "scroll": "Explore",
- "hero.11": "<span class=\"dot-live\"></span>\n      Dakar, Senegal · Available",
+ "hero.11": "<span class=\"dot-live\"></span>\n      Dakar, Senegal · Available early 2027 · Remote &amp; international",
  "hero.12": "I turn ideas",
  "hero.13": "into systems that work",
  "hero.14": "Odoo 19 certified consultant and Head of Support at Senedoo. Six years of experience spanning digital entrepreneurship, as co-founder of Galsen Digital Agency, and ERP projects delivered across West Africa and beyond.",
@@ -1715,7 +1720,10 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
  "ph.subject": "Subject",
  "ph.message": "Your message...",
  "meta.title": "Alpha Ndiaye · Odoo ERP Consultant & Digital Transformation | Dakar",
- "meta.desc": "Odoo 19 certified digital transformation consultant and Head of Support at Senedoo in Dakar. ERP deployment, project management and process optimisation across West Africa."
+ "meta.desc": "Odoo 19 certified digital transformation consultant and Head of Support at Senedoo in Dakar. ERP deployment, project management and process optimisation across West Africa.",
+ "experience.kpi1": "users trained",
+ "experience.kpi2": "countries worked in",
+ "experience.kpi3": "official certification"
 }
 </script>
 <script>
