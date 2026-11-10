@@ -998,6 +998,9 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 .exp-kpis span{font-size:.7rem;color:var(--sub);line-height:1.3;}
 p,li{hyphens:none;-webkit-hyphens:none;}
 .edu-timeline-item p,.timeline-list li{text-align:justify;}
+.cert-proof{display:inline-flex;align-items:center;gap:.3rem;margin-top:.55rem;font-size:.75rem;font-weight:600;color:var(--blue);text-decoration:none;}
+.cert-proof:hover{text-decoration:underline;}
+.cert-proof svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 </style></head>
 <body>
 
@@ -1418,6 +1421,7 @@ p,li{hyphens:none;-webkit-hyphens:none;}
           <h3>Odoo 19 Functional Certification</h3>
           <div class="cert-org">Odoo S.A.</div>
           <div class="cert-year" data-i18n="education.score">2026 · réussie avec 83,75 %</div>
+          <a class="cert-proof" href="docs/Certification_Odoo_19_Alpha_Ndiaye.pdf" target="_blank" rel="noopener" onclick="track('cert_odoo')"><span data-i18n="education.proof">Voir le certificat</span> · n°0001153715 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></svg></a>
         </div>
         
       </div>
@@ -1726,7 +1730,8 @@ p,li{hyphens:none;-webkit-hyphens:none;}
  "experience.kpi1": "projects led",
  "experience.kpi2": "projects supported",
  "experience.kpi3": "users trained",
- "education.score": "2026 · passed with 83.75%"
+ "education.score": "2026 · passed with 83.75%",
+ "education.proof": "View certificate"
 }
 </script>
 <script>
