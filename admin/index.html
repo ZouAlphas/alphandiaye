@@ -142,6 +142,7 @@ aside{border-left:1px solid var(--line);background:var(--panel);overflow:auto;mi
 <input type="file" id="file" accept="image/*" class="hidden">
 <div id="toast" class="hidden"></div>
 
+<script src="build-en.js"></script>
 <script>
 'use strict';
 /* ═════════════ CONFIGURATION ═════════════ */
@@ -516,6 +517,8 @@ async function publish(){
   try{
     const html=serialize();
     const files=[{path:REPO.file,b64:b64FromText(html)}];
+    /* Version anglaise (/en/) régénérée à partir de la page et du bloc de traductions */
+    try{files.push({path:'en/index.html',b64:b64FromText(BuildEn.buildEnHome(html))});}catch(e){console.error(e);toast('Version anglaise non régénérée : '+e.message,'err',6000);}
     for(const [u,v] of usedImages(html))files.push({path:v.path,b64:await b64FromBlob(v.blob)});
     await commitFiles(files,'Admin : '+(msg.trim()||'mise à jour du contenu'));
     usedImages(html).forEach(([u,v])=>v.uploaded=true);
