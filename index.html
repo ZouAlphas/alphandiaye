@@ -518,7 +518,7 @@ a.timeline-company.tl-link:hover .tl-ext{opacity:1;}
 h1.hero-title{text-wrap:balance;font-size:clamp(2.2rem,3.5vw,3.1rem);line-height:1.1;}
 h1.hero-title .ht-line{display:block;white-space:nowrap;}
 @media(max-width:640px){h1.hero-title .ht-line{display:inline;white-space:normal;}}
-.hero-desc,.about-text p,.about-card p,.proj-desc,.timeline-desc{text-align:left;hyphens:none;-webkit-hyphens:none;}
+.hero-desc,.about-text p,.about-card p,.proj-desc,.timeline-desc{text-align:justify;text-justify:inter-word;hyphens:none;-webkit-hyphens:none;}
 .hero-desc{max-width:540px;}
 /* À propos */
 .about-layout{align-items:start;gap:3.5rem;}
@@ -540,7 +540,7 @@ h1.hero-title .ht-line{display:block;white-space:nowrap;}
 .interest-card:hover .interest-banner img{transform:scale(1.04);}
 .interest-body{padding:1.05rem 1.15rem 1.25rem;}
 .interest-card h3{margin-bottom:.4rem;}
-#personality .interest-card p{font-style:normal;font-size:.84rem;line-height:1.55;margin:0;}
+#personality .interest-card p{text-align:justify;hyphens:none;font-style:normal;font-size:.84rem;line-height:1.55;margin:0;}
 #personality .interest-card h3{font-size:.95rem;line-height:1.3;margin-bottom:.45rem;}
 #personality .interest-body{padding:.95rem 1rem 1.1rem;flex:1;}
 @media(max-width:700px){#personality .interests-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
@@ -548,7 +548,7 @@ h1.hero-title .ht-line{display:block;white-space:nowrap;}
 /* Expérience : cartes compactes + Voir plus */
 .timeline{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;align-items:stretch;}
 .timeline-card{padding:1.4rem;display:flex;flex-direction:column;}
-.timeline-card .timeline-desc{text-align:left;hyphens:none;-webkit-hyphens:none;}
+.timeline-card .timeline-desc{text-align:justify;hyphens:none;-webkit-hyphens:none;}
 .js .timeline.is-compact .timeline-card>.timeline-desc{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
 .js .timeline.is-compact .exp-more{display:none;}
 .timeline:not(.is-compact){align-items:start;}
@@ -996,6 +996,8 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 .exp-kpis>div{background:var(--faint);border-radius:10px;padding:.55rem .6rem;display:flex;flex-direction:column;gap:.1rem;}
 .exp-kpis b{font-size:1rem;color:var(--blue);font-weight:800;line-height:1.2;}
 .exp-kpis span{font-size:.7rem;color:var(--sub);line-height:1.3;}
+p,li{hyphens:none;-webkit-hyphens:none;}
+.edu-timeline-item p,.timeline-list li{text-align:justify;}
 </style></head>
 <body>
 
@@ -1041,7 +1043,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
   <div class="hero-left reveal">
     <div class="hero-location" data-i18n="hero.11">
       <span class="dot-live"></span>
-      Dakar, Sénégal · Disponible début 2027 · Remote &amp; international
+      Dakar, Sénégal
     </div>
     <h1 class="hero-title"><span class="ht-line" data-i18n="hero.12">Je transforme les idées</span> <span class="ht-line title-gradient" data-i18n="hero.13">en systèmes qui fonctionnent</span></h1>
     <p class="hero-desc" data-i18n="hero.14">Consultant certifié Odoo 19 et Responsable Support chez Senedoo. Six ans d’expérience entre l’entrepreneuriat digital, comme cofondateur de la Galsen Digital Agency, et des projets ERP menés en Afrique de l’Ouest et au-delà.</p>
@@ -1172,7 +1174,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 </div>
 </div>
         <p class="timeline-desc" data-i18n="experience.45">Je supervise le support client et l'accompagnement des entreprises partenaires de Senedoo dans l'adoption de leurs solutions digitales. Mon rôle couvre la dimension opérationnelle du support et la gestion des relations avec les grands comptes.</p>
-        <div class="exp-kpis"><div><b>~40</b><span data-i18n="experience.kpi1">utilisateurs formés</span></div><div><b>3</b><span data-i18n="experience.kpi2">pays d’intervention</span></div><div><b>Odoo 19</b><span data-i18n="experience.kpi3">certification officielle</span></div></div>
+        <div class="exp-kpis"><div><b>10</b><span data-i18n="experience.kpi1">projets pilotés</span></div><div><b>17</b><span data-i18n="experience.kpi2">projets accompagnés</span></div><div><b>~40</b><span data-i18n="experience.kpi3">utilisateurs formés</span></div></div>
         <div class="timeline-chips"><span class="chip" data-i18n="experience.46">Responsable support client</span><span class="chip" data-i18n="experience.47">Chef de projet</span><span class="chip" data-i18n="experience.48">Consultant certifié Odoo 19</span></div>
         <div class="exp-more"><div class="timeline-clients-label" data-i18n="experience.49">Projets pilotés</div><div class="timeline-clients-tags"><a class="tclient tclient-link" href="https://www.geofleetin.com/" rel="noopener" target="_blank">GeoFleet IN</a><span class="tclient">KGD Équipement</span><a class="tclient tclient-link" href="http://www.malimenage.com/" rel="noopener" target="_blank">Mali Ménage</a><a class="tclient tclient-link" href="https://www.team-wallace.com/" rel="noopener" target="_blank">Wallace</a></div><details class="tclients-more">
 <summary class="tclient-more" data-i18n="experience.54">+ 6 autres</summary>
@@ -1415,7 +1417,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
           <span class="cert-badge" data-i18n="education.196">ODOO CERTIFIÉ</span>
           <h3>Odoo 19 Functional Certification</h3>
           <div class="cert-org">Odoo S.A.</div>
-          <div class="cert-year">2026</div>
+          <div class="cert-year" data-i18n="education.score">2026 · réussie avec 83,75 %</div>
         </div>
         
       </div>
@@ -1570,7 +1572,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
  "stat.countries": "Countries",
  "stat.years": "Years of experience",
  "scroll": "Explore",
- "hero.11": "<span class=\"dot-live\"></span>\n      Dakar, Senegal · Available early 2027 · Remote &amp; international",
+ "hero.11": "<span class=\"dot-live\"></span>\n      Dakar, Senegal",
  "hero.12": "I turn ideas",
  "hero.13": "into systems that work",
  "hero.14": "Odoo 19 certified consultant and Head of Support at Senedoo. Six years of experience spanning digital entrepreneurship, as co-founder of Galsen Digital Agency, and ERP projects delivered across West Africa and beyond.",
@@ -1721,9 +1723,10 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
  "ph.message": "Your message...",
  "meta.title": "Alpha Ndiaye · Odoo ERP Consultant & Digital Transformation | Dakar",
  "meta.desc": "Odoo 19 certified digital transformation consultant and Head of Support at Senedoo in Dakar. ERP deployment, project management and process optimisation across West Africa.",
- "experience.kpi1": "users trained",
- "experience.kpi2": "countries worked in",
- "experience.kpi3": "official certification"
+ "experience.kpi1": "projects led",
+ "experience.kpi2": "projects supported",
+ "experience.kpi3": "users trained",
+ "education.score": "2026 · passed with 83.75%"
 }
 </script>
 <script>
