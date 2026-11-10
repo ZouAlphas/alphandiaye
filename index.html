@@ -1124,6 +1124,48 @@ p,li{hyphens:none;-webkit-hyphens:none;}
 .om-ic:has(img){background:none;border-color:transparent;overflow:hidden;}
 .om-ic:has(img) svg{display:none;}
 @media(max-width:420px){.om-grid{grid-template-columns:1fr;}}
+
+/* ═══ PROJETS : en bref ═══ */
+.c-green{color:var(--green);}
+.proj-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem;margin:0 0 .75rem;}
+.proj-facts>div{background:var(--faint);border-radius:9px;padding:.45rem .55rem;min-width:0;}
+.proj-facts dt{font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin-bottom:.12rem;}
+.proj-facts dd{font-size:.78rem;font-weight:600;color:var(--text);line-height:1.3;}
+.proj-mods{display:flex;flex-wrap:wrap;gap:.3rem;}
+.pmod{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:600;color:var(--text);background:transparent;border:1px solid var(--border);padding:.2rem .55rem .2rem .3rem;border-radius:50px;}
+.pmod:not(:has(img)){padding-left:.55rem;}
+.pmod img{width:18px;height:18px;border-radius:5px;display:block;}
+.proj-top.is-logo img{max-height:100%;}
+
+/* ═══ PASSIONS : plus compact ═══ */
+#personality .interests-grid{max-width:820px;gap:.85rem;}
+.interest-icon.interest-banner{aspect-ratio:16/9;}
+#personality .interest-body{padding:.75rem .9rem .9rem;}
+#personality .interest-card h3{font-size:.9rem;margin-bottom:.25rem;}
+#personality .interest-card p{font-size:.8rem;line-height:1.5;}
+@media(max-width:700px){#personality .interest-card p{display:none;}#personality .interest-body{padding:.6rem .75rem .7rem;}}
+
+/* ═══ TOUCHES DE COULEUR (palette du bloc Modules) ═══ */
+:root{--c1:#22c55e;--c2:#38BDF8;--c3:#f97316;--c4:#818CF8;}
+#hero .stat:nth-child(1) .stat-num{color:var(--c1);}
+#hero .stat:nth-child(2) .stat-num{color:var(--c2);}
+#hero .stat:nth-child(3) .stat-num{color:var(--c3);}
+#about .section-label,#education .section-label{--acc:var(--c1);}
+#experience .section-label,#contact .section-label{--acc:var(--c2);}
+#projects .section-label,#personality .section-label{--acc:var(--c3);}
+#skills .section-label{--acc:var(--c4);}
+section .section-label{color:var(--acc,var(--blue));}
+section .section-label::before,section .section-label.center::after{background:var(--acc,var(--blue));}
+.exp-kpis>div:nth-child(1) b{color:var(--c1);}
+.exp-kpis>div:nth-child(2) b{color:var(--c2);}
+.exp-kpis>div:nth-child(3) b{color:var(--c3);}
+.about-cards .about-card{border-top:2px solid transparent;}
+.about-cards .about-card:nth-child(1){border-top-color:var(--c1);}
+.about-cards .about-card:nth-child(2){border-top-color:var(--c2);}
+.about-cards .about-card:nth-child(3){border-top-color:var(--c3);}
+.about-cards .about-card:nth-child(4){border-top-color:var(--c4);}
+.cv-banner{position:relative;overflow:hidden;}
+.cv-banner::before{content:'';position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4));}
 </style></head>
 <body>
 
@@ -1369,8 +1411,8 @@ p,li{hyphens:none;-webkit-hyphens:none;}
       <div class="proj-body">
         <div class="proj-name" data-i18n="projects.112">Déploiement Odoo · Oryx Energies</div>
         <div class="proj-cat c-blue" data-i18n="projects.113">Senedoo · Énergie &amp; Distribution</div>
-        <div class="proj-desc" data-i18n="projects.114">Participation au déploiement ERP sur plusieurs stations-service en Afrique. Structuration des fichiers de migration lors d'une mission en Côte d'Ivoire pour deux stations pilotes. Support fonctionnel durant la phase de POC, accompagnement des utilisateurs et gestion du support à distance pour deux stations en Zambie.</div>
-        <div class="proj-tags"><span class="ptag">Project Management</span><span class="ptag">Data Migration</span><span class="ptag" data-i18n="projects.117">Déploiement international</span><span class="ptag">User Support</span></div>
+        <div class="proj-desc" data-i18n="projects.114">Déploiement d’Odoo dans des stations-service. Mission sur site en Côte d’Ivoire pour structurer la migration des deux stations pilotes, puis responsable du support de quatre stations, en Côte d’Ivoire et en Zambie.</div>
+        <dl class="proj-facts"><div><dt data-i18n="pf.role">Rôle</dt><dd data-i18n="pf.ox.r">Responsable du support</dd></div><div><dt data-i18n="pf.dur">Durée</dt><dd data-i18n="pf.ox.d">1 sem. sur site + 6 mois</dd></div><div><dt data-i18n="pf.users">Utilisateurs</dt><dd data-i18n="pf.ox.u">~10 · 4 stations</dd></div></dl><div class="proj-mods"><span class="pmod"><img src="images/odoo/point-de-vente.svg" alt="" loading="lazy"><span data-i18n="mod.pos">Point de vente</span></span><span class="pmod"><img src="images/odoo/inventaire.svg" alt="" loading="lazy"><span data-i18n="mod.stock">Inventaire</span></span></div>
         <a class="proj-more" href="/projets/oryx-energies/" onclick="track('project_page')"><span data-i18n="projects.more">Voir le projet</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
@@ -1381,13 +1423,25 @@ p,li{hyphens:none;-webkit-hyphens:none;}
       <div class="proj-body">
         <div class="proj-name" data-i18n="projects.119">Support Odoo · Eric Favre</div>
         <div class="proj-cat c-blue" data-i18n="projects.120">Senedoo · Pharmaceutique &amp; Nutrition</div>
-        <div class="proj-desc" data-i18n="projects.121">Support fonctionnel et technique Odoo pour le groupe Eric Favre dans le cadre de l'optimisation de ses processus métiers. Accompagnement des utilisateurs dans l'adoption de l'ERP, traitement et suivi des demandes d'assistance, résolution des incidents et formation des équipes.</div>
-        <div class="proj-tags"><span class="ptag">ERP Consulting</span><span class="ptag" data-i18n="projects.123">Formation</span><span class="ptag">Problem Solving</span><span class="ptag">Process Optimization</span></div>
+        <div class="proj-desc" data-i18n="projects.121">Responsable du support Odoo du groupe Eric Favre depuis le déploiement, sur l’ensemble des modules : accompagnement des utilisateurs, traitement des demandes d’assistance, résolution des incidents et formation des équipes.</div>
+        <dl class="proj-facts"><div><dt data-i18n="pf.role">Rôle</dt><dd data-i18n="pf.ef.r">Responsable du support</dd></div><div><dt data-i18n="pf.dur">Durée</dt><dd data-i18n="pf.ef.d">Depuis fév. 2025</dd></div><div><dt data-i18n="pf.users">Utilisateurs</dt><dd data-i18n="pf.ef.u">26</dd></div></dl><div class="proj-mods"><span class="pmod"><img src="images/odoo/point-de-vente.svg" alt="" loading="lazy"><span data-i18n="mod.pos">Point de vente</span></span><span class="pmod"><img src="images/odoo/comptabilite.png" alt="" loading="lazy"><span data-i18n="mod.acc">Comptabilité</span></span><span class="pmod"><img src="images/odoo/ventes.svg" alt="" loading="lazy"><span data-i18n="mod.sale">Ventes</span></span><span class="pmod"><img src="images/odoo/inventaire.svg" alt="" loading="lazy"><span data-i18n="mod.stock">Inventaire</span></span></div>
         <a class="proj-more" href="/projets/eric-favre/" onclick="track('project_page')"><span data-i18n="projects.more">Voir le projet</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
-    <div class="proj-card"><div class="proj-top is-logo" style="background:#002f46"><img loading="lazy" decoding="async" src="images/site/projet-globo.webp" alt="Globo Afrique" style="display: block;"></div><div class="proj-body"><div class="proj-name" data-i18n="projects.126">Support Globo Afrique</div><div class="proj-cat c-blue">Globo Afrique</div><div class="proj-desc" data-i18n="projects.128">Participation au déploiement et à l’optimisation de la solution ERP Odoo afin d’améliorer la gestion des opérations internes, des projets et des processus administratifs de l’entreprise. Globo Afrique développe des solutions de géolocalisation, de gestion de flotte, de sécurité routière et des applications métiers pour de nombreux secteurs d’activité.</div><div class="proj-tags"><span class="ptag">IT</span><span class="ptag" data-i18n="projects.130">géolocalisation</span><span class="ptag" data-i18n="projects.131">gestion de flotte et solutions digitales</span></div>
+    <div class="proj-card"><div class="proj-top is-logo" style="background:#002f46"><img loading="lazy" decoding="async" src="images/site/projet-globo.webp" alt="Globo Afrique" style="display: block;"></div><div class="proj-body"><div class="proj-name" data-i18n="projects.126">Support Odoo · Globo Afrique</div><div class="proj-cat c-blue" data-i18n="projects.127">Senedoo · Géolocalisation &amp; gestion de flotte</div><div class="proj-desc" data-i18n="projects.128">Reprise d’un projet Odoo venu d’un autre partenaire. Responsable du support pendant la migration : suivi des anomalies, gestion des points de friction, résolution des incidents et participation aux réunions de pilotage.</div><dl class="proj-facts"><div><dt data-i18n="pf.role">Rôle</dt><dd data-i18n="pf.gl.r">Responsable du support</dd></div><div><dt data-i18n="pf.dur">Durée</dt><dd data-i18n="pf.gl.d">1 an</dd></div><div><dt data-i18n="pf.users">Utilisateurs</dt><dd data-i18n="pf.gl.u">25+</dd></div></dl><div class="proj-mods"><span class="pmod"><img src="images/odoo/abonnements.svg" alt="" loading="lazy"><span data-i18n="mod.sub">Abonnements</span></span><span class="pmod"><img src="images/odoo/ventes.svg" alt="" loading="lazy"><span data-i18n="mod.sale">Ventes</span></span><span class="pmod"><img src="images/odoo/achats.svg" alt="" loading="lazy"><span data-i18n="mod.pur">Achats</span></span><span class="pmod"><img src="images/odoo/inventaire.svg" alt="" loading="lazy"><span data-i18n="mod.stock">Inventaire</span></span><span class="pmod"><img src="images/odoo/comptabilite.png" alt="" loading="lazy"><span data-i18n="mod.acc">Comptabilité</span></span><span class="pmod"><span data-i18n="mod.fs">Service sur site</span></span></div>
         <a class="proj-more" href="/projets/globo-afrique/" onclick="track('project_page')"><span data-i18n="projects.more">Voir le projet</span> <span aria-hidden="true">→</span></a></div></div>
+    <div class="proj-card">
+      <div class="proj-top is-logo" style="background:#ffffff">
+        <img loading="lazy" decoding="async" src="images/site/client-geofleet-in-3b1c.webp" alt="Logo GeoFleet-IN">
+      </div>
+      <div class="proj-body">
+        <div class="proj-name" data-i18n="projects.g1">Déploiement Odoo · GeoFleet-IN</div>
+        <div class="proj-cat c-green" data-i18n="projects.g2">Senedoo · Projet piloté</div>
+        <div class="proj-desc" data-i18n="projects.g3">Pilotage du déploiement complet d’Odoo, de l’analyse des besoins à la formation des équipes. Formations terminées ; la mise en production attend les dernières données comptables du client.</div>
+        <dl class="proj-facts"><div><dt data-i18n="pf.role">Rôle</dt><dd data-i18n="pf.gf.r">Chef de projet</dd></div><div><dt data-i18n="pf.dur">Durée</dt><dd data-i18n="pf.gf.d">3 semaines de déploiement</dd></div><div><dt data-i18n="pf.users">Utilisateurs</dt><dd data-i18n="pf.gf.u">17 formés</dd></div></dl><div class="proj-mods"><span class="pmod"><img src="images/odoo/achats.svg" alt="" loading="lazy"><span data-i18n="mod.pur">Achats</span></span><span class="pmod"><img src="images/odoo/ventes.svg" alt="" loading="lazy"><span data-i18n="mod.sale">Ventes</span></span><span class="pmod"><img src="images/odoo/inventaire.svg" alt="" loading="lazy"><span data-i18n="mod.stock">Inventaire</span></span><span class="pmod"><img src="images/odoo/abonnements.svg" alt="" loading="lazy"><span data-i18n="mod.sub">Abonnements</span></span><span class="pmod"><img src="images/odoo/projet.svg" alt="" loading="lazy"><span data-i18n="mod.proj">Projet</span></span></div>
+        <a class="proj-more" href="/projets/geofleet-in/" onclick="track('project_page')"><span data-i18n="projects.more">Voir le projet</span> <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
     <div class="proj-card">
       <div class="proj-top">
         <img loading="lazy" decoding="async" src="images/site/projet-dnc.webp" alt="Villa Diamant Noir Collection" onerror="this.parentElement.innerHTML='&lt;div class=\'proj-icon\'&gt;&lt;svg viewBox=\'0 0 24 24\'&gt;&lt;path d=\'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z\'/&gt;&lt;/svg&gt;&lt;/div&gt;'" style="display: block;">
@@ -1400,18 +1454,7 @@ p,li{hyphens:none;-webkit-hyphens:none;}
         <a class="proj-more" href="/projets/diamant-noir-collection/" onclick="track('project_page')"><span data-i18n="projects.more">Voir le projet</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
-    <div class="proj-card">
-      <div class="proj-top is-logo" style="background:#ffffff">
-        <img loading="lazy" decoding="async" src="images/site/projet-cfts.webp" alt="Logo CFTS West Africa" onerror="this.parentElement.innerHTML='&lt;div class=\'proj-icon\'&gt;&lt;svg viewBox=\'0 0 24 24\'&gt;&lt;path d=\'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z\'/&gt;&lt;/svg&gt;&lt;/div&gt;'" style="display: block;">
-      </div>
-      <div class="proj-body">
-        <div class="proj-name" data-i18n="projects.138">Infographie &amp; Rebranding · CFTS Africa</div>
-        <div class="proj-cat c-blue" data-i18n="projects.139">CFTS · Afrique de l'Ouest</div>
-        <div class="proj-desc" data-i18n="projects.140">Accompagnement de CFTS dans la modernisation de son image de marque à travers un travail de rebranding et la création de supports de communication professionnels.</div>
-        <div class="proj-tags"><span class="ptag">Rebranding</span><span class="ptag">Graphic Design</span><span class="ptag">Visual Identity</span></div>
-        <a class="proj-more" href="/projets/cfts-africa/" onclick="track('project_page')"><span data-i18n="projects.more">Voir le projet</span> <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
+    
     <div class="proj-card">
       <div class="proj-top">
         <img loading="lazy" decoding="async" src="images/site/projet-samachef.webp" alt="Événement Sama Chef" onerror="this.parentElement.innerHTML='&lt;div class=\'proj-icon\'&gt;&lt;svg viewBox=\'0 0 24 24\'&gt;&lt;path d=\'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z\'/&gt;&lt;/svg&gt;&lt;/div&gt;'" style="display: block;">
@@ -1420,7 +1463,7 @@ p,li{hyphens:none;-webkit-hyphens:none;}
         <div class="proj-name" data-i18n="projects.144">Création de contenu · Sama Chef</div>
         <div class="proj-cat c-orange" data-i18n="projects.145">Formation cuisine de luxe · Sénégal</div>
         <div class="proj-desc" data-i18n="projects.146">Réalisation de shootings photo et vidéos promotionnelles pour mettre en valeur les formations, les infrastructures et l'expertise de Sama Chef. Création de contenus pour les campagnes de communication et de recrutement dans les métiers de la cuisine, de l'hôtellerie et de la restauration haut de gamme.</div>
-        <div class="proj-tags"><span class="ptag">Design</span><span class="ptag">Videography</span><span class="ptag">Social Media Content</span></div>
+        <div class="proj-tags"><span class="ptag">Design</span><span class="ptag" data-i18n="projects.s1">Vidéographie</span><span class="ptag" data-i18n="projects.s2">Contenus réseaux sociaux</span></div>
         <a class="proj-more" href="/projets/sama-chef/" onclick="track('project_page')"><span data-i18n="projects.more">Voir le projet</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
@@ -1779,25 +1822,20 @@ p,li{hyphens:none;-webkit-hyphens:none;}
  "projects.111": "ERP projects at Senedoo, followed by work from the GDA years.",
  "projects.112": "Odoo deployment · Oryx Energies",
  "projects.113": "Senedoo · Energy &amp; Distribution",
- "projects.114": "Took part in the ERP rollout across several service stations in Africa. Structured the migration files during an assignment in Côte d’Ivoire for two pilot stations. Provided functional support during the POC phase, user guidance and remote support for two stations in Zambia.",
+ "projects.114": "Odoo rollout in service stations. On-site assignment in Côte d’Ivoire to structure the migration of the two pilot stations, then support lead for four stations in Côte d’Ivoire and Zambia.",
  "projects.117": "International rollout",
  "projects.119": "Odoo support · Eric Favre",
  "projects.120": "Senedoo · Pharmaceuticals &amp; Nutrition",
- "projects.121": "Functional and technical Odoo support for the Eric Favre group as it optimised its business processes. Helped users adopt the ERP, handled and followed up support requests, resolved incidents and trained teams.",
+ "projects.121": "Odoo support lead for the Eric Favre group since go-live, across all modules: user guidance, support requests, incident resolution and team training.",
  "projects.123": "Training",
- "projects.126": "Globo Afrique support",
- "projects.128": "Took part in deploying and optimising the Odoo ERP to improve the management of internal operations, projects and administrative processes. Globo Afrique builds geolocation, fleet management and road safety solutions, as well as business applications for many industries.",
- "projects.130": "geolocation",
- "projects.131": "fleet management and digital solutions",
+ "projects.126": "Odoo support · Globo Afrique",
+ "projects.128": "Took over an Odoo project from another partner. Support lead during the migration: tracked issues, handled points of friction, resolved incidents and attended steering meetings.",
  "projects.132": "Content creation · DNC",
  "projects.133": "Diamant Noir Collection · Luxury hospitality",
  "projects.134": "Designed visual content and communication materials to strengthen the brand image. Produced promotional visuals and photo shoots, provided digital support and took part in the company’s communication campaigns.",
  "projects.135": "Content creation",
  "projects.136": "Luxury hospitality",
  "projects.137": "Photo shoot",
- "projects.138": "Graphic design &amp; Rebranding · CFTS Africa",
- "projects.139": "CFTS · West Africa",
- "projects.140": "Helped CFTS modernise its brand image through a rebranding project and the creation of professional communication materials.",
  "projects.144": "Content creation · Sama Chef",
  "projects.145": "Luxury culinary training · Senegal",
  "projects.146": "Produced photo shoots and promotional videos showcasing Sama Chef’s training programmes, facilities and expertise. Created content for communication and recruitment campaigns in high-end cooking, hospitality and catering.",
@@ -1899,7 +1937,36 @@ p,li{hyphens:none;-webkit-hyphens:none;}
  "odoo.g.cus": "Customisation & data",
  "odoo.m.cus1": "Data import & migration",
  "odoo.m.cus2": "Automations & server actions",
- "odoo.m.sal4": "Subscriptions"
+ "odoo.m.sal4": "Subscriptions",
+ "mod.pos": "Point of Sale",
+ "mod.stock": "Inventory",
+ "mod.acc": "Accounting",
+ "mod.sale": "Sales",
+ "mod.sub": "Subscriptions",
+ "mod.pur": "Purchase",
+ "mod.fs": "Field Service",
+ "mod.proj": "Project",
+ "pf.role": "Role",
+ "pf.dur": "Duration",
+ "pf.users": "Users",
+ "pf.ox.r": "Support lead",
+ "pf.ox.d": "1 wk on site + 6 mo",
+ "pf.ox.u": "~10 · 4 stations",
+ "pf.ef.r": "Support lead",
+ "pf.ef.d": "Since Feb 2025",
+ "pf.ef.u": "26",
+ "projects.127": "Senedoo · Geolocation &amp; fleet management",
+ "pf.gl.r": "Support lead",
+ "pf.gl.d": "1 year",
+ "pf.gl.u": "25+",
+ "pf.gf.r": "Project manager",
+ "pf.gf.d": "3-week rollout",
+ "pf.gf.u": "17 trained",
+ "projects.g1": "Odoo deployment · GeoFleet-IN",
+ "projects.g2": "Senedoo · Project I led",
+ "projects.g3": "Led the full Odoo rollout, from requirements analysis to team training. Training is complete; go-live is waiting on the client’s final accounting data.",
+ "projects.s1": "Videography",
+ "projects.s2": "Social media content"
 }
 </script>
 <script>
