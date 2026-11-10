@@ -518,7 +518,7 @@ a.timeline-company.tl-link:hover .tl-ext{opacity:1;}
 h1.hero-title{text-wrap:balance;font-size:clamp(2.2rem,3.5vw,3.1rem);line-height:1.1;}
 h1.hero-title .ht-line{display:block;white-space:nowrap;}
 @media(max-width:640px){h1.hero-title .ht-line{display:inline;white-space:normal;}}
-.hero-desc,.about-text p,.about-card p,.proj-desc,.timeline-desc{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;}
+.hero-desc,.about-text p,.about-card p,.proj-desc,.timeline-desc{text-align:left;hyphens:none;-webkit-hyphens:none;}
 .hero-desc{max-width:540px;}
 /* À propos */
 .about-layout{align-items:start;gap:3.5rem;}
@@ -533,20 +533,20 @@ h1.hero-title .ht-line{display:block;white-space:nowrap;}
 @media(max-width:1024px){.about-layout{gap:2.5rem;}.about-cards{grid-auto-rows:auto;}}
 
 /* Au-delà du professionnel : bannières */
-#personality .interests-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem;}
+#personality .interests-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:1.1rem;}
 #personality .interest-card{padding:0;overflow:hidden;display:flex;flex-direction:column;}
 .interest-icon.interest-banner{width:100%;height:auto;aspect-ratio:4/3;border-radius:0;margin:0;background:var(--faint);overflow:hidden;}
 .interest-banner img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);}
 .interest-card:hover .interest-banner img{transform:scale(1.04);}
 .interest-body{padding:1.05rem 1.15rem 1.25rem;}
 .interest-card h3{margin-bottom:.4rem;}
-@media(max-width:1100px){#personality .interests-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(max-width:1200px){#personality .interests-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:820px;margin-inline:auto;}}
 @media(max-width:700px){#personality .interests-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:380px){#personality .interests-grid{grid-template-columns:1fr;}}
 /* Expérience : cartes compactes + Voir plus */
 .timeline{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;align-items:stretch;}
 .timeline-card{padding:1.4rem;display:flex;flex-direction:column;}
-.timeline-card .timeline-desc{text-align:justify;hyphens:auto;-webkit-hyphens:auto;}
+.timeline-card .timeline-desc{text-align:left;hyphens:none;-webkit-hyphens:none;}
 .js .timeline.is-compact .timeline-card>.timeline-desc{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
 .js .timeline.is-compact .exp-more{display:none;}
 .timeline:not(.is-compact){align-items:start;}
