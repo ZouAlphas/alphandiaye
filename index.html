@@ -21,7 +21,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
-<script>/* Statistiques : ajouter ici un outil de mesure (ex. Plausible, GA4) puis brancher track(). */function track(){}</script>
+<script>/* Statistiques : Umami (sans cookies). Coller l'identifiant du site Umami ci-dessous pour activer la mesure. */
+const UMAMI_ID='';
+function track(name){try{if(window.umami)umami.track(name);}catch(e){}}
+if(UMAMI_ID&&!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){const s=document.createElement('script');s.defer=true;s.src='https://cloud.umami.is/script.js';s.dataset.websiteId=UMAMI_ID;document.head.appendChild(s);}
+</script>
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Alpha Ndiaye","url":"https://alphandiaye.online/",
@@ -1001,11 +1005,45 @@ p,li{hyphens:none;-webkit-hyphens:none;}
 .cert-proof{display:inline-flex;align-items:center;gap:.3rem;margin-top:.55rem;font-size:.75rem;font-weight:600;color:var(--blue);text-decoration:none;}
 .cert-proof:hover{text-decoration:underline;}
 .cert-proof svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* ═══ UX : navigation & mobile ═══ */
+.skip-link{position:fixed;left:1rem;top:-60px;z-index:2000;background:var(--blue);color:#0b1220;font-weight:700;padding:.6rem 1rem;border-radius:10px;text-decoration:none;transition:top .2s;}
+.skip-link:focus{top:1rem;}
+#scroll-progress{position:fixed;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,#38bdf8,#818cf8);transform-origin:0 50%;transform:scaleX(0);z-index:1001;pointer-events:none;}
+#to-top{position:fixed;right:1.25rem;bottom:1.25rem;width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--card);color:var(--text);box-shadow:0 10px 26px var(--sh);display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .25s,transform .25s;z-index:900;}
+#to-top.show{opacity:1;transform:none;pointer-events:auto;}
+#to-top svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+@media(max-width:700px){
+  #to-top{bottom:1rem;right:1rem;}
+  /* Réalisations : carrousel horizontal */
+  .proj-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1rem;margin:0 calc(-1 * max(5vw,1.5rem));padding:.25rem max(5vw,1.5rem) 1rem;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .proj-grid::-webkit-scrollbar{display:none;}
+  .proj-grid>.proj-card{flex:0 0 86%;scroll-snap-align:center;}
+  .proj-card:hover{transform:none;}
+  .proj-dots{display:flex;justify-content:center;gap:.45rem;margin-top:.4rem;}
+  .proj-dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:var(--border);cursor:pointer;transition:width .25s,background .25s;}
+  .proj-dots button.on{width:22px;border-radius:6px;background:var(--blue);}
+  /* À propos : cartes repliables */
+  .about-card h3{display:flex;justify-content:space-between;align-items:center;gap:.5rem;cursor:pointer;margin-bottom:0;}
+  .about-card h3::after{content:'';width:9px;height:9px;flex:none;border-right:2px solid var(--blue);border-bottom:2px solid var(--blue);transform:rotate(45deg) translateY(-3px);transition:transform .25s;}
+  .about-card.open h3::after{transform:rotate(-135deg) translateY(-2px);}
+  .about-card p{display:none;margin-top:.6rem;}
+  .about-card.open p{display:block;}
+}
+.proj-dots{display:none;}
+@media(max-width:700px){.proj-dots{display:flex;}}
+.edu-lang-title{display:flex;align-items:center;gap:.6rem;}
+.edu-lang-sub{color:var(--sub);font-size:.9rem;margin:.4rem 0 1.4rem;}
+.proj-top img,.interest-banner img{cursor:zoom-in;}
+@media(prefers-reduced-motion:reduce){#to-top,.skip-link{transition:none;}}
 </style></head>
 <body>
 
 
 <!-- ═══ NAV ═══ -->
+<a class="skip-link" href="#about" data-i18n="ux.skip">Aller au contenu</a>
+<div id="scroll-progress" aria-hidden="true"></div>
+<button id="to-top" type="button" aria-label="Retour en haut" data-i18n-aria="ux.top" onclick="window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <nav id="nav">
   <a href="#hero" class="nav-logo">Alpha.</a>
   <ul class="nav-links">
@@ -1014,6 +1052,7 @@ p,li{hyphens:none;-webkit-hyphens:none;}
     <li><a href="#projects" data-i18n="nav.projects">Réalisations</a></li>
     <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
     <li><a href="#education" data-i18n="nav.edu">Formation</a></li>
+    <li><a href="#personality" data-i18n="nav.passions">Passions</a></li>
     <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -1037,6 +1076,7 @@ p,li{hyphens:none;-webkit-hyphens:none;}
   <a href="#projects" onclick="closeMobile()" data-i18n="nav.projects">Réalisations</a>
   <a href="#skills" onclick="closeMobile()" data-i18n="nav.skills">Compétences</a>
   <a href="#education" onclick="closeMobile()" data-i18n="nav.edu">Formation</a>
+  <a href="#personality" onclick="closeMobile()" data-i18n="nav.passions">Passions</a>
   <a href="#contact" onclick="closeMobile()" data-i18n="nav.contact">Contact</a>
   <div class="lang-sw lang-sw-mobile"><button class="lang-btn on" data-lang="fr" onclick="setLang('fr')">🇫🇷 FR</button><button class="lang-btn" data-lang="en" onclick="setLang('en')">🇬🇧 EN</button></div>
 </div>
@@ -1428,6 +1468,28 @@ p,li{hyphens:none;-webkit-hyphens:none;}
     </div>
 
   </div>
+  <div class="edu-col-title edu-lang-title reveal" style="margin-top:2.5rem;"><span data-i18n="languages.215">Langues parlées</span></div>
+  <p class="edu-lang-sub" data-i18n="languages.216">Je travaille et communique dans trois langues au quotidien.</p>
+  <div class="lang-grid reveal" style="transition-delay:.08s;">
+    <div class="lang-card">
+      <span class="lang-flag">🇫🇷</span>
+      <div class="lang-name" data-i18n="languages.217">Français</div>
+      <div class="lang-bar-track"><div class="lang-bar-fill" data-w="94" style="width:94%"></div></div>
+      <div class="lang-level" data-i18n="languages.218">Langue principale · Courant professionnel</div>
+    </div>
+    <div class="lang-card">
+      <span class="lang-flag">🇬🇧</span>
+      <div class="lang-name" data-i18n="languages.219">Anglais</div>
+      <div class="lang-bar-track"><div class="lang-bar-fill" data-w="78" style="width:78%"></div></div>
+      <div class="lang-level" data-i18n="languages.220">Professionnel · Courant</div>
+    </div>
+    <div class="lang-card">
+      <span class="lang-flag">🇸🇳</span>
+      <div class="lang-name">Wolof</div>
+      <div class="lang-bar-track"><div class="lang-bar-fill" data-w="92" style="width:92%"></div></div>
+      <div class="lang-level" data-i18n="languages.222">Langue maternelle · Natif</div>
+    </div>
+  </div>
 </section>
 
 <!-- ═══ PERSONALITY ═══ -->
@@ -1465,37 +1527,8 @@ p,li{hyphens:none;-webkit-hyphens:none;}
   </div>
 </section>
 
-<!-- ═══ LANGUAGES (v10 design) ═══ -->
-<section id="languages" class="bg2">
-  <div class="reveal center-head" style="margin-bottom:2.5rem;">
-    <div class="section-label center">Communication</div>
-    <h2 class="section-title" data-i18n="languages.215">Langues parlées</h2>
-    <p class="section-sub" data-i18n="languages.216">Je travaille et communique dans trois langues au quotidien.</p>
-  </div>
-  <div class="lang-grid reveal" style="transition-delay:.08s;">
-    <div class="lang-card">
-      <span class="lang-flag">🇫🇷</span>
-      <div class="lang-name" data-i18n="languages.217">Français</div>
-      <div class="lang-bar-track"><div class="lang-bar-fill" data-w="94" style="width:94%"></div></div>
-      <div class="lang-level" data-i18n="languages.218">Langue principale · Courant professionnel</div>
-    </div>
-    <div class="lang-card">
-      <span class="lang-flag">🇬🇧</span>
-      <div class="lang-name" data-i18n="languages.219">Anglais</div>
-      <div class="lang-bar-track"><div class="lang-bar-fill" data-w="78" style="width:78%"></div></div>
-      <div class="lang-level" data-i18n="languages.220">Professionnel · Courant</div>
-    </div>
-    <div class="lang-card">
-      <span class="lang-flag">🇸🇳</span>
-      <div class="lang-name">Wolof</div>
-      <div class="lang-bar-track"><div class="lang-bar-fill" data-w="92" style="width:92%"></div></div>
-      <div class="lang-level" data-i18n="languages.222">Langue maternelle · Natif</div>
-    </div>
-  </div>
-</section>
-
 <!-- ═══ CONTACT ═══ -->
-<section id="contact">
+<section id="contact" class="bg2">
   <div class="reveal center-head" style="margin-bottom:3rem;">
     <div class="section-label center">Contact</div>
     <h2 class="section-title" data-i18n="contact.224">Travaillons ensemble</h2>
@@ -1731,7 +1764,11 @@ p,li{hyphens:none;-webkit-hyphens:none;}
  "experience.kpi2": "projects supported",
  "experience.kpi3": "users trained",
  "education.score": "2026 · passed with 83.75%",
- "education.proof": "View certificate"
+ "education.proof": "View certificate",
+ "nav.passions": "Interests",
+ "ux.skip": "Skip to content",
+ "ux.cta": "Contact me",
+ "ux.top": "Back to top"
 }
 </script>
 <script>
@@ -1755,6 +1792,7 @@ let I18N_EN={};try{I18N_EN=JSON.parse(document.getElementById('i18n-en').textCon
 const I18N_FR={};document.querySelectorAll('[data-i18n]').forEach(el=>{if(!(el.dataset.i18n in I18N_FR))I18N_FR[el.dataset.i18n]=el.innerHTML;});
 document.querySelectorAll('[data-i18n-ph]').forEach(el=>I18N_FR[el.dataset.i18nPh]=el.placeholder);
 I18N_FR['meta.title']=document.title;{const m=document.querySelector('meta[name=description]');if(m)I18N_FR['meta.desc']=m.content;}
+const ARIA_EN={'Changer de thème':'Change theme','Ouvrir le menu':'Open menu','Votre nom':'Your name','Votre email':'Your email','Sujet':'Subject','Votre message':'Your message','Retour en haut':'Back to top'};
 function setLang(lang){
   document.querySelectorAll('.lang-btn[data-lang]').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
   document.documentElement.lang=lang;
@@ -1762,6 +1800,13 @@ function setLang(lang){
   const d=lang==='en'?I18N_EN:I18N_FR;
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(d[k])el.innerHTML=d[k];});
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.dataset.i18nPh;if(d[k])el.placeholder=d[k];});
+  document.querySelectorAll('[aria-label]').forEach(el=>{
+    if(!el.dataset.ariaFr)el.dataset.ariaFr=el.getAttribute('aria-label');
+    const fr=el.dataset.ariaFr;let v=fr;
+    if(lang==='en'){const k=el.dataset.i18nAria;const mm=fr.match(/^Site web de (.+) \(nouvel onglet\)$/);
+      v=k&&d[k]?d[k]:mm?mm[1]+' website (opens in a new tab)':(ARIA_EN[fr]||fr);}
+    el.setAttribute('aria-label',v);
+  });
   document.querySelectorAll('a[data-cv]').forEach(a=>a.href='cv/CV_Alpha_Ndiaye_'+(lang==='en'?'EN':'FR')+'.pdf');
   if(d['meta.title'])document.title=d['meta.title'];{const m=document.querySelector('meta[name=description]');if(m&&d['meta.desc'])m.content=d['meta.desc'];}
 }
@@ -1921,6 +1966,55 @@ function toggleTheme(){
   build();start();
 })();
 
+
+/* ═══ UX : progression, retour en haut, CTA mobile, carrousel, cartes, lightbox ═══ */
+(function(){
+  const bar=document.getElementById('scroll-progress'),top=document.getElementById('to-top');
+  let tick=false;
+  function upd(){
+    const h=document.documentElement.scrollHeight-innerHeight,y=scrollY;
+    bar.style.transform='scaleX('+(h>0?Math.min(y/h,1):0)+')';
+    top.classList.toggle('show',y>innerHeight);
+    tick=false;
+  }
+  addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
+  addEventListener('resize',upd,{passive:true});upd();
+
+  /* Carrousel des réalisations (mobile) : points de navigation */
+  const grid=document.querySelector('.proj-grid');
+  if(grid){
+    const cards=[...grid.children].filter(c=>c.classList.contains('proj-card'));
+    const dots=document.createElement('div');dots.className='proj-dots';dots.setAttribute('aria-hidden','true');
+    cards.forEach((c,i)=>{const b=document.createElement('button');b.type='button';b.tabIndex=-1;b.onclick=()=>grid.scrollTo({left:c.offsetLeft-grid.offsetLeft-(grid.clientWidth-c.clientWidth)/2,behavior:'smooth'});dots.appendChild(b);});
+    grid.after(dots);
+    const setOn=()=>{const mid=grid.scrollLeft+grid.clientWidth/2;let best=0,bd=1e9;cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft-grid.offsetLeft+c.clientWidth/2-mid);if(d<bd){bd=d;best=i;}});[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===best));};
+    grid.addEventListener('scroll',()=>requestAnimationFrame(setOn),{passive:true});setOn();
+  }
+
+  /* À propos : cartes repliables sur mobile */
+  const mq=matchMedia('(max-width:700px)');
+  document.querySelectorAll('.about-card').forEach(card=>{
+    const h=card.querySelector('h3');if(!h)return;
+    h.setAttribute('role','button');h.tabIndex=0;
+    const t=()=>{if(!mq.matches)return;card.classList.toggle('open');h.setAttribute('aria-expanded',card.classList.contains('open'));};
+    h.addEventListener('click',t);h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});
+  });
+
+  /* Images agrandissables (GLightbox) */
+  let glLoading=false;
+  function loadGL(cb){if(glLoading)return;glLoading=true;const l=document.createElement('link');l.rel='stylesheet';l.href='vendor/glightbox.min.css';document.head.appendChild(l);const sc=document.createElement('script');sc.src='vendor/glightbox.min.js';sc.onload=cb;document.head.appendChild(sc);}
+  function groupBox(sel,titleSel){
+    const imgs=[...document.querySelectorAll(sel)];
+    imgs.forEach((img,i)=>img.addEventListener('click',()=>{
+      if(!window.GLightbox){loadGL(()=>img.click());return;}
+      const els=imgs.map(im=>{const card=im.closest('.proj-card,.interest-card');const t=card&&card.querySelector(titleSel);return{href:im.currentSrc||im.src,type:'image',title:t?t.textContent.trim():'',alt:im.alt||''};});
+      GLightbox({elements:els,loop:true,touchNavigation:true,openEffect:'fade',closeEffect:'fade'}).openAt(i);
+      track('lightbox');
+    }));
+  }
+  groupBox('.proj-top img','.proj-name');
+  groupBox('.interest-banner img','h3');
+})();
 /* ═══ CONTACT FORM ═══ */
 /* Envoi via FormSubmit (https://formsubmit.co) : le tout premier message déclenche un e-mail d'activation à confirmer. */
 const FORM_ENDPOINT='https://formsubmit.co/ajax/alphandiayepro@gmail.com';
@@ -1968,4 +2062,5 @@ b.addEventListener('click',function(){var open=b.getAttribute('aria-expanded')!=
 new MutationObserver(function(){set(b.getAttribute('aria-expanded')==='true');}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
 </script>
+
 </body></html>
