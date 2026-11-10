@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://alphandiaye.online/</loc>
-    <lastmod>2026-11-05</lastmod>
-  </url>
+  <url><loc>https://alphandiaye.online/</loc><lastmod>2026-11-10</lastmod><priority>1.0</priority></url>
+  <url><loc>https://alphandiaye.online/projets/oryx-energies/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://alphandiaye.online/projets/eric-favre/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://alphandiaye.online/projets/globo-afrique/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://alphandiaye.online/projets/diamant-noir-collection/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://alphandiaye.online/projets/cfts-africa/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://alphandiaye.online/projets/sama-chef/</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
 </urlset>
