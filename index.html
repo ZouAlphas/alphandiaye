@@ -990,6 +990,25 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
   .hero-photo-wrap::before{animation:none;}
   .js .reveal,.js .reveal.stagger>*,.js .skill-fill,.js .lang-bar-fill{opacity:1!important;transform:none!important;}
 }
+
+/* ═══ Vidéographie ═══ */
+#video .video-wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:3rem;align-items:center;}
+#video .video-text p{color:var(--sub);line-height:1.8;margin-bottom:1.1rem;text-align:justify;}
+#video .video-text p strong{color:var(--text);}
+#video .video-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem;}
+.video-reel{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:repeat(2,minmax(0,200px));gap:.9rem;}
+.video-still{position:relative;margin:0;border-radius:16px;overflow:hidden;background:#0b0f19;box-shadow:0 18px 40px -22px rgba(0,0,0,.55);}
+.video-still:first-child{grid-row:span 2;}
+.video-still img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
+.video-still:hover img{transform:scale(1.04);}
+.video-still::before,.video-still::after{content:'';position:absolute;left:0;right:0;height:14px;background:#000;z-index:1;pointer-events:none;}
+.video-still::before{top:0}.video-still::after{bottom:0}
+.video-still figcaption::before{content:'';position:absolute;z-index:-1;left:-1rem;right:-40vw;bottom:-1rem;height:4.5rem;background:linear-gradient(transparent,rgba(0,0,0,.55));}
+.video-still figcaption{position:absolute;left:.9rem;bottom:24px;z-index:2;color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.02em;text-shadow:0 1px 6px rgba(0,0,0,.7);}
+.video-still .tc{position:absolute;top:24px;right:.9rem;z-index:2;font:600 .7rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#fff;background:rgba(0,0,0,.45);padding:.3rem .45rem;border-radius:6px;display:flex;align-items:center;gap:.35rem;}
+.video-still .tc::before{content:'';width:7px;height:7px;border-radius:50%;background:#ef4444;}
+@media(max-width:900px){#video .video-wrap{grid-template-columns:1fr;gap:2rem;}}
+@media(max-width:560px){.video-reel{grid-template-columns:1fr;grid-template-rows:none;}.video-still:first-child{grid-row:auto;}.video-still{aspect-ratio:16/9;}}
 </style></head>
 <body>
 
@@ -1448,8 +1467,30 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
   </div>
 </section>
 
+<!-- ═══ VIDÉOGRAPHIE ═══ -->
+<section id="video" class="bg2">
+  <div class="reveal center-head" style="margin-bottom:3rem;">
+    <div class="section-label center" data-i18n="video.label">Passion</div>
+    <h2 class="section-title" data-i18n="video.title">Vidéographie</h2>
+    <p class="section-sub" data-i18n="video.sub">Le cinéma et le montage : mon autre façon de raconter des histoires.</p>
+  </div>
+  <div class="video-wrap reveal" style="transition-delay:.08s;">
+    <div class="video-text">
+      <p data-i18n="video.p1">Passionné de cinéma depuis toujours, j'aime autant regarder un film que comprendre comment il est construit : le choix d'un cadre, la lumière, le rythme d'une scène.</p>
+      <p data-i18n="video.p2">Le montage est l'endroit où tout prend forme. Choisir le bon plan, couper au bon moment, poser le son : c'est là que des images brutes deviennent une histoire claire.</p>
+      <p data-i18n="video.p3">Cette pratique nourrit aussi mon métier : aller à l'essentiel, structurer un message et le rendre vivant pour un public précis.</p>
+      <div class="video-chips"><span class="chip" data-i18n="video.c1">Cinéma</span><span class="chip" data-i18n="video.c2">Montage vidéo</span><span class="chip" data-i18n="video.c3">Prise de vue</span><span class="chip" data-i18n="video.c4">Storytelling</span></div>
+    </div>
+    <div class="video-reel">
+      <figure class="video-still"><img loading="lazy" decoding="async" alt="Plan en contre-plongée d'un dunk au basket" src="images/site/video-basketball.webp" style="object-position:22% 40%;"><span class="tc">00:00:12:04</span><figcaption data-i18n="video.f1">Basket — contre-plongée</figcaption></figure>
+      <figure class="video-still"><img loading="lazy" decoding="async" alt="Kayak et paddle dans les mangroves" src="images/site/video-mangroves.webp"><span class="tc">00:01:47:16</span><figcaption data-i18n="video.f2">Mangroves</figcaption></figure>
+      <figure class="video-still"><img loading="lazy" decoding="async" alt="Alpha Ndiaye entre un lion et une lionne" src="images/site/video-fathala.webp" style="object-position:center 35%;"><span class="tc">00:03:05:22</span><figcaption data-i18n="video.f3">Réserve de Fathala</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ LANGUAGES (v10 design) ═══ -->
-<section id="languages" class="bg2">
+<section id="languages">
   <div class="reveal center-head" style="margin-bottom:2.5rem;">
     <div class="section-label center">Communication</div>
     <h2 class="section-title">Langues parlées</h2>
@@ -1478,7 +1519,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 </section>
 
 <!-- ═══ CONTACT ═══ -->
-<section id="contact">
+<section id="contact" class="bg2">
   <div class="reveal center-head" style="margin-bottom:3rem;">
     <div class="section-label center">Contact</div>
     <h2 class="section-title">Travaillons ensemble</h2>
@@ -1545,6 +1586,19 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 
 <script type="application/json" id="i18n-en">
 {
+ "video.label": "Passion",
+ "video.title": "Videography",
+ "video.sub": "Cinema and editing: my other way of telling stories.",
+ "video.p1": "I have always loved cinema, as much for watching films as for understanding how they are built: framing, light, the rhythm of a scene.",
+ "video.p2": "Editing is where everything takes shape. Choosing the right shot, cutting at the right moment, laying down the sound: that is where raw footage becomes a clear story.",
+ "video.p3": "This practice also feeds my work: getting to the point, structuring a message and bringing it to life for a specific audience.",
+ "video.c1": "Cinema",
+ "video.c2": "Video editing",
+ "video.c3": "Filming",
+ "video.c4": "Storytelling",
+ "video.f1": "Basketball — low angle",
+ "video.f2": "Mangroves",
+ "video.f3": "Fathala Reserve",
  "clients.title": "Companies & organisations I have worked with",
  "nav.about": "About",
  "nav.exp": "Experience",
