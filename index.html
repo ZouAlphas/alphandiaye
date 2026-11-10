@@ -1101,6 +1101,29 @@ p,li{hyphens:none;-webkit-hyphens:none;}
 .skill-cat .skill-name::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue);flex:none;}
 .skill-cat-title{margin-bottom:1rem;}
 .skill-cat-title .skill-cat-icon{display:none;}
+
+/* ═══ MODULES ODOO ═══ */
+.odoo-modules{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.8rem 1.9rem 1.9rem;margin-bottom:1.5rem;position:relative;overflow:hidden;}
+.odoo-modules::before{content:'';position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,#22c55e,#38BDF8,#f97316,#818CF8);}
+.om-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1.6rem;}
+.om-title{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:.3rem;}
+.om-sub{font-size:.9rem;color:var(--sub);text-align:left;}
+.om-cert{display:inline-flex;align-items:center;gap:.45rem;font-size:.8rem;font-weight:700;color:var(--green);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);padding:.42rem .85rem;border-radius:50px;text-decoration:none;white-space:nowrap;transition:background .2s;}
+.om-cert:hover{background:rgba(34,197,94,.18);}
+.om-cert svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.om-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;}
+.om-gtitle{display:flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:.9rem;}
+.om-gtitle::before{content:'';width:8px;height:8px;border-radius:2px;background:var(--g);}
+.om-list{list-style:none;display:flex;flex-direction:column;gap:.55rem;}
+.om-list li{display:flex;align-items:center;gap:.7rem;font-size:.9rem;font-weight:500;color:var(--text);line-height:1.3;text-align:left;}
+.om-ic{width:34px;height:34px;flex:none;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--g) 14%,transparent);border:1px solid color-mix(in srgb,var(--g) 28%,transparent);}
+.om-ic svg{width:17px;height:17px;fill:none;stroke:var(--g);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+@media(max-width:1024px){.om-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6rem 1.25rem;}}
+@media(max-width:640px){.odoo-modules{padding:1.4rem 1.2rem 1.5rem;}.om-title{font-size:1.1rem;}.om-list li{font-size:.85rem;}.om-ic{width:30px;height:30px;border-radius:9px;}.om-ic svg{width:15px;height:15px;}}
+.om-ic img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;}
+.om-ic:has(img){background:none;border-color:transparent;overflow:hidden;}
+.om-ic:has(img) svg{display:none;}
+@media(max-width:420px){.om-grid{grid-template-columns:1fr;}}
 </style></head>
 <body>
 
@@ -1410,6 +1433,17 @@ p,li{hyphens:none;-webkit-hyphens:none;}
     <div class="section-label center" data-i18n="skills.150">Savoir-faire</div>
     <h2 class="section-title" data-i18n="skills.151">Mes compétences</h2>
     <p class="section-sub" data-i18n="skills.152">Une palette de compétences au croisement du digital, du design et de la gestion de projet.</p>
+  </div>
+
+  <div class="odoo-modules reveal">
+    <div class="om-head">
+      <div>
+        <h3 class="om-title" data-i18n="odoo.title">Modules Odoo maîtrisés</h3>
+        <p class="om-sub" data-i18n="odoo.sub">Paramétrage, formation des utilisateurs et support fonctionnel sur projets clients.</p>
+      </div>
+      <a class="om-cert" href="#education"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4M12 2l2.4 2.1 3.2-.3.9 3.1 2.8 1.6-1.1 3 1.1 3-2.8 1.6-.9 3.1-3.2-.3L12 22l-2.4-2.1-3.2.3-.9-3.1-2.8-1.6 1.1-3-1.1-3 2.8-1.6.9-3.1 3.2.3z"/></svg><span data-i18n="odoo.cert">Certifié Odoo 19</span></a>
+    </div>
+    <div class="om-grid"><div class="om-group" style="--g:#22c55e"><h3 class="om-gtitle" data-i18n="odoo.g.fin">Finance</h3><ul class="om-list"><li><span class="om-ic" aria-hidden="true"><img src="images/odoo/comptabilite.png" alt="" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 24 24"><path d="M4 19h16M7 15v-4M12 15V7M17 15v-6"/></svg></span><span data-i18n="odoo.m.fin0">Comptabilité</span></li><li><span class="om-ic" aria-hidden="true"><img src="images/odoo/facturation.svg" alt="" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7zM14 3v4h4M10 12h5M10 16h5"/></svg></span><span data-i18n="odoo.m.fin1">Facturation</span></li><li><span class="om-ic" aria-hidden="true"><img src="images/odoo/notes-de-frais.svg" alt="" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"/></svg></span><span data-i18n="odoo.m.fin2">Notes de frais</span></li></ul></div><div class="om-group" style="--g:#38BDF8"><h3 class="om-gtitle" data-i18n="odoo.g.sal">Ventes & clients</h3><ul class="om-list"><li><span class="om-ic" aria-hidden="true"><img src="images/odoo/ventes.svg" alt="" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 24 24"><path d="M3 4h2l2.4 11h10.2L20 8H6.2M9 20.5a1 1 0 100-2 1 1 0 000 2zM17 20.5a1 1 0 100-2 1 1 0 000 2z"/></svg></span><span data-i18n="odoo.m.sal0">Ventes</span></li><li><span class="om-ic" aria-hidden="true"><img src="images/odoo/abonnements.svg" alt="" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-15.5 6.3L3 16M3 12a9 9 0 0115.5-6.3L21 8M21 3v5h-5M3 21v-5h5"/></svg></span><span data-i18n="odoo.m.sal4">Abonnements</span></li><li><span class="om-ic" aria-hidden="true"><img src="images/odoo/crm.svg" alt="" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 24 24"><path d="M12 21a9 9 0 100-18 9 9 0 000 18zM12 16a4 4 0 100-8 4 4 0 000 8zM12 12h.01"/></svg></span><span data-i18n="odoo.m.sal1">CRM</span></li><li><span class="om-ic" aria-hidden="true"><img src="images/odoo/point-de-vente.svg" alt="" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H4zM8 19h8M12 15v4"/></svg></span><span data-i18n="odoo.m.sal2">Point de vente</span></li><li><span class="om-ic" aria-hidden="true"><img src="images/odoo/site-web.svg" alt="" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 24 24"><path d="M12 21a9 9 0 100-18 9 9 0 000 18zM3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></span><span data-i18n="odoo.m.sal3">Site web / eCommerce</span></li></ul></div><div class="om-group" style="--g:#f97316"><h3 class="om-gtitle" data-i18n="odoo.g.ops">Opérations</h3><ul class="om-list"><li><span class="om-ic" aria-hidden="true"><img src="images/odoo/inventaire.svg" alt="" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8M12 13v8"/></svg></span><span data-i18n="odoo.m.ops0">Inventaire</span></li><li><span class="om-ic" aria-hidden="true"><img src="images/odoo/achats.svg" alt="" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7zM9 7a3 3 0 016 0"/></svg></span><span data-i18n="odoo.m.ops1">Achats</span></li><li><span class="om-ic" aria-hidden="true"><img src="images/odoo/fabrication.svg" alt="" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 100-6 3 3 0 000 6zM12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></span><span data-i18n="odoo.m.ops2">Fabrication</span></li><li><span class="om-ic" aria-hidden="true"><img src="images/odoo/projet.svg" alt="" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 24 24"><path d="M4 5h4v14H4zM10 5h4v9h-4zM16 5h4v6h-4z"/></svg></span><span data-i18n="odoo.m.ops3">Projet & feuilles de temps</span></li></ul></div><div class="om-group" style="--g:#818CF8"><h3 class="om-gtitle" data-i18n="odoo.g.cus">Personnalisation & données</h3><ul class="om-list"><li><span class="om-ic" aria-hidden="true"><img src="images/odoo/studio.png" alt="" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></span><span data-i18n="odoo.m.cus0">Studio</span></li><li><span class="om-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg></span><span data-i18n="odoo.m.cus1">Import & migration de données</span></li><li><span class="om-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span data-i18n="odoo.m.cus2">Automatisations & actions serveur</span></li></ul></div></div>
   </div>
   <div class="skills-grid reveal" style="transition-delay:.08s;">
 
@@ -1845,7 +1879,27 @@ p,li{hyphens:none;-webkit-hyphens:none;}
  "ux.skip": "Skip to content",
  "ux.cta": "Contact me",
  "ux.top": "Back to top",
- "projects.more": "View project"
+ "projects.more": "View project",
+ "odoo.title": "Odoo modules I work with",
+ "odoo.cert": "Odoo 19 certified",
+ "odoo.sub": "Configuration, user training and functional support on client projects.",
+ "odoo.g.fin": "Finance",
+ "odoo.m.fin0": "Accounting",
+ "odoo.m.fin1": "Invoicing",
+ "odoo.m.fin2": "Expenses",
+ "odoo.g.sal": "Sales & customers",
+ "odoo.m.sal0": "Sales",
+ "odoo.m.sal2": "Point of Sale",
+ "odoo.m.sal3": "Website / eCommerce",
+ "odoo.g.ops": "Operations",
+ "odoo.m.ops0": "Inventory",
+ "odoo.m.ops1": "Purchase",
+ "odoo.m.ops2": "Manufacturing",
+ "odoo.m.ops3": "Project & Timesheets",
+ "odoo.g.cus": "Customisation & data",
+ "odoo.m.cus1": "Data import & migration",
+ "odoo.m.cus2": "Automations & server actions",
+ "odoo.m.sal4": "Subscriptions"
 }
 </script>
 <script>
