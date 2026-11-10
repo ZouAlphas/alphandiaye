@@ -1023,24 +1023,24 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
   </div>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#about" onclick="closeMobile()">À propos</a>
-  <a href="#experience" onclick="closeMobile()">Expérience</a>
-  <a href="#projects" onclick="closeMobile()">Réalisations</a>
-  <a href="#skills" onclick="closeMobile()">Compétences</a>
-  <a href="#education" onclick="closeMobile()">Formation</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#about" onclick="closeMobile()" data-i18n="nav.about">À propos</a>
+  <a href="#experience" onclick="closeMobile()" data-i18n="nav.exp">Expérience</a>
+  <a href="#projects" onclick="closeMobile()" data-i18n="nav.projects">Réalisations</a>
+  <a href="#skills" onclick="closeMobile()" data-i18n="nav.skills">Compétences</a>
+  <a href="#education" onclick="closeMobile()" data-i18n="nav.edu">Formation</a>
+  <a href="#contact" onclick="closeMobile()" data-i18n="nav.contact">Contact</a>
   <div class="lang-sw lang-sw-mobile"><button class="lang-btn on" data-lang="fr" onclick="setLang('fr')">🇫🇷 FR</button><button class="lang-btn" data-lang="en" onclick="setLang('en')">🇬🇧 EN</button></div>
 </div>
 
 <!-- ═══ HERO ═══ -->
 <section id="hero">
   <div class="hero-left reveal">
-    <div class="hero-location">
+    <div class="hero-location" data-i18n="hero.11">
       <span class="dot-live"></span>
       Dakar, Sénégal · Disponible
     </div>
-    <h1 class="hero-title"><span class="ht-line">Je transforme les idées</span> <span class="ht-line title-gradient">en systèmes qui fonctionnent</span></h1>
-    <p class="hero-desc">Consultant certifié Odoo 19 et Responsable Support chez Senedoo. Six ans d’expérience entre l’entrepreneuriat digital, comme cofondateur de la Galsen Digital Agency, et des projets ERP menés en Afrique de l’Ouest et au-delà.</p>
+    <h1 class="hero-title"><span class="ht-line" data-i18n="hero.12">Je transforme les idées</span> <span class="ht-line title-gradient" data-i18n="hero.13">en systèmes qui fonctionnent</span></h1>
+    <p class="hero-desc" data-i18n="hero.14">Consultant certifié Odoo 19 et Responsable Support chez Senedoo. Six ans d’expérience entre l’entrepreneuriat digital, comme cofondateur de la Galsen Digital Agency, et des projets ERP menés en Afrique de l’Ouest et au-delà.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn-primary" onclick="track('hero_projects')">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5-5 5M6 12h12"></path></svg>
@@ -1074,7 +1074,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
       </div>
       <div class="hero-badge">
         <div class="hero-badge-name">Alpha Ndiaye</div>
-        <div class="hero-badge-role">Consultant ERP Odoo · Transformation digitale</div>
+        <div class="hero-badge-role" data-i18n="hero.16">Consultant ERP Odoo · Transformation digitale</div>
       </div>
     </div>
   </div>
@@ -1099,12 +1099,12 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
   <div class="about-layout">
     <!-- Colonne gauche : texte -->
     <div class="about-left reveal">
-      <div class="section-label">À propos</div>
-      <h2 class="section-title">Une expertise construite sur le terrain, <span style="color:var(--blue)">en Afrique de l'Ouest</span></h2>
+      <div class="section-label" data-i18n="about.17">À propos</div>
+      <h2 class="section-title" data-i18n="about.18">Une expertise construite sur le terrain, <span style="color:var(--blue)">en Afrique de l'Ouest</span></h2>
       <div class="about-text">
-        <p>Je suis Alpha Ndiaye, consultant en transformation digitale basé à Dakar. Depuis six ans, j'accompagne des entreprises dans leur transition numérique, de la création d'identité visuelle au déploiement de systèmes ERP complexes.</p>
-        <p>Après avoir cofondé et dirigé la Galsen Digital Agency, je suis aujourd'hui Responsable Support chez Senedoo, partenaire officiel Odoo. Ce parcours m'a donné une double compétence : comprendre les enjeux business et maîtriser les outils digitaux qui les servent.</p>
-        <p>Ce qui me distingue, c'est la capacité à faire le lien entre la vision stratégique et l'exécution opérationnelle, sans perdre de vue l'humain au centre de chaque projet.</p>
+        <p data-i18n="about.19">Je suis Alpha Ndiaye, consultant en transformation digitale basé à Dakar. Depuis six ans, j'accompagne des entreprises dans leur transition numérique, de la création d'identité visuelle au déploiement de systèmes ERP complexes.</p>
+        <p data-i18n="about.20">Après avoir cofondé et dirigé la Galsen Digital Agency, je suis aujourd'hui Responsable Support chez Senedoo, partenaire officiel Odoo. Ce parcours m'a donné une double compétence : comprendre les enjeux business et maîtriser les outils digitaux qui les servent.</p>
+        <p data-i18n="about.21">Ce qui me distingue, c'est la capacité à faire le lien entre la vision stratégique et l'exécution opérationnelle, sans perdre de vue l'humain au centre de chaque projet.</p>
       </div>
       <div class="about-tags">
         
@@ -1114,10 +1114,10 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
         
         
         
-      <span class="about-tag">Transformation digitale</span><span class="about-tag">Projets ERP</span><span class="about-tag">No-code / Low-code</span><span class="about-tag">Automatisation</span><span class="about-tag">Design graphique</span><span class="about-tag">Gestion de projet</span><span class="about-tag">Support client</span></div>
+      <span class="about-tag" data-i18n="about.22">Transformation digitale</span><span class="about-tag" data-i18n="about.23">Projets ERP</span><span class="about-tag">No-code / Low-code</span><span class="about-tag" data-i18n="about.25">Automatisation</span><span class="about-tag" data-i18n="about.26">Design graphique</span><span class="about-tag" data-i18n="about.27">Gestion de projet</span><span class="about-tag" data-i18n="about.28">Support client</span></div>
       <a href="#projects" class="btn-primary" style="margin-top:1.75rem;display:inline-flex;" onclick="track('about_projects')">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5-5 5M6 12h12"></path></svg>
-        Mes réalisations
+        <span data-i18n="about.29">Mes réalisations</span>
       </a>
     </div>
     <!-- Colonne droite : 4 cartes 2×2 -->
@@ -1125,23 +1125,23 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
       <div class="about-cards">
         <div class="about-card">
           <div class="about-card-icon"><img loading="lazy" decoding="async" class="acard-img" style="display: block; width: 40px; height: 40px; object-fit: cover; border-radius: 8px;" alt="" src="images/site/icon-odoo.webp"><svg viewBox="0 0 24 24" style="display: none;"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
-          <h3>Consultant ERP Odoo</h3>
-          <p>Consultant certifié Odoo V19, j’accompagne les PME et les grandes entreprises dans l’analyse, l’implémentation, la migration et l’optimisation de leur ERP. Mon objectif est de garantir une adoption durable et des processus performants.</p>
+          <h3 data-i18n="about.30">Consultant ERP Odoo</h3>
+          <p data-i18n="about.31">Consultant certifié Odoo V19, j’accompagne les PME et les grandes entreprises dans l’analyse, l’implémentation, la migration et l’optimisation de leur ERP. Mon objectif est de garantir une adoption durable et des processus performants.</p>
         </div>
         <div class="about-card">
           <div class="about-card-icon"><img loading="lazy" decoding="async" class="acard-img" style="display: block; width: 40px; height: 40px; object-fit: cover; border-radius: 8px;" alt="" src="images/site/icon-projet.webp"><svg viewBox="0 0 24 24" style="display: none;"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
-          <h3>Pilotage de projet</h3>
-          <p>Je pilote des projets de transformation digitale depuis l’analyse des besoins jusqu’au déploiement. Je coordonne les équipes, maîtrise les délais, anticipe les risques et assure un suivi rigoureux pour garantir la réussite de chaque projet.</p>
+          <h3 data-i18n="about.32">Pilotage de projet</h3>
+          <p data-i18n="about.33">Je pilote des projets de transformation digitale depuis l’analyse des besoins jusqu’au déploiement. Je coordonne les équipes, maîtrise les délais, anticipe les risques et assure un suivi rigoureux pour garantir la réussite de chaque projet.</p>
         </div>
         <div class="about-card">
           <div class="about-card-icon"><img loading="lazy" decoding="async" class="acard-img" style="display: block; width: 40px; height: 40px; object-fit: cover; border-radius: 8px;" alt="" src="images/site/icon-ia.webp"><svg viewBox="0 0 24 24" style="display: none;"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
-          <h3>Innovation &amp; Automatisation</h3>
-          <p>J’intègre l’intelligence artificielle et l’automatisation afin de simplifier les processus métier, améliorer la productivité et réduire les tâches répétitives. Chaque solution est pensée pour générer une valeur durable et mesurable.</p>
+          <h3 data-i18n="about.34">Innovation &amp; Automatisation</h3>
+          <p data-i18n="about.35">J’intègre l’intelligence artificielle et l’automatisation afin de simplifier les processus métier, améliorer la productivité et réduire les tâches répétitives. Chaque solution est pensée pour générer une valeur durable et mesurable.</p>
         </div>
         <div class="about-card">
           <div class="about-card-icon"><img loading="lazy" decoding="async" class="acard-img" style="display: block; width: 40px; height: 40px; object-fit: cover; border-radius: 8px;" alt="" src="images/site/icon-relation.webp"><svg viewBox="0 0 24 24" style="display: none;"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg></div>
-          <h3>Relation Client</h3>
-          <p>Responsable Support et Chef de projet, j’accompagne les entreprises dans la réussite de leurs projets. J’assure un suivi de proximité, coordonne les équipes et favorise une communication efficace pour atteindre les objectifs fixés.</p>
+          <h3 data-i18n="about.36">Relation Client</h3>
+          <p data-i18n="about.37">Responsable Support et Chef de projet, j’accompagne les entreprises dans la réussite de leurs projets. J’assure un suivi de proximité, coordonne les équipes et favorise une communication efficace pour atteindre les objectifs fixés.</p>
         </div>
       </div>
     </div>
@@ -1151,52 +1151,52 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 <!-- ═══ EXPERIENCE ═══ -->
 <section id="experience">
   <div class="reveal" style="text-align:center;margin-bottom:3rem;">
-    <div class="section-label center">Parcours professionnel</div>
-    <h2 class="section-title">Mon expérience</h2>
-    <p class="section-sub" style="margin:0 auto;">Six ans entre la création digitale et le déploiement de solutions ERP en Afrique de l'Ouest.</p>
+    <div class="section-label center" data-i18n="experience.38">Parcours professionnel</div>
+    <h2 class="section-title" data-i18n="experience.39">Mon expérience</h2>
+    <p class="section-sub" style="margin:0 auto;" data-i18n="experience.40">Six ans entre la création digitale et le déploiement de solutions ERP en Afrique de l'Ouest.</p>
   </div>
  <div class="timeline is-compact" id="exp-grid">
 <div class="timeline-item reveal">
 <div class="timeline-dot"></div>
-<div class="timeline-date">JANV. 2025 – PRÉSENT</div>
+<div class="timeline-date" data-i18n="experience.41">JANV. 2025 – PRÉSENT</div>
 <div class="timeline-card">
         <div class="timeline-header">
 <a aria-label="Site web de Senedoo (nouvel onglet)" class="timeline-avatar tl-link" href="https://www.senedoo.com/" rel="noopener" target="_blank"><img alt="" class="exp-logo-img" decoding="async" id="exp-logo-0" loading="lazy" src="images/site/logo-senedoo.webp"/><span class="exp-initials" style="display: none;">SN</span></a>
 <div>
 <a class="timeline-company tl-link" href="https://www.senedoo.com/" rel="noopener" target="_blank">SENEDOO<svg aria-hidden="true" class="tl-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></svg></a>
-<div class="timeline-role">Responsable Support <span style="opacity:.7;font-weight:500;">· depuis avril 2025</span></div>
+<div class="timeline-role" data-i18n="experience.44">Responsable Support <span style="opacity:.7;font-weight:500;">· depuis avril 2025</span></div>
 </div>
 </div>
-        <p class="timeline-desc">Je supervise le support client et l'accompagnement des entreprises partenaires de Senedoo dans l'adoption de leurs solutions digitales. Mon rôle couvre la dimension opérationnelle du support et la gestion des relations avec les grands comptes.</p>
-        <div class="timeline-chips"><span class="chip">Responsable support client</span><span class="chip">Chef de projet</span><span class="chip">Consultant certifié Odoo 19</span></div>
-        <div class="exp-more"><div class="timeline-clients-label">Projets pilotés</div><div class="timeline-clients-tags"><a class="tclient tclient-link" href="https://www.geofleetin.com/" rel="noopener" target="_blank">GeoFleet IN</a><span class="tclient">KGD Équipement</span><a class="tclient tclient-link" href="http://www.malimenage.com/" rel="noopener" target="_blank">Mali Ménage</a><a class="tclient tclient-link" href="https://www.team-wallace.com/" rel="noopener" target="_blank">Wallace</a></div><details class="tclients-more">
-<summary class="tclient-more">+ 6 autres</summary>
+        <p class="timeline-desc" data-i18n="experience.45">Je supervise le support client et l'accompagnement des entreprises partenaires de Senedoo dans l'adoption de leurs solutions digitales. Mon rôle couvre la dimension opérationnelle du support et la gestion des relations avec les grands comptes.</p>
+        <div class="timeline-chips"><span class="chip" data-i18n="experience.46">Responsable support client</span><span class="chip" data-i18n="experience.47">Chef de projet</span><span class="chip" data-i18n="experience.48">Consultant certifié Odoo 19</span></div>
+        <div class="exp-more"><div class="timeline-clients-label" data-i18n="experience.49">Projets pilotés</div><div class="timeline-clients-tags"><a class="tclient tclient-link" href="https://www.geofleetin.com/" rel="noopener" target="_blank">GeoFleet IN</a><span class="tclient">KGD Équipement</span><a class="tclient tclient-link" href="http://www.malimenage.com/" rel="noopener" target="_blank">Mali Ménage</a><a class="tclient tclient-link" href="https://www.team-wallace.com/" rel="noopener" target="_blank">Wallace</a></div><details class="tclients-more">
+<summary class="tclient-more" data-i18n="experience.54">+ 6 autres</summary>
 <div class="timeline-clients-tags"><span class="tclient">Barham Fish</span><a class="tclient tclient-link" href="http://ericfavrestore.sn/" rel="noopener" target="_blank">Distripro</a><span class="tclient">Lysa &amp; Co</span><span class="tclient">Référence Transit</span><span class="tclient">Diparco</span><span class="tclient">Blomar</span></div>
-</details><div class="tgroup-gap"></div><div class="timeline-clients-label">Projets accompagnés au sein de l’équipe</div><div class="timeline-clients-tags"><a class="tclient tclient-link" href="https://www.oryxenergies.com/" rel="noopener" target="_blank">Oryx Energies</a><a class="tclient tclient-link" href="https://ericfavre-invest.com/" rel="noopener" target="_blank">Eric Favre</a><a class="tclient tclient-link" href="http://globoafrique.com/" rel="noopener" target="_blank">Globo</a><a class="tclient tclient-link" href="http://www.rubiskenya.com/" rel="noopener" target="_blank">Rubis Energy Kenya</a></div><details class="tclients-more">
-<summary class="tclient-more">+ 13 autres</summary>
+</details><div class="tgroup-gap"></div><div class="timeline-clients-label" data-i18n="experience.61">Projets accompagnés au sein de l’équipe</div><div class="timeline-clients-tags"><a class="tclient tclient-link" href="https://www.oryxenergies.com/" rel="noopener" target="_blank">Oryx Energies</a><a class="tclient tclient-link" href="https://ericfavre-invest.com/" rel="noopener" target="_blank">Eric Favre</a><a class="tclient tclient-link" href="http://globoafrique.com/" rel="noopener" target="_blank">Globo</a><a class="tclient tclient-link" href="http://www.rubiskenya.com/" rel="noopener" target="_blank">Rubis Energy Kenya</a></div><details class="tclients-more">
+<summary class="tclient-more" data-i18n="experience.66">+ 13 autres</summary>
 <div class="timeline-clients-tags"><span class="tclient">Afric Azote</span><span class="tclient">Delta SA</span><span class="tclient">Agronat</span><a class="tclient tclient-link" href="http://www.csttaogroup.com/" rel="noopener" target="_blank">CSTTAO</a><a class="tclient tclient-link" href="https://transport-afrique-logistique.com/" rel="noopener" target="_blank">Transport Afrique Logistique</a><span class="tclient">La Ripaille</span><span class="tclient">Logifroid</span><a class="tclient tclient-link" href="http://www.tourdegrasse.com/" rel="noopener" target="_blank">Maison de Fragrance</a><a class="tclient tclient-link" href="http://www.mbolyama-immo.com/" rel="noopener" target="_blank">Mbolyama</a><span class="tclient">FB Avocat</span><a class="tclient tclient-link" href="https://www.afrikalarm.com/" rel="noopener" target="_blank">Afrikalarm</a><span class="tclient">Sit N Deep</span><span class="tclient">Multilog CI</span></div>
-</details><ul class="timeline-list" style="margin-top:.85rem;"><li>Responsable Support depuis avril 2025 (CDI)</li><li>Consultant junior ERP de janvier à avril 2025</li><li>Certifié Odoo 19 (Odoo S.A.)</li><li>Pilotage de projets de déploiement et formation des utilisateurs</li></ul></div>
+</details><ul class="timeline-list" style="margin-top:.85rem;"><li data-i18n="experience.80">Responsable Support depuis avril 2025 (CDI)</li><li data-i18n="experience.81">Consultant junior ERP de janvier à avril 2025</li><li data-i18n="experience.82">Certifié Odoo 19 (Odoo S.A.)</li><li data-i18n="experience.83">Pilotage de projets de déploiement et formation des utilisateurs</li></ul></div>
       </div>
 </div>
 <div class="timeline-item reveal" style="transition-delay:.1s;">
 <div class="timeline-dot"></div>
-<div class="timeline-date">2020 (ACTIVITÉS) · 2022 (CRÉATION) – 2025</div>
+<div class="timeline-date" data-i18n="experience.84">2020 (ACTIVITÉS) · 2022 (CRÉATION) – 2025</div>
 <div class="timeline-card">
         <div class="timeline-header">
 <a aria-label="Site web de Galsen Digital Agency (nouvel onglet)" class="timeline-avatar tl-link" href="https://gda.webikoo.pro/" rel="noopener" target="_blank"><img alt="" class="exp-logo-img" decoding="async" id="exp-logo-1" loading="lazy" src="images/site/logo-gda.webp"/><span class="exp-initials" style="display: none;">GDA</span></a>
 <div>
 <a class="timeline-company tl-link" href="https://gda.webikoo.pro/" rel="noopener" target="_blank">GALSEN DIGITAL AGENCY<svg aria-hidden="true" class="tl-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></svg></a>
-<div class="timeline-role" style="color:var(--blue2);">Cofondateur · Directeur général &amp; Responsable multimédia</div>
+<div class="timeline-role" style="color:var(--blue2);" data-i18n="experience.87">Cofondateur · Directeur général &amp; Responsable multimédia</div>
 </div>
 </div>
-        <p class="timeline-desc">J'ai co-fondé la GDA pour répondre aux besoins croissants des entreprises sénégalaises en matière de transformation digitale. L'agence a accompagné des organisations publiques et privées, dans la création de leur identité numérique, en Afrique de l'Ouest. J'y ai assuré la direction générale, la gestion administrative et la production multimédia.</p>
-        <div class="timeline-chips"><span class="chip">Direction générale</span><span class="chip">Direction créative</span><span class="chip">Gestion administrative</span></div>
-        <div class="exp-more"><div class="timeline-clients-label">Projets phares</div><div class="timeline-clients-tags"><span class="tclient">Diamant Noir Collection</span><span class="tclient">CFTS</span><span class="tclient">Mossane</span><span class="tclient">Sama Chef</span><span class="tclient">Bitik</span><span class="tclient">KEA Olivero Group</span></div></div>
+        <p class="timeline-desc" data-i18n="experience.88">J'ai co-fondé la GDA pour répondre aux besoins croissants des entreprises sénégalaises en matière de transformation digitale. L'agence a accompagné des organisations publiques et privées, dans la création de leur identité numérique, en Afrique de l'Ouest. J'y ai assuré la direction générale, la gestion administrative et la production multimédia.</p>
+        <div class="timeline-chips"><span class="chip" data-i18n="experience.89">Direction générale</span><span class="chip" data-i18n="experience.90">Direction créative</span><span class="chip" data-i18n="experience.91">Gestion administrative</span></div>
+        <div class="exp-more"><div class="timeline-clients-label" data-i18n="experience.92">Projets phares</div><div class="timeline-clients-tags"><span class="tclient">Diamant Noir Collection</span><span class="tclient">CFTS</span><span class="tclient">Mossane</span><span class="tclient">Sama Chef</span><span class="tclient">Bitik</span><span class="tclient">KEA Olivero Group</span></div></div>
       </div>
 </div>
 <div class="timeline-item reveal" style="transition-delay:.2s;">
 <div class="timeline-dot"></div>
-<div class="timeline-date">ENGAGEMENT ASSOCIATIF · JUIN 2026 – OCT. 2026</div>
+<div class="timeline-date" data-i18n="experience.99">ENGAGEMENT ASSOCIATIF · JUIN 2026 – OCT. 2026</div>
 <div class="timeline-card">
         <div class="timeline-header">
 <a aria-label="Site web de WASSOR (nouvel onglet)" class="timeline-avatar tl-link" href="https://wassor.org/" rel="noopener" target="_blank"><img alt="" class="exp-logo-img" decoding="async" loading="lazy" src="images/site/client-wassor-4392.webp"/></a>
@@ -1205,22 +1205,22 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 <div class="timeline-role">Community Engagement &amp; Project Manager</div>
 </div>
 </div>
-        <p class="timeline-desc">WASSOR est une organisation engagée dans l’accompagnement et l’autonomisation des jeunes et des femmes. À travers ses initiatives, l’association œuvre pour le développement personnel, le bien-être mental et l’épanouissement individuel.</p>
-        <div class="timeline-chips"><span class="chip">Engagement communautaire</span><span class="chip">Gestion de projet</span><span class="chip">Communication</span></div>
-        <div class="exp-more"><p class="timeline-desc">Elle met l’accent sur le potentiel humain, la confiance en soi et le développement des compétences, en créant des espaces d’expression, de partage et d’apprentissage.</p><p class="timeline-desc">À travers des programmes, des campagnes de sensibilisation et des projets communautaires, WASSOR cherche à encourager chacun à prendre conscience de son potentiel, à dépasser ses limites et à devenir acteur de son propre développement.</p></div>
+        <p class="timeline-desc" data-i18n="experience.102">WASSOR est une organisation engagée dans l’accompagnement et l’autonomisation des jeunes et des femmes. À travers ses initiatives, l’association œuvre pour le développement personnel, le bien-être mental et l’épanouissement individuel.</p>
+        <div class="timeline-chips"><span class="chip" data-i18n="experience.103">Engagement communautaire</span><span class="chip" data-i18n="experience.104">Gestion de projet</span><span class="chip">Communication</span></div>
+        <div class="exp-more"><p class="timeline-desc" data-i18n="experience.106">Elle met l’accent sur le potentiel humain, la confiance en soi et le développement des compétences, en créant des espaces d’expression, de partage et d’apprentissage.</p><p class="timeline-desc" data-i18n="experience.107">À travers des programmes, des campagnes de sensibilisation et des projets communautaires, WASSOR cherche à encourager chacun à prendre conscience de son potentiel, à dépasser ses limites et à devenir acteur de son propre développement.</p></div>
       </div>
 </div>
 </div>
 
-  <div class="exp-toggle-wrap"><button type="button" class="exp-toggle" aria-controls="exp-grid" aria-expanded="false"><span class="exp-toggle-label">Voir plus</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+  <div class="exp-toggle-wrap"><button type="button" class="exp-toggle" aria-controls="exp-grid" aria-expanded="false"><span class="exp-toggle-label" data-i18n="experience.108">Voir plus</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
 </section>
 
 <!-- ═══ PROJECTS ═══ -->
 <section id="projects" class="bg2">
   <div class="reveal center-head" style="margin-bottom:3rem;">
     <div class="section-label center">Portfolio</div>
-    <h2 class="section-title">Quelques réalisations</h2>
-    <p class="section-sub">Projets ERP chez Senedoo, puis réalisations de la période GDA.</p>
+    <h2 class="section-title" data-i18n="projects.110">Quelques réalisations</h2>
+    <p class="section-sub" data-i18n="projects.111">Projets ERP chez Senedoo, puis réalisations de la période GDA.</p>
   </div>
   <div class="proj-grid reveal" style="transition-delay:.08s;">
     <div class="proj-card">
@@ -1228,10 +1228,10 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
         <img loading="lazy" decoding="async" src="images/site/projet-oryx.webp" alt="Station-service Oryx Energies" onerror="this.parentElement.innerHTML='&lt;div class=\'proj-icon\'&gt;&lt;svg viewBox=\'0 0 24 24\'&gt;&lt;path d=\'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9\'/&gt;&lt;/svg&gt;&lt;/div&gt;'" style="display: block;">
       </div>
       <div class="proj-body">
-        <div class="proj-name">Déploiement Odoo · Oryx Energies</div>
-        <div class="proj-cat c-blue">Senedoo · Énergie &amp; Distribution</div>
-        <div class="proj-desc">Participation au déploiement ERP sur plusieurs stations-service en Afrique. Structuration des fichiers de migration lors d'une mission en Côte d'Ivoire pour deux stations pilotes. Support fonctionnel durant la phase de POC, accompagnement des utilisateurs et gestion du support à distance pour deux stations en Zambie.</div>
-        <div class="proj-tags"><span class="ptag">Project Management</span><span class="ptag">Data Migration</span><span class="ptag">Déploiement international</span><span class="ptag">User Support</span></div>
+        <div class="proj-name" data-i18n="projects.112">Déploiement Odoo · Oryx Energies</div>
+        <div class="proj-cat c-blue" data-i18n="projects.113">Senedoo · Énergie &amp; Distribution</div>
+        <div class="proj-desc" data-i18n="projects.114">Participation au déploiement ERP sur plusieurs stations-service en Afrique. Structuration des fichiers de migration lors d'une mission en Côte d'Ivoire pour deux stations pilotes. Support fonctionnel durant la phase de POC, accompagnement des utilisateurs et gestion du support à distance pour deux stations en Zambie.</div>
+        <div class="proj-tags"><span class="ptag">Project Management</span><span class="ptag">Data Migration</span><span class="ptag" data-i18n="projects.117">Déploiement international</span><span class="ptag">User Support</span></div>
       </div>
     </div>
     <div class="proj-card">
@@ -1239,22 +1239,22 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
         <img loading="lazy" decoding="async" src="images/site/projet-ericfavre.webp" alt="Boutique Eric Favre" onerror="this.parentElement.innerHTML='&lt;div class=\'proj-icon\'&gt;&lt;svg viewBox=\'0 0 24 24\'&gt;&lt;path d=\'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4\'/&gt;&lt;/svg&gt;&lt;/div&gt;'" style="display: block;">
       </div>
       <div class="proj-body">
-        <div class="proj-name">Support Odoo · Eric Favre</div>
-        <div class="proj-cat c-blue">Senedoo · Pharmaceutique &amp; Nutrition</div>
-        <div class="proj-desc">Support fonctionnel et technique Odoo pour le groupe Eric Favre dans le cadre de l'optimisation de ses processus métiers. Accompagnement des utilisateurs dans l'adoption de l'ERP, traitement et suivi des demandes d'assistance, résolution des incidents et formation des équipes.</div>
-        <div class="proj-tags"><span class="ptag">ERP Consulting</span><span class="ptag">Formation</span><span class="ptag">Problem Solving</span><span class="ptag">Process Optimization</span></div>
+        <div class="proj-name" data-i18n="projects.119">Support Odoo · Eric Favre</div>
+        <div class="proj-cat c-blue" data-i18n="projects.120">Senedoo · Pharmaceutique &amp; Nutrition</div>
+        <div class="proj-desc" data-i18n="projects.121">Support fonctionnel et technique Odoo pour le groupe Eric Favre dans le cadre de l'optimisation de ses processus métiers. Accompagnement des utilisateurs dans l'adoption de l'ERP, traitement et suivi des demandes d'assistance, résolution des incidents et formation des équipes.</div>
+        <div class="proj-tags"><span class="ptag">ERP Consulting</span><span class="ptag" data-i18n="projects.123">Formation</span><span class="ptag">Problem Solving</span><span class="ptag">Process Optimization</span></div>
       </div>
     </div>
-    <div class="proj-card"><div class="proj-top is-logo" style="background:#002f46"><img loading="lazy" decoding="async" src="images/site/projet-globo.webp" alt="Globo Afrique" style="display: block;"></div><div class="proj-body"><div class="proj-name">Support Globo Afrique</div><div class="proj-cat c-blue">Globo Afrique</div><div class="proj-desc">Participation au déploiement et à l’optimisation de la solution ERP Odoo afin d’améliorer la gestion des opérations internes, des projets et des processus administratifs de l’entreprise. Globo Afrique développe des solutions de géolocalisation, de gestion de flotte, de sécurité routière et des applications métiers pour de nombreux secteurs d’activité.</div><div class="proj-tags"><span class="ptag">IT</span><span class="ptag">géolocalisation</span><span class="ptag">gestion de flotte et solutions digitales</span></div></div></div>
+    <div class="proj-card"><div class="proj-top is-logo" style="background:#002f46"><img loading="lazy" decoding="async" src="images/site/projet-globo.webp" alt="Globo Afrique" style="display: block;"></div><div class="proj-body"><div class="proj-name" data-i18n="projects.126">Support Globo Afrique</div><div class="proj-cat c-blue">Globo Afrique</div><div class="proj-desc" data-i18n="projects.128">Participation au déploiement et à l’optimisation de la solution ERP Odoo afin d’améliorer la gestion des opérations internes, des projets et des processus administratifs de l’entreprise. Globo Afrique développe des solutions de géolocalisation, de gestion de flotte, de sécurité routière et des applications métiers pour de nombreux secteurs d’activité.</div><div class="proj-tags"><span class="ptag">IT</span><span class="ptag" data-i18n="projects.130">géolocalisation</span><span class="ptag" data-i18n="projects.131">gestion de flotte et solutions digitales</span></div></div></div>
     <div class="proj-card">
       <div class="proj-top">
         <img loading="lazy" decoding="async" src="images/site/projet-dnc.webp" alt="Villa Diamant Noir Collection" onerror="this.parentElement.innerHTML='&lt;div class=\'proj-icon\'&gt;&lt;svg viewBox=\'0 0 24 24\'&gt;&lt;path d=\'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z\'/&gt;&lt;/svg&gt;&lt;/div&gt;'" style="display: block;">
       </div>
       <div class="proj-body">
-        <div class="proj-name">Création de contenu · DNC</div>
-        <div class="proj-cat c-blue">Diamant Noir Collection · Hôtellerie Luxe</div>
-        <div class="proj-desc">Conception de contenus visuels et supports de communication destinés à renforcer l'image de marque. Réalisation de visuels promotionnels, shooting, accompagnement digital et participation aux actions de communication de l'entreprise.</div>
-        <div class="proj-tags"><span class="ptag">Création de contenu</span><span class="ptag">Hôtellerie Luxe</span><span class="ptag">Shooting</span></div>
+        <div class="proj-name" data-i18n="projects.132">Création de contenu · DNC</div>
+        <div class="proj-cat c-blue" data-i18n="projects.133">Diamant Noir Collection · Hôtellerie Luxe</div>
+        <div class="proj-desc" data-i18n="projects.134">Conception de contenus visuels et supports de communication destinés à renforcer l'image de marque. Réalisation de visuels promotionnels, shooting, accompagnement digital et participation aux actions de communication de l'entreprise.</div>
+        <div class="proj-tags"><span class="ptag" data-i18n="projects.135">Création de contenu</span><span class="ptag" data-i18n="projects.136">Hôtellerie Luxe</span><span class="ptag" data-i18n="projects.137">Shooting</span></div>
       </div>
     </div>
     <div class="proj-card">
@@ -1262,9 +1262,9 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
         <img loading="lazy" decoding="async" src="images/site/projet-cfts.webp" alt="Logo CFTS West Africa" onerror="this.parentElement.innerHTML='&lt;div class=\'proj-icon\'&gt;&lt;svg viewBox=\'0 0 24 24\'&gt;&lt;path d=\'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z\'/&gt;&lt;/svg&gt;&lt;/div&gt;'" style="display: block;">
       </div>
       <div class="proj-body">
-        <div class="proj-name">Infographie &amp; Rebranding · CFTS Africa</div>
-        <div class="proj-cat c-blue">CFTS · Afrique de l'Ouest</div>
-        <div class="proj-desc">Accompagnement de CFTS dans la modernisation de son image de marque à travers un travail de rebranding et la création de supports de communication professionnels.</div>
+        <div class="proj-name" data-i18n="projects.138">Infographie &amp; Rebranding · CFTS Africa</div>
+        <div class="proj-cat c-blue" data-i18n="projects.139">CFTS · Afrique de l'Ouest</div>
+        <div class="proj-desc" data-i18n="projects.140">Accompagnement de CFTS dans la modernisation de son image de marque à travers un travail de rebranding et la création de supports de communication professionnels.</div>
         <div class="proj-tags"><span class="ptag">Rebranding</span><span class="ptag">Graphic Design</span><span class="ptag">Visual Identity</span></div>
       </div>
     </div>
@@ -1273,9 +1273,9 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
         <img loading="lazy" decoding="async" src="images/site/projet-samachef.webp" alt="Événement Sama Chef" onerror="this.parentElement.innerHTML='&lt;div class=\'proj-icon\'&gt;&lt;svg viewBox=\'0 0 24 24\'&gt;&lt;path d=\'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z\'/&gt;&lt;/svg&gt;&lt;/div&gt;'" style="display: block;">
       </div>
       <div class="proj-body">
-        <div class="proj-name">Création de contenu · Sama Chef</div>
-        <div class="proj-cat c-orange">Formation cuisine de luxe · Sénégal</div>
-        <div class="proj-desc">Réalisation de shootings photo et vidéos promotionnelles pour mettre en valeur les formations, les infrastructures et l'expertise de Sama Chef. Création de contenus pour les campagnes de communication et de recrutement dans les métiers de la cuisine, de l'hôtellerie et de la restauration haut de gamme.</div>
+        <div class="proj-name" data-i18n="projects.144">Création de contenu · Sama Chef</div>
+        <div class="proj-cat c-orange" data-i18n="projects.145">Formation cuisine de luxe · Sénégal</div>
+        <div class="proj-desc" data-i18n="projects.146">Réalisation de shootings photo et vidéos promotionnelles pour mettre en valeur les formations, les infrastructures et l'expertise de Sama Chef. Création de contenus pour les campagnes de communication et de recrutement dans les métiers de la cuisine, de l'hôtellerie et de la restauration haut de gamme.</div>
         <div class="proj-tags"><span class="ptag">Design</span><span class="ptag">Videography</span><span class="ptag">Social Media Content</span></div>
       </div>
     </div>
@@ -1285,69 +1285,69 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 <!-- ═══ SKILLS ═══ -->
 <section id="skills">
   <div class="reveal center-head" style="margin-bottom:3rem;">
-    <div class="section-label center">Savoir-faire</div>
-    <h2 class="section-title">Mes compétences</h2>
-    <p class="section-sub">Une palette de compétences au croisement du digital, du design et de la gestion de projet.</p>
+    <div class="section-label center" data-i18n="skills.150">Savoir-faire</div>
+    <h2 class="section-title" data-i18n="skills.151">Mes compétences</h2>
+    <p class="section-sub" data-i18n="skills.152">Une palette de compétences au croisement du digital, du design et de la gestion de projet.</p>
   </div>
   <div class="skills-grid reveal" style="transition-delay:.08s;">
 
     <div class="skill-cat">
-      <div class="skill-cat-title">Systèmes &amp; ERP</div>
+      <div class="skill-cat-title" data-i18n="skills.153">Systèmes &amp; ERP</div>
       <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Déploiement ERP</span><span class="skill-pct">88%</span></div>
+        <div class="skill-row"><span class="skill-name" data-i18n="skills.154">Déploiement ERP</span><span class="skill-pct">88%</span></div>
         <div class="skill-bar"><div class="skill-fill" data-w="88" style="width:88%"></div></div>
       </div>
       <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Gestion de projet</span><span class="skill-pct">92%</span></div>
+        <div class="skill-row"><span class="skill-name" data-i18n="skills.155">Gestion de projet</span><span class="skill-pct">92%</span></div>
         <div class="skill-bar"><div class="skill-fill" data-w="92" style="width:92%"></div></div>
       </div>
       <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Support &amp; formation</span><span class="skill-pct">95%</span></div>
+        <div class="skill-row"><span class="skill-name" data-i18n="skills.156">Support &amp; formation</span><span class="skill-pct">95%</span></div>
         <div class="skill-bar"><div class="skill-fill" data-w="95" style="width:95%"></div></div>
       </div>
     </div>
 
     <div class="skill-cat">
-      <div class="skill-cat-title">IA &amp; Automatisation</div>
+      <div class="skill-cat-title" data-i18n="skills.157">IA &amp; Automatisation</div>
       <div class="skill-item">
         <div class="skill-row"><span class="skill-name">No-code / Low-code</span><span class="skill-pct">85%</span></div>
         <div class="skill-bar"><div class="skill-fill" data-w="85" style="width:85%"></div></div>
       </div>
       <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Automatisation des flux</span><span class="skill-pct">82%</span></div>
+        <div class="skill-row"><span class="skill-name" data-i18n="skills.159">Automatisation des flux</span><span class="skill-pct">82%</span></div>
         <div class="skill-bar"><div class="skill-fill" data-w="82" style="width:82%"></div></div>
       </div>
       <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Outils IA appliqués</span><span class="skill-pct">78%</span></div>
+        <div class="skill-row"><span class="skill-name" data-i18n="skills.160">Outils IA appliqués</span><span class="skill-pct">78%</span></div>
         <div class="skill-bar"><div class="skill-fill" data-w="78" style="width:78%"></div></div>
       </div>
     </div>
 
     <div class="skill-cat">
-      <div class="skill-cat-title">Design &amp; Création</div>
+      <div class="skill-cat-title" data-i18n="skills.161">Design &amp; Création</div>
       <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Canva (certifié)</span><span class="skill-pct">96%</span></div>
+        <div class="skill-row"><span class="skill-name" data-i18n="skills.162">Canva (certifié)</span><span class="skill-pct">96%</span></div>
         <div class="skill-bar"><div class="skill-fill" data-w="96" style="width:96%"></div></div>
       </div>
       <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Identité visuelle</span><span class="skill-pct">88%</span></div>
+        <div class="skill-row"><span class="skill-name" data-i18n="skills.163">Identité visuelle</span><span class="skill-pct">88%</span></div>
         <div class="skill-bar"><div class="skill-fill" data-w="88" style="width:88%"></div></div>
       </div>
       <div class="skill-item">
-        <div class="skill-row"><span class="skill-name">Communication digitale</span><span class="skill-pct">90%</span></div>
+        <div class="skill-row"><span class="skill-name" data-i18n="skills.164">Communication digitale</span><span class="skill-pct">90%</span></div>
         <div class="skill-bar"><div class="skill-fill" data-w="90" style="width:90%"></div></div>
       </div>
     </div>
 
-  <div class="skill-cat"><div class="skill-cat-title"><div class="skill-cat-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>Relationnel &amp; Leadership</div><div class="skill-items"><div class="skill-item"><div class="skill-row"><span class="skill-name">Relation client</span><span class="skill-pct">92%</span></div><div class="skill-bar"><div class="skill-fill" data-w="92" style="width:92%"></div></div></div><div class="skill-item"><div class="skill-row"><span class="skill-name">Leadership d'équipe</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-w="88" style="width:88%"></div></div></div><div class="skill-item"><div class="skill-row"><span class="skill-name">Écoute active</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-w="90" style="width:90%"></div></div></div></div></div></div>
+  <div class="skill-cat"><div class="skill-cat-title"><div class="skill-cat-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><span data-i18n="skills.165">Relationnel &amp; Leadership</span></div><div class="skill-items"><div class="skill-item"><div class="skill-row"><span class="skill-name" data-i18n="skills.166">Relation client</span><span class="skill-pct">92%</span></div><div class="skill-bar"><div class="skill-fill" data-w="92" style="width:92%"></div></div></div><div class="skill-item"><div class="skill-row"><span class="skill-name" data-i18n="skills.167">Leadership d'équipe</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-w="88" style="width:88%"></div></div></div><div class="skill-item"><div class="skill-row"><span class="skill-name" data-i18n="skills.168">Écoute active</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-w="90" style="width:90%"></div></div></div></div></div></div>
 </section>
 
 <!-- ═══ EDUCATION ═══ -->
 <section id="education" class="bg2">
   <div class="reveal center-head" style="margin-bottom:3rem;">
-    <div class="section-label center">Formation</div>
-    <h2 class="section-title">Études &amp; certifications</h2>
-    <p class="section-sub">Un parcours académique solide, renforcé par des certifications terrain.</p>
+    <div class="section-label center" data-i18n="education.169">Formation</div>
+    <h2 class="section-title" data-i18n="education.170">Études &amp; certifications</h2>
+    <p class="section-sub" data-i18n="education.171">Un parcours académique solide, renforcé par des certifications terrain.</p>
   </div>
   <div class="edu-cols reveal" style="transition-delay:.08s;">
 
@@ -1355,32 +1355,32 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
     <div>
       <div class="edu-col-title">
         <svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
-        Parcours académique
+        <span data-i18n="education.172">Parcours académique</span>
       </div>
       <div class="edu-timeline">
         <div class="edu-timeline-item">
-          <span class="edu-tl-badge">MASTER 2 · CURSUS 2024–2025</span>
+          <span class="edu-tl-badge" data-i18n="education.173">MASTER 2 · CURSUS 2024–2025</span>
           <h3>Digital Business</h3>
           <div class="edu-school">BEM · Bordeaux École de Management</div>
-          <p>Transformation digitale, stratégie numérique, entrepreneuriat</p>
+          <p data-i18n="education.176">Transformation digitale, stratégie numérique, entrepreneuriat</p>
         </div>
         <div class="edu-timeline-item">
-          <span class="edu-tl-badge">MASTER 1 - 2024</span>
-          <h3>Administration et Gestion des Entreprises</h3>
+          <span class="edu-tl-badge" data-i18n="education.177">MASTER 1 - 2024</span>
+          <h3 data-i18n="education.178">Administration et Gestion des Entreprises</h3>
           <div class="edu-school">BEM · Bordeaux École de Management</div>
-          <p>Management, finance, ressources humaines</p>
+          <p data-i18n="education.180">Management, finance, ressources humaines</p>
         </div>
         <div class="edu-timeline-item">
-          <span class="edu-tl-badge">LICENCE - 2024</span>
-          <h3>Gestion et Comptabilité</h3>
+          <span class="edu-tl-badge" data-i18n="education.181">LICENCE - 2024</span>
+          <h3 data-i18n="education.182">Gestion et Comptabilité</h3>
           <div class="edu-school">École Supérieure Polytechnique (ESP)</div>
-          <p>Comptabilité, gestion financière, droit des affaires</p>
+          <p data-i18n="education.184">Comptabilité, gestion financière, droit des affaires</p>
         </div>
         <div class="edu-timeline-item">
           <span class="edu-tl-badge purple">INTERNATIONAL</span>
-          <h3>Force de vente du Futur</h3>
+          <h3 data-i18n="education.186">Force de vente du Futur</h3>
           <div class="edu-school">Agripro Africa · AGCO Academy · Tractafric Douala</div>
-          <p>Mécanisation agricole, gestion de flotte, distribution</p>
+          <p data-i18n="education.188">Mécanisation agricole, gestion de flotte, distribution</p>
         </div>
       </div>
     </div>
@@ -1393,13 +1393,13 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
       </div>
       <div class="cert-grid">
         <div class="cert-card">
-          <span class="cert-badge canva">CANVA CERTIFIÉ</span>
+          <span class="cert-badge canva" data-i18n="education.190">CANVA CERTIFIÉ</span>
           <h3>Design Expert</h3>
           <div class="cert-org">Canva Design School</div>
           <div class="cert-year">2024</div>
         </div>
         <div class="cert-card">
-          <span class="cert-badge canva">CANVA CERTIFIÉ</span>
+          <span class="cert-badge canva" data-i18n="education.193">CANVA CERTIFIÉ</span>
           <h3>Canva for Business</h3>
           <div class="cert-org">Canva</div>
           <div class="cert-year">2024</div>
@@ -1407,7 +1407,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
         
         
         <div class="cert-card">
-          <span class="cert-badge">ODOO CERTIFIÉ</span>
+          <span class="cert-badge" data-i18n="education.196">ODOO CERTIFIÉ</span>
           <h3>Odoo 19 Functional Certification</h3>
           <div class="cert-org">Odoo S.A.</div>
           <div class="cert-year">2026</div>
@@ -1422,34 +1422,34 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 <!-- ═══ PERSONALITY ═══ -->
 <section id="personality">
   <div class="reveal center-head" style="margin-bottom:3rem;">
-    <div class="section-label center">Qui je suis</div>
-    <h2 class="section-title">Au-delà du professionnel</h2>
-    <p class="section-sub">Ce qui m'anime en dehors du travail nourrit aussi ma façon d'aborder chaque projet.</p>
+    <div class="section-label center" data-i18n="personality.199">Qui je suis</div>
+    <h2 class="section-title" data-i18n="personality.200">Au-delà du professionnel</h2>
+    <p class="section-sub" data-i18n="personality.201">Ce qui m'anime en dehors du travail nourrit aussi ma façon d'aborder chaque projet.</p>
   </div>
   <div class="interests-grid reveal" style="transition-delay:.08s;">
     <div class="interest-card">
       <div class="interest-icon interest-banner"><img loading="lazy" decoding="async" class="int-img" alt="" src="images/site/interet-basketball.webp"></div><div class="interest-body"><h3>Basketball</h3>
-      <p>L’esprit d’équipe et le goût de la compétition.</p></div>
+      <p data-i18n="personality.203">L’esprit d’équipe et le goût de la compétition.</p></div>
     </div>
     <div class="interest-card">
-      <div class="interest-icon interest-banner"><img loading="lazy" decoding="async" class="int-img" alt="" src="images/site/interet-nature.webp"></div><div class="interest-body"><h3>Nature</h3>
-      <p>Me ressourcer et trouver l’inspiration au grand air.</p></div>
+      <div class="interest-icon interest-banner"><img loading="lazy" decoding="async" class="int-img" alt="" src="images/site/interet-nature.webp"></div><div class="interest-body"><h3 data-i18n="personality.204">Nature</h3>
+      <p data-i18n="personality.205">Me ressourcer et trouver l’inspiration au grand air.</p></div>
     </div>
     <div class="interest-card">
-      <div class="interest-icon interest-banner"><img loading="lazy" decoding="async" class="int-img" alt="" src="images/site/interet-animaux.webp"></div><div class="interest-body"><h3>Animaux</h3>
-      <p>Un regard curieux et attentif sur le monde vivant.</p></div>
+      <div class="interest-icon interest-banner"><img loading="lazy" decoding="async" class="int-img" alt="" src="images/site/interet-animaux.webp"></div><div class="interest-body"><h3 data-i18n="personality.206">Animaux</h3>
+      <p data-i18n="personality.207">Un regard curieux et attentif sur le monde vivant.</p></div>
     </div>
     <div class="interest-card">
-      <div class="interest-icon interest-banner"><img loading="lazy" decoding="async" class="int-img" alt="" src="images/site/interet-psychologie.webp"></div><div class="interest-body"><h3>Psychologie</h3>
-      <p>Comprendre les gens pour mieux travailler ensemble.</p></div>
+      <div class="interest-icon interest-banner"><img loading="lazy" decoding="async" class="int-img" alt="" src="images/site/interet-psychologie.webp"></div><div class="interest-body"><h3 data-i18n="personality.208">Psychologie</h3>
+      <p data-i18n="personality.209">Comprendre les gens pour mieux travailler ensemble.</p></div>
     </div>
     <div class="interest-card">
-      <div class="interest-icon interest-banner"><img loading="lazy" decoding="async" class="int-img" alt="" src="images/site/interet-culture.webp"></div><div class="interest-body"><h3>Culture &amp; animation</h3>
-      <p>Découvrir des cultures et des récits qui inspirent.</p></div>
+      <div class="interest-icon interest-banner"><img loading="lazy" decoding="async" class="int-img" alt="" src="images/site/interet-culture.webp"></div><div class="interest-body"><h3 data-i18n="personality.210">Culture &amp; animation</h3>
+      <p data-i18n="personality.211">Découvrir des cultures et des récits qui inspirent.</p></div>
     </div>
     <div class="interest-card">
-      <div class="interest-icon interest-banner"><img loading="lazy" decoding="async" class="int-img" alt="" src="images/site/interet-videographie.webp"></div><div class="interest-body"><h3>Vidéographie</h3>
-      <p>Cinéma et montage : raconter une histoire en images.</p></div>
+      <div class="interest-icon interest-banner"><img loading="lazy" decoding="async" class="int-img" alt="" src="images/site/interet-videographie.webp"></div><div class="interest-body"><h3 data-i18n="personality.212">Vidéographie</h3>
+      <p data-i18n="personality.213">Cinéma et montage : raconter une histoire en images.</p></div>
     </div>
   </div>
 </section>
@@ -1458,27 +1458,27 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 <section id="languages" class="bg2">
   <div class="reveal center-head" style="margin-bottom:2.5rem;">
     <div class="section-label center">Communication</div>
-    <h2 class="section-title">Langues parlées</h2>
-    <p class="section-sub">Je travaille et communique dans trois langues au quotidien.</p>
+    <h2 class="section-title" data-i18n="languages.215">Langues parlées</h2>
+    <p class="section-sub" data-i18n="languages.216">Je travaille et communique dans trois langues au quotidien.</p>
   </div>
   <div class="lang-grid reveal" style="transition-delay:.08s;">
     <div class="lang-card">
       <span class="lang-flag">🇫🇷</span>
-      <div class="lang-name">Français</div>
+      <div class="lang-name" data-i18n="languages.217">Français</div>
       <div class="lang-bar-track"><div class="lang-bar-fill" data-w="94" style="width:94%"></div></div>
-      <div class="lang-level">Langue principale · Courant professionnel</div>
+      <div class="lang-level" data-i18n="languages.218">Langue principale · Courant professionnel</div>
     </div>
     <div class="lang-card">
       <span class="lang-flag">🇬🇧</span>
-      <div class="lang-name">Anglais</div>
+      <div class="lang-name" data-i18n="languages.219">Anglais</div>
       <div class="lang-bar-track"><div class="lang-bar-fill" data-w="78" style="width:78%"></div></div>
-      <div class="lang-level">Professionnel · Courant</div>
+      <div class="lang-level" data-i18n="languages.220">Professionnel · Courant</div>
     </div>
     <div class="lang-card">
       <span class="lang-flag">🇸🇳</span>
       <div class="lang-name">Wolof</div>
       <div class="lang-bar-track"><div class="lang-bar-fill" data-w="92" style="width:92%"></div></div>
-      <div class="lang-level">Langue maternelle · Natif</div>
+      <div class="lang-level" data-i18n="languages.222">Langue maternelle · Natif</div>
     </div>
   </div>
 </section>
@@ -1487,17 +1487,17 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 <section id="contact">
   <div class="reveal center-head" style="margin-bottom:3rem;">
     <div class="section-label center">Contact</div>
-    <h2 class="section-title">Travaillons ensemble</h2>
-    <p class="section-sub">Un projet, une idée, une collaboration ? Je suis disponible pour échanger.</p>
+    <h2 class="section-title" data-i18n="contact.224">Travaillons ensemble</h2>
+    <p class="section-sub" data-i18n="contact.225">Un projet, une idée, une collaboration ? Je suis disponible pour échanger.</p>
   </div>
   <div class="cv-banner reveal">
     <div class="cv-banner-text">
-      <h3>Télécharger mon CV</h3>
-      <p>Retrouvez l'ensemble de mon parcours et mes compétences en détail.</p>
+      <h3 data-i18n="contact.226">Télécharger mon CV</h3>
+      <p data-i18n="contact.227">Retrouvez l'ensemble de mon parcours et mes compétences en détail.</p>
     </div>
     <a href="https://drive.google.com/file/d/1wpzvU5Fold58OguNdtFklxy_-E3twDQT/view?usp=drive_link" class="btn-primary" target="_blank" rel="noopener" onclick="track('cv_download')">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-      Télécharger le CV
+      <span data-i18n="contact.228">Télécharger le CV</span>
     </a>
   </div>
   <div class="contact-grid reveal" style="transition-delay:.08s;">
@@ -1517,15 +1517,15 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
     </div>
     <form class="contact-form" onsubmit="handleForm(event)">
       <div class="form-row">
-        <input type="text" name="name" placeholder="Votre nom" aria-label="Votre nom" autocomplete="name" required="">
-        <input type="email" name="email" placeholder="Votre email" aria-label="Votre email" autocomplete="email" required="">
+        <input type="text" name="name" placeholder="Votre nom" aria-label="Votre nom" autocomplete="name" required="" data-i18n-ph="ph.name">
+        <input type="email" name="email" placeholder="Votre email" aria-label="Votre email" autocomplete="email" required="" data-i18n-ph="ph.email">
       </div>
-      <input type="text" name="subject" placeholder="Sujet" aria-label="Sujet">
-      <textarea name="message" placeholder="Votre message..." aria-label="Votre message" required=""></textarea>
+      <input type="text" name="subject" placeholder="Sujet" aria-label="Sujet" data-i18n-ph="ph.subject">
+      <textarea name="message" placeholder="Votre message..." aria-label="Votre message" required="" data-i18n-ph="ph.message"></textarea>
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
       <button type="submit" class="btn-primary" style="align-self:flex-start;" >
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
-        Envoyer le message
+        <span data-i18n="contact.232">Envoyer le message</span>
       </button>
       <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
     </form>
@@ -1535,7 +1535,7 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <span class="footer-logo">Alpha.</span>
-  <p>© 2026 Alpha Ndiaye. Tous droits réservés.</p>
+  <p data-i18n="footer.234">© 2026 Alpha Ndiaye. Tous droits réservés.</p>
   <div class="footer-links">
     <a href="https://www.linkedin.com/in/alphandiaye" target="_blank" rel="noopener" class="footer-link" title="LinkedIn" aria-label="LinkedIn" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
@@ -1564,7 +1564,158 @@ nav.scrolled{backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:b
  "stat.projects": "Projects delivered",
  "stat.countries": "Countries",
  "stat.years": "Years of experience",
- "scroll": "Explore"
+ "scroll": "Explore",
+ "hero.11": "<span class=\"dot-live\"></span>\n      Dakar, Senegal · Available",
+ "hero.12": "I turn ideas",
+ "hero.13": "into systems that work",
+ "hero.14": "Odoo 19 certified consultant and Head of Support at Senedoo. Six years of experience spanning digital entrepreneurship, as co-founder of Galsen Digital Agency, and ERP projects delivered across West Africa and beyond.",
+ "hero.16": "Odoo ERP Consultant · Digital transformation",
+ "about.17": "About",
+ "about.18": "Expertise built in the field, <span style=\"color:var(--blue)\">across West Africa</span>",
+ "about.19": "I’m Alpha Ndiaye, a digital transformation consultant based in Dakar. For six years, I have been helping companies with their digital transition, from building visual identities to deploying complex ERP systems.",
+ "about.20": "After co-founding and running Galsen Digital Agency, I am now Head of Support at Senedoo, an official Odoo partner. This path has given me a dual skill set: understanding business challenges and mastering the digital tools that serve them.",
+ "about.21": "What sets me apart is my ability to connect strategic vision with operational execution, without losing sight of the people at the heart of every project.",
+ "about.22": "Digital transformation",
+ "about.23": "ERP projects",
+ "about.25": "Automation",
+ "about.26": "Graphic design",
+ "about.27": "Project management",
+ "about.28": "Customer support",
+ "about.29": "My projects",
+ "about.30": "Odoo ERP Consultant",
+ "about.31": "As an Odoo V19 certified consultant, I help SMEs and large companies analyse, implement, migrate and optimise their ERP. My goal is lasting adoption and efficient processes.",
+ "about.32": "Project management",
+ "about.33": "I lead digital transformation projects from needs analysis to go-live. I coordinate teams, keep deadlines under control, anticipate risks and ensure rigorous follow-up so that every project succeeds.",
+ "about.34": "Innovation &amp; Automation",
+ "about.35": "I bring artificial intelligence and automation into business processes to simplify them, boost productivity and cut repetitive tasks. Every solution is designed to create lasting, measurable value.",
+ "about.36": "Client relations",
+ "about.37": "As Head of Support and Project Manager, I help companies succeed with their projects. I provide close follow-up, coordinate teams and foster clear communication to reach the agreed objectives.",
+ "experience.38": "Career",
+ "experience.39": "My experience",
+ "experience.40": "Six years between digital creation and ERP deployments in West Africa.",
+ "experience.41": "JAN. 2025 – PRESENT",
+ "experience.44": "Head of Support <span style=\"opacity:.7;font-weight:500;\">· since April 2025</span>",
+ "experience.45": "I oversee customer support and the guidance of Senedoo’s partner companies as they adopt their digital solutions. My role covers day-to-day support operations and the management of key account relationships.",
+ "experience.46": "Head of customer support",
+ "experience.47": "Project manager",
+ "experience.48": "Odoo 19 certified consultant",
+ "experience.49": "Projects I led",
+ "experience.54": "+ 6 more",
+ "experience.61": "Projects supported as part of the team",
+ "experience.66": "+ 13 more",
+ "experience.80": "Head of Support since April 2025 (permanent contract)",
+ "experience.81": "Junior ERP consultant from January to April 2025",
+ "experience.82": "Odoo 19 certified (Odoo S.A.)",
+ "experience.83": "Leading deployment projects and training users",
+ "experience.84": "2020 (ACTIVITIES) · 2022 (FOUNDED) – 2025",
+ "experience.87": "Co-founder · Managing Director &amp; Head of Multimedia",
+ "experience.88": "I co-founded GDA to meet Senegalese companies’ growing need for digital transformation. The agency helped public and private organisations across West Africa build their digital identity. I was in charge of general management, administration and multimedia production.",
+ "experience.89": "General management",
+ "experience.90": "Creative direction",
+ "experience.91": "Administration",
+ "experience.92": "Key projects",
+ "experience.99": "NON-PROFIT · JUNE 2026 – OCT. 2026",
+ "experience.102": "WASSOR is an organisation dedicated to supporting and empowering young people and women. Through its initiatives, the association works for personal development, mental well-being and individual fulfilment.",
+ "experience.103": "Community engagement",
+ "experience.104": "Project management",
+ "experience.106": "It focuses on human potential, self-confidence and skills development, by creating spaces for expression, sharing and learning.",
+ "experience.107": "Through programmes, awareness campaigns and community projects, WASSOR encourages everyone to recognise their potential, push past their limits and take charge of their own development.",
+ "experience.108": "See more",
+ "projects.110": "Selected projects",
+ "projects.111": "ERP projects at Senedoo, followed by work from the GDA years.",
+ "projects.112": "Odoo deployment · Oryx Energies",
+ "projects.113": "Senedoo · Energy &amp; Distribution",
+ "projects.114": "Took part in the ERP rollout across several service stations in Africa. Structured the migration files during an assignment in Côte d’Ivoire for two pilot stations. Provided functional support during the POC phase, user guidance and remote support for two stations in Zambia.",
+ "projects.117": "International rollout",
+ "projects.119": "Odoo support · Eric Favre",
+ "projects.120": "Senedoo · Pharmaceuticals &amp; Nutrition",
+ "projects.121": "Functional and technical Odoo support for the Eric Favre group as it optimised its business processes. Helped users adopt the ERP, handled and followed up support requests, resolved incidents and trained teams.",
+ "projects.123": "Training",
+ "projects.126": "Globo Afrique support",
+ "projects.128": "Took part in deploying and optimising the Odoo ERP to improve the management of internal operations, projects and administrative processes. Globo Afrique builds geolocation, fleet management and road safety solutions, as well as business applications for many industries.",
+ "projects.130": "geolocation",
+ "projects.131": "fleet management and digital solutions",
+ "projects.132": "Content creation · DNC",
+ "projects.133": "Diamant Noir Collection · Luxury hospitality",
+ "projects.134": "Designed visual content and communication materials to strengthen the brand image. Produced promotional visuals and photo shoots, provided digital support and took part in the company’s communication campaigns.",
+ "projects.135": "Content creation",
+ "projects.136": "Luxury hospitality",
+ "projects.137": "Photo shoot",
+ "projects.138": "Graphic design &amp; Rebranding · CFTS Africa",
+ "projects.139": "CFTS · West Africa",
+ "projects.140": "Helped CFTS modernise its brand image through a rebranding project and the creation of professional communication materials.",
+ "projects.144": "Content creation · Sama Chef",
+ "projects.145": "Luxury culinary training · Senegal",
+ "projects.146": "Produced photo shoots and promotional videos showcasing Sama Chef’s training programmes, facilities and expertise. Created content for communication and recruitment campaigns in high-end cooking, hospitality and catering.",
+ "skills.150": "Know-how",
+ "skills.151": "My skills",
+ "skills.152": "A set of skills at the crossroads of digital, design and project management.",
+ "skills.153": "Systems &amp; ERP",
+ "skills.154": "ERP deployment",
+ "skills.155": "Project management",
+ "skills.156": "Support &amp; training",
+ "skills.157": "AI &amp; Automation",
+ "skills.159": "Workflow automation",
+ "skills.160": "Applied AI tools",
+ "skills.161": "Design &amp; Creation",
+ "skills.162": "Canva (certified)",
+ "skills.163": "Visual identity",
+ "skills.164": "Digital communication",
+ "skills.165": "Interpersonal skills & Leadership",
+ "skills.166": "Client relations",
+ "skills.167": "Team leadership",
+ "skills.168": "Active listening",
+ "education.169": "Education",
+ "education.170": "Education &amp; certifications",
+ "education.171": "A solid academic background, strengthened by hands-on certifications.",
+ "education.172": "Academic background",
+ "education.173": "MASTER’S DEGREE (YEAR 2) · 2024–2025",
+ "education.176": "Digital transformation, digital strategy, entrepreneurship",
+ "education.177": "MASTER’S DEGREE (YEAR 1) - 2024",
+ "education.178": "Business Administration and Management",
+ "education.180": "Management, finance, human resources",
+ "education.181": "BACHELOR’S DEGREE - 2024",
+ "education.182": "Management and Accounting",
+ "education.184": "Accounting, financial management, business law",
+ "education.186": "Sales Force of the Future",
+ "education.188": "Agricultural mechanisation, fleet management, distribution",
+ "education.190": "CANVA CERTIFIED",
+ "education.193": "CANVA CERTIFIED",
+ "education.196": "ODOO CERTIFIED",
+ "personality.199": "Who I am",
+ "personality.200": "Beyond work",
+ "personality.201": "What drives me outside of work also shapes the way I approach every project.",
+ "personality.203": "Team spirit and a taste for competition.",
+ "personality.204": "Nature",
+ "personality.205": "Recharging and finding inspiration outdoors.",
+ "personality.206": "Animals",
+ "personality.207": "A curious, attentive eye on the living world.",
+ "personality.208": "Psychology",
+ "personality.209": "Understanding people to work better together.",
+ "personality.210": "Culture &amp; animation",
+ "personality.211": "Discovering cultures and stories that inspire.",
+ "personality.212": "Videography",
+ "personality.213": "Film and editing: telling a story through images.",
+ "languages.215": "Languages",
+ "languages.216": "I work and communicate in three languages every day.",
+ "languages.217": "French",
+ "languages.218": "Main language · Professional fluency",
+ "languages.219": "English",
+ "languages.220": "Professional · Fluent",
+ "languages.222": "Mother tongue · Native",
+ "contact.224": "Let’s work together",
+ "contact.225": "A project, an idea, a collaboration? I’m happy to talk.",
+ "contact.226": "Download my CV",
+ "contact.227": "Find my full background and skills in detail.",
+ "contact.228": "Download CV",
+ "contact.232": "Send message",
+ "footer.234": "© 2026 Alpha Ndiaye. All rights reserved.",
+ "ph.name": "Your name",
+ "ph.email": "Your email",
+ "ph.subject": "Subject",
+ "ph.message": "Your message...",
+ "meta.title": "Alpha Ndiaye · Odoo ERP Consultant & Digital Transformation | Dakar",
+ "meta.desc": "Odoo 19 certified digital transformation consultant and Head of Support at Senedoo in Dakar. ERP deployment, project management and process optimisation across West Africa."
 }
 </script>
 <script>
@@ -1585,13 +1736,17 @@ initTheme();
 /* ═══ LANGUAGE ═══ */
 /* Traductions : le texte français est celui de la page ; l'anglais est dans le bloc #i18n-en (modifiable dans l'admin) */
 let I18N_EN={};try{I18N_EN=JSON.parse(document.getElementById('i18n-en').textContent);}catch(e){}
-const I18N_FR={};document.querySelectorAll('[data-i18n]').forEach(el=>I18N_FR[el.dataset.i18n]=el.textContent);
+const I18N_FR={};document.querySelectorAll('[data-i18n]').forEach(el=>{if(!(el.dataset.i18n in I18N_FR))I18N_FR[el.dataset.i18n]=el.innerHTML;});
+document.querySelectorAll('[data-i18n-ph]').forEach(el=>I18N_FR[el.dataset.i18nPh]=el.placeholder);
+I18N_FR['meta.title']=document.title;{const m=document.querySelector('meta[name=description]');if(m)I18N_FR['meta.desc']=m.content;}
 function setLang(lang){
   document.querySelectorAll('.lang-btn[data-lang]').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
   document.documentElement.lang=lang;
   try{localStorage.setItem('lang',lang);}catch(e){}
   const d=lang==='en'?I18N_EN:I18N_FR;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(d[k])el.textContent=d[k];});
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(d[k])el.innerHTML=d[k];});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.dataset.i18nPh;if(d[k])el.placeholder=d[k];});
+  if(d['meta.title'])document.title=d['meta.title'];{const m=document.querySelector('meta[name=description]');if(m&&d['meta.desc'])m.content=d['meta.desc'];}
 }
 (function(){let l='fr';try{l=localStorage.getItem('lang')||'fr';}catch(e){}setLang(l);})();
 
@@ -1669,7 +1824,7 @@ function toggleTheme(){
     const solved=Math.floor(n*(f/total));
     let out='';for(let k=0;k<n;k++){const c=final[k];out+=(k<solved||c===' ')?c:chars[(Math.random()*chars.length)|0];}
     el.textContent=out;f++;
-    if(f<=total)setTimeout(()=>requestAnimationFrame(step),28);else el.textContent=final;
+    if(f<=total)setTimeout(()=>requestAnimationFrame(step),28);else{const k=el.dataset.i18n,d=document.documentElement.lang==='en'?I18N_EN:I18N_FR;el.textContent=(k&&d[k])||final;}
   })();
 })();
 
@@ -1759,17 +1914,18 @@ async function handleForm(e){
   if(data._honey)return;
   data._subject='Site alphandiaye.online : '+(data.subject||'Nouveau message');
   data._template='table';
-  btn.disabled=true;btn.textContent='Envoi…';status.className='form-status';status.style.display='none';
+  const EN=document.documentElement.lang==='en';
+  btn.disabled=true;btn.textContent=EN?'Sending…':'Envoi…';status.className='form-status';status.style.display='none';
   try{
     const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
     const j=await r.json().catch(()=>({}));
     if(!r.ok||String(j.success)==='false')throw new Error(j.message||r.status);
     track('form_submit');
-    status.textContent='Message envoyé, merci ! Je vous réponds rapidement.';
+    status.textContent=EN?'Message sent, thank you! I’ll get back to you shortly.':'Message envoyé, merci ! Je vous réponds rapidement.';
     form.reset();
   }catch(err){
     status.className='form-status err';
-    status.innerHTML='L’envoi a échoué. Écrivez-moi directement à <a href="mailto:alphandiayepro@gmail.com">alphandiayepro@gmail.com</a>.';
+    status.innerHTML=(EN?'Sending failed. Email me directly at ':'L’envoi a échoué. Écrivez-moi directement à ')+'<a href="mailto:alphandiayepro@gmail.com">alphandiayepro@gmail.com</a>.';
   }
   status.style.display='block';btn.disabled=false;btn.innerHTML=label;
 }
