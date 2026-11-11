@@ -232,6 +232,7 @@ h1.hero-title .ht-line{display:block;}
 .about-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(2rem,5vw,4.5rem);align-items:start;}
 .about-left .section-title{margin-bottom:1.4rem;}
 .about-text p{color:var(--sub);font-size:1.04rem;line-height:1.7;margin-bottom:1rem;max-width:60ch;text-wrap:pretty;}
+@media(min-width:901px){.about-text p{text-align:justify;text-justify:inter-word;}}
 .about-text p:first-child{color:var(--text);font-size:1.14rem;}
 .about-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.5rem;}
 .about-tag,.chip,.ptag{font-size:.85rem;font-weight:500;color:var(--sub);background:transparent;border:1px solid var(--border);padding:.3rem .7rem;border-radius:50px;line-height:1.3;}
@@ -246,7 +247,17 @@ h1.hero-title .ht-line{display:block;}
 .about-card p{font-size:.94rem;color:var(--sub);line-height:1.6;}
 
 /* ═══ EXPÉRIENCE ═══ */
-.timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;align-items:stretch;}
+/* Senedoo en grande carte à gauche, GDA et WASSOR empilées à droite */
+.timeline{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:1.25rem 1.5rem;align-items:stretch;}
+.timeline>.timeline-item:first-child{grid-row:span 2;}
+.timeline>.timeline-item:first-child .timeline-company{font-size:1.3rem;}
+.timeline>.timeline-item:first-child .timeline-desc{font-size:1.02rem;}
+/* Grand écran : la carte Senedoo a la place d'afficher ses clients d'emblée */
+@media(min-width:1101px){
+  .js .timeline.is-compact>.timeline-item:first-child .exp-more{height:auto;visibility:visible;margin-top:1.1rem;padding-top:1.1rem;border-top-color:var(--border);}
+  .js .timeline.is-compact>.timeline-item:first-child .timeline-card>.timeline-desc{display:block;-webkit-line-clamp:unset;overflow:visible;}
+  .timeline>.timeline-item:first-child .timeline-chips{margin-top:0;}
+}
 .timeline:not(.is-compact){align-items:start;}
 .timeline-item{display:flex;flex-direction:column;min-width:0;}
 .timeline-dot{display:none;}
@@ -264,8 +275,10 @@ a.timeline-company:hover{text-decoration:underline;text-underline-offset:3px;}
 .timeline-desc{font-size:.96rem;color:var(--sub);line-height:1.62;margin-bottom:1rem;text-wrap:pretty;}
 .js .timeline.is-compact .timeline-card>.timeline-desc{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
 .exp-more{overflow:hidden;transition:height .4s var(--ease),margin .4s var(--ease),padding .4s var(--ease),border-color .4s,visibility 0s;}
+.js .timeline.is-compact .timeline-card:not(:has(.exp-more))>.timeline-desc{display:block;-webkit-line-clamp:unset;overflow:visible;}
 .js .timeline.is-compact .exp-more{height:0;margin-top:0;padding-top:0;border-top-color:transparent;visibility:hidden;transition:height .4s var(--ease),margin .4s var(--ease),padding .4s var(--ease),border-color .4s,visibility 0s .4s;}
 .exp-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 1rem;border-block:1px solid var(--border);}
+.exp-kpis.k2{grid-template-columns:repeat(2,minmax(0,1fr));}
 .exp-kpis>div{padding:.7rem .6rem .7rem 0;display:flex;flex-direction:column;gap:.1rem;}
 .exp-kpis>div+div{padding-left:.75rem;border-left:1px solid var(--border);}
 .exp-kpis b{font-family:var(--display);font-size:1.5rem;font-weight:700;letter-spacing:-.02em;line-height:1.1;color:var(--text);}
@@ -441,7 +454,7 @@ footer p{color:var(--sub);font-size:.9rem;}
   .interests-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
   .interest-icon.interest-banner{aspect-ratio:4/3;}
   .timeline{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .timeline>.timeline-item:nth-child(3){grid-column:1/-1;}
+  .timeline>.timeline-item:first-child{grid-column:1/-1;grid-row:auto;}
 }
 @media(max-width:900px){
   section{padding-block:4.5rem;}
@@ -464,7 +477,6 @@ footer p{color:var(--sub);font-size:.9rem;}
   .hero-photo-wrap{max-width:none;aspect-ratio:5/4;}
   .hero-photo img{object-position:center 22%;}
   .timeline{grid-template-columns:1fr;}
-  .timeline>.timeline-item:nth-child(3){grid-column:auto;}
   /* Réalisations : carrousel horizontal */
   .proj-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:.9rem;margin:0 calc(-1*var(--pad));padding:.25rem var(--pad) 1rem;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
   .proj-grid::-webkit-scrollbar{display:none;}
@@ -713,6 +725,7 @@ footer p{color:var(--sub);font-size:.9rem;}
 </div>
 </div>
         <p class="timeline-desc" data-i18n="experience.88">I co-founded GDA to meet Senegalese companies’ growing need for digital transformation. The agency helped public and private organisations across West Africa build their digital identity. I was in charge of general management, administration and multimedia production.</p>
+        <div class="exp-kpis k2"><div><b>~30</b><span data-i18n="experience.gk1">projects delivered</span></div><div><b>5</b><span data-i18n="experience.gk2">people on the team</span></div></div>
         <div class="timeline-chips"><span class="chip" data-i18n="experience.89">General management</span><span class="chip" data-i18n="experience.90">Creative direction</span><span class="chip" data-i18n="experience.91">Administration</span></div>
         <div class="exp-more"><div class="timeline-clients-label" data-i18n="experience.92">Key projects</div><div class="timeline-clients-tags"><span class="tclient">Diamant Noir Collection</span><span class="tclient">CFTS</span><span class="tclient">Mossane</span><span class="tclient">Sama Chef</span><span class="tclient">Bitik</span><span class="tclient">KEA Olivero Group</span></div></div>
       </div>
@@ -728,9 +741,8 @@ footer p{color:var(--sub);font-size:.9rem;}
 <div class="timeline-role">Community Engagement &amp; Project Manager</div>
 </div>
 </div>
-        <p class="timeline-desc" data-i18n="experience.102">WASSOR is an organisation dedicated to supporting and empowering young people and women. Through its initiatives, the association works for personal development, mental well-being and individual fulfilment.</p>
-        <div class="timeline-chips"><span class="chip" data-i18n="experience.103">Community engagement</span><span class="chip" data-i18n="experience.104">Project management</span><span class="chip">Communication</span></div>
-        <div class="exp-more"><p class="timeline-desc" data-i18n="experience.106">It focuses on human potential, self-confidence and skills development, by creating spaces for expression, sharing and learning.</p><p class="timeline-desc" data-i18n="experience.107">Through programmes, awareness campaigns and community projects, WASSOR encourages everyone to recognise their potential, push past their limits and take charge of their own development.</p></div>
+        <p class="timeline-desc" data-i18n="experience.102">At WASSOR, an association that helps young people and women become independent, I led communication: a new visual identity (logo, brand guidelines, document templates) and promotion of its partnerships.</p>
+        <div class="timeline-chips"><span class="chip" data-i18n="experience.103">Visual identity</span><span class="chip" data-i18n="experience.104">Communication</span><span class="chip" data-i18n="experience.105">Project management</span></div>
       </div>
 </div>
 </div>
@@ -770,11 +782,11 @@ footer p{color:var(--sub);font-size:.9rem;}
         <a class="proj-more" href="/en/projets/eric-favre/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
-    <div class="proj-card"><div class="proj-top is-logo" style="background:#002f46"><img loading="lazy" decoding="async" src="/images/site/projet-globo.webp" alt="Globo Afrique" style="display: block;"></div><div class="proj-body"><div class="proj-name" data-i18n="projects.126">Odoo support · Globo Afrique</div><div class="proj-cat c-blue" data-i18n="projects.127">Senedoo · Geolocation &amp; fleet management</div><div class="proj-desc" data-i18n="projects.128">Took over an Odoo project from another partner. Support lead during the migration: tracked issues, handled points of friction, resolved incidents and attended steering meetings.</div><dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.gl.r">Support lead</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.gl.d">1 year</dd></div><div><dt data-i18n="pf.users">Users</dt><dd data-i18n="pf.gl.u">25+</dd></div></dl><div class="proj-mods"><span class="pmod"><img src="/images/odoo/abonnements.svg" alt="" loading="lazy"><span data-i18n="mod.sub">Subscriptions</span></span><span class="pmod"><img src="/images/odoo/ventes.svg" alt="" loading="lazy"><span data-i18n="mod.sale">Sales</span></span><span class="pmod"><img src="/images/odoo/achats.svg" alt="" loading="lazy"><span data-i18n="mod.pur">Purchase</span></span><span class="pmod"><img src="/images/odoo/inventaire.svg" alt="" loading="lazy"><span data-i18n="mod.stock">Inventory</span></span><span class="pmod"><img src="/images/odoo/comptabilite.png" alt="" loading="lazy"><span data-i18n="mod.acc">Accounting</span></span><span class="pmod"><span data-i18n="mod.fs">Field Service</span></span></div>
+    <div class="proj-card"><div class="proj-top"><img loading="lazy" decoding="async" src="/images/site/couverture-globo.webp" alt="Globo Afrique : itinéraire vers un repère de géolocalisation" style="display: block;"></div><div class="proj-body"><div class="proj-name" data-i18n="projects.126">Odoo support · Globo Afrique</div><div class="proj-cat c-blue" data-i18n="projects.127">Senedoo · Geolocation &amp; fleet management</div><div class="proj-desc" data-i18n="projects.128">Took over an Odoo project from another partner. Support lead during the migration: tracked issues, handled points of friction, resolved incidents and attended steering meetings.</div><dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.gl.r">Support lead</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.gl.d">1 year</dd></div><div><dt data-i18n="pf.users">Users</dt><dd data-i18n="pf.gl.u">25+</dd></div></dl><div class="proj-mods"><span class="pmod"><img src="/images/odoo/abonnements.svg" alt="" loading="lazy"><span data-i18n="mod.sub">Subscriptions</span></span><span class="pmod"><img src="/images/odoo/ventes.svg" alt="" loading="lazy"><span data-i18n="mod.sale">Sales</span></span><span class="pmod"><img src="/images/odoo/achats.svg" alt="" loading="lazy"><span data-i18n="mod.pur">Purchase</span></span><span class="pmod"><img src="/images/odoo/inventaire.svg" alt="" loading="lazy"><span data-i18n="mod.stock">Inventory</span></span><span class="pmod"><img src="/images/odoo/comptabilite.png" alt="" loading="lazy"><span data-i18n="mod.acc">Accounting</span></span><span class="pmod"><span data-i18n="mod.fs">Field Service</span></span></div>
         <a class="proj-more" href="/en/projets/globo-afrique/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a></div></div>
     <div class="proj-card">
-      <div class="proj-top is-logo" style="background:#ffffff">
-        <img loading="lazy" decoding="async" src="/images/site/client-geofleet-in-3b1c.webp" alt="Logo GeoFleet-IN">
+      <div class="proj-top">
+        <img loading="lazy" decoding="async" src="/images/site/couverture-geofleet.webp" alt="GeoFleet-IN : suivi d’itinéraires de flotte">
       </div>
       <div class="proj-body">
         <div class="proj-name" data-i18n="projects.g1">Odoo deployment · GeoFleet-IN</div>
@@ -791,8 +803,8 @@ footer p{color:var(--sub);font-size:.9rem;}
       <div class="proj-body">
         <div class="proj-name" data-i18n="projects.132">Content creation · DNC</div>
         <div class="proj-cat c-blue" data-i18n="projects.133">Diamant Noir Collection · Luxury hospitality</div>
-        <div class="proj-desc" data-i18n="projects.134">Designed visual content and communication materials to strengthen the brand image. Produced promotional visuals and photo shoots, provided digital support and took part in the company’s communication campaigns.</div>
-        <div class="proj-tags"><span class="ptag" data-i18n="projects.135">Content creation</span><span class="ptag" data-i18n="projects.136">Luxury hospitality</span><span class="ptag" data-i18n="projects.137">Photo shoot</span></div>
+        <div class="proj-desc" data-i18n="projects.134">A year of production for the brand’s image: photo and video shoots, drone footage, editing and social media communication strategy.</div>
+        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.gda.r">Multimedia lead</dd></div><div><dt data-i18n="pf.year">Year</dt><dd>2023</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.dn.d">1 year</dd></div></dl><div class="proj-mods"><span class="pmod"><span data-i18n="gda.t1">Photo and video</span></span><span class="pmod"><span data-i18n="gda.t2">Drone</span></span><span class="pmod"><span data-i18n="gda.t3">Editing</span></span><span class="pmod"><span data-i18n="gda.t4">Social media</span></span></div>
         <a class="proj-more" href="/en/projets/diamant-noir-collection/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
@@ -804,8 +816,8 @@ footer p{color:var(--sub);font-size:.9rem;}
       <div class="proj-body">
         <div class="proj-name" data-i18n="projects.144">Content creation · Sama Chef</div>
         <div class="proj-cat c-orange" data-i18n="projects.145">Luxury culinary training · Senegal</div>
-        <div class="proj-desc" data-i18n="projects.146">Produced photo shoots and promotional videos showcasing Sama Chef’s training programmes, facilities and expertise. Created content for communication and recruitment campaigns in high-end cooking, hospitality and catering.</div>
-        <div class="proj-tags"><span class="ptag">Design</span><span class="ptag" data-i18n="projects.s1">Videography</span><span class="ptag" data-i18n="projects.s2">Social media content</span></div>
+        <div class="proj-desc" data-i18n="projects.146">Six months of production to showcase the training programmes and facilities: photo and video shoots, drone footage, editing and social media communication strategy.</div>
+        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.gda.r">Multimedia lead</dd></div><div><dt data-i18n="pf.year">Year</dt><dd>2024</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.sc.d">6 months</dd></div></dl><div class="proj-mods"><span class="pmod"><span data-i18n="gda.t1">Photo and video</span></span><span class="pmod"><span data-i18n="gda.t2">Drone</span></span><span class="pmod"><span data-i18n="gda.t3">Editing</span></span><span class="pmod"><span data-i18n="gda.t4">Social media</span></span></div>
         <a class="proj-more" href="/en/projets/sama-chef/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
