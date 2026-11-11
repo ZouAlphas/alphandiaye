@@ -195,6 +195,9 @@ h1.hero-title{
   text-wrap:balance;margin-bottom:1.6rem;
 }
 h1.hero-title .ht-line{display:block;}
+/* Seconde ligne du titre en dégradé bleu de marque (contraste suffisant dans les deux thèmes) */
+.title-gradient{--tg1:#0A6A9E;--tg2:#1492D6;color:var(--tg1);background:linear-gradient(100deg,var(--tg1) 10%,var(--tg2) 90%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-bottom:.08em;}
+[data-theme="dark"] .title-gradient{--tg1:#38BDF8;--tg2:#9BE0FF;}
 .hero-desc{font-size:clamp(1.05rem,1.5vw,1.2rem);color:var(--sub);line-height:1.6;max-width:34rem;margin-bottom:2.1rem;text-wrap:pretty;}
 .hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:3rem;}
 .hero-stats{display:flex;border-top:1px solid var(--border);padding-top:1.5rem;max-width:34rem;}
