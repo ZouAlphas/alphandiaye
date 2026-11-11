@@ -181,7 +181,7 @@ h3{font-family:var(--display);letter-spacing:-.01em;}
 }
 #hero{isolation:isolate;}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;
-  -webkit-mask-image:radial-gradient(120% 95% at 78% 30%,#000 30%,transparent 78%);mask-image:radial-gradient(120% 95% at 78% 30%,#000 30%,transparent 78%);}
+  -webkit-mask-image:radial-gradient(115% 100% at 80% 35%,#000 25%,rgba(0,0,0,.28) 62%,transparent 92%);mask-image:radial-gradient(115% 100% at 80% 35%,#000 25%,rgba(0,0,0,.28) 62%,transparent 92%);}
 .hero-location{display:inline-flex;align-items:center;gap:.55rem;color:var(--sub);font-size:.95rem;font-weight:500;margin-bottom:1.4rem;}
 .dot-live{width:8px;height:8px;border-radius:50%;background:var(--warm);flex:none;}
 h1.hero-title{
@@ -1198,79 +1198,55 @@ function toggleTheme(){
   }
   groupBox('.interest-banner img','h3');
 })();
-/* ═══ FOND DIGITAL (hero) ═══
-   Grille de points + impulsions de données qui circulent sur la grille.
-   Pause hors écran / onglet caché ; image fixe si « animations réduites ».
-   Rien n'est dessiné tant que la zone n'a pas de taille (onglet masqué, page en arrière-plan). */
+/* ═══ FOND DU HERO : « du désordre au système » ═══
+   Des points épars se rangent en grille ordonnée, une onde la parcourt (le système fonctionne),
+   puis ils se dispersent à nouveau. Pause hors écran / onglet caché ; grille fixe si
+   « animations réduites ». Rien n'est dessiné tant que la zone n'a pas de taille. */
 (function(){
   const hero=document.getElementById('hero');if(!hero)return;
   const cv=document.createElement('canvas');cv.className='hero-bg';cv.setAttribute('aria-hidden','true');hero.prepend(cv);
-  const ctx=cv.getContext('2d',{alpha:true});
-  const G=46;let W=0,H=0,dpr=1,cols=0,rows=0,grid=null,rgb='56,189,248',packets=[],blips=[],run=false,raf=0,last=0,mx=-1e4,my=-1e4,visible=true,ready=false;
-  const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
-  function theme(){rgb=document.documentElement.getAttribute('data-theme')==='light'?'10,106,158':'56,189,248';}
+  const ctx=cv.getContext('2d');
+  const CYCLE=14000;
+  let W=0,H=0,dpr=1,G=44,pts=[],cols=0,rgb='10,106,158',run=false,raf=0,visible=true,ready=false,t0=performance.now();
+  function theme(){rgb=document.documentElement.getAttribute('data-theme')==='light'?'10,106,158':'107,208,251';}
   function build(){
-    theme();dpr=Math.min(devicePixelRatio||1,1.5);
-    W=hero.clientWidth;H=hero.clientHeight;ready=W>0&&H>0;if(!ready)return;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
-    cols=Math.ceil(W/G)+1;rows=Math.ceil(H/G)+1;
-    grid=document.createElement('canvas');grid.width=cv.width;grid.height=cv.height;
-    const g=grid.getContext('2d');g.scale(dpr,dpr);
-    g.fillStyle=`rgba(${rgb},.16)`;
-    for(let i=0;i<cols;i++)for(let j=0;j<rows;j++)g.fillRect(i*G-1,j*G-1,2,2);
-    g.strokeStyle=`rgba(${rgb},.05)`;g.lineWidth=1;g.beginPath();
-    for(let i=0;i<cols;i++){g.moveTo(i*G+.5,0);g.lineTo(i*G+.5,H);}for(let j=0;j<rows;j++){g.moveTo(0,j*G+.5);g.lineTo(W,j*G+.5);}g.stroke();
-    const n=W<700?4:9;packets=[];for(let k=0;k<n;k++)packets.push(spawn(true));blips=[];
-    draw(0);
+    theme();W=hero.clientWidth;H=hero.clientHeight;ready=W>0&&H>0;if(!ready)return;
+    dpr=Math.min(devicePixelRatio||1,1.5);cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
+    G=W<700?38:44;cols=Math.ceil(W/G)+1;const rows=Math.ceil(H/G)+1;pts=[];
+    for(let i=0;i<cols;i++)for(let j=0;j<rows;j++)pts.push({i,j,tx:i*G,ty:j*G,rx:Math.random()*W,ry:Math.random()*H,ph:Math.random()*6.283,x:0,y:0});
+    draw(RM?CYCLE*.5:performance.now()-t0);
   }
-  const DIRS=[[1,0],[-1,0],[0,1],[0,-1]];
-  function spawn(init){
-    const d=DIRS[(Math.random()*4)|0];
-    return{x:((Math.random()*cols)|0)*G,y:((Math.random()*rows)|0)*G,dx:d[0],dy:d[1],v:.045+Math.random()*.07,
-      run:0,segs:0,max:5+((Math.random()*9)|0),hist:[],age:init?Math.random()*800:0};
-  }
-  function step(p,dt){
-    let mv=p.v*dt;p.age+=dt;
-    while(mv>0){
-      const left=G-p.run,m=Math.min(mv,left);
-      p.x+=p.dx*m;p.y+=p.dy*m;p.run+=m;mv-=m;
-      if(p.run>=G-1e-6){p.run=0;p.segs++;
-        if(Math.random()<.38){const turn=p.dx?[[0,1],[0,-1]]:[[1,0],[-1,0]];const t=turn[(Math.random()*2)|0];p.dx=t[0];p.dy=t[1];blips.push({x:p.x,y:p.y,r:2,a:.5});}
-      }
-    }
-    p.hist.push(p.x,p.y);if(p.hist.length>140)p.hist.splice(0,2);
-    return p.segs<p.max&&p.x>-G&&p.x<W+G&&p.y>-G&&p.y<H+G;
-  }
-  function draw(dt){
+  function draw(t){
     if(!ready)return;
+    const c=(t%CYCLE)/CYCLE;
+    let o=c<.3?c/.3:c<.72?1:1-(c-.72)/.28;o=o*o*(3-2*o);            /* 0 = épars, 1 = rangé */
+    const sweep=c>.3&&c<.72?((c-.3)/.42)*(W+240)-120:-1e4;            /* onde qui parcourt la grille rangée */
     ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
-    ctx.drawImage(grid,0,0,W,H);
-    if(fine&&mx>-1e3){ /* points qui s'allument près de la souris */
-      const R=150,i0=Math.max(0,((mx-R)/G)|0),i1=Math.min(cols,((mx+R)/G+1)|0),j0=Math.max(0,((my-R)/G)|0),j1=Math.min(rows,((my+R)/G+1)|0);
-      for(let i=i0;i<i1;i++)for(let j=j0;j<j1;j++){const x=i*G,y=j*G,d=Math.hypot(x-mx,y-my);if(d<R){const a=(1-d/R)*.7;ctx.fillStyle=`rgba(${rgb},${a})`;ctx.fillRect(x-1.5,y-1.5,3,3);}}
+    const drift=14*(1-o),K=W<700?.55:1;                              /* plus discret sur mobile, où les points passent derrière le texte */
+    for(const p of pts){
+      p.x=p.rx+(p.tx-p.rx)*o+Math.cos(t*.0006+p.ph)*drift;
+      p.y=p.ry+(p.ty-p.ry)*o+Math.sin(t*.0005+p.ph)*drift;
     }
-    ctx.lineCap='round';
-    for(let k=0;k<packets.length;k++){
-      const p=packets[k];
-      if(dt&&!step(p,dt)){blips.push({x:p.x,y:p.y,r:2,a:.6});packets[k]=spawn(false);continue;}
-      const h=p.hist,L=h.length/2;if(L<2)continue;
-      const fade=Math.min(1,p.age/400)*Math.min(1,(p.max-p.segs)/1.5+.2);
-      for(let s=1;s<L;s++){
-        const a=(s/L)*.55*fade;ctx.strokeStyle=`rgba(${rgb},${a})`;ctx.lineWidth=1.6;
-        ctx.beginPath();ctx.moveTo(h[2*s-2],h[2*s-1]);ctx.lineTo(h[2*s],h[2*s+1]);ctx.stroke();
+    if(o>.55){                                                         /* les liaisons apparaissent quand l'ordre s'installe */
+      ctx.strokeStyle=`rgba(${rgb},${(o-.55)*.16})`;ctx.lineWidth=1;ctx.beginPath();
+      const rows=pts.length/cols;
+      for(let n=0;n<pts.length;n++){const p=pts[n];
+        if(p.j<rows-1){const q=pts[n+1];ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);}
+        if(p.i<cols-1){const q=pts[n+rows];ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);}
       }
-      ctx.fillStyle=`rgba(${rgb},${.95*fade})`;ctx.beginPath();ctx.arc(p.x,p.y,2.2,0,6.283);ctx.fill();
-      ctx.fillStyle=`rgba(${rgb},${.18*fade})`;ctx.beginPath();ctx.arc(p.x,p.y,7,0,6.283);ctx.fill();
+      ctx.stroke();
     }
-    for(let k=blips.length-1;k>=0;k--){const b=blips[k];if(dt){b.r+=dt*.03;b.a-=dt*.0012;}if(b.a<=0){blips.splice(k,1);continue;}
-      ctx.strokeStyle=`rgba(${rgb},${b.a})`;ctx.lineWidth=1;ctx.strokeRect(b.x-b.r,b.y-b.r,b.r*2,b.r*2);}
+    for(const p of pts){
+      const d=(p.tx-sweep)/90,glow=Math.exp(-d*d);
+      ctx.fillStyle=`rgba(${rgb},${(.34+.14*o+.45*glow)*K})`;
+      const r=1.5+.3*o+1.1*glow;ctx.beginPath();ctx.arc(p.x,p.y,r,0,6.283);ctx.fill();
+    }
   }
-  function loop(t){const dt=Math.min(48,t-(last||t));last=t;draw(dt);if(run)raf=requestAnimationFrame(loop);}
-  function start(){if(run||RM||!visible||document.hidden)return;run=true;last=0;raf=requestAnimationFrame(loop);}
+  function loop(){draw(performance.now()-t0);if(run)raf=requestAnimationFrame(loop);}
+  function start(){if(run||RM||!visible||document.hidden)return;run=true;raf=requestAnimationFrame(loop);}
   function stop(){run=false;cancelAnimationFrame(raf);}
   new IntersectionObserver(es=>{visible=es[0].isIntersecting;visible?start():stop();}).observe(hero);
   document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
-  if(fine)hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;},{passive:true});
-  hero.addEventListener('pointerleave',()=>{mx=my=-1e4;});
   let rz;new ResizeObserver(()=>{clearTimeout(rz);rz=setTimeout(build,120);}).observe(hero);
   new MutationObserver(build).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
   build();start();
