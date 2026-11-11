@@ -243,6 +243,29 @@ h1.hero-title .ht-line{display:block;}
 .about-card-icon{width:44px;height:44px;border-radius:12px;overflow:hidden;display:grid;place-items:center;background:var(--faint);margin-bottom:1rem;}
 .about-card-icon img{width:100%!important;height:100%!important;object-fit:cover;border-radius:0!important;display:block;}
 .about-card-icon svg{display:none;}
+/* À propos : bannières illustrées (SVG en ligne, aux couleurs du thème) */
+.about-banner{aspect-ratio:320/132;border-radius:12px;overflow:hidden;margin-bottom:1.15rem;border:1px solid var(--border);}
+.about-banner svg{width:100%;height:100%;display:block;}
+.ab-bg{fill:var(--bg2);}
+.ab-dot{fill:var(--blue-ink);opacity:.16;}
+.ab-line{stroke:var(--blue-ink);stroke-width:1.6;fill:none;opacity:.55;}
+.ab-dash{stroke-dasharray:4 4;}
+.ab-grid{stroke:var(--border-strong);stroke-width:1;}
+.ab-card{fill:var(--card);stroke:var(--border-strong);stroke-width:1;}
+.ab-hub{fill:var(--card);stroke:var(--blue-ink);stroke-width:2;}
+.ab-pulse{fill:var(--blue-ink);}
+.ab-bar{fill:var(--blue);}
+.ab-soft{fill:var(--blue-soft);}
+.ab-outline{fill:none;stroke:var(--blue-ink);stroke-width:1.5;stroke-dasharray:4 3;}
+.ab-check,.ab-check3{fill:none;stroke:#06101F;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.ab-check2{fill:none;stroke:var(--blue-ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+.ab-today{stroke:var(--warm);stroke-width:1.6;stroke-dasharray:3 3;}
+.ab-warm{fill:var(--warm);}
+.ab-spark,.ab-ico-fill{fill:var(--blue-ink);}
+.ab-on{fill:#06101F;opacity:.75;}
+.ab-text{fill:var(--border-strong);}
+.ab-bubble{fill:var(--blue);}
+.ab-text-on{fill:#06101F;opacity:.35;}
 .about-card h3{font-size:1.1rem;font-weight:670;margin-bottom:.45rem;}
 .about-card p{font-size:.94rem;color:var(--sub);line-height:1.6;}
 
@@ -527,7 +550,7 @@ footer p{color:var(--sub);font-size:.9rem;}
   .about-cards{grid-template-columns:1fr;}
   .about-card{display:grid;grid-template-columns:auto 1fr;column-gap:.9rem;align-items:center;padding:1rem 1.1rem;border-right:0!important;border-bottom:1px solid var(--border)!important;}
   .about-card:last-child{border-bottom:0!important;}
-  .about-card-icon{margin:0;width:38px;height:38px;}
+  .about-banner{margin:0;width:84px;aspect-ratio:84/54;border-radius:9px;}
   .about-card h3{display:flex;justify-content:space-between;align-items:center;gap:.5rem;cursor:pointer;margin:0;font-size:1.04rem;}
   .about-card h3::after{display:block;color:var(--blue-ink);}
   .about-card p{grid-column:1/-1;height:0;overflow:hidden;visibility:hidden;margin-top:0;transition:height .35s var(--ease),margin .35s var(--ease),visibility 0s .35s;}
@@ -696,22 +719,22 @@ footer p{color:var(--sub);font-size:.9rem;}
     <div class="about-right reveal" style="transition-delay:.12s;">
       <div class="about-cards">
         <div class="about-card">
-          <div class="about-card-icon"><img loading="lazy" decoding="async" class="acard-img" style="display: block; width: 40px; height: 40px; object-fit: cover; border-radius: 8px;" alt="" src="/images/site/icon-odoo.webp"><svg viewBox="0 0 24 24" style="display: none;"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
+          <div class="about-banner"><svg viewBox="0 0 320 132" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Odoo relié à ses modules"><defs><pattern id="abd1" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" class="ab-dot"></circle></pattern></defs><rect width="320" height="132" class="ab-bg"></rect><rect width="320" height="132" fill="url(#abd1)"></rect><line x1="160" y1="66" x2="62" y2="34" class="ab-line"></line><line x1="160" y1="66" x2="62" y2="98" class="ab-line"></line><line x1="160" y1="66" x2="258" y2="34" class="ab-line"></line><line x1="160" y1="66" x2="258" y2="98" class="ab-line"></line><line x1="160" y1="66" x2="18" y2="66" class="ab-line"></line><line x1="160" y1="66" x2="302" y2="66" class="ab-line"></line><circle cx="106" cy="48" r="2.6" class="ab-pulse"></circle><circle cx="106" cy="84" r="2.6" class="ab-pulse"></circle><circle cx="214" cy="48" r="2.6" class="ab-pulse"></circle><circle cx="214" cy="84" r="2.6" class="ab-pulse"></circle><rect x="45" y="17" width="34" height="34" rx="9" class="ab-card"></rect><image href="/images/odoo/ventes.svg" x="51" y="23" width="22" height="22"></image><rect x="45" y="81" width="34" height="34" rx="9" class="ab-card"></rect><image href="/images/odoo/inventaire.svg" x="51" y="87" width="22" height="22"></image><rect x="241" y="17" width="34" height="34" rx="9" class="ab-card"></rect><image href="/images/odoo/comptabilite.png" x="247" y="23" width="22" height="22"></image><rect x="241" y="81" width="34" height="34" rx="9" class="ab-card"></rect><image href="/images/odoo/crm.svg" x="247" y="87" width="22" height="22"></image><rect x="1" y="49" width="34" height="34" rx="9" class="ab-card"></rect><image href="/images/odoo/achats.svg" x="7" y="55" width="22" height="22"></image><rect x="285" y="49" width="34" height="34" rx="9" class="ab-card"></rect><image href="/images/odoo/projet.svg" x="291" y="55" width="22" height="22"></image><rect x="128" y="34" width="64" height="64" rx="16" class="ab-hub"></rect><image href="/images/site/icon-odoo.webp" x="133" y="39" width="54" height="54" clip-path="inset(0 round 12px)"></image></svg></div>
           <h3 data-i18n="about.30">Odoo ERP Consultant</h3>
           <p data-i18n="about.31">As an Odoo V19 certified consultant, I help SMEs and large companies analyse, implement, migrate and optimise their ERP. My goal is lasting adoption and efficient processes.</p>
         </div>
         <div class="about-card">
-          <div class="about-card-icon"><img loading="lazy" decoding="async" class="acard-img" style="display: block; width: 40px; height: 40px; object-fit: cover; border-radius: 8px;" alt="" src="/images/site/icon-projet.webp"><svg viewBox="0 0 24 24" style="display: none;"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+          <div class="about-banner"><svg viewBox="0 0 320 132" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Planning de projet avec jalons"><defs><pattern id="abd2" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" class="ab-dot"></circle></pattern></defs><rect width="320" height="132" class="ab-bg"></rect><rect width="320" height="132" fill="url(#abd2)"></rect><line x1="40" y1="18" x2="40" y2="112" class="ab-grid"></line><line x1="80" y1="18" x2="80" y2="112" class="ab-grid"></line><line x1="120" y1="18" x2="120" y2="112" class="ab-grid"></line><line x1="160" y1="18" x2="160" y2="112" class="ab-grid"></line><line x1="200" y1="18" x2="200" y2="112" class="ab-grid"></line><line x1="240" y1="18" x2="240" y2="112" class="ab-grid"></line><line x1="280" y1="18" x2="280" y2="112" class="ab-grid"></line><rect x="42" y="34" width="76" height="12" rx="6" class="ab-bar"></rect><path d="M104 40 l3 3 l6 -6" class="ab-check"></path><rect x="82" y="50" width="86" height="12" rx="6" class="ab-bar"></rect><path d="M154 56 l3 3 l6 -6" class="ab-check"></path><rect x="132" y="66" width="104" height="12" rx="6" class="ab-soft"></rect><rect x="132" y="66" width="57" height="12" rx="6" class="ab-bar"></rect><rect x="196" y="82" width="88" height="12" rx="6" class="ab-outline"></rect><path d="M290 106 l7 7 l-7 7 l-7 -7z" class="ab-warm"></path><line x1="190" y1="22" x2="190" y2="114" class="ab-today"></line><circle cx="190" cy="20" r="4" class="ab-warm"></circle></svg></div>
           <h3 data-i18n="about.32">Project management</h3>
           <p data-i18n="about.33">I lead digital transformation projects from needs analysis to go-live. I coordinate teams, keep deadlines under control, anticipate risks and ensure rigorous follow-up so that every project succeeds.</p>
         </div>
         <div class="about-card">
-          <div class="about-card-icon"><img loading="lazy" decoding="async" class="acard-img" style="display: block; width: 40px; height: 40px; object-fit: cover; border-radius: 8px;" alt="" src="/images/site/icon-ia.webp"><svg viewBox="0 0 24 24" style="display: none;"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
+          <div class="about-banner"><svg viewBox="0 0 320 132" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Flux automatisé : déclencheur, intelligence artificielle, résultat"><defs><pattern id="abd3" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" class="ab-dot"></circle></pattern></defs><rect width="320" height="132" class="ab-bg"></rect><rect width="320" height="132" fill="url(#abd3)"></rect><path d="M92 66 H128" class="ab-line ab-arrow"></path><path d="M192 66 H228" class="ab-line ab-arrow"></path><path d="M160 92 V108 H96 V88" class="ab-line ab-dash"></path><rect x="36" y="44" width="56" height="44" rx="10" class="ab-card"></rect><path d="M66 52 l-9 15 h8 l-3 13 l11 -17 h-8 l3 -11z" class="ab-ico-fill"></path><circle cx="160" cy="66" r="30" class="ab-hub"></circle><path d="M160 46 C162 60 166 64 180 66 C166 68 162 72 160 86 C158 72 154 68 140 66 C154 64 158 60 160 46z" class="ab-spark"></path><circle cx="174" cy="52" r="3.2" class="ab-spark"></circle><rect x="228" y="44" width="56" height="44" rx="10" class="ab-card"></rect><path d="M245 66 l7 7 l14 -14" class="ab-check2"></path><circle cx="110" cy="66" r="3" class="ab-warm"></circle><circle cx="210" cy="66" r="3" class="ab-warm"></circle></svg></div>
           <h3 data-i18n="about.34">Innovation &amp; Automation</h3>
           <p data-i18n="about.35">I bring artificial intelligence and automation into business processes to simplify them, boost productivity and cut repetitive tasks. Every solution is designed to create lasting, measurable value.</p>
         </div>
         <div class="about-card">
-          <div class="about-card-icon"><img loading="lazy" decoding="async" class="acard-img" style="display: block; width: 40px; height: 40px; object-fit: cover; border-radius: 8px;" alt="" src="/images/site/icon-relation.webp"><svg viewBox="0 0 24 24" style="display: none;"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg></div>
+          <div class="about-banner"><svg viewBox="0 0 320 132" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Échange avec un client jusqu’à la validation"><defs><pattern id="abd4" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" class="ab-dot"></circle></pattern></defs><rect width="320" height="132" class="ab-bg"></rect><rect width="320" height="132" fill="url(#abd4)"></rect><circle cx="40" cy="44" r="16" class="ab-soft"></circle><circle cx="40" cy="39" r="6" class="ab-ico-fill"></circle><path d="M29 54 a11 9 0 0 1 22 0" class="ab-ico-fill"></path><circle cx="280" cy="90" r="16" class="ab-bar"></circle><circle cx="280" cy="85" r="6" class="ab-on"></circle><path d="M269 100 a11 9 0 0 1 22 0" class="ab-on"></path><path d="M66 24 h120 a10 10 0 0 1 10 10 v20 a10 10 0 0 1 -10 10 h-108 l-10 9 v-9 a10 10 0 0 1 -2 -6 v-24 a10 10 0 0 1 10 -10z" class="ab-card"></path><rect x="80" y="36" width="88" height="6" rx="3" class="ab-text"></rect><rect x="80" y="48" width="58" height="6" rx="3" class="ab-text"></rect><path d="M254 70 h-120 a10 10 0 0 0 -10 10 v20 a10 10 0 0 0 10 10 h108 l10 9 v-9 a10 10 0 0 0 2 -6 v-24 a10 10 0 0 0 -10 -10z" class="ab-bubble"></path><path d="M140 90 l6 6 l12 -12" class="ab-check3"></path><rect x="170" y="82" width="62" height="6" rx="3" class="ab-text-on"></rect><rect x="170" y="94" width="40" height="6" rx="3" class="ab-text-on"></rect><path d="M218 30 c0 -5 7 -7 9 -2 c2 -5 9 -3 9 2 c0 6 -9 11 -9 11 s-9 -5 -9 -11z" class="ab-warm"></path></svg></div>
           <h3 data-i18n="about.36">Client relations</h3>
           <p data-i18n="about.37">As Head of Support and Project Manager, I help companies succeed with their projects. I provide close follow-up, coordinate teams and foster clear communication to reach the agreed objectives.</p>
         </div>
@@ -805,8 +828,8 @@ footer p{color:var(--sub);font-size:.9rem;}
       <div class="proj-body">
         <div class="proj-name" data-i18n="projects.g1">Odoo deployment · GeoFleet-IN</div>
         <div class="proj-cat c-green" data-i18n="projects.g2">Senedoo · Project I led</div>
-        <div class="proj-desc" data-i18n="projects.g3">Led the full Odoo rollout, from requirements analysis to team training. Training is complete; go-live is waiting on the client’s final accounting data.</div>
-        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.gf.r">Project manager</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.gf.d">3-week rollout</dd></div><div><dt data-i18n="pf.users">Users</dt><dd data-i18n="pf.gf.u">17 trained</dd></div></dl><div class="proj-mods"><span class="pmod"><img src="/images/odoo/achats.svg" alt="" loading="lazy"><span data-i18n="mod.pur">Purchase</span></span><span class="pmod"><img src="/images/odoo/ventes.svg" alt="" loading="lazy"><span data-i18n="mod.sale">Sales</span></span><span class="pmod"><img src="/images/odoo/inventaire.svg" alt="" loading="lazy"><span data-i18n="mod.stock">Inventory</span></span><span class="pmod"><img src="/images/odoo/abonnements.svg" alt="" loading="lazy"><span data-i18n="mod.sub">Subscriptions</span></span><span class="pmod"><img src="/images/odoo/projet.svg" alt="" loading="lazy"><span data-i18n="mod.proj">Project</span></span></div>
+        <div class="proj-desc" data-i18n="projects.g3">Led the full Odoo rollout in two months, from requirements analysis to team training.</div>
+        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.gf.r">Project manager</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.gf.d">2 months</dd></div><div><dt data-i18n="pf.users">Users</dt><dd data-i18n="pf.gf.u">17 trained</dd></div></dl><div class="proj-mods"><span class="pmod"><img src="/images/odoo/achats.svg" alt="" loading="lazy"><span data-i18n="mod.pur">Purchase</span></span><span class="pmod"><img src="/images/odoo/ventes.svg" alt="" loading="lazy"><span data-i18n="mod.sale">Sales</span></span><span class="pmod"><img src="/images/odoo/inventaire.svg" alt="" loading="lazy"><span data-i18n="mod.stock">Inventory</span></span><span class="pmod"><img src="/images/odoo/abonnements.svg" alt="" loading="lazy"><span data-i18n="mod.sub">Subscriptions</span></span><span class="pmod"><img src="/images/odoo/projet.svg" alt="" loading="lazy"><span data-i18n="mod.proj">Project</span></span></div>
         <a class="proj-more" href="/en/projets/geofleet-in/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
@@ -857,18 +880,18 @@ footer p{color:var(--sub);font-size:.9rem;}
         <div class="proj-name" data-i18n="projects.144">Opening video · Sama Chef</div>
         <div class="proj-cat" data-i18n="projects.145">GDA · Institutional event</div>
         <div class="proj-desc" data-i18n="projects.146">Directed and edited the school’s opening video, attended by several embassies. Part of six months of content production.</div>
-        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.sc.r">Direction and editing</dd></div><div><dt data-i18n="pf.year">Year</dt><dd data-i18n="pf.sc.y">2024</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.sc.d">6 months</dd></div></dl><div class="proj-mods"><span class="pmod"><span data-i18n="gda.t7">Event coverage</span></span><span class="pmod"><span data-i18n="gda.t3">Editing</span></span><span class="pmod"><span data-i18n="gda.t2">Drone</span></span><span class="pmod"><span data-i18n="gda.t4">Social media</span></span></div>
+        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.sc.r">Direction and editing</dd></div><div><dt data-i18n="pf.year">Year</dt><dd data-i18n="pf.sc.y">2024</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.sc.d">6 months</dd></div></dl><div class="proj-mods"><span class="pmod"><span data-i18n="gda.t7">Event coverage</span></span><span class="pmod"><span data-i18n="gda.t3">Editing</span></span><span class="pmod"><span data-i18n="gda.t4">Social media</span></span></div>
         <a class="proj-more" href="/en/projets/sama-chef/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
     <div class="proj-card">
-      <div class="proj-top is-video"><img loading="lazy" decoding="async" src="/images/site/video-efor.webp" alt="Technicien EFOR sur un chantier de fondations"><button class="play-btn" type="button" data-video="1XudEbirh0BDVHQdgzk8DeB7wy6ua3tQg" data-title="EFOR presentation video" data-i18n-title="vt.efor" aria-label="Play video: EFOR presentation video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"></path></svg><span class="vbadge" data-i18n="video.badge">Video</span></button></div>
+      <div class="proj-top is-video"><img loading="lazy" decoding="async" src="/images/site/video-kea.webp" alt="Présentation de KEA Olivero Group dans son atelier"><button class="play-btn" type="button" data-video="1CPRRoa-kEaUmBeS9_VFVr7FIZewggnma" data-title="KEA presentation video" data-i18n-title="vt.kea" aria-label="Play video: KEA presentation video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"></path></svg><span class="vbadge" data-i18n="video.badge">Video</span></button></div>
       <div class="proj-body">
-        <div class="proj-name" data-i18n="projects.e1">Presentation video · EFOR</div>
-        <div class="proj-cat" data-i18n="projects.e2">GDA · International trade fair</div>
-        <div class="proj-desc" data-i18n="projects.e3">Shot and edited a video for EFOR, a foundations and civil engineering company, for an international trade fair.</div>
-        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.efr">Filming and editing</dd></div><div><dt data-i18n="pf.year">Year</dt><dd data-i18n="pf.efy">2025</dd></div><div><dt data-i18n="pf.fmt">Format</dt><dd data-i18n="pf.eff">Presentation video</dd></div></dl><div class="proj-mods"><span class="pmod"><span data-i18n="gda.t8">Filming</span></span><span class="pmod"><span data-i18n="gda.t3">Editing</span></span><span class="pmod"><span data-i18n="gda.t9">Corporate video</span></span></div>
-        <a class="proj-more" href="/en/projets/efor/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a>
+        <div class="proj-name" data-i18n="projects.k1">Communication campaign · KEA</div>
+        <div class="proj-cat" data-i18n="projects.k2">GDA · Website and communication</div>
+        <div class="proj-desc" data-i18n="projects.k3">With Galsen Digital Agency, we built KEA Olivero Group’s website. I handled the communication campaign: filming, editing and graphic design.</div>
+        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.kr">Filming, editing, design</dd></div><div><dt data-i18n="pf.year">Year</dt><dd data-i18n="pf.ky">2024</dd></div><div><dt data-i18n="pf.deliv">Deliverables</dt><dd data-i18n="pf.kd">Website, video, visuals</dd></div></dl><div class="proj-mods"><span class="pmod"><span data-i18n="gda.t8">Filming</span></span><span class="pmod"><span data-i18n="gda.t3">Editing</span></span><span class="pmod"><span data-i18n="gda.t10">Graphic design</span></span><span class="pmod"><span data-i18n="gda.t11">Website</span></span></div>
+        <a class="proj-more" href="/en/projets/kea/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
     </div>
