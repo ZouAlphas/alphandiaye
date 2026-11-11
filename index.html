@@ -592,7 +592,8 @@ footer p{color:var(--sub);font-size:.9rem;}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
   .clients-track{animation:none!important;}
 }
-</style></head>
+</style><script src="/theme-fx.js" defer></script>
+</head>
 <body>
 
 
@@ -1233,17 +1234,12 @@ document.querySelectorAll('img').forEach(img=>{
   img.addEventListener('load',done,{once:true});img.addEventListener('error',done,{once:true});
 });
 
-/* Changement de thème : révélation circulaire depuis le bouton */
+/* Changement de thème : soleil ou lune + révélation circulaire (theme-fx.js) */
 function toggleTheme(){
   const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
   track('toggle_theme');
-  if(!document.startViewTransition||RM){applyTheme(next);return;}
-  const r=document.querySelector('.theme-btn').getBoundingClientRect();
-  const x=r.left+r.width/2,y=r.top+r.height/2,end=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
-  document.documentElement.classList.add('vt');
-  const t=document.startViewTransition(()=>applyTheme(next));
-  t.ready.then(()=>document.documentElement.animate({clipPath:[`circle(0px at ${x}px ${y}px)`,`circle(${end}px at ${x}px ${y}px)`]},{duration:560,easing:'cubic-bezier(.22,.61,.36,1)',pseudoElement:'::view-transition-new(root)'}));
-  t.finished.finally(()=>document.documentElement.classList.remove('vt'));
+  if(window.themeSwitch) themeSwitch(document.querySelector('.theme-btn'),next,applyTheme);
+  else applyTheme(next);
 }
 
 /* Titre : affichage direct (effet de décodage retiré) */

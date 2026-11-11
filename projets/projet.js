@@ -10,8 +10,11 @@
   }
   window.toggleTheme = function () {
     const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.classList.add('vt'); applyTheme(next); setTimeout(() => root.classList.remove('vt'), 60);
+    if (window.themeSwitch) window.themeSwitch(document.querySelector('.theme-btn'), next, applyTheme);
+    else { root.classList.add('vt'); applyTheme(next); setTimeout(() => root.classList.remove('vt'), 60); }
   };
+  /* Animation jour / nuit partagée avec l'accueil */
+  const fx = document.createElement('script'); fx.src = '/theme-fx.js'; fx.defer = true; document.head.appendChild(fx);
   window.toggleMobile = () => document.getElementById('mobile-menu').classList.toggle('open');
   window.closeMobile = () => document.getElementById('mobile-menu').classList.remove('open');
   applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
