@@ -77,6 +77,7 @@
       el.setAttribute(a, k && d[k] ? d[k] : m ? m[1] + ' website (opens in a new tab)' : (ARIA_EN[fr] || fr));
     }));
     doc.querySelectorAll('[data-aria-fr]').forEach(el => el.removeAttribute('data-aria-fr'));
+    doc.querySelectorAll('[data-i18n-title]').forEach(el => { const t = d[el.getAttribute('data-i18n-title')]; if (t) { el.setAttribute('data-title', t); el.setAttribute('aria-label', 'Play video: ' + t); } });
     doc.querySelectorAll('a[data-cv]').forEach(a => a.setAttribute('href', '/cv/CV_Alpha_Ndiaye_EN.pdf'));
     absolutize(doc);
     doc.querySelectorAll('a[href^="/projets/"]').forEach(a => a.setAttribute('href', '/en' + a.getAttribute('href')));

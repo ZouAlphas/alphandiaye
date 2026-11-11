@@ -183,3 +183,24 @@ footer p{color:var(--sub);font-size:.9rem;}
 ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal;}
 .vt *,.vt *::before,.vt *::after{transition:none!important;}
 
+
+/* Vidéo (lecteur Google Drive chargé au clic), logo, galerie photo */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.hero{position:relative;}
+.video-facade{cursor:pointer;background:#000;}
+.video-facade iframe{width:100%;height:100%;border:0;display:block;}
+.play-btn{position:absolute;inset:0;display:grid;place-items:center;border:0;padding:0;background:linear-gradient(180deg,transparent 55%,rgba(6,16,31,.55));cursor:pointer;color:#fff;}
+.play-btn>svg{width:76px;height:76px;padding:22px 19px 22px 25px;border-radius:50%;background:rgba(6,16,31,.55);fill:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 0 0 1px rgba(255,255,255,.35);transition:transform .25s var(--ease),background-color .25s;}
+.play-btn:hover>svg,.play-btn:focus-visible>svg{transform:scale(1.08);background:var(--blue);fill:#06101F;}
+.play-btn:focus-visible{outline:2px solid #fff;outline-offset:-6px;}
+.vbadge{position:absolute;left:1rem;bottom:.9rem;font:600 .88rem/1 var(--body);color:#fff;padding:.4rem .7rem;border-radius:6px;background:rgba(6,16,31,.6);}
+.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:1.5rem;align-items:center;}
+.logo-panel{background:#1f1f1f;border-radius:var(--r);padding:1.5rem;display:grid;place-items:center;}
+.logo-panel img{width:100%;max-width:300px;height:auto;display:block;}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin-top:1rem;}
+.gallery figure{border-radius:var(--r);overflow:hidden;aspect-ratio:3/2;background:var(--faint);}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease);}
+.gallery figure:hover img{transform:scale(1.03);}
+.meta a{color:var(--blue-ink);text-decoration:none;}
+.meta a:hover{text-decoration:underline;}
+@media(max-width:700px){.split{grid-template-columns:1fr;}.gallery{gap:.45rem;}.play-btn>svg{width:60px;height:60px;padding:17px 15px 17px 19px;}}

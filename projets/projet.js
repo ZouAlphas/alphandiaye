@@ -19,4 +19,13 @@
   const state = () => nav.classList.toggle('scrolled', scrollY > 12);
   addEventListener('scroll', state, { passive: true }); state();
   addEventListener('keydown', e => { if (e.key === 'Escape') closeMobile(); });
+  /* Vidéos : le lecteur Google Drive n'est chargé qu'au clic */
+  document.querySelectorAll('.video-facade[data-video]').forEach(f => f.addEventListener('click', () => {
+    if (f.querySelector('iframe')) return;
+    const fr = document.createElement('iframe');
+    fr.src = 'https://drive.google.com/file/d/' + f.dataset.video + '/preview';
+    fr.allow = 'autoplay; fullscreen'; fr.allowFullscreen = true; fr.title = (f.querySelector('img') || {}).alt || 'Vidéo';
+    f.replaceChildren(fr); f.style.cursor = 'auto';
+    if (typeof track === 'function') track('video_play');
+  }));
 })();
