@@ -846,7 +846,7 @@ footer p{color:var(--sub);font-size:.9rem;}
 <section id="education" class="bg2">
   <div class="reveal center-head">
     <div class="section-label center" data-i18n="education.169">Education</div>
-    <h2 class="section-title" data-i18n="education.170">Education &amp; certifications</h2>
+    <h2 class="section-title" data-i18n="education.170">Education &amp; certification</h2>
     <p class="section-sub" data-i18n="education.171">A background in management and digital business, completed by the official Odoo 19 certification.</p>
   </div>
   <div class="edu-cols reveal" style="transition-delay:.08s;">
@@ -1453,12 +1453,23 @@ new MutationObserver(function(){set(b.getAttribute('aria-expanded')==='true');})
 </script>
 
 <script>
-/* ═══ Apparitions au défilement ═══ */
+/* ═══ Apparitions au défilement ═══
+   Jamais sur le haut de page ; rien n'est masqué tant que la fenêtre n'a pas de taille ;
+   filet de sécurité au défilement si IntersectionObserver ne se déclenche pas. */
 (function(){
   if(matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window))return;
-  const els=[...document.querySelectorAll('.reveal')].filter(el=>el.getBoundingClientRect().top>innerHeight*.9);
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{rootMargin:'0px 0px -6% 0px'});
-  els.forEach(el=>{el.classList.add('rv');io.observe(el);});
+  let done=false;
+  function init(){
+    if(done||innerHeight<200)return;done=true;
+    const els=[...document.querySelectorAll('.reveal')].filter(el=>!el.closest('#hero,#clients')&&el.getBoundingClientRect().top>innerHeight*.9);
+    const show=el=>{el.classList.add('in');io.unobserve(el);};
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)show(e.target);}),{rootMargin:'0px 0px -6% 0px'});
+    els.forEach(el=>{el.classList.add('rv');io.observe(el);});
+    let t=false;addEventListener('scroll',()=>{if(t)return;t=true;requestAnimationFrame(()=>{t=false;
+      els.forEach(el=>{if(!el.classList.contains('in')&&el.getBoundingClientRect().top<innerHeight)show(el);});});},{passive:true});
+    addEventListener('beforeprint',()=>els.forEach(show));
+  }
+  init();if(!done){addEventListener('resize',init);addEventListener('load',init);}
 })();
 /* ═══ Adresse propre : pas de #section dans la barre d'adresse ═══ */
 (function(){
