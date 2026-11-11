@@ -201,6 +201,9 @@ footer p{color:var(--sub);font-size:.9rem;}
 .gallery figure{border-radius:var(--r);overflow:hidden;aspect-ratio:3/2;background:var(--faint);}
 .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease);}
 .gallery figure:hover img{transform:scale(1.03);}
+.gallery.g-feat figure:first-child{grid-column:1/-1;aspect-ratio:16/9;}
+.hero.inline{margin:1rem 0 0;}
+.hero.inline+.gallery{margin-top:.6rem;}
 .meta a{color:var(--blue-ink);text-decoration:none;}
 .meta a:hover{text-decoration:underline;}
 @media(max-width:700px){.split{grid-template-columns:1fr;}.gallery{gap:.45rem;}.play-btn>svg{width:60px;height:60px;padding:17px 15px 17px 19px;}}
