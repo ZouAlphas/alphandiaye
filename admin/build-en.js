@@ -105,15 +105,15 @@
   /* ── Fiche projet ── */
   function buildEnProject(html, slug) {
     const doc = parse(html), frPath = '/projets/' + slug + '/';
-    doc.querySelectorAll('body [lang="fr"]').forEach(el => { if (!el.closest('.sw')) el.remove(); });
+    doc.querySelectorAll('body [lang="fr"]').forEach(el => el.remove());
     doc.documentElement.setAttribute('lang', 'en');
     doc.querySelectorAll('a[href]').forEach(a => {
       const h = a.getAttribute('href');
-      if (a.closest('.sw')) return;
+      if (a.closest('.lang-sw')) return;
       if (h === '/' || h.startsWith('/#') || h.startsWith('/projets/')) a.setAttribute('href', '/en' + h);
     });
-    doc.querySelectorAll('.sw [data-l]').forEach(a => {
-      const on = a.getAttribute('data-l') === 'en';
+    doc.querySelectorAll('.lang-btn[data-lang]').forEach(a => {
+      const on = a.getAttribute('data-lang') === 'en';
       a.classList.toggle('on', on);
       on ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current');
     });

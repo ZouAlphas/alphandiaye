@@ -174,6 +174,7 @@ h3{font-family:var(--display);letter-spacing:-.01em;}
 .btn-outline{background:var(--card);color:var(--text);border-color:var(--border-strong);}
 .btn-outline:hover{border-color:var(--text);}
 .btn-primary:active,.btn-outline:active{transform:scale(.98);}
+.ic{width:1.05em;height:1.05em;flex:none;}
 .btn-primary svg,.btn-outline svg{flex:none;}
 .btn-primary:disabled{opacity:.6;cursor:progress;}
 
@@ -183,6 +184,9 @@ h3{font-family:var(--display);letter-spacing:-.01em;}
   gap:clamp(2rem,5vw,5rem);align-items:center;
   padding-top:9.5rem;padding-bottom:4.5rem;
 }
+#hero{isolation:isolate;}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;
+  -webkit-mask-image:radial-gradient(120% 95% at 78% 30%,#000 30%,transparent 78%);mask-image:radial-gradient(120% 95% at 78% 30%,#000 30%,transparent 78%);}
 .hero-location{display:inline-flex;align-items:center;gap:.55rem;color:var(--sub);font-size:.95rem;font-weight:500;margin-bottom:1.4rem;}
 .dot-live{width:8px;height:8px;border-radius:50%;background:var(--warm);flex:none;}
 h1.hero-title{
@@ -261,7 +265,8 @@ a.timeline-company:hover{text-decoration:underline;text-underline-offset:3px;}
 .timeline-role{font-size:.92rem;color:var(--blue-ink)!important;font-weight:600;margin-top:.1rem;line-height:1.35;}
 .timeline-desc{font-size:.96rem;color:var(--sub);line-height:1.62;margin-bottom:1rem;text-wrap:pretty;}
 .js .timeline.is-compact .timeline-card>.timeline-desc{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
-.js .timeline.is-compact .exp-more{display:none;}
+.exp-more{overflow:hidden;transition:height .4s var(--ease),margin .4s var(--ease),padding .4s var(--ease),border-color .4s,visibility 0s;}
+.js .timeline.is-compact .exp-more{height:0;margin-top:0;padding-top:0;border-top-color:transparent;visibility:hidden;transition:height .4s var(--ease),margin .4s var(--ease),padding .4s var(--ease),border-color .4s,visibility 0s .4s;}
 .exp-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 1rem;border-block:1px solid var(--border);}
 .exp-kpis>div{padding:.7rem .6rem .7rem 0;display:flex;flex-direction:column;gap:.1rem;}
 .exp-kpis>div+div{padding-left:.75rem;border-left:1px solid var(--border);}
@@ -278,18 +283,23 @@ a.timeline-company:hover{text-decoration:underline;text-underline-offset:3px;}
 a.tclient-link::after{content:' ↗';font-size:.75em;opacity:.55;}
 a.tclient-link:hover{background:var(--blue-soft);color:var(--blue-ink);}
 .tclients-more{margin-top:.35rem;}
-.tclients-more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;font-weight:600;padding:.25rem .6rem;border-radius:6px;color:var(--blue-ink);border:1px solid var(--border);user-select:none;}
+.tclients-more>summary{list-style:none;font-size:.86rem;padding:.3rem 0;}
 .tclients-more>summary::-webkit-details-marker{display:none;}
-.tclients-more>summary:hover{border-color:var(--blue-ink);}
 .tclients-more>.timeline-clients-tags{margin-top:.45rem;}
 .timeline-list{padding-left:1.1rem;display:flex;flex-direction:column;gap:.3rem;}
 .timeline-list li{font-size:.92rem;color:var(--sub);line-height:1.55;}
 .exp-toggle-wrap{display:flex;margin-top:1.5rem;}
 html:not(.js) .exp-toggle-wrap{display:none;}
-.exp-toggle{display:inline-flex;align-items:center;gap:.45rem;font:600 .95rem/1 var(--body);color:var(--text);background:var(--card);border:1px solid var(--border-strong);padding:.75rem 1.2rem;border-radius:var(--r-s);cursor:pointer;transition:border-color .2s;}
-.exp-toggle:hover{border-color:var(--text);}
-.exp-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s;}
-.exp-toggle[aria-expanded="true"] svg{transform:rotate(180deg);}
+.exp-toggle{font-size:1rem;background:none;border:0;padding:.4rem 0;}
+/* Composant unique « dérouler » : même libellé, même flèche, même ouverture en douceur */
+:root{interpolate-size:allow-keywords;}
+.exp-toggle,.tclients-more>summary{display:inline-flex;align-items:center;gap:.55em;font-family:var(--body);font-weight:650;line-height:1.2;color:var(--blue-ink);cursor:pointer;user-select:none;}
+.exp-toggle::after,.tclients-more>summary::after,.about-card h3::after{content:'';width:.48em;height:.48em;flex:none;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-22%) rotate(45deg);transition:transform .3s var(--ease);}
+.exp-toggle[aria-expanded="true"]::after,.tclients-more[open]>summary::after,.about-card.open h3::after{transform:translateY(18%) rotate(-135deg);}
+.exp-toggle:hover,.tclients-more>summary:hover{text-decoration:underline;text-underline-offset:4px;}
+.tclients-more::details-content{height:0;overflow:hidden;transition:height .35s var(--ease),content-visibility .35s allow-discrete;}
+.tclients-more[open]::details-content{height:auto;}
+.about-card h3::after{display:none;}
 
 /* ═══ RÉALISATIONS ═══ */
 .proj-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;}
@@ -392,7 +402,7 @@ html:not(.js) .exp-toggle-wrap{display:none;}
 .contact-link{display:flex;align-items:center;gap:.9rem;padding:1rem .25rem;border-bottom:1px solid var(--border);color:var(--text);text-decoration:none;font-weight:550;font-size:1.02rem;transition:color .2s,padding-left .2s var(--ease);overflow-wrap:anywhere;}
 .contact-link:hover{color:var(--blue-ink);padding-left:.6rem;}
 .contact-link-icon{width:38px;height:38px;flex:none;border-radius:10px;background:var(--card);border:1px solid var(--border);display:grid;place-items:center;}
-.contact-link-icon svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;}
+.contact-link-icon svg{width:17px;height:17px;}
 .cv-banner{display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap;background:var(--text);color:var(--bg);border-radius:var(--r-l);padding:1.6rem 1.9rem;margin-bottom:3rem;}
 .cv-banner-text h3{font-size:1.3rem;font-weight:690;letter-spacing:-.02em;margin-bottom:.15rem;}
 .cv-banner-text p{font-size:.98rem;opacity:.75;}
@@ -413,7 +423,7 @@ footer p{color:var(--sub);font-size:.9rem;}
 .footer-links{display:flex;gap:.5rem;}
 .footer-link{width:38px;height:38px;border-radius:50%;border:1px solid var(--border);display:grid;place-items:center;color:var(--sub);text-decoration:none;transition:color .2s,border-color .2s;}
 .footer-link:hover{color:var(--text);border-color:var(--text);}
-.footer-link svg{width:15px;height:15px;fill:currentColor;}
+.footer-link svg{width:15px;height:15px;}
 #wa-float{position:fixed;right:1.25rem;bottom:1.25rem;width:52px;height:52px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 22px rgba(37,211,102,.35);z-index:901;transition:transform .2s;}
 #wa-float:hover{transform:scale(1.06);}
 #wa-float svg{width:28px;height:28px;fill:#fff;}
@@ -471,10 +481,10 @@ footer p{color:var(--sub);font-size:.9rem;}
   .about-card:last-child{border-bottom:0!important;}
   .about-card-icon{margin:0;width:38px;height:38px;}
   .about-card h3{display:flex;justify-content:space-between;align-items:center;gap:.5rem;cursor:pointer;margin:0;font-size:1.04rem;}
-  .about-card h3::after{content:'';width:9px;height:9px;flex:none;border-right:2px solid var(--sub);border-bottom:2px solid var(--sub);transform:rotate(45deg) translateY(-3px);transition:transform .25s;}
-  .about-card.open h3::after{transform:rotate(-135deg) translateY(-2px);}
-  .about-card p{display:none;grid-column:1/-1;margin-top:.75rem;}
-  .about-card.open p{display:block;}
+  .about-card h3::after{display:block;color:var(--blue-ink);}
+  .about-card p{grid-column:1/-1;height:0;overflow:hidden;visibility:hidden;margin-top:0;transition:height .35s var(--ease),margin .35s var(--ease),visibility 0s .35s;}
+  .about-card.open p{height:auto;visibility:visible;margin-top:.75rem;transition:height .35s var(--ease),margin .35s var(--ease),visibility 0s;}
+  html:not(.js) .about-card p{height:auto;visibility:visible;margin-top:.75rem;}
   /* Compétences */
   .odoo-modules{padding:1.4rem 1.2rem 1.5rem;}
   .om-grid{gap:1.5rem 1rem;}
@@ -563,11 +573,11 @@ footer p{color:var(--sub);font-size:.9rem;}
     <p class="hero-desc" data-i18n="hero.14">Consultant certifié Odoo 19 et Responsable Support chez Senedoo. Six ans d’expérience entre l’entrepreneuriat digital, comme cofondateur de la Galsen Digital Agency, et des projets ERP menés en Afrique de l’Ouest et au-delà.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn-primary" onclick="track('hero_projects')">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5-5 5M6 12h12"></path></svg>
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
         <span data-i18n="hero.btn1">Mes réalisations</span>
       </a>
       <a href="cv/CV_Alpha_Ndiaye_FR.pdf" data-cv class="btn-outline" target="_blank" rel="noopener" onclick="track('hero_cv')">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg>
         <span data-i18n="hero.btn2">Télécharger CV</span>
       </a>
     </div>
@@ -687,10 +697,10 @@ footer p{color:var(--sub);font-size:.9rem;}
         <div class="exp-kpis"><div><b>10</b><span data-i18n="experience.kpi1">projets pilotés</span></div><div><b>17</b><span data-i18n="experience.kpi2">projets accompagnés</span></div><div><b>~40</b><span data-i18n="experience.kpi3">utilisateurs formés</span></div></div>
         <div class="timeline-chips"><span class="chip" data-i18n="experience.46">Responsable support client</span><span class="chip" data-i18n="experience.47">Chef de projet</span><span class="chip" data-i18n="experience.48">Consultant certifié Odoo 19</span></div>
         <div class="exp-more"><div class="timeline-clients-label" data-i18n="experience.49">Projets pilotés</div><div class="timeline-clients-tags"><a class="tclient tclient-link" href="https://www.geofleetin.com/" rel="noopener" target="_blank">GeoFleet IN</a><span class="tclient">KGD Équipement</span><a class="tclient tclient-link" href="http://www.malimenage.com/" rel="noopener" target="_blank">Mali Ménage</a><a class="tclient tclient-link" href="https://www.team-wallace.com/" rel="noopener" target="_blank">Wallace</a></div><details class="tclients-more">
-<summary class="tclient-more" data-i18n="experience.54">+ 6 autres</summary>
+<summary class="tclient-more" data-i18n="experience.54">Voir les 6 autres</summary>
 <div class="timeline-clients-tags"><span class="tclient">Barham Fish</span><a class="tclient tclient-link" href="http://ericfavrestore.sn/" rel="noopener" target="_blank">Distripro</a><span class="tclient">Lysa &amp; Co</span><span class="tclient">Référence Transit</span><span class="tclient">Diparco</span><span class="tclient">Blomar</span></div>
 </details><div class="tgroup-gap"></div><div class="timeline-clients-label" data-i18n="experience.61">Projets accompagnés au sein de l’équipe</div><div class="timeline-clients-tags"><a class="tclient tclient-link" href="https://www.oryxenergies.com/" rel="noopener" target="_blank">Oryx Energies</a><a class="tclient tclient-link" href="https://ericfavre-invest.com/" rel="noopener" target="_blank">Eric Favre</a><a class="tclient tclient-link" href="http://globoafrique.com/" rel="noopener" target="_blank">Globo</a><a class="tclient tclient-link" href="http://www.rubiskenya.com/" rel="noopener" target="_blank">Rubis Energy Kenya</a></div><details class="tclients-more">
-<summary class="tclient-more" data-i18n="experience.66">+ 13 autres</summary>
+<summary class="tclient-more" data-i18n="experience.66">Voir les 13 autres</summary>
 <div class="timeline-clients-tags"><span class="tclient">Afric Azote</span><span class="tclient">Delta SA</span><span class="tclient">Agronat</span><a class="tclient tclient-link" href="http://www.csttaogroup.com/" rel="noopener" target="_blank">CSTTAO</a><a class="tclient tclient-link" href="https://transport-afrique-logistique.com/" rel="noopener" target="_blank">Transport Afrique Logistique</a><span class="tclient">La Ripaille</span><span class="tclient">Logifroid</span><a class="tclient tclient-link" href="http://www.tourdegrasse.com/" rel="noopener" target="_blank">Maison de Fragrance</a><a class="tclient tclient-link" href="http://www.mbolyama-immo.com/" rel="noopener" target="_blank">Mbolyama</a><span class="tclient">FB Avocat</span><a class="tclient tclient-link" href="https://www.afrikalarm.com/" rel="noopener" target="_blank">Afrikalarm</a><span class="tclient">Sit N Deep</span><span class="tclient">Multilog CI</span></div>
 </details><ul class="timeline-list" style="margin-top:.85rem;"><li data-i18n="experience.80">Responsable Support depuis avril 2025 (CDI)</li><li data-i18n="experience.81">Consultant junior ERP de janvier à avril 2025</li><li data-i18n="experience.82">Certifié Odoo 19 (Odoo S.A.)</li><li data-i18n="experience.83">Pilotage de projets de déploiement et formation des utilisateurs</li></ul></div>
       </div>
@@ -729,7 +739,7 @@ footer p{color:var(--sub);font-size:.9rem;}
 </div>
 </div>
 
-  <div class="exp-toggle-wrap"><button type="button" class="exp-toggle" aria-controls="exp-grid" aria-expanded="false"><span class="exp-toggle-label" data-i18n="experience.108">Voir plus</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div>
+  <div class="exp-toggle-wrap"><button type="button" class="exp-toggle" aria-controls="exp-grid" aria-expanded="false"><span class="exp-toggle-label" data-i18n="experience.108">Voir tout le détail</span></button></div>
 </section>
 
 <!-- ═══ PROJECTS ═══ -->
@@ -1013,26 +1023,26 @@ footer p{color:var(--sub);font-size:.9rem;}
       <p data-i18n="contact.227">Retrouvez l'ensemble de mon parcours et mes compétences en détail.</p>
     </div>
     <a href="cv/CV_Alpha_Ndiaye_FR.pdf" data-cv class="btn-primary" target="_blank" rel="noopener" onclick="track('cv_download')">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg>
       <span data-i18n="contact.228">Télécharger le CV</span>
     </a>
   </div>
   <div class="contact-grid reveal" style="transition-delay:.08s;">
     <div class="contact-links">
       <a href="mailto:alphandiayepro@gmail.com" class="contact-link" onclick="track('click_email')">
-        <div class="contact-link-icon"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
+        <div class="contact-link-icon"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></div>
         alphandiayepro@gmail.com
       </a>
       <a href="https://wa.me/221774051907" target="_blank" rel="noopener" class="contact-link" onclick="track('click_whatsapp')">
-        <div class="contact-link-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="#25D366"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 01-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.43 9.43 0 01-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.91.99 6.7 2.78a9.41 9.41 0 012.77 6.7c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.53A11.33 11.33 0 0012.04.63C5.76.63.65 5.74.65 12.02c0 2.01.52 3.97 1.52 5.7L.55 23.62l6.04-1.58a11.37 11.37 0 005.44 1.38h.01c6.28 0 11.39-5.11 11.39-11.39 0-3.04-1.18-5.9-3.33-8.06z"></path></svg></div>
+        <div class="contact-link-icon"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg></div>
         WhatsApp · +221 77 405 19 07
       </a>
       <a href="https://www.linkedin.com/in/alphandiaye" target="_blank" rel="noopener" class="contact-link" onclick="track('click_linkedin')">
-        <div class="contact-link-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="var(--blue)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg></div>
+        <div class="contact-link-icon"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></div>
         LinkedIn · Alpha Ndiaye
       </a>
       <a href="https://gda.webikoo.pro/" target="_blank" rel="noopener" class="contact-link" onclick="track('click_gda')">
-        <div class="contact-link-icon"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg></div>
+        <div class="contact-link-icon"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg></div>
         Galsen Digital Agency
       </a>
     </div>
@@ -1045,7 +1055,7 @@ footer p{color:var(--sub);font-size:.9rem;}
       <textarea name="message" placeholder="Votre message..." aria-label="Votre message" required="" data-i18n-ph="ph.message"></textarea>
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
       <button type="submit" class="btn-primary" style="align-self:flex-start;" >
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>
         <span data-i18n="contact.232">Envoyer le message</span>
       </button>
       <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
@@ -1058,241 +1068,19 @@ footer p{color:var(--sub);font-size:.9rem;}
   <span class="footer-logo">Alpha.</span>
   <p data-i18n="footer.234">© 2026 Alpha Ndiaye. Tous droits réservés.</p>
   <div class="footer-links">
-    <a href="https://www.linkedin.com/in/alphandiaye" target="_blank" rel="noopener" class="footer-link" title="LinkedIn" aria-label="LinkedIn" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+    <a href="https://www.linkedin.com/in/alphandiaye" target="_blank" rel="noopener" class="footer-link" title="LinkedIn" aria-label="LinkedIn">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
     </a>
-    <a href="https://gda.webikoo.pro/" target="_blank" rel="noopener" class="footer-link" title="Galsen Digital Agency" aria-label="Galsen Digital Agency" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path></svg>
+    <a href="https://gda.webikoo.pro/" target="_blank" rel="noopener" class="footer-link" title="Galsen Digital Agency" aria-label="Galsen Digital Agency">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
     </a>
     <a href="mailto:alphandiayepro@gmail.com" class="footer-link" title="Email" aria-label="Email">
-      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
     </a>
   </div>
 </footer>
 
-<script type="application/json" id="i18n-en">
-{
- "clients.title": "Companies & organisations I have worked with",
- "nav.about": "About",
- "nav.exp": "Experience",
- "nav.projects": "Projects",
- "nav.skills": "Skills",
- "nav.edu": "Education",
- "nav.contact": "Contact",
- "nav.cta": "Contact me",
- "hero.btn1": "View projects",
- "hero.btn2": "Download CV",
- "stat.projects": "Projects delivered",
- "stat.countries": "Countries",
- "stat.years": "Years of experience",
- "scroll": "Explore",
- "hero.11": "<span class=\"dot-live\"></span>\n      Dakar, Senegal",
- "hero.12": "I turn ideas",
- "hero.13": "into systems that work",
- "hero.14": "Odoo 19 certified consultant and Head of Support at Senedoo. Six years of experience spanning digital entrepreneurship, as co-founder of Galsen Digital Agency, and ERP projects delivered across West Africa and beyond.",
- "hero.16": "Odoo ERP Consultant · Digital transformation",
- "about.17": "About",
- "about.18": "Expertise built in the field, <span style=\"color:var(--blue)\">across West Africa</span>",
- "about.19": "I’m Alpha Ndiaye, a digital transformation consultant based in Dakar. For six years, I have been helping companies with their digital transition, from building visual identities to deploying complex ERP systems.",
- "about.20": "After co-founding and running Galsen Digital Agency, I am now Head of Support at Senedoo, an official Odoo partner. This path has given me a dual skill set: understanding business challenges and mastering the digital tools that serve them.",
- "about.21": "What sets me apart is my ability to connect strategic vision with operational execution, without losing sight of the people at the heart of every project.",
- "about.22": "Digital transformation",
- "about.23": "ERP projects",
- "about.25": "Automation",
- "about.26": "Graphic design",
- "about.27": "Project management",
- "about.28": "Customer support",
- "about.29": "My projects",
- "about.30": "Odoo ERP Consultant",
- "about.31": "As an Odoo V19 certified consultant, I help SMEs and large companies analyse, implement, migrate and optimise their ERP. My goal is lasting adoption and efficient processes.",
- "about.32": "Project management",
- "about.33": "I lead digital transformation projects from needs analysis to go-live. I coordinate teams, keep deadlines under control, anticipate risks and ensure rigorous follow-up so that every project succeeds.",
- "about.34": "Innovation &amp; Automation",
- "about.35": "I bring artificial intelligence and automation into business processes to simplify them, boost productivity and cut repetitive tasks. Every solution is designed to create lasting, measurable value.",
- "about.36": "Client relations",
- "about.37": "As Head of Support and Project Manager, I help companies succeed with their projects. I provide close follow-up, coordinate teams and foster clear communication to reach the agreed objectives.",
- "experience.38": "Career",
- "experience.39": "My experience",
- "experience.40": "Six years between digital creation and ERP deployments in West Africa.",
- "experience.41": "JAN. 2025 – PRESENT",
- "experience.44": "Head of Support <span style=\"opacity:.7;font-weight:500;\">· since April 2025</span>",
- "experience.45": "I oversee customer support and the guidance of Senedoo’s partner companies as they adopt their digital solutions. My role covers day-to-day support operations and the management of key account relationships.",
- "experience.46": "Head of customer support",
- "experience.47": "Project manager",
- "experience.48": "Odoo 19 certified consultant",
- "experience.49": "Projects I led",
- "experience.54": "+ 6 more",
- "experience.61": "Projects supported as part of the team",
- "experience.66": "+ 13 more",
- "experience.80": "Head of Support since April 2025 (permanent contract)",
- "experience.81": "Junior ERP consultant from January to April 2025",
- "experience.82": "Odoo 19 certified (Odoo S.A.)",
- "experience.83": "Leading deployment projects and training users",
- "experience.84": "2020 (ACTIVITIES) · 2022 (FOUNDED) – 2025",
- "experience.87": "Co-founder · Managing Director &amp; Head of Multimedia",
- "experience.88": "I co-founded GDA to meet Senegalese companies’ growing need for digital transformation. The agency helped public and private organisations across West Africa build their digital identity. I was in charge of general management, administration and multimedia production.",
- "experience.89": "General management",
- "experience.90": "Creative direction",
- "experience.91": "Administration",
- "experience.92": "Key projects",
- "experience.99": "NON-PROFIT · JUNE 2026 – OCT. 2026",
- "experience.102": "WASSOR is an organisation dedicated to supporting and empowering young people and women. Through its initiatives, the association works for personal development, mental well-being and individual fulfilment.",
- "experience.103": "Community engagement",
- "experience.104": "Project management",
- "experience.106": "It focuses on human potential, self-confidence and skills development, by creating spaces for expression, sharing and learning.",
- "experience.107": "Through programmes, awareness campaigns and community projects, WASSOR encourages everyone to recognise their potential, push past their limits and take charge of their own development.",
- "experience.108": "See more",
- "projects.110": "Selected projects",
- "projects.111": "ERP projects at Senedoo, followed by work from the GDA years.",
- "projects.112": "Odoo deployment · Oryx Energies",
- "projects.113": "Senedoo · Energy &amp; Distribution",
- "projects.114": "Odoo rollout in service stations. On-site assignment in Côte d’Ivoire to structure the migration of the two pilot stations, then support lead for four stations in Côte d’Ivoire and Zambia.",
- "projects.117": "International rollout",
- "projects.119": "Odoo support · Eric Favre",
- "projects.120": "Senedoo · Pharmaceuticals &amp; Nutrition",
- "projects.121": "Odoo support lead for the Eric Favre group since go-live, across all modules: user guidance, support requests, incident resolution and team training.",
- "projects.123": "Training",
- "projects.126": "Odoo support · Globo Afrique",
- "projects.128": "Took over an Odoo project from another partner. Support lead during the migration: tracked issues, handled points of friction, resolved incidents and attended steering meetings.",
- "projects.132": "Content creation · DNC",
- "projects.133": "Diamant Noir Collection · Luxury hospitality",
- "projects.134": "Designed visual content and communication materials to strengthen the brand image. Produced promotional visuals and photo shoots, provided digital support and took part in the company’s communication campaigns.",
- "projects.135": "Content creation",
- "projects.136": "Luxury hospitality",
- "projects.137": "Photo shoot",
- "projects.144": "Content creation · Sama Chef",
- "projects.145": "Luxury culinary training · Senegal",
- "projects.146": "Produced photo shoots and promotional videos showcasing Sama Chef’s training programmes, facilities and expertise. Created content for communication and recruitment campaigns in high-end cooking, hospitality and catering.",
- "skills.150": "Know-how",
- "skills.151": "My skills",
- "skills.152": "A set of skills at the crossroads of digital, design and project management.",
- "skills.153": "Systems &amp; ERP",
- "skills.154": "ERP deployment",
- "skills.155": "Project management",
- "skills.156": "Support &amp; training",
- "skills.157": "AI &amp; Automation",
- "skills.159": "Workflow automation",
- "skills.160": "Applied AI tools",
- "skills.161": "Design &amp; Creation",
- "skills.162": "Canva (certified)",
- "skills.163": "Visual identity",
- "skills.164": "Digital communication",
- "skills.165": "Interpersonal skills & Leadership",
- "skills.166": "Client relations",
- "skills.167": "Team leadership",
- "skills.168": "Active listening",
- "education.169": "Education",
- "education.170": "Education &amp; certifications",
- "education.171": "A solid academic background, strengthened by hands-on certifications.",
- "education.172": "Academic background",
- "education.173": "MASTER’S DEGREE (YEAR 2) · 2024–2025",
- "education.176": "Digital transformation, digital strategy, entrepreneurship",
- "education.177": "MASTER’S DEGREE (YEAR 1) - 2024",
- "education.178": "Business Administration and Management",
- "education.180": "Management, finance, human resources",
- "education.181": "BACHELOR’S DEGREE - 2024",
- "education.182": "Management and Accounting",
- "education.184": "Accounting, financial management, business law",
- "education.186": "Sales Force of the Future",
- "education.188": "Agricultural mechanisation, fleet management, distribution",
- "education.190": "CANVA CERTIFIED",
- "education.193": "CANVA CERTIFIED",
- "education.196": "ODOO CERTIFIED",
- "personality.199": "Who I am",
- "personality.200": "Beyond work",
- "personality.201": "What drives me outside of work also shapes the way I approach every project.",
- "personality.203": "Team spirit and a taste for competition.",
- "personality.204": "Nature",
- "personality.205": "Recharging and finding inspiration outdoors.",
- "personality.206": "Animals",
- "personality.207": "A curious, attentive eye on the living world.",
- "personality.208": "Psychology",
- "personality.209": "Understanding people to work better together.",
- "personality.210": "Culture &amp; animation",
- "personality.211": "Discovering cultures and stories that inspire.",
- "personality.212": "Videography",
- "personality.213": "Film and editing: telling a story through images.",
- "languages.215": "Languages",
- "languages.216": "I work and communicate in three languages every day.",
- "languages.217": "French",
- "languages.218": "Main language · Professional fluency",
- "languages.219": "English",
- "languages.220": "Professional · Fluent",
- "languages.222": "Mother tongue · Native",
- "contact.224": "Let’s work together",
- "contact.225": "A project, an idea, a collaboration? I’m happy to talk.",
- "contact.226": "Download my CV",
- "contact.227": "Find my full background and skills in detail.",
- "contact.228": "Download CV",
- "contact.232": "Send message",
- "footer.234": "© 2026 Alpha Ndiaye. All rights reserved.",
- "ph.name": "Your name",
- "ph.email": "Your email",
- "ph.subject": "Subject",
- "ph.message": "Your message...",
- "meta.title": "Alpha Ndiaye · Certified Odoo Consultant in Dakar, Senegal | ERP & Digital Transformation",
- "meta.desc": "Certified Odoo consultant (Odoo 19) based in Dakar, Senegal. ERP deployment and migration, project management, user support and training across West Africa and remotely. CV in English and French.",
- "experience.kpi1": "projects led",
- "experience.kpi2": "projects supported",
- "experience.kpi3": "users trained",
- "education.score": "2026 · passed with 83.75%",
- "education.proof": "View certificate",
- "nav.passions": "Interests",
- "ux.skip": "Skip to content",
- "ux.cta": "Contact me",
- "ux.top": "Back to top",
- "projects.more": "View project",
- "odoo.title": "Odoo modules I work with",
- "odoo.cert": "Odoo 19 certified",
- "odoo.sub": "Configuration, user training and functional support on client projects.",
- "odoo.g.fin": "Finance",
- "odoo.m.fin0": "Accounting",
- "odoo.m.fin1": "Invoicing",
- "odoo.m.fin2": "Expenses",
- "odoo.g.sal": "Sales & customers",
- "odoo.m.sal0": "Sales",
- "odoo.m.sal2": "Point of Sale",
- "odoo.m.sal3": "Website / eCommerce",
- "odoo.g.ops": "Operations",
- "odoo.m.ops0": "Inventory",
- "odoo.m.ops1": "Purchase",
- "odoo.m.ops2": "Manufacturing",
- "odoo.m.ops3": "Project & Timesheets",
- "odoo.g.cus": "Customisation & data",
- "odoo.m.cus1": "Data import & migration",
- "odoo.m.cus2": "Automations & server actions",
- "odoo.m.sal4": "Subscriptions",
- "mod.pos": "Point of Sale",
- "mod.stock": "Inventory",
- "mod.acc": "Accounting",
- "mod.sale": "Sales",
- "mod.sub": "Subscriptions",
- "mod.pur": "Purchase",
- "mod.fs": "Field Service",
- "mod.proj": "Project",
- "pf.role": "Role",
- "pf.dur": "Duration",
- "pf.users": "Users",
- "pf.ox.r": "Support lead",
- "pf.ox.d": "1 wk on site + 6 mo",
- "pf.ox.u": "~10 · 4 stations",
- "pf.ef.r": "Support lead",
- "pf.ef.d": "Since Feb 2025",
- "pf.ef.u": "26",
- "projects.127": "Senedoo · Geolocation &amp; fleet management",
- "pf.gl.r": "Support lead",
- "pf.gl.d": "1 year",
- "pf.gl.u": "25+",
- "pf.gf.r": "Project manager",
- "pf.gf.d": "3-week rollout",
- "pf.gf.u": "17 trained",
- "projects.g1": "Odoo deployment · GeoFleet-IN",
- "projects.g2": "Senedoo · Project I led",
- "projects.g3": "Led the full Odoo rollout, from requirements analysis to team training. Training is complete; go-live is waiting on the client’s final accounting data.",
- "projects.s1": "Videography",
- "projects.s2": "Social media content"
-}
-</script>
+<script type="application/json" id="i18n-en">{"clients.title": "Companies & organisations I have worked with", "nav.about": "About", "nav.exp": "Experience", "nav.projects": "Projects", "nav.skills": "Skills", "nav.edu": "Education", "nav.contact": "Contact", "nav.cta": "Contact me", "hero.btn1": "View projects", "hero.btn2": "Download CV", "stat.projects": "Projects delivered", "stat.countries": "Countries", "stat.years": "Years of experience", "scroll": "Explore", "hero.11": "<span class=\"dot-live\"></span>\n      Dakar, Senegal", "hero.12": "I turn ideas", "hero.13": "into systems that work", "hero.14": "Odoo 19 certified consultant and Head of Support at Senedoo. Six years of experience spanning digital entrepreneurship, as co-founder of Galsen Digital Agency, and ERP projects delivered across West Africa and beyond.", "hero.16": "Odoo ERP Consultant · Digital transformation", "about.17": "About", "about.18": "Expertise built in the field, <span style=\"color:var(--blue)\">across West Africa</span>", "about.19": "I’m Alpha Ndiaye, a digital transformation consultant based in Dakar. For six years, I have been helping companies with their digital transition, from building visual identities to deploying complex ERP systems.", "about.20": "After co-founding and running Galsen Digital Agency, I am now Head of Support at Senedoo, an official Odoo partner. This path has given me a dual skill set: understanding business challenges and mastering the digital tools that serve them.", "about.21": "What sets me apart is my ability to connect strategic vision with operational execution, without losing sight of the people at the heart of every project.", "about.22": "Digital transformation", "about.23": "ERP projects", "about.25": "Automation", "about.26": "Graphic design", "about.27": "Project management", "about.28": "Customer support", "about.29": "My projects", "about.30": "Odoo ERP Consultant", "about.31": "As an Odoo V19 certified consultant, I help SMEs and large companies analyse, implement, migrate and optimise their ERP. My goal is lasting adoption and efficient processes.", "about.32": "Project management", "about.33": "I lead digital transformation projects from needs analysis to go-live. I coordinate teams, keep deadlines under control, anticipate risks and ensure rigorous follow-up so that every project succeeds.", "about.34": "Innovation &amp; Automation", "about.35": "I bring artificial intelligence and automation into business processes to simplify them, boost productivity and cut repetitive tasks. Every solution is designed to create lasting, measurable value.", "about.36": "Client relations", "about.37": "As Head of Support and Project Manager, I help companies succeed with their projects. I provide close follow-up, coordinate teams and foster clear communication to reach the agreed objectives.", "experience.38": "Career", "experience.39": "My experience", "experience.40": "Six years between digital creation and ERP deployments in West Africa.", "experience.41": "JAN. 2025 – PRESENT", "experience.44": "Head of Support <span style=\"opacity:.7;font-weight:500;\">· since April 2025</span>", "experience.45": "I oversee customer support and the guidance of Senedoo’s partner companies as they adopt their digital solutions. My role covers day-to-day support operations and the management of key account relationships.", "experience.46": "Head of customer support", "experience.47": "Project manager", "experience.48": "Odoo 19 certified consultant", "experience.49": "Projects I led", "experience.54": "Show 6 more", "experience.61": "Projects supported as part of the team", "experience.66": "Show 13 more", "experience.80": "Head of Support since April 2025 (permanent contract)", "experience.81": "Junior ERP consultant from January to April 2025", "experience.82": "Odoo 19 certified (Odoo S.A.)", "experience.83": "Leading deployment projects and training users", "experience.84": "2020 (ACTIVITIES) · 2022 (FOUNDED) – 2025", "experience.87": "Co-founder · Managing Director &amp; Head of Multimedia", "experience.88": "I co-founded GDA to meet Senegalese companies’ growing need for digital transformation. The agency helped public and private organisations across West Africa build their digital identity. I was in charge of general management, administration and multimedia production.", "experience.89": "General management", "experience.90": "Creative direction", "experience.91": "Administration", "experience.92": "Key projects", "experience.99": "NON-PROFIT · JUNE 2026 – OCT. 2026", "experience.102": "WASSOR is an organisation dedicated to supporting and empowering young people and women. Through its initiatives, the association works for personal development, mental well-being and individual fulfilment.", "experience.103": "Community engagement", "experience.104": "Project management", "experience.106": "It focuses on human potential, self-confidence and skills development, by creating spaces for expression, sharing and learning.", "experience.107": "Through programmes, awareness campaigns and community projects, WASSOR encourages everyone to recognise their potential, push past their limits and take charge of their own development.", "experience.108": "Show full details", "projects.110": "Selected projects", "projects.111": "ERP projects at Senedoo, followed by work from the GDA years.", "projects.112": "Odoo deployment · Oryx Energies", "projects.113": "Senedoo · Energy &amp; Distribution", "projects.114": "Odoo rollout in service stations. On-site assignment in Côte d’Ivoire to structure the migration of the two pilot stations, then support lead for four stations in Côte d’Ivoire and Zambia.", "projects.117": "International rollout", "projects.119": "Odoo support · Eric Favre", "projects.120": "Senedoo · Pharmaceuticals &amp; Nutrition", "projects.121": "Odoo support lead for the Eric Favre group since go-live, across all modules: user guidance, support requests, incident resolution and team training.", "projects.123": "Training", "projects.126": "Odoo support · Globo Afrique", "projects.128": "Took over an Odoo project from another partner. Support lead during the migration: tracked issues, handled points of friction, resolved incidents and attended steering meetings.", "projects.132": "Content creation · DNC", "projects.133": "Diamant Noir Collection · Luxury hospitality", "projects.134": "Designed visual content and communication materials to strengthen the brand image. Produced promotional visuals and photo shoots, provided digital support and took part in the company’s communication campaigns.", "projects.135": "Content creation", "projects.136": "Luxury hospitality", "projects.137": "Photo shoot", "projects.144": "Content creation · Sama Chef", "projects.145": "Luxury culinary training · Senegal", "projects.146": "Produced photo shoots and promotional videos showcasing Sama Chef’s training programmes, facilities and expertise. Created content for communication and recruitment campaigns in high-end cooking, hospitality and catering.", "skills.150": "Know-how", "skills.151": "My skills", "skills.152": "A set of skills at the crossroads of digital, design and project management.", "skills.153": "Systems &amp; ERP", "skills.154": "ERP deployment", "skills.155": "Project management", "skills.156": "Support &amp; training", "skills.157": "AI &amp; Automation", "skills.159": "Workflow automation", "skills.160": "Applied AI tools", "skills.161": "Design &amp; Creation", "skills.162": "Canva (certified)", "skills.163": "Visual identity", "skills.164": "Digital communication", "skills.165": "Interpersonal skills & Leadership", "skills.166": "Client relations", "skills.167": "Team leadership", "skills.168": "Active listening", "education.169": "Education", "education.170": "Education &amp; certifications", "education.171": "A solid academic background, strengthened by hands-on certifications.", "education.172": "Academic background", "education.173": "MASTER’S DEGREE (YEAR 2) · 2024–2025", "education.176": "Digital transformation, digital strategy, entrepreneurship", "education.177": "MASTER’S DEGREE (YEAR 1) - 2024", "education.178": "Business Administration and Management", "education.180": "Management, finance, human resources", "education.181": "BACHELOR’S DEGREE - 2024", "education.182": "Management and Accounting", "education.184": "Accounting, financial management, business law", "education.186": "Sales Force of the Future", "education.188": "Agricultural mechanisation, fleet management, distribution", "education.190": "CANVA CERTIFIED", "education.193": "CANVA CERTIFIED", "education.196": "ODOO CERTIFIED", "personality.199": "Who I am", "personality.200": "Beyond work", "personality.201": "What drives me outside of work also shapes the way I approach every project.", "personality.203": "Team spirit and a taste for competition.", "personality.204": "Nature", "personality.205": "Recharging and finding inspiration outdoors.", "personality.206": "Animals", "personality.207": "A curious, attentive eye on the living world.", "personality.208": "Psychology", "personality.209": "Understanding people to work better together.", "personality.210": "Culture &amp; animation", "personality.211": "Discovering cultures and stories that inspire.", "personality.212": "Videography", "personality.213": "Film and editing: telling a story through images.", "languages.215": "Languages", "languages.216": "I work and communicate in three languages every day.", "languages.217": "French", "languages.218": "Main language · Professional fluency", "languages.219": "English", "languages.220": "Professional · Fluent", "languages.222": "Mother tongue · Native", "contact.224": "Let’s work together", "contact.225": "A project, an idea, a collaboration? I’m happy to talk.", "contact.226": "Download my CV", "contact.227": "Find my full background and skills in detail.", "contact.228": "Download CV", "contact.232": "Send message", "footer.234": "© 2026 Alpha Ndiaye. All rights reserved.", "ph.name": "Your name", "ph.email": "Your email", "ph.subject": "Subject", "ph.message": "Your message...", "meta.title": "Alpha Ndiaye · Certified Odoo Consultant in Dakar, Senegal | ERP & Digital Transformation", "meta.desc": "Certified Odoo consultant (Odoo 19) based in Dakar, Senegal. ERP deployment and migration, project management, user support and training across West Africa and remotely. CV in English and French.", "experience.kpi1": "projects led", "experience.kpi2": "projects supported", "experience.kpi3": "users trained", "education.score": "2026 · passed with 83.75%", "education.proof": "View certificate", "nav.passions": "Interests", "ux.skip": "Skip to content", "ux.cta": "Contact me", "ux.top": "Back to top", "projects.more": "View project", "odoo.title": "Odoo modules I work with", "odoo.cert": "Odoo 19 certified", "odoo.sub": "Configuration, user training and functional support on client projects.", "odoo.g.fin": "Finance", "odoo.m.fin0": "Accounting", "odoo.m.fin1": "Invoicing", "odoo.m.fin2": "Expenses", "odoo.g.sal": "Sales & customers", "odoo.m.sal0": "Sales", "odoo.m.sal2": "Point of Sale", "odoo.m.sal3": "Website / eCommerce", "odoo.g.ops": "Operations", "odoo.m.ops0": "Inventory", "odoo.m.ops1": "Purchase", "odoo.m.ops2": "Manufacturing", "odoo.m.ops3": "Project & Timesheets", "odoo.g.cus": "Customisation & data", "odoo.m.cus1": "Data import & migration", "odoo.m.cus2": "Automations & server actions", "odoo.m.sal4": "Subscriptions", "mod.pos": "Point of Sale", "mod.stock": "Inventory", "mod.acc": "Accounting", "mod.sale": "Sales", "mod.sub": "Subscriptions", "mod.pur": "Purchase", "mod.fs": "Field Service", "mod.proj": "Project", "pf.role": "Role", "pf.dur": "Duration", "pf.users": "Users", "pf.ox.r": "Support lead", "pf.ox.d": "1 wk on site + 6 mo", "pf.ox.u": "~10 · 4 stations", "pf.ef.r": "Support lead", "pf.ef.d": "Since Feb 2025", "pf.ef.u": "26", "projects.127": "Senedoo · Geolocation &amp; fleet management", "pf.gl.r": "Support lead", "pf.gl.d": "1 year", "pf.gl.u": "25+", "pf.gf.r": "Project manager", "pf.gf.d": "3-week rollout", "pf.gf.u": "17 trained", "projects.g1": "Odoo deployment · GeoFleet-IN", "projects.g2": "Senedoo · Project I led", "projects.g3": "Led the full Odoo rollout, from requirements analysis to team training. Training is complete; go-live is waiting on the client’s final accounting data.", "projects.s1": "Videography", "projects.s2": "Social media content"}</script>
 <script>
 /* ═══ THEME ═══ */
 function initTheme(){
@@ -1395,9 +1183,10 @@ function toggleTheme(){
 
   /* À propos : cartes repliables sur mobile */
   const mq=matchMedia('(max-width:700px)');
-  document.querySelectorAll('.about-card').forEach(card=>{
+  document.querySelectorAll('.about-card').forEach((card,i)=>{
     const h=card.querySelector('h3');if(!h)return;
     h.setAttribute('role','button');h.tabIndex=0;
+    if(i===0&&mq.matches)card.classList.add('open');h.setAttribute('aria-expanded',card.classList.contains('open'));
     const t=()=>{if(!mq.matches)return;card.classList.toggle('open');h.setAttribute('aria-expanded',card.classList.contains('open'));};
     h.addEventListener('click',t);h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});
   });
@@ -1415,6 +1204,83 @@ function toggleTheme(){
     }));
   }
   groupBox('.interest-banner img','h3');
+})();
+/* ═══ FOND DIGITAL (hero) ═══
+   Grille de points + impulsions de données qui circulent sur la grille.
+   Pause hors écran / onglet caché ; image fixe si « animations réduites ».
+   Rien n'est dessiné tant que la zone n'a pas de taille (onglet masqué, page en arrière-plan). */
+(function(){
+  const hero=document.getElementById('hero');if(!hero)return;
+  const cv=document.createElement('canvas');cv.className='hero-bg';cv.setAttribute('aria-hidden','true');hero.prepend(cv);
+  const ctx=cv.getContext('2d',{alpha:true});
+  const G=46;let W=0,H=0,dpr=1,cols=0,rows=0,grid=null,rgb='56,189,248',packets=[],blips=[],run=false,raf=0,last=0,mx=-1e4,my=-1e4,visible=true,ready=false;
+  const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  function theme(){rgb=document.documentElement.getAttribute('data-theme')==='light'?'10,106,158':'56,189,248';}
+  function build(){
+    theme();dpr=Math.min(devicePixelRatio||1,1.5);
+    W=hero.clientWidth;H=hero.clientHeight;ready=W>0&&H>0;if(!ready)return;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
+    cols=Math.ceil(W/G)+1;rows=Math.ceil(H/G)+1;
+    grid=document.createElement('canvas');grid.width=cv.width;grid.height=cv.height;
+    const g=grid.getContext('2d');g.scale(dpr,dpr);
+    g.fillStyle=`rgba(${rgb},.16)`;
+    for(let i=0;i<cols;i++)for(let j=0;j<rows;j++)g.fillRect(i*G-1,j*G-1,2,2);
+    g.strokeStyle=`rgba(${rgb},.05)`;g.lineWidth=1;g.beginPath();
+    for(let i=0;i<cols;i++){g.moveTo(i*G+.5,0);g.lineTo(i*G+.5,H);}for(let j=0;j<rows;j++){g.moveTo(0,j*G+.5);g.lineTo(W,j*G+.5);}g.stroke();
+    const n=W<700?4:9;packets=[];for(let k=0;k<n;k++)packets.push(spawn(true));blips=[];
+    draw(0);
+  }
+  const DIRS=[[1,0],[-1,0],[0,1],[0,-1]];
+  function spawn(init){
+    const d=DIRS[(Math.random()*4)|0];
+    return{x:((Math.random()*cols)|0)*G,y:((Math.random()*rows)|0)*G,dx:d[0],dy:d[1],v:.045+Math.random()*.07,
+      run:0,segs:0,max:5+((Math.random()*9)|0),hist:[],age:init?Math.random()*800:0};
+  }
+  function step(p,dt){
+    let mv=p.v*dt;p.age+=dt;
+    while(mv>0){
+      const left=G-p.run,m=Math.min(mv,left);
+      p.x+=p.dx*m;p.y+=p.dy*m;p.run+=m;mv-=m;
+      if(p.run>=G-1e-6){p.run=0;p.segs++;
+        if(Math.random()<.38){const turn=p.dx?[[0,1],[0,-1]]:[[1,0],[-1,0]];const t=turn[(Math.random()*2)|0];p.dx=t[0];p.dy=t[1];blips.push({x:p.x,y:p.y,r:2,a:.5});}
+      }
+    }
+    p.hist.push(p.x,p.y);if(p.hist.length>140)p.hist.splice(0,2);
+    return p.segs<p.max&&p.x>-G&&p.x<W+G&&p.y>-G&&p.y<H+G;
+  }
+  function draw(dt){
+    if(!ready)return;
+    ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+    ctx.drawImage(grid,0,0,W,H);
+    if(fine&&mx>-1e3){ /* points qui s'allument près de la souris */
+      const R=150,i0=Math.max(0,((mx-R)/G)|0),i1=Math.min(cols,((mx+R)/G+1)|0),j0=Math.max(0,((my-R)/G)|0),j1=Math.min(rows,((my+R)/G+1)|0);
+      for(let i=i0;i<i1;i++)for(let j=j0;j<j1;j++){const x=i*G,y=j*G,d=Math.hypot(x-mx,y-my);if(d<R){const a=(1-d/R)*.7;ctx.fillStyle=`rgba(${rgb},${a})`;ctx.fillRect(x-1.5,y-1.5,3,3);}}
+    }
+    ctx.lineCap='round';
+    for(let k=0;k<packets.length;k++){
+      const p=packets[k];
+      if(dt&&!step(p,dt)){blips.push({x:p.x,y:p.y,r:2,a:.6});packets[k]=spawn(false);continue;}
+      const h=p.hist,L=h.length/2;if(L<2)continue;
+      const fade=Math.min(1,p.age/400)*Math.min(1,(p.max-p.segs)/1.5+.2);
+      for(let s=1;s<L;s++){
+        const a=(s/L)*.55*fade;ctx.strokeStyle=`rgba(${rgb},${a})`;ctx.lineWidth=1.6;
+        ctx.beginPath();ctx.moveTo(h[2*s-2],h[2*s-1]);ctx.lineTo(h[2*s],h[2*s+1]);ctx.stroke();
+      }
+      ctx.fillStyle=`rgba(${rgb},${.95*fade})`;ctx.beginPath();ctx.arc(p.x,p.y,2.2,0,6.283);ctx.fill();
+      ctx.fillStyle=`rgba(${rgb},${.18*fade})`;ctx.beginPath();ctx.arc(p.x,p.y,7,0,6.283);ctx.fill();
+    }
+    for(let k=blips.length-1;k>=0;k--){const b=blips[k];if(dt){b.r+=dt*.03;b.a-=dt*.0012;}if(b.a<=0){blips.splice(k,1);continue;}
+      ctx.strokeStyle=`rgba(${rgb},${b.a})`;ctx.lineWidth=1;ctx.strokeRect(b.x-b.r,b.y-b.r,b.r*2,b.r*2);}
+  }
+  function loop(t){const dt=Math.min(48,t-(last||t));last=t;draw(dt);if(run)raf=requestAnimationFrame(loop);}
+  function start(){if(run||RM||!visible||document.hidden)return;run=true;last=0;raf=requestAnimationFrame(loop);}
+  function stop(){run=false;cancelAnimationFrame(raf);}
+  new IntersectionObserver(es=>{visible=es[0].isIntersecting;visible?start():stop();}).observe(hero);
+  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
+  if(fine)hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;},{passive:true});
+  hero.addEventListener('pointerleave',()=>{mx=my=-1e4;});
+  let rz;new ResizeObserver(()=>{clearTimeout(rz);rz=setTimeout(build,120);}).observe(hero);
+  new MutationObserver(build).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  build();start();
 })();
 /* ═══ CONTACT FORM ═══ */
 /* Envoi via FormSubmit (https://formsubmit.co) : le tout premier message déclenche un e-mail d'activation à confirmer. */
@@ -1447,7 +1313,7 @@ async function handleForm(e){
 <script>
 document.querySelectorAll('details.tclients-more').forEach(function(d){
   var sm=d.querySelector('summary'),n=d.querySelectorAll('.tclient').length;
-  var lab=function(){var en=document.documentElement.lang==='en';sm.textContent=d.open?(en?'Show less':'Voir moins'):('+ '+n+(en?' more':' autres'));};
+  var lab=function(){var en=document.documentElement.lang==='en';sm.textContent=d.open?(en?'Show less':'Réduire'):(en?'Show '+n+' more':'Voir les '+n+' autres');};
   lab();d.addEventListener('toggle',lab);
   new MutationObserver(lab).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 });
@@ -1456,7 +1322,7 @@ document.querySelectorAll('details.tclients-more').forEach(function(d){
 (function(){var g=document.getElementById('exp-grid'),b=document.querySelector('.exp-toggle');if(!g||!b)return;
 var l=b.querySelector('.exp-toggle-label');
 function set(open){g.classList.toggle('is-compact',!open);b.setAttribute('aria-expanded',open);
- var en=document.documentElement.lang==='en';l.textContent=open?(en?'Show less':'Voir moins'):(en?'Show more':'Voir plus');
+ var en=document.documentElement.lang==='en';l.textContent=open?(en?'Hide details':'Réduire le détail'):(en?'Show full details':'Voir tout le détail');
  g.querySelectorAll('details.tclients-more').forEach(function(d){d.open=open;});}
 b.addEventListener('click',function(){var open=b.getAttribute('aria-expanded')!=='true';set(open);
  if(!open)document.getElementById('experience').scrollIntoView({behavior:'smooth',block:'start'});});
