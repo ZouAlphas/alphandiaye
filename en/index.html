@@ -344,6 +344,44 @@ html:not(.js) .exp-toggle-wrap{display:none;}
 .proj-more:focus-visible{outline:none;}
 .proj-card:has(.proj-more:focus-visible){outline:2px solid var(--blue-ink);outline-offset:3px;}
 .proj-dots{display:none;}
+/* Réalisations : deux familles, cartes « vedette » horizontales, vidéos en fenêtre */
+.proj-group+.proj-group{margin-top:3.5rem;}
+.proj-group-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.25rem 1.5rem;margin-bottom:1.25rem;padding-bottom:.85rem;border-bottom:1px solid var(--border);}
+.proj-group-title{font-size:1.35rem;font-weight:680;letter-spacing:-.02em;}
+.proj-group-head p{color:var(--sub);font-size:.98rem;}
+@media(min-width:1101px){
+  .proj-card.feat-desk{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+  .proj-card.feat-desk .proj-top{aspect-ratio:auto;min-height:100%;}
+  .proj-card.feat-desk .proj-body{padding:2rem 2.25rem;justify-content:center;}
+  .proj-card.feat-desk .proj-name{font-size:1.65rem;}
+  .proj-card.feat-desk .proj-desc{-webkit-line-clamp:4;font-size:1.02rem;}
+}
+@media(min-width:701px) and (max-width:1100px){
+  .proj-card.feat-tab{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);}
+  .proj-card.feat-tab .proj-top{aspect-ratio:auto;min-height:100%;}
+  .proj-card.feat-tab .proj-top img{object-position:left center;}
+}
+.proj-top.is-video img{transition:transform .6s var(--ease),filter .3s;}
+.play-btn{position:absolute;inset:0;z-index:2;display:grid;place-items:center;border:0;padding:0;background:linear-gradient(180deg,transparent 55%,rgba(6,16,31,.55));cursor:pointer;color:#fff;}
+.play-btn>svg{width:64px;height:64px;padding:18px 16px 18px 20px;border-radius:50%;background:rgba(6,16,31,.55);fill:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 0 0 1px rgba(255,255,255,.35);transition:transform .25s var(--ease),background-color .25s;}
+.play-btn:hover>svg,.play-btn:focus-visible>svg{transform:scale(1.08);background:var(--blue);fill:#06101F;}
+.play-btn:focus-visible{outline:2px solid #fff;outline-offset:-6px;}
+.vbadge{position:absolute;left:.85rem;bottom:.75rem;font:600 .8rem/1 var(--body);color:#fff;padding:.35rem .6rem;border-radius:6px;background:rgba(6,16,31,.6);}
+.video-modal{width:min(1100px,94vw);max-width:none;max-height:none;padding:0;border:0;border-radius:var(--r-l);background:#06101F;color:#fff;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+.video-modal::backdrop{background:rgba(6,16,31,.82);backdrop-filter:blur(4px);}
+.video-modal[open]{animation:vm-in .25s var(--ease);}
+@keyframes vm-in{from{opacity:0;transform:translateY(12px) scale(.98);}to{opacity:1;transform:none;}}
+.vm-bar{display:flex;align-items:center;gap:1rem;padding:.75rem .75rem .75rem 1.25rem;}
+.vm-title{flex:1;font-family:var(--display);font-weight:650;font-size:1.05rem;}
+.vm-ext{color:#9BE0FF;font-size:.9rem;font-weight:600;text-decoration:none;white-space:nowrap;}
+.vm-ext:hover{text-decoration:underline;}
+.vm-close{width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;display:grid;place-items:center;cursor:pointer;}
+.vm-close:hover{background:rgba(255,255,255,.2);}
+.vm-close svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;}
+.vm-frame{aspect-ratio:16/9;background:#000;}
+.vm-frame iframe{width:100%;height:100%;border:0;display:block;}
+@media(max-width:700px){.vm-ext{display:none;}.video-modal{width:100vw;border-radius:0;}.play-btn>svg{width:56px;height:56px;padding:15px 13px 15px 17px;}}
+
 
 /* ═══ COMPÉTENCES ═══ */
 .odoo-modules{background:var(--card);border:1px solid var(--border);border-radius:var(--r-l);padding:2rem 2rem 2.2rem;margin-bottom:1.5rem;}
@@ -755,9 +793,23 @@ footer p{color:var(--sub);font-size:.9rem;}
   <div class="reveal center-head">
     <div class="section-label center">Portfolio</div>
     <h2 class="section-title" data-i18n="projects.110">Selected projects</h2>
-    <p class="section-sub" data-i18n="projects.111">ERP projects at Senedoo, followed by work from the GDA years.</p>
+    <p class="section-sub" data-i18n="projects.111">ERP, visual identity, photography and video production.</p>
   </div>
-  <div class="proj-grid reveal" style="transition-delay:.08s;">
+  <div class="proj-group reveal">
+    <div class="proj-group-head"><h3 class="proj-group-title" data-i18n="pg.erp">ERP and Odoo</h3><p data-i18n="pg.erp.s">Rollouts, migrations and support at Senedoo</p></div>
+    <div class="proj-grid">
+    <div class="proj-card feat-desk">
+      <div class="proj-top">
+        <img loading="lazy" decoding="async" src="/images/site/couverture-geofleet.webp" alt="GeoFleet-IN : suivi d’itinéraires de flotte">
+      </div>
+      <div class="proj-body">
+        <div class="proj-name" data-i18n="projects.g1">Odoo deployment · GeoFleet-IN</div>
+        <div class="proj-cat c-green" data-i18n="projects.g2">Senedoo · Project I led</div>
+        <div class="proj-desc" data-i18n="projects.g3">Led the full Odoo rollout, from requirements analysis to team training. Training is complete; go-live is waiting on the client’s final accounting data.</div>
+        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.gf.r">Project manager</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.gf.d">3-week rollout</dd></div><div><dt data-i18n="pf.users">Users</dt><dd data-i18n="pf.gf.u">17 trained</dd></div></dl><div class="proj-mods"><span class="pmod"><img src="/images/odoo/achats.svg" alt="" loading="lazy"><span data-i18n="mod.pur">Purchase</span></span><span class="pmod"><img src="/images/odoo/ventes.svg" alt="" loading="lazy"><span data-i18n="mod.sale">Sales</span></span><span class="pmod"><img src="/images/odoo/inventaire.svg" alt="" loading="lazy"><span data-i18n="mod.stock">Inventory</span></span><span class="pmod"><img src="/images/odoo/abonnements.svg" alt="" loading="lazy"><span data-i18n="mod.sub">Subscriptions</span></span><span class="pmod"><img src="/images/odoo/projet.svg" alt="" loading="lazy"><span data-i18n="mod.proj">Project</span></span></div>
+        <a class="proj-more" href="/en/projets/geofleet-in/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
     <div class="proj-card">
       <div class="proj-top">
         <img loading="lazy" decoding="async" src="/images/site/projet-oryx.webp" alt="Station-service Oryx Energies" onerror="this.parentElement.innerHTML='&lt;div class=\'proj-icon\'&gt;&lt;svg viewBox=\'0 0 24 24\'&gt;&lt;path d=\'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9\'/&gt;&lt;/svg&gt;&lt;/div&gt;'" style="display: block;">
@@ -784,44 +836,47 @@ footer p{color:var(--sub);font-size:.9rem;}
     </div>
     <div class="proj-card"><div class="proj-top"><img loading="lazy" decoding="async" src="/images/site/couverture-globo.webp" alt="Globo Afrique : itinéraire vers un repère de géolocalisation" style="display: block;"></div><div class="proj-body"><div class="proj-name" data-i18n="projects.126">Odoo support · Globo Afrique</div><div class="proj-cat c-blue" data-i18n="projects.127">Senedoo · Geolocation &amp; fleet management</div><div class="proj-desc" data-i18n="projects.128">Took over an Odoo project from another partner. Support lead during the migration: tracked issues, handled points of friction, resolved incidents and attended steering meetings.</div><dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.gl.r">Support lead</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.gl.d">1 year</dd></div><div><dt data-i18n="pf.users">Users</dt><dd data-i18n="pf.gl.u">25+</dd></div></dl><div class="proj-mods"><span class="pmod"><img src="/images/odoo/abonnements.svg" alt="" loading="lazy"><span data-i18n="mod.sub">Subscriptions</span></span><span class="pmod"><img src="/images/odoo/ventes.svg" alt="" loading="lazy"><span data-i18n="mod.sale">Sales</span></span><span class="pmod"><img src="/images/odoo/achats.svg" alt="" loading="lazy"><span data-i18n="mod.pur">Purchase</span></span><span class="pmod"><img src="/images/odoo/inventaire.svg" alt="" loading="lazy"><span data-i18n="mod.stock">Inventory</span></span><span class="pmod"><img src="/images/odoo/comptabilite.png" alt="" loading="lazy"><span data-i18n="mod.acc">Accounting</span></span><span class="pmod"><span data-i18n="mod.fs">Field Service</span></span></div>
         <a class="proj-more" href="/en/projets/globo-afrique/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a></div></div>
-    <div class="proj-card">
-      <div class="proj-top">
-        <img loading="lazy" decoding="async" src="/images/site/couverture-geofleet.webp" alt="GeoFleet-IN : suivi d’itinéraires de flotte">
-      </div>
-      <div class="proj-body">
-        <div class="proj-name" data-i18n="projects.g1">Odoo deployment · GeoFleet-IN</div>
-        <div class="proj-cat c-green" data-i18n="projects.g2">Senedoo · Project I led</div>
-        <div class="proj-desc" data-i18n="projects.g3">Led the full Odoo rollout, from requirements analysis to team training. Training is complete; go-live is waiting on the client’s final accounting data.</div>
-        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.gf.r">Project manager</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.gf.d">3-week rollout</dd></div><div><dt data-i18n="pf.users">Users</dt><dd data-i18n="pf.gf.u">17 trained</dd></div></dl><div class="proj-mods"><span class="pmod"><img src="/images/odoo/achats.svg" alt="" loading="lazy"><span data-i18n="mod.pur">Purchase</span></span><span class="pmod"><img src="/images/odoo/ventes.svg" alt="" loading="lazy"><span data-i18n="mod.sale">Sales</span></span><span class="pmod"><img src="/images/odoo/inventaire.svg" alt="" loading="lazy"><span data-i18n="mod.stock">Inventory</span></span><span class="pmod"><img src="/images/odoo/abonnements.svg" alt="" loading="lazy"><span data-i18n="mod.sub">Subscriptions</span></span><span class="pmod"><img src="/images/odoo/projet.svg" alt="" loading="lazy"><span data-i18n="mod.proj">Project</span></span></div>
-        <a class="proj-more" href="/en/projets/geofleet-in/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a>
-      </div>
     </div>
-    <div class="proj-card">
-      <div class="proj-top">
-        <img loading="lazy" decoding="async" src="/images/site/projet-dnc.webp" alt="Villa Diamant Noir Collection" onerror="this.parentElement.innerHTML='&lt;div class=\'proj-icon\'&gt;&lt;svg viewBox=\'0 0 24 24\'&gt;&lt;path d=\'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z\'/&gt;&lt;/svg&gt;&lt;/div&gt;'" style="display: block;">
-      </div>
+  </div>
+  <div class="proj-group reveal">
+    <div class="proj-group-head"><h3 class="proj-group-title" data-i18n="pg.cre">Visual identity, photo and video</h3><p data-i18n="pg.cre.s">Work with Galsen Digital Agency</p></div>
+    <div class="proj-grid">
+    <div class="proj-card feat-tab">
+      <div class="proj-top"><img loading="lazy" decoding="async" src="/images/site/couverture-dnc.webp" alt="Logo Diamant Noir Collection et terrasse photographiée face à l’océan"></div>
       <div class="proj-body">
-        <div class="proj-name" data-i18n="projects.132">Content creation · DNC</div>
-        <div class="proj-cat c-blue" data-i18n="projects.133">Diamant Noir Collection · Luxury hospitality</div>
-        <div class="proj-desc" data-i18n="projects.134">A year of production for the brand’s image: photo and video shoots, drone footage, editing and social media communication strategy.</div>
-        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.gda.r">Multimedia lead</dd></div><div><dt data-i18n="pf.year">Year</dt><dd>2023</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.dn.d">1 year</dd></div></dl><div class="proj-mods"><span class="pmod"><span data-i18n="gda.t1">Photo and video</span></span><span class="pmod"><span data-i18n="gda.t2">Drone</span></span><span class="pmod"><span data-i18n="gda.t3">Editing</span></span><span class="pmod"><span data-i18n="gda.t4">Social media</span></span></div>
+        <div class="proj-name" data-i18n="projects.132">Visual identity and photography · Diamant Noir</div>
+        <div class="proj-cat" data-i18n="projects.133">GDA · Luxury hospitality</div>
+        <div class="proj-desc" data-i18n="projects.134">Designed the collection’s logo and shot every photo in the online catalogue: villas, suites and outdoor spaces.</div>
+        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.dn.r">Logo and photography</dd></div><div><dt data-i18n="pf.year">Year</dt><dd data-i18n="pf.dn.y">2023</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.dn.d">1 year</dd></div></dl><div class="proj-mods"><span class="pmod"><span data-i18n="gda.t5">Visual identity</span></span><span class="pmod"><span data-i18n="gda.t6">Photography</span></span><span class="pmod"><span data-i18n="gda.t2">Drone</span></span><span class="pmod"><span data-i18n="gda.t4">Social media</span></span></div>
         <a class="proj-more" href="/en/projets/diamant-noir-collection/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
-    
     <div class="proj-card">
-      <div class="proj-top">
-        <img loading="lazy" decoding="async" src="/images/site/projet-samachef.webp" alt="Événement Sama Chef" onerror="this.parentElement.innerHTML='&lt;div class=\'proj-icon\'&gt;&lt;svg viewBox=\'0 0 24 24\'&gt;&lt;path d=\'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z\'/&gt;&lt;/svg&gt;&lt;/div&gt;'" style="display: block;">
-      </div>
+      <div class="proj-top is-video"><img loading="lazy" decoding="async" src="/images/site/video-samachef.webp" alt="Invités à l’inauguration de l’école Sama Chef"><button class="play-btn" type="button" data-video="1l5r4UlStQVfIgyyXvEE_Kd02Dy0yscCI" data-title="Sama Chef opening" data-i18n-title="vt.sama" aria-label="Play video: Sama Chef opening"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"></path></svg><span class="vbadge" data-i18n="video.badge">Video</span></button></div>
       <div class="proj-body">
-        <div class="proj-name" data-i18n="projects.144">Content creation · Sama Chef</div>
-        <div class="proj-cat c-orange" data-i18n="projects.145">Luxury culinary training · Senegal</div>
-        <div class="proj-desc" data-i18n="projects.146">Six months of production to showcase the training programmes and facilities: photo and video shoots, drone footage, editing and social media communication strategy.</div>
-        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.gda.r">Multimedia lead</dd></div><div><dt data-i18n="pf.year">Year</dt><dd>2024</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.sc.d">6 months</dd></div></dl><div class="proj-mods"><span class="pmod"><span data-i18n="gda.t1">Photo and video</span></span><span class="pmod"><span data-i18n="gda.t2">Drone</span></span><span class="pmod"><span data-i18n="gda.t3">Editing</span></span><span class="pmod"><span data-i18n="gda.t4">Social media</span></span></div>
+        <div class="proj-name" data-i18n="projects.144">Opening video · Sama Chef</div>
+        <div class="proj-cat" data-i18n="projects.145">GDA · Institutional event</div>
+        <div class="proj-desc" data-i18n="projects.146">Directed and edited the school’s opening video, attended by several embassies. Part of six months of content production.</div>
+        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.sc.r">Direction and editing</dd></div><div><dt data-i18n="pf.year">Year</dt><dd data-i18n="pf.sc.y">2024</dd></div><div><dt data-i18n="pf.dur">Duration</dt><dd data-i18n="pf.sc.d">6 months</dd></div></dl><div class="proj-mods"><span class="pmod"><span data-i18n="gda.t7">Event coverage</span></span><span class="pmod"><span data-i18n="gda.t3">Editing</span></span><span class="pmod"><span data-i18n="gda.t2">Drone</span></span><span class="pmod"><span data-i18n="gda.t4">Social media</span></span></div>
         <a class="proj-more" href="/en/projets/sama-chef/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
+    <div class="proj-card">
+      <div class="proj-top is-video"><img loading="lazy" decoding="async" src="/images/site/video-efor.webp" alt="Technicien EFOR sur un chantier de fondations"><button class="play-btn" type="button" data-video="1XudEbirh0BDVHQdgzk8DeB7wy6ua3tQg" data-title="EFOR presentation video" data-i18n-title="vt.efor" aria-label="Play video: EFOR presentation video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"></path></svg><span class="vbadge" data-i18n="video.badge">Video</span></button></div>
+      <div class="proj-body">
+        <div class="proj-name" data-i18n="projects.e1">Presentation video · EFOR</div>
+        <div class="proj-cat" data-i18n="projects.e2">GDA · International trade fair</div>
+        <div class="proj-desc" data-i18n="projects.e3">Shot and edited a video for EFOR, a foundations and civil engineering company, for an international trade fair.</div>
+        <dl class="proj-facts"><div><dt data-i18n="pf.role">Role</dt><dd data-i18n="pf.efr">Filming and editing</dd></div><div><dt data-i18n="pf.fmt">Format</dt><dd data-i18n="pf.eff">Presentation video</dd></div><div><dt data-i18n="pf.ctx">Context</dt><dd data-i18n="pf.efc">International trade fair</dd></div></dl><div class="proj-mods"><span class="pmod"><span data-i18n="gda.t8">Filming</span></span><span class="pmod"><span data-i18n="gda.t3">Editing</span></span><span class="pmod"><span data-i18n="gda.t9">Corporate video</span></span></div>
+        <a class="proj-more" href="/en/projets/efor/" onclick="track('project_page')"><span data-i18n="projects.more">View project</span> <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    </div>
   </div>
+  <dialog class="video-modal" id="video-modal" aria-labelledby="vm-title">
+    <div class="vm-bar"><p class="vm-title" id="vm-title"></p><a class="vm-ext" href="#" target="_blank" rel="noopener" data-i18n="vm.ext">Open in Google Drive</a><button class="vm-close" type="button" aria-label="Close" data-i18n-aria="vm.close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg></button></div>
+    <div class="vm-frame"></div>
+  </dialog>
 </section>
 
 <!-- ═══ SKILLS ═══ -->
@@ -1179,15 +1234,14 @@ function toggleTheme(){
   addEventListener('resize',upd,{passive:true});upd();
 
   /* Carrousel des réalisations (mobile) : points de navigation */
-  const grid=document.querySelector('.proj-grid');
-  if(grid){
+  document.querySelectorAll('.proj-grid').forEach(grid=>{
     const cards=[...grid.children].filter(c=>c.classList.contains('proj-card'));
     const dots=document.createElement('div');dots.className='proj-dots';dots.setAttribute('aria-hidden','true');
     cards.forEach((c,i)=>{const b=document.createElement('button');b.type='button';b.tabIndex=-1;b.onclick=()=>grid.scrollTo({left:c.offsetLeft-grid.offsetLeft-(grid.clientWidth-c.clientWidth)/2,behavior:'smooth'});dots.appendChild(b);});
     grid.after(dots);
     const setOn=()=>{const mid=grid.scrollLeft+grid.clientWidth/2;let best=0,bd=1e9;cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft-grid.offsetLeft+c.clientWidth/2-mid);if(d<bd){bd=d;best=i;}});[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===best));};
     grid.addEventListener('scroll',()=>requestAnimationFrame(setOn),{passive:true});setOn();
-  }
+  });
 
   /* À propos : cartes repliables sur mobile */
   const mq=matchMedia('(max-width:700px)');
@@ -1265,6 +1319,24 @@ function toggleTheme(){
   let rz;new ResizeObserver(()=>{clearTimeout(rz);rz=setTimeout(build,120);}).observe(hero);
   new MutationObserver(build).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
   build();start();
+})();
+
+/* ═══ VIDÉOS (Google Drive) : lecture dans une fenêtre, le lecteur n'est chargé qu'au clic ═══ */
+(function(){
+  const dlg=document.getElementById('video-modal');if(!dlg||!dlg.showModal)return;
+  const frame=dlg.querySelector('.vm-frame'),title=dlg.querySelector('.vm-title'),ext=dlg.querySelector('.vm-ext');
+  let opener=null;
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('[data-video]');if(!b)return;
+    e.preventDefault();e.stopPropagation();opener=b;
+    const id=b.dataset.video,t=b.dataset.title||'';
+    title.textContent=t;ext.href='https://drive.google.com/file/d/'+id+'/view';
+    const f=document.createElement('iframe');f.src='https://drive.google.com/file/d/'+id+'/preview';f.title=t;f.allow='autoplay; fullscreen';f.allowFullscreen=true;
+    frame.replaceChildren(f);dlg.showModal();track('video_play');
+  });
+  dlg.querySelector('.vm-close').addEventListener('click',()=>dlg.close());
+  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();});
+  dlg.addEventListener('close',()=>{frame.replaceChildren();if(opener)opener.focus();});
 })();
 /* ═══ CONTACT FORM ═══ */
 /* Envoi via FormSubmit (https://formsubmit.co) : le tout premier message déclenche un e-mail d'activation à confirmer. */
