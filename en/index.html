@@ -152,8 +152,12 @@ h2.section-title span{color:inherit!important;}
 .section-sub{color:var(--sub);font-size:1.06rem;line-height:1.6;max-width:38rem;text-wrap:pretty;}
 h3{font-family:var(--display);letter-spacing:-.01em;}
 
-/* Apparitions : le contenu est toujours visible (pas d'animation au défilement) */
+/* Apparitions au défilement : fondu léger, une seule fois, CSS seulement */
 .reveal{opacity:1;transform:none;}
+.js .reveal.rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.js .reveal.rv.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){.js .reveal.rv{opacity:1;transform:none;transition:none;}}
+@media print{.js .reveal.rv{opacity:1;transform:none;}}
 .js img.fade{opacity:0;transition:opacity .4s var(--ease);}
 .js img.fade.loaded{opacity:1;}
 
@@ -647,7 +651,7 @@ footer p{color:var(--sub);font-size:.9rem;}
       <svg id="icon-sun" style="display: block;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
       <svg id="icon-moon" viewBox="0 0 24 24" style="display: none;"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
     </button>
-    <a href="#contact" class="nav-cta" data-i18n="nav.cta">Contact me</a>
+    <a href="#contact" class="nav-cta" data-i18n="nav.cta">Let’s talk</a>
     <button aria-label="Open menu" class="nav-toggle" onclick="toggleMobile()">
       <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
     </button>
@@ -1448,4 +1452,29 @@ new MutationObserver(function(){set(b.getAttribute('aria-expanded')==='true');})
 })();
 </script>
 
+<script>
+/* ═══ Apparitions au défilement ═══ */
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window))return;
+  const els=[...document.querySelectorAll('.reveal')].filter(el=>el.getBoundingClientRect().top>innerHeight*.9);
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{rootMargin:'0px 0px -6% 0px'});
+  els.forEach(el=>{el.classList.add('rv');io.observe(el);});
+})();
+/* ═══ Adresse propre : pas de #section dans la barre d'adresse ═══ */
+(function(){
+  const clean=()=>{if(location.hash)history.replaceState(null,'',location.pathname+location.search);};
+  const smooth=()=>matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth';
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a[href^="#"]');if(!a||e.defaultPrevented||e.ctrlKey||e.metaKey||e.shiftKey)return;
+    const id=a.getAttribute('href').slice(1);if(!id)return;
+    e.preventDefault();
+    if(id==='hero'||id==='top'){window.scrollTo({top:0,behavior:smooth()});clean();return;}
+    const t=document.getElementById(id);if(!t)return;
+    t.scrollIntoView({behavior:smooth(),block:'start'});
+    if(a.classList.contains('skip-link')){t.setAttribute('tabindex','-1');t.focus({preventScroll:true});}
+    clean();
+  });
+  addEventListener('load',()=>setTimeout(clean,600));
+})();
+</script>
 </body></html>
