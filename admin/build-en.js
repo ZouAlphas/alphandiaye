@@ -26,6 +26,10 @@
   const parse = html => new DOMParser().parseFromString(html, 'text/html');
   const out = doc => '<!DOCTYPE html>\n' + doc.documentElement.outerHTML + '\n';
   const meta = (doc, sel, val) => { const m = doc.querySelector(sel); if (m && val) m.setAttribute('content', val); };
+  /* Message WhatsApp pré-rempli en anglais */
+  const waEn = (doc, text) => doc.querySelectorAll('a[href^="https://wa.me/"]').forEach(a => {
+    a.setAttribute('href', a.getAttribute('href').split('?')[0] + '?text=' + encodeURIComponent(text));
+  });
 
   /* Chemins relatifs (images/…, cv/…) → absolus, pour que la page fonctionne depuis /en/ */
   function absolutize(doc) {
@@ -100,6 +104,7 @@
       if (n['@type'] === 'ProfilePage') { n.url = SITE + '/en/'; n.inLanguage = 'en'; }
     }));
     if (dict) dict.remove();
+    waEn(doc, "Hello Alpha, I just visited your website alphandiaye.online. I'd like to talk with you about: ");
     return out(doc);
   }
 
@@ -134,6 +139,9 @@
         if (it.position === (n.itemListElement || []).length) it.name = h1.trim();
       });
     }));
+    const cl = doc.querySelector('.meta > div');
+    const client = cl ? [...cl.childNodes].filter(x => x.nodeType === 3).map(x => x.textContent).join('').trim() : h1.trim();
+    waEn(doc, `Hello Alpha, I saw your “${client}” project on your website. I'd like to talk with you about: `);
     return out(doc);
   }
 
