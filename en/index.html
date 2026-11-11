@@ -483,6 +483,11 @@ html:not(.js) .exp-toggle-wrap{display:none;}
 .cert-grid{display:grid;grid-template-columns:1fr;gap:.75rem;}
 .cert-card{display:grid;gap:.12rem;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.15rem 1.3rem;}
 .cert-card h3{font-size:1.1rem;font-weight:680;}
+.cert-desc{font-size:.92rem;color:var(--sub);line-height:1.55;margin-top:.4rem;}
+.edu-timeline-item.has-logo{grid-template-columns:52px minmax(0,1fr);column-gap:1rem;align-items:start;}
+.edu-tl-body{display:grid;gap:.15rem;}
+.edu-logo{width:52px;height:52px;border-radius:12px;background:#fff;border:1px solid var(--border);overflow:hidden;display:grid;place-items:center;padding:3px;margin-top:.15rem;}
+.edu-logo img{width:100%;height:100%;object-fit:contain;display:block;}
 .cert-year{font-size:.9rem;color:var(--sub);}
 .cert-proof{display:inline-flex;align-items:center;gap:.35rem;margin-top:.5rem;font-size:.9rem;font-weight:650;color:var(--blue-ink);text-decoration:none;}
 .cert-proof:hover{text-decoration:underline;text-underline-offset:3px;}
@@ -851,8 +856,8 @@ footer p{color:var(--sub);font-size:.9rem;}
 <section id="education" class="bg2">
   <div class="reveal center-head">
     <div class="section-label center" data-i18n="education.169">Education</div>
-    <h2 class="section-title" data-i18n="education.170">Education &amp; certification</h2>
-    <p class="section-sub" data-i18n="education.171">A background in management and digital business, completed by the official Odoo 19 certification.</p>
+    <h2 class="section-title" data-i18n="education.170">Education &amp; certifications</h2>
+    <p class="section-sub" data-i18n="education.171">A background in management and digital business, completed by the official Odoo 19 certification and international sales training.</p>
   </div>
   <div class="edu-cols reveal" style="transition-delay:.08s;">
 
@@ -863,29 +868,23 @@ footer p{color:var(--sub);font-size:.9rem;}
         <span data-i18n="education.172">Academic background</span>
       </div>
       <div class="edu-timeline">
-        <div class="edu-timeline-item">
+        <div class="edu-timeline-item has-logo"><span class="edu-logo"><img src="/images/site/logo-bem.webp" alt="Logo BEM" width="160" height="160" loading="lazy" decoding="async"></span><div class="edu-tl-body">
           <span class="edu-tl-badge" data-i18n="education.173">MASTER’S DEGREE (YEAR 2) · 2024–2025</span>
           <h3>Digital Business</h3>
           <div class="edu-school">BEM · Bordeaux École de Management</div>
-          <p data-i18n="education.176">Digital transformation, digital strategy, entrepreneurship</p>
+          <p data-i18n="education.176">Digital transformation, digital strategy, entrepreneurship</p></div>
         </div>
-        <div class="edu-timeline-item">
+        <div class="edu-timeline-item has-logo"><span class="edu-logo"><img src="/images/site/logo-bem.webp" alt="Logo BEM" width="160" height="160" loading="lazy" decoding="async"></span><div class="edu-tl-body">
           <span class="edu-tl-badge" data-i18n="education.177">MASTER’S DEGREE (YEAR 1) - 2024</span>
           <h3 data-i18n="education.178">Business Administration and Management</h3>
           <div class="edu-school">BEM · Bordeaux École de Management</div>
-          <p data-i18n="education.180">Management, finance, human resources</p>
+          <p data-i18n="education.180">Management, finance, human resources</p></div>
         </div>
-        <div class="edu-timeline-item">
+        <div class="edu-timeline-item has-logo"><span class="edu-logo"><img src="/images/site/logo-esp.webp" alt="Logo École Supérieure Polytechnique" width="160" height="160" loading="lazy" decoding="async"></span><div class="edu-tl-body">
           <span class="edu-tl-badge" data-i18n="education.181">BACHELOR’S DEGREE - 2024</span>
           <h3 data-i18n="education.182">Management and Accounting</h3>
           <div class="edu-school">École Supérieure Polytechnique (ESP)</div>
-          <p data-i18n="education.184">Accounting, financial management, business law</p>
-        </div>
-        <div class="edu-timeline-item">
-          <span class="edu-tl-badge purple">INTERNATIONAL</span>
-          <h3 data-i18n="education.186">Sales Force of the Future</h3>
-          <div class="edu-school">Agripro Africa · AGCO Academy · Tractafric Douala</div>
-          <p data-i18n="education.188">Agricultural mechanisation, fleet management, distribution</p>
+          <p data-i18n="education.184">Accounting, financial management, business law</p></div>
         </div>
       </div>
     </div>
@@ -894,7 +893,7 @@ footer p{color:var(--sub);font-size:.9rem;}
     <div>
       <div class="edu-col-title">
         <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-        Certifications
+        <span data-i18n="education.certs">Certifications and additional training</span>
       </div>
       <div class="cert-grid">
         <div class="cert-card">
@@ -903,6 +902,13 @@ footer p{color:var(--sub);font-size:.9rem;}
           <div class="cert-org">Odoo S.A.</div>
           <div class="cert-year" data-i18n="education.score">2026 · passed with 83.75%</div>
           <a class="cert-proof" href="/docs/Certification_Odoo_19_Alpha_Ndiaye.pdf" target="_blank" rel="noopener" onclick="track('cert_odoo')"><span data-i18n="education.proof">View certificate</span> · n°0001153715 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></svg></a>
+        </div>
+        <div class="cert-card">
+          <span class="cert-badge" data-i18n="education.fv.b">INTERNATIONAL TRAINING</span>
+          <h3 data-i18n="education.186">Sales Force of the Future</h3>
+          <div class="cert-org">AGCO Academy · Agripro Africa</div>
+          <div class="cert-year" data-i18n="education.fv.l">Douala, Cameroon</div>
+          <p class="cert-desc" data-i18n="education.fv.d">Professional training focused on sales techniques, commercial strategy and sales force development. Taken during my internship at Agripro Africa, as part of a programme funded by the AGCO group.</p>
         </div>
         
       </div>
